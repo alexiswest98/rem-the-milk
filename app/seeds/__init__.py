@@ -24,8 +24,8 @@ def seed():
         undo_lists()
         undo_groups()
     seed_users()
-    seed_tasks()
     seed_lists()
+    seed_tasks()
     seed_groups()
 
 
@@ -36,7 +36,7 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_groups()
-    undo_lists()
     undo_tasks()
+    undo_lists()
     undo_users()
     # Add other undo functions here
