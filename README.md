@@ -144,5 +144,8 @@ When deployment is complete, open your deployed site and check to see if you
 successfully deployed your Flask application to Render! You can find the URL for
 your site just below the name of the Web Service at the top of the page.
 
+
+hi friends 
+
 [Render.com]: https://render.com/
 [Dashboard]: https://dashboard.render.com/
