@@ -8,10 +8,10 @@ class List(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     due = db.Column(db.Date, nullable=False)
     notes = db.Column(db.String(1000))
-    group_id = db.Column(db.Integer, db.ForeignKey('groups.id'))
+    group_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('groups.id')))
     completed = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())

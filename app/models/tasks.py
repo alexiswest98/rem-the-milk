@@ -9,11 +9,11 @@ class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
     #this boolean helps us count how many a user has completed
-    list_id = db.Column(db.Integer, db.ForeignKey('lists.id'))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    list_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('lists.id')))
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     due = db.Column(db.Date, nullable=False)
     notes = db.Column(db.String(1000))
-    completed_by = db.Column(db.Integer, db.ForeignKey('users.id'))
+    completed_by = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
