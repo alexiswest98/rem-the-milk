@@ -35,8 +35,8 @@ def seed():
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
 def undo():
-    undo_groups()
-    undo_lists()
-    undo_tasks()
     undo_users()
+    undo_tasks()
+    undo_lists()
+    undo_groups()
     # Add other undo functions here
