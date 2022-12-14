@@ -10,6 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import ProfileForm from './components/splashPage/profilePage';
 import ListPage from './components/Lists/listPage';
+import CreateList from './components/Lists/CreateLists';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -29,6 +30,9 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+      <Route path='/lists/new' exact={true}>
+          <CreateList/>
+        </Route>
       <Route path='/lists/:listId' exact={true}>
           <ListPage/>
         </Route>

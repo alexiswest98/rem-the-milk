@@ -26,6 +26,7 @@ const ListPage = () => {
         </div>
       ))}
       <button onClick={()=> history.push('/profile')}> back </button>
+      <button onClick={() => history.push(`/Tasks/new/${Object.values(listId)[0]}`)}> New Task</button>
     </div>
   )
 
