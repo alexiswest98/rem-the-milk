@@ -51,6 +51,22 @@ export const updateTaskAction = (task) => {
 
 /* ___________ T H U N K S   ___________ */
 
+export const completeTaskThunk = (task, task_id) => async (dispatch) => {
+    console.log('we made it to the thunk')
+    const response = await fetch(`/api/tasks/${task_id}`, {
+        method: 'PUT',
+        body: JSON.stringify(task)
+    });
+    if (response.ok) {
+        console.log('response = ', response)
+        const editedTask = await response.json();
+        dispatch(updateTaskAction(editedTask));
+        return editedTask;
+    }else{
+        console.log('unsuccessful response = ',response)
+    };
+};
+
 // Create a task
 export const createTaskThunk = (task) => async (dispatch) => {
 
@@ -120,9 +136,9 @@ export default function tasksReducer(state = {}, action) {
             return newState
 
         case UPDATETASK:
-            newState = { ...state }
-            newState[ action.task.id ] = action.task
-            return newState
+            newState={...state}
+            newState[action.task.id] = { ...newState[action.task.id], ...action.task };
+            return newState;
 
         case DELETETASK:
             newState = { ...state }

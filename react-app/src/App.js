@@ -15,6 +15,7 @@ import CreateList from './components/Lists/CreateLists';
 import GetGroups from './components/allGroups';
 import GetFollowers from './components/followers';
 
+import CreateListTask from './components/Tasks/CreateListTask';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -34,6 +35,9 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+      <Route path='/Tasks/new/:listId' exact={true}>
+          <CreateListTask/>
+        </Route>
       <Route path='/lists/new' exact={true}>
           <CreateList/>
         </Route>
