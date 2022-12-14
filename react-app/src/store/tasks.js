@@ -1,7 +1,5 @@
 const CREATETASK = 'tasks/createTask'
 const GETALLTASKS = 'tasks/getAllTasks'
-const GETALLTASKSDAY = 'tasks/getAllTasksDay'
-const GETALLTASKSMONTH = 'tasks/getAllTasksMonth'
 const GETONETASK = 'tasks/getOneTask'
 const GETLISTTASKS = 'tasks/getListTasks'
 const DELETETASK = 'tasks/deleteTask'
@@ -15,19 +13,6 @@ export const getAllTasksAction = (task) => {
     };
 };
 
-export const getAllTasksDayAction = (tasks) => {
-    return {
-        type: GETALLTASKSDAY,
-        tasks
-    };
-};
-
-export const getAllTasksMonthAction = (tasks) => {
-    return {
-        type: GETALLTASKSMONTH,
-        tasks
-    };
-};
 
 export const getOneTaskAction = (task) => {
     return {
@@ -90,21 +75,6 @@ export const getAllTasksThunk = () => async (dispatch) => {
 };
 
 
-export const getAllTasksByDayThunk = () => async (dispatch) => {
-    const response = await fetch('/api/tasks/day');
-    if (response.ok) {
-        const tasks = await response.json();
-        dispatch(getAllTasksDayAction(tasks));
-    };
-};
-
-export const getAllTasksByMonthThunk = () => async (dispatch) => {
-    const response = await fetch('/api/tasks/month');
-    if (response.ok) {
-        const tasks = await response.json();
-        dispatch(getAllTasksMonthAction(tasks));
-    };
-};
 
 //get all tasks for list
 export const getAllListTasksThunk = (list_id) => async (dispatch) => {
@@ -142,14 +112,6 @@ export default function tasksReducer(state = {}, action) {
     switch (action.type) {
 
         case GETALLTASKS:
-            action.tasks.forEach(task => newState[task.id] = task)
-            return newState
-
-        case GETALLTASKSDAY:
-            action.tasks.forEach(task => newState[task.id] = task)
-            return newState
-
-        case GETALLTASKSMONTH:
             action.tasks.forEach(task => newState[task.id] = task)
             return newState
 
