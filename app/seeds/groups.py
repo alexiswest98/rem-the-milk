@@ -18,8 +18,6 @@ def seed_groups():
         name='Potluck dinner', owner_id=6)
 
 
-
-
     db.session.add(group1)
     db.session.add(group2)
     db.session.add(group3)
@@ -28,6 +26,9 @@ def seed_groups():
     db.session.add(group6)
     db.session.add(group7)
     db.session.commit()
+
+    #PUT SEED DATA HERE FOR MEMBERS IN GROUPS
+    # group1.
 
 def undo_groups():
     if environment == "production":
