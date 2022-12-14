@@ -10,7 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import ProfileForm from './components/splashPage/profilePage';
 import ListPage from './components/Lists/listPage';
-import Dashboard from './components/DashBoard';
+// import Dashboard from './components/DashBoard';
 import CreateList from './components/Lists/CreateLists';
 import GetGroups from './components/allGroups';
 import GetFollowers from './components/followers';
@@ -47,9 +47,9 @@ function App() {
         <Route path='/profile' exact={true}>
           <ProfileForm/>
         </Route>
-        <Route path='/dashboard' exact={true} >
+        {/* <Route path='/dashboard' exact={true} >
           <Dashboard />
-        </Route>
+        </Route> */}
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
