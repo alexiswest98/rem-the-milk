@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from 'react-router-dom'
-import { CreateListThunk } from "../../store/lists";
+import { useHistory, useParams } from 'react-router-dom'
+import { createTaskThunk } from "../../store/tasks";
 
-function CreateList() {
+function CreateListTask() {
 const dispatch = useDispatch()
 const history = useHistory()
 const user = useSelector(state => state.session)
@@ -11,26 +11,28 @@ const [name, setName] = useState('')
 const [due, setDue] = useState('')
 const [notes, setNotes] = useState(null)
 const [errors, setErrors] = useState('')
-
+const listId = useParams()
+const list_id = Object.values(listId)[0]
 const onsubmit = async (e) => {
   e.preventDefault();
 if (!errors.length) {
   const payload = {
     name,
     user_id: user.id,
+    list_id,
     due,
     notes
   }
   console.log(payload)
-  const newSpot = await dispatch(CreateListThunk(payload))
-  history.push(`/profile`)
+  const newTask = await dispatch(createTaskThunk(payload))
+  history.push(`/lists/${list_id}`)
 }
 }
 
 return (
   <div>
     <form onSubmit={onsubmit}>
-      <p> NEW LIST </p>
+        <p> NEW TASK </p>
         <label>
           <input
             type="text"
@@ -56,13 +58,13 @@ return (
           />
         </label>
 
-        <button className="submit" type="submit" hidden={errors.length !== 0}>Create List</button>
+        <button className="submit" type="submit" hidden={errors.length !== 0}>Create Task</button>
       </form>
-    <button onClick={()=> history.push('/profile')}> back </button>
+    <button onClick={()=> history.push(`/lists/${list_id}`)}> back </button>
   </div>
 )
 
 
 
 }
-export default CreateList;
+export default CreateListTask;
