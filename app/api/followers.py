@@ -17,7 +17,7 @@ def follow_user(user_id):
   follower = User.query.get(user_id)
   current_user.following.append(follower)
   db.session.commit()
-  return 'Follower was added'
+  return jsonify(follower.to_dict())
 
 #Logged in as current user and unfollows selected user
 @follow_routes.route('/delete/<int:user_id>', methods=["DELETE"])
@@ -26,7 +26,7 @@ def unfollow_user(user_id):
   follower = User.query.get(user_id)
   current_user.following.remove(follower)
   db.session.commit()
-  return 'Follower was removed'
+  return jsonify(follower.to_dict())
 
 
 # #get followers of current user
