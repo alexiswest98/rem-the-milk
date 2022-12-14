@@ -1,0 +1,22 @@
+.groupsDiv {
+    width: 10%;
+    /* border: 1px solid #000; */
+        /* overflow: hidden; */
+        box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.1);
+}
+
+.groupImg {
+    width: 35%;
+    height: 35%;
+    margin: auto 0;
+}
+.eachGroupMap{
+    /* border-bottom: 1px solid #000; */
+    display: flex;
+}
+
+.groupName{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

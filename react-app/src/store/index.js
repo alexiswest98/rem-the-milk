@@ -4,12 +4,14 @@ import session from './session'
 import groupReducer from './groups';
 import tasksReducer from './tasks';
 import listsReducer from './lists';
+import followsReducer from './follows';
 
 const rootReducer = combineReducers({
   session,
   groups: groupReducer,
   tasks: tasksReducer,
-  lists: listsReducer
+  lists: listsReducer,
+  follows: followsReducer
 });
 
 
