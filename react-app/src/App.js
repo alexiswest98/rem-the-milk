@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import ProfileForm from './components/splashPage/profilePage';
+import ListPage from './components/Lists/listPage';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -28,6 +29,9 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+      <Route path='/lists/:listId' exact={true}>
+          <ListPage/>
+        </Route>
         <Route path='/profile' exact={true}>
           <ProfileForm/>
         </Route>
