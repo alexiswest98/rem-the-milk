@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { login } from '../../store/session';
 import { GetAllListsThunk } from "../../store/lists";
 
@@ -26,10 +26,6 @@ const LoginForm = () => {
   const updatePassword = (e) => {
     setPassword(e.target.value);
   };
-
-  // useEffect( async ()=> {
-  //   dispatch(GetAllListsThunk());
-  // }, [dispatch, user])
 
   if (user) {
     return <Redirect to='/profile' />;
