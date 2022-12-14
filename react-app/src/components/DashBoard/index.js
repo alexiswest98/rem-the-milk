@@ -18,7 +18,6 @@ export default function Dashboard() {
 
     return (
       <div>
-        <button onClick={}></button>
       {dayTasks.map(task=>(
         <div>
         <p>{task.name}</p>
@@ -34,38 +33,36 @@ export default function Dashboard() {
     )
 }
 
-import React, { useState } from "react";
+// function App() {
+//   const [showComponent1, setShowComponent1] = useState(true);
 
-function App() {
-  const [showComponent1, setShowComponent1] = useState(true);
+//   return (
+//     <div>
+//       {showComponent1 ? (
+//         <Component1
+//           onClick={() => setShowComponent1(false)}
+//         />
+//       ) : (
+//         <Component2
+//           onClick={() => setShowComponent1(true)}
+//         />
+//       )}
+//     </div>
+//   );
+// }
 
-  return (
-    <div>
-      {showComponent1 ? (
-        <Component1
-          onClick={() => setShowComponent1(false)}
-        />
-      ) : (
-        <Component2
-          onClick={() => setShowComponent1(true)}
-        />
-      )}
-    </div>
-  );
-}
+// function Component1(props) {
+//   return (
+//     <div onClick={props.onClick}>
+//       This is component 1.
+//     </div>
+//   );
+// }
 
-function Component1(props) {
-  return (
-    <div onClick={props.onClick}>
-      This is component 1.
-    </div>
-  );
-}
-
-function Component2(props) {
-  return (
-    <div onClick={props.onClick}>
-      This is component 2.
-    </div>
-  );
-}
+// function Component2(props) {
+//   return (
+//     <div onClick={props.onClick}>
+//       This is component 2.
+//     </div>
+//   );
+// }
