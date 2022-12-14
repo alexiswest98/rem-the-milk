@@ -12,6 +12,9 @@ import ProfileForm from './components/splashPage/profilePage';
 import ListPage from './components/Lists/listPage';
 import Dashboard from './components/DashBoard';
 import CreateList from './components/Lists/CreateLists';
+import GetGroups from './components/allGroups';
+import GetFollowers from './components/followers';
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();

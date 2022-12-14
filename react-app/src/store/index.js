@@ -6,6 +6,7 @@ import tasksReducer from './tasks';
 import listsReducer from './lists';
 import followsReducer from './follows';
 import specTasksReducer from './specTasks';
+import usersReducer from './users';
 
 const rootReducer = combineReducers({
   session,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   tasks: tasksReducer,
   lists: listsReducer,
   follows: followsReducer,
-  specTask: specTasksReducer
+  specTask: specTasksReducer,
+  users: usersReducer
 });
 
 
