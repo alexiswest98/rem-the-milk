@@ -5,6 +5,7 @@ import { GetAllListsThunk } from "../../store/lists";
 
 
 const ProfileForm = () => {
+  const history = useHistory()
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   const lists = useSelector(state => state.lists)
@@ -27,6 +28,9 @@ const ProfileForm = () => {
         </div>
       ))}
       <div>follows components</div>
+      <NavLink className="navlink" to={`/lists/new`} >
+      <button>New List</button>
+      </NavLink>
     </div>
   )
 }
