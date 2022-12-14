@@ -50,25 +50,19 @@ export const updateTaskAction = (task) => {
 
 /* ___________ T H U N K S   ___________ */
 
-export const completeTaskThunk = (task, user_id) => async (dispatch) => {
-    task.completed_by = user_id
+export const completeTaskThunk = (task, task_id) => async (dispatch) => {
     console.log('we made it to the thunk')
-    const response = await fetch(`/api/tasks/${task.id}`, {
+    const response = await fetch(`/api/tasks/${task_id}`, {
         method: 'PUT',
-        body: JSON.stringify(
-            task.id,
-            task.name,
-            task.due,
-            task.user_id,
-            task.completed_by,
-            task.list_id,
-            task.notes)
+        body: JSON.stringify(task)
     });
     if (response.ok) {
         console.log('response = ', response)
         const editedTask = await response.json();
         dispatch(updateTaskAction(editedTask));
         return editedTask;
+    }else{
+        console.log('unsuccessful response = ',response)
     };
 };
 

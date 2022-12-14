@@ -22,16 +22,17 @@ const ListPage = () => {
   const incomplete = Object.values(tasks).filter(task => {
     return task.completed_by == null})
   const complete = async(task) => {
-    dispatch(completeTaskThunk(task, user.id))
+    const payload = {
+      name: task.name,
+      due: task.due,
+      user_id: task.user_id,
+      completed_by: user.id,
+      list_id: task.list_id,
+      notes: task.notes
+    }
+    dispatch(completeTaskThunk(payload, task.id))
     console.log(`You tried to complete ${task.name} with user ${user.id}`)
-    console.log(task.completed_by)
-    console.log( task.id,
-      task.name,
-      task.due,
-      task.user_id,
-      task.completed_by,
-      task.list_id,
-      task.notes)
+    console.log("task ID =", task.id)
   }
 
   console.log(Object.values(listId)[0])
