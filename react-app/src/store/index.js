@@ -5,13 +5,15 @@ import groupReducer from './groups';
 import tasksReducer from './tasks';
 import listsReducer from './lists';
 import followsReducer from './follows';
+import usersReducer from './users';
 
 const rootReducer = combineReducers({
   session,
   groups: groupReducer,
   tasks: tasksReducer,
   lists: listsReducer,
-  follows: followsReducer
+  follows: followsReducer,
+  users: usersReducer
 });
 
 
