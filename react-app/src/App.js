@@ -14,6 +14,11 @@ import ListPage from './components/Lists/listPage';
 import CreateList from './components/Lists/CreateLists';
 import GetGroups from './components/allGroups';
 import GetFollowers from './components/followers';
+import GetOneGroup from './components/oneGroup';
+import CreateAGroup from './components/createGroup';
+import UpdateList from './components/Lists/updateList';
+import EditListTask from './components/Tasks/updateTasks';
+
 
 import CreateListTask from './components/Tasks/CreateListTask';
 function App() {
@@ -34,7 +39,15 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
+      <GetFollowers/>
       <Switch>
+      {/* new new */}
+      <Route path='/list/edit/:listId' exact={true}>
+          <UpdateList/>
+        </Route>
+      <Route path='/lists/:listId/Tasks/edit/:taskId' exact={true}>
+          <EditListTask/>
+        </Route>
       <Route path='/Tasks/new/:listId' exact={true}>
           <CreateListTask/>
         </Route>
@@ -44,12 +57,19 @@ function App() {
       <Route path='/lists/:listId' exact={true}>
           <ListPage/>
         </Route>
+      {/* new new */}
         <Route path='/profile' exact={true}>
           <ProfileForm/>
         </Route>
-        {/* <Route path='/dashboard' exact={true} >
+        <Route path='/groups/create' exact={true}>
+          <CreateAGroup/>
+        </Route>
+        <Route path='/groups/:groupId' exact={true}>
+          <GetOneGroup/>
+        </Route>
+        <Route path='/dashboard' exact={true} >
           <Dashboard />
-        </Route> */}
+        </Route> 
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>

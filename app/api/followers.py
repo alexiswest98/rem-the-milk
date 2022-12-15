@@ -35,18 +35,18 @@ def unfollow_user(user_id):
   follower = User.query.get(user_id)
 
   checkifFollowing = db.session.query(follows).filter(follows.c.followed_id==current_user.id).all()
-  print("ALLLLL _______", checkifFollowing)
+  # print("ALLLLL _______", checkifFollowing)
 
   for each in checkifFollowing:
-    print(each)
+    # print(each)
     if each[0] == follower.id:
-      print("#################", each[0])
-      print('they are following them and can be removed')
+      # print("#################", each[0])
+      # print('they are following them and can be removed')
       current_user.following.remove(follower)
       db.session.commit()
       return jsonify(follower.to_dict())
   else:
-    print("********** don't follow this user")
+    # print("********** don't follow this user")
     return {'errors': ["You don't follow this User"]}, 401
 
 
@@ -57,19 +57,18 @@ def get_followers():
   results = db.session.query(follows).filter(follows.c.followed_id==current_user.id).all()
 
   list = []
-  dictionary = []
+  followers = []
 
   for result in results:
     list.append(result[0])
-  
-  print(list)
+  # print(list)
 
   for index in list:
     curr = User.query.get(index)
-    dictionary.append(curr.to_dict())
-    print(dictionary)
+    followers.append(curr.to_dict())
+    # print(followers)
 
-  return jsonify(dictionary)
+  return jsonify(followers)
 
 
 #get following of current user
@@ -79,14 +78,14 @@ def get_following():
   results = db.session.query(follows).filter(follows.c.follower_id==current_user.id).all()
 
   list = []
-  dictionary = []
+  followers = []
 
   for result in results:
     list.append(result[1])
 
   for index in list:
     curr = User.query.get(index)
-    dictionary.append(curr.to_dict())
-    print(dictionary)
+    followers.append(curr.to_dict())
+    # print(followers)
 
-  return jsonify(dictionary)
+  return jsonify(followers)

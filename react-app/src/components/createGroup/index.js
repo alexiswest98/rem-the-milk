@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import './index.css';
 import { useHistory } from 'react-router-dom'
+import { createGroupThunk } from "../../store/groups";
 
 /* Create a group component */
 export default function CreateAGroup(){
     const dispatch = useDispatch()
     const history = useHistory()
-
+    const currentUser = useSelector(state => state.session)
+    const currUser = currentUser.user
     const [ name, setName ] = useState('');
     const [ imageUrl, setImageUrl ] = useState(
         'https://moodlehub.ca/pluginfile.php/6842/mod_book/chapter/9131/group2.jpg'
@@ -17,8 +19,8 @@ export default function CreateAGroup(){
     /* Validation errors for form */
     useEffect(() => {
         const validationErrors = [];
-        if(name)
-        if (imageUrl)
+        if(!name)
+        if (!imageUrl)
         setValidationErrors(validationErrors)
     }, [ name, imageUrl ])
 
@@ -26,12 +28,11 @@ export default function CreateAGroup(){
         e.preventDefault();
         const group = {
             name,
-            imageUrl
+            image_url: imageUrl,
+            owner_id: currUser.id
         }
-        // const createdGroup = await dispatch('insert thunk here')
-        // if (createdGroup){
-            // history .push?
-        // }
+        const create = await dispatch(createGroupThunk(group))
+        history.push('/dashboard')
     }
 
 
@@ -45,8 +46,8 @@ export default function CreateAGroup(){
             <h2>Create A Group</h2>
             <label>
                 Name
-                <input 
-                type="text" 
+                <input
+                type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
@@ -54,8 +55,8 @@ export default function CreateAGroup(){
             </label>
             <label>
                 Group Image
-                <input 
-                type="url" 
+                <input
+                type="url"
                 value={imageUrl}
                 onChange={(e) => setImageUrl(e.target.value)}
                 required
@@ -63,7 +64,6 @@ export default function CreateAGroup(){
             </label>
             <button type="submit" className="createGroupBtn" disabled={validationErrors.length > 0}>Create</button>
         </form>
-    
+
     )
 }
-

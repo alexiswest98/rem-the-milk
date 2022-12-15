@@ -11,23 +11,33 @@ export default function Dashboard() {
 
     const dayTasks = Object.values(useSelector(state => state.specTask))
     const lists = Object.values(useSelector(state => state.tasks))
-
+    const currentUser = useSelector(state => state.session)
+    const groups = useSelector(state => state.groups)
     useEffect(() => {
         dispatch(getAllTasksByDayThunk())
     }, [dispatch])
 
     return (
       <div>
+<<<<<<< HEAD
         {/* <button onClick={}></button> */}
+=======
+>>>>>>> testing
       {dayTasks.map(task=>(
         <div>
         <p>{task.name}</p>
         <p>{task.due}</p>
         </div>
       ))}
+        {lists.map(list=>(
+        <div>
+        <p>{list.name}</p>
+        </div>
+      ))}
       <h3>Todays Activity</h3>
       <div> Lists {lists.length}</div>
       <div>Tasks due today {dayTasks.length}</div>
+<<<<<<< HEAD
 
 //       <GetGroups/>
 //       </div>
@@ -100,3 +110,10 @@ export default function Dashboard() {
 //     </div>
 //   );
 // }
+=======
+      <GetGroups/>
+
+      </div>
+    )
+}
+>>>>>>> testing
