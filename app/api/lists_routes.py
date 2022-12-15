@@ -1,8 +1,7 @@
-from flask import Blueprint, render_template, jsonify, request, json
+from flask import Blueprint, render_template, jsonify, request
 from flask_login import login_required, current_user
 from app.models import List, db, Task
 from app.forms.list_form import ListForm
-
 
 lists_routes = Blueprint('lists', __name__, url_prefix="/api/lists")
 
@@ -63,7 +62,7 @@ def update_list(list_id):
   list = List.query.get(list_id)
   form['csrf_token'].data = request.cookies['csrf_token']
   data = form.data
-  print('******************************************************', data)
+
   if list and form.validate_on_submit():
     list.name = data['name']
     list.user_id = data['user_id']
@@ -76,7 +75,7 @@ def update_list(list_id):
   if not list:
     return {'errors': ['That list does not exist']}, 401
   else:
-    return jsonify(form.errors), 400
+    return jsonify(form.errors)
 
 
 #delete list by id
@@ -93,5 +92,4 @@ def delete_list(list_id):
     db.session.commit()
     return jsonify('Successfully deleted list and associated tasks')
   return {'errors': ['That list does not exist']}, 401
-
 
