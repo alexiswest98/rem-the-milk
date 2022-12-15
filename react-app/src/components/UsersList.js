@@ -45,7 +45,7 @@ function UsersList() {
         <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
         {!followerIds.includes(user.id) &&
           <>
-            <button onClick={ followButton(user.id) }>follow</button>
+            <button onClick={ () => dispatch(followThunk(user.id))}>follow</button>
           </>
         }
         {followerIds.includes(user.id) &&
