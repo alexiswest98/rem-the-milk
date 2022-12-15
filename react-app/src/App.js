@@ -14,6 +14,10 @@ import Dashboard from './components/DashBoard';
 import CreateList from './components/Lists/CreateLists';
 import GetGroups from './components/allGroups';
 import GetFollowers from './components/followers';
+import GetOneGroup from './components/oneGroup';
+import CreateAGroup from './components/createGroup';
+
+
 
 import CreateListTask from './components/Tasks/CreateListTask';
 function App() {
@@ -46,6 +50,12 @@ function App() {
         </Route>
         <Route path='/profile' exact={true}>
           <ProfileForm/>
+        </Route>
+        <Route path='/groups/create' exact={true}>
+          <CreateAGroup/>
+        </Route>
+        <Route path='/groups/:groupId' exact={true}>
+          <GetOneGroup/>
         </Route>
         <Route path='/dashboard' exact={true} >
           <Dashboard />

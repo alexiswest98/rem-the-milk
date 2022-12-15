@@ -6,7 +6,6 @@ from app.forms.task_form import CreateTaskForm
 
 tasks_routes = Blueprint('tasks', __name__, url_prefix="/api/tasks" )
 
-
 #get all tasks by user
 @tasks_routes.route('/all', methods=["GET"])
 @login_required
@@ -15,6 +14,16 @@ def get_all_tasks():
   taskobject = [task.to_dict() for task in tasks]
   # print(task.name for task in tasks)
   return jsonify(taskobject)
+
+#get all tasks by id
+@tasks_routes.route('/<int:task_id>', methods=["GET"])
+@login_required
+def get_tasks(task_id):
+  task = Task.query.get(task_id)
+  if task:
+    return jsonify(task.to_dict())
+  else:
+    return {'errors': ['That task does not exist']}, 401
 
 #get specific list's tasks
 @tasks_routes.route('/lists/<int:list_id>', methods=["GET"])
@@ -68,14 +77,12 @@ def get_month_tasks():
   taskobject = [task.to_dict() for task in new_tasks]
   return jsonify(taskobject)
 
-
 # #create new simple task
 @tasks_routes.route('/', methods=['POST'])
 @login_required
 def create_task():
   form = CreateTaskForm()
   form['csrf_token'].data = request.cookies['csrf_token']
-
   data = form.data
 
   if form.validate_on_submit():
@@ -89,7 +96,7 @@ def create_task():
     db.session.add(new_task)
     db.session.commit()
     return jsonify(new_task.to_dict())
-  return jsonify('You messed up', form.errors)
+  return jsonify(form.errors)
 
 
 # #update task by id
@@ -109,7 +116,10 @@ def update_task(task_id):
     task.completed_by = data['completed_by']
     db.session.commit()
     return (task.to_dict())
-  return jsonify('could not find task')
+  if not task:
+    return jsonify('could not find task')
+  else:
+    return jsonify(form.errors)
 
 
 # #delete task by id
@@ -120,5 +130,5 @@ def delete_task(task_id):
   if task:
     db.session.delete(task)
     db.session.commit()
-    return 'Successfully deleted task'
-  return 'Could not find task'
+    return jsonify('Successfully deleted task')
+  return jsonify('This task does not exist')

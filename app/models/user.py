@@ -2,6 +2,7 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from app.models.followers import follows
+from app.models.members import members
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -29,6 +30,14 @@ class User(db.Model, UserMixin):
         secondaryjoin=(follows.c.followed_id == id),
         backref=db.backref("following", lazy="dynamic"),
         lazy="dynamic"
+        )
+
+    #Relationship to join table
+    groups = db.relationship(
+        "Group",
+        secondary=members,
+        primaryjoin=(members.c.user_id == id),
+        backref=db.backref("users", lazy="dynamic")
         )
 
     @property

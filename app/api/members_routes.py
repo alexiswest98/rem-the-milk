@@ -1,92 +1,71 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import User, db
+from app.models import Group, User, db
 from app.models.members import members
 
 member_routes = Blueprint('members', __name__)
 
-#  demo.followers.append(evan_morgan)
+# Logged in as current user and get all members based off group.id
+@member_routes.route('/group/<int:groupId>', methods=["GET"])
+@login_required
+def get_members(groupId):
+  membs = db.session.query(members).filter(members.c.group_id == groupId and members.c.user_id == current_user.id).all()
+  # print("##############", membs)
 
-#  demo.following.append(marnie)
+  membslist = []
+  for user in membs:
+    currUser = User.query.get(user[0])
+    membslist.append(currUser.to_dict())
 
-#Logged in as current user and follow selected user
-# @member_routes.route('/add/<int:user_id>', methods=["POST"])
-# @login_required
-# def follow_user(user_id):
-#   # print(user_id)
-#   follower = User.query.get(user_id)
-
-#   checkifFollowing = db.session.query(follows).filter(follows.c.followed_id==current_user.id).all()
-#   # print("ALLLLL _______", checkifFollowing)
-
-#   for combo in checkifFollowing:
-#     if combo[0] == follower.id:
-#       # print("********** True")
-#       return {'errors': ['Woops! You already follow this User']}, 401
-#   else:
-#     current_user.following.append(follower)
-#     db.session.commit()
-#     return jsonify(follower.to_dict())
-
-# #Logged in as current user and unfollows selected user
-# @member_routes.route('/delete/<int:user_id>', methods=["DELETE"])
-# @login_required
-# def unfollow_user(user_id):
-#   follower = User.query.get(user_id)
-
-#   checkifFollowing = db.session.query(follows).filter(follows.c.followed_id==current_user.id).all()
-#   print("ALLLLL _______", checkifFollowing)
-
-#   for each in checkifFollowing:
-#     print(each)
-#     if each[0] == follower.id:
-#       print("#################", each[0])
-#       print('they are following them and can be removed')
-#       current_user.following.remove(follower)
-#       db.session.commit()
-#       return jsonify(follower.to_dict())
-#   else:
-#     print("********** don't follow this user")
-#     return {'errors': ["You don't follow this User"]}, 401
+  # print(membslist)
+  return jsonify(membslist)
 
 
-# # #get followers of current user
-# @member_routes.route('/followers')
-# @login_required
-# def get_followers():
-#   results = db.session.query(follows).filter(follows.c.followed_id==current_user.id).all()
+# #Logged in as current user and add members to a group
+@member_routes.route('/group/<int:groupId>/add/<int:userId>', methods=["POST"])
+@login_required
+def add_memb(groupId, userId):
+  membsInGroup = db.session.query(members).filter(members.c.group_id==groupId).all()
+  newUser = User.query.get(userId)
+  # print("##############", membsInGroup)
+  group = Group.query.get(groupId)
 
-#   list = []
-#   dictionary = []
+  if not group:
+    return {'errors': ['This group does not exist']}, 401
 
-#   for result in results:
-#     list.append(result[0])
-  
-#   print(list)
+  for memb in membsInGroup:
+    if memb[0] == userId:
+      return {'errors': ['This user is already in the group.']}, 401
+  else:
+    group.users.append(newUser)
+    db.session.commit()
+    # print('__________', group.users)
 
-#   for index in list:
-#     curr = User.query.get(index)
-#     dictionary.append(curr.to_dict())
-#     print(dictionary)
-
-#   return jsonify(dictionary)
+    newMembers = [user.to_dict() for user in group.users]
+    # print(newMembers)
+    return jsonify(newMembers)
+    # return jsonify(memb.to_dict() for memb in membsInGroup)
 
 
-# #get following of current user
-# @member_routes.route('/following')
-# @login_required
-# def get_following():
-#   results = db.session.query(follows).filter(follows.c.follower_id==current_user.id).all()
+# #Logged in as current user and delete members to a group
+@member_routes.route('/group/<int:groupId>/delete/<int:userId>', methods=["DELETE"])
+@login_required
+def delete_memb(groupId, userId):
+  membsInGroup = db.session.query(members).filter(members.c.group_id==groupId).all()
+  delUser = User.query.get(userId)
+  # print("##############", membsInGroup)
+  group = Group.query.get(groupId)
 
-#   list = []
-#   dictionary = []
+  if not group:
+    return {'errors': ['This group does not exist']}, 401
+ 
+  for memb in membsInGroup:
+    if memb[0] == userId:
+      group.users.remove(delUser)
+      db.session.commit()
 
-#   for result in results:
-#     list.append(result[1])
-
-#   for index in list:
-#     curr = User.query.get(index)
-#     dictionary.append(curr.to_dict())
-#     print(dictionary)
-
-#   return jsonify(dictionary)
+      newMembers = [user.to_dict() for user in group.users]
+      # print(newMembers)
+      return jsonify(newMembers)
+  else:
+    return {'errors': ['This user is not in the group.']}, 401
