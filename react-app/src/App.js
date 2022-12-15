@@ -19,6 +19,7 @@ import CreateAGroup from './components/createGroup';
 import UpdateList from './components/Lists/updateList';
 import EditListTask from './components/Tasks/updateTasks';
 import CreateListTask from './components/Tasks/CreateListTask';
+import LoginPage from './components/loginpage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -70,7 +71,7 @@ function App() {
           <Dashboard />
         </Route>
         <Route path='/login' exact={true}>
-          <LoginForm />
+          <LoginPage />
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />

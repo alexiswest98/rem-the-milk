@@ -1,0 +1,66 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.loginPageMainDiv {
+    width: 100%;
+    height: 1000px;
+    display: flex;
+}
+
+.logoTmDiv {
+    display: flex;
+    align-items: center;
+    margin-left: 15%;
+}
+
+.blueDiv {
+    width: 50%;
+    background-color: rgb(3, 96, 191);
+}
+
+.whiteDiv {
+    width: 50%;
+    background-color: #ffffff;
+}
+
+.blueDivH2 {
+    margin: 0;
+    color: white;
+    width: 170px;
+    text-overflow: none;
+    margin-top: 5%;
+}
+
+.blueDivLogo {
+    width: 110px;
+    height: 100px;
+    margin-top: 1%;
+}
+
+.blueDivQuote {
+    width: 400px;
+    text-overflow: none;
+    margin: 25% auto;
+}
+
+.blueDivQuoteH3 {
+    color: #e6eff9;
+    font-size: 35px;
+}
+
+.blueDivQuoteP {
+    color: #e6eff9;
+    font-size: 25px;
+}
+
+#signupButtonLoginPage{
+    width: 110px;
+    height: 40PX;
+    background-color: rgb(230,239,249);
+    margin-top: 30%;
+    margin-left: 36%;
+    border: none;
+    border-radius: 7%;
+}

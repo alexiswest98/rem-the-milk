@@ -12,7 +12,6 @@ const user = useSelector(state => state.session)
 const list = useSelector(state => state.lists[listId])
 console.log("*******************************", list)
 
-
 const [newName, setNewName] = useState(list.name || "");
 const [newDue, setNewDue] = useState(list.due || "");
 const [newNotes, setNewNotes] = useState(list.notes || "");
