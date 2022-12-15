@@ -33,7 +33,7 @@ def get_list(list_id):
     return {'errors': ['That list does not exist']}, 401
 
 #create new list
-@lists_routes.route('/', methods=['POST'])
+@lists_routes.route('/new', methods=['POST'])
 @login_required
 def create_lists():
   form = ListForm()
@@ -92,4 +92,3 @@ def delete_list(list_id):
     db.session.commit()
     return jsonify('Successfully deleted list and associated tasks')
   return {'errors': ['That list does not exist']}, 401
-

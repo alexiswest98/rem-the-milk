@@ -75,8 +75,8 @@ export const DeleteListThunk = (list_id) => async (dispatch) => {
 
 // Edit List
 export const EditListThunk = (list) => async (dispatch) => {
-  const {id, name, due, notes, user_id} = list
-  console.log('destructured variables = ',id, name, due, notes, user_id)
+  const {id, name, due, notes, user_id, completed} = list
+  console.log('destructured variables = ',id, name, due, notes, user_id, completed)
   console.log("URL =", `/api/lists/${id}`)
   const res = await fetch(`/api/lists/${id}`, {
     method: 'PUT',
@@ -85,7 +85,8 @@ export const EditListThunk = (list) => async (dispatch) => {
       name,
       due,
       notes,
-      user_id
+      user_id,
+      completed
     })
   });
   if (res.ok) {
@@ -98,13 +99,16 @@ export const EditListThunk = (list) => async (dispatch) => {
 }
 // Create List
 export const CreateListThunk = (list) => async (dispatch) => {
-  const res = await fetch(`/api/lists/`, {
+  const {id, name, due, notes, user_id, completed} = list
+  const res = await fetch(`/api/lists/new`, {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
     body: JSON.stringify(list)
   });
+  console.log('response =', res )
   if (res.ok) {
     const data = await res.json()
+    console.log("Hit the thunk, data = ", data)
     dispatch(CreateListAction(data))
     return data
   }
