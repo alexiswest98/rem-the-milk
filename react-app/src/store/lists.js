@@ -132,10 +132,10 @@ export default function listsReducer(state = {}, action) {
       newState[action.list.id] = action.list
       return newState
 
-    case UpdateList:
-      newState = { ...state }
-      newState[action.list.id] = action.list
-      return newState
+      case UpdateList:
+        newState = { ...state }
+        newState[action.list.id] = {...newState[action.list.id], ...action.list}
+        return newState
 
     case DeleteList:
       newState = { ...state }
