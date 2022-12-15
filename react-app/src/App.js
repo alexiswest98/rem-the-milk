@@ -38,6 +38,7 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
+      <GetFollowers/>
       <Switch>
       <Route path='/Tasks/new/:listId' exact={true}>
           <CreateListTask/>

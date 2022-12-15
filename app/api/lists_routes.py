@@ -64,7 +64,7 @@ def update_list(list_id):
   data = form.data
 
   if list and form.validate_on_submit():
-    list.name = data['name'] 
+    list.name = data['name']
     list.user_id = data['user_id'] 
     list.due = data['due'] 
     list.notes = data['notes']
