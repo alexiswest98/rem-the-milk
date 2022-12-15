@@ -63,20 +63,20 @@ def update_list(list_id):
   list = List.query.get(list_id)
   form['csrf_token'].data = request.cookies['csrf_token']
   data = form.data
-
+  print('******************************************************', data)
   if list and form.validate_on_submit():
-    list.name = data['name'] if data['name'] else json.loads(list.name)
-    list.user_id = data['user_id'] if data['user_id'] else json.loads(list.user_id)
-    list.due = data['due'] if data['due'] else json.loads(list.due)
-    list.notes = data['notes'] if data['notes'] else json.loads(list.notes)
-    list.group_id = data['group_id'] if data['group_id'] else json.loads(list.group_id)
+    list.name = data['name']
+    list.user_id = data['user_id']
+    list.due = data['due']
+    list.notes = data['notes']
+    list.group_id = data['group_id']
     # db.session.update()
     db.session.commit()
     return (list.to_dict())
   if not list:
     return {'errors': ['That list does not exist']}, 401
   else:
-    return jsonify(form.errors)
+    return jsonify(form.errors), 400
 
 
 #delete list by id
@@ -93,3 +93,5 @@ def delete_list(list_id):
     db.session.commit()
     return jsonify('Successfully deleted list and associated tasks')
   return {'errors': ['That list does not exist']}, 401
+
+

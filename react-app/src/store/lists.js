@@ -75,10 +75,18 @@ export const DeleteListThunk = (list_id) => async (dispatch) => {
 
 // Edit List
 export const EditListThunk = (list) => async (dispatch) => {
-  console.log("URL =", `/api/lists/${list.id}`)
-  const res = await fetch(`/api/lists/${list.id}`, {
+  const {id, name, due, notes, user_id} = list
+  console.log('destructured variables = ',id, name, due, notes, user_id)
+  console.log("URL =", `/api/lists/${id}`)
+  const res = await fetch(`/api/lists/${id}`, {
     method: 'PUT',
-    body: JSON.stringify(list)
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({
+      name,
+      due,
+      notes,
+      user_id
+    })
   });
   if (res.ok) {
     const data = await res.json()
@@ -92,6 +100,7 @@ export const EditListThunk = (list) => async (dispatch) => {
 export const CreateListThunk = (list) => async (dispatch) => {
   const res = await fetch(`/api/lists/`, {
     method: 'POST',
+    headers: {'Content-Type':'application/json'},
     body: JSON.stringify(list)
   });
   if (res.ok) {

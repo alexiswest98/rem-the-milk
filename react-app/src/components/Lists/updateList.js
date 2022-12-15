@@ -17,7 +17,10 @@ console.log(list)
 
 
 const [name, setName] = useState(list.name || '')
-const [due, setDue] = useState(list.due || '')
+const [due, setDue] = useState('')
+const [day, setDay] = useState(12)
+const [month,setMonth] = useState(12)
+const [year, setYear] = useState(2022)
 const [notes, setNotes] = useState(list.notes || '')
 const [errors, setErrors] = useState('')
 
@@ -32,12 +35,13 @@ const onsubmit = async (e) => {
 if (!errors.length) {
   const payload = {
     id: list_id,
+    completed: false,
     name,
     user_id: user.id,
-    due,
+    due: Date(+year, +month, +day),
     notes
   }
-  console.log(payload, list_id)
+  console.log(payload, list_id, user.id)
   const editList = await dispatch(EditListThunk(payload, list_id))
   history.push(`/profile`)
 }
