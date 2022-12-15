@@ -18,6 +18,9 @@ import GetOneGroup from './components/oneGroup';
 import CreateAGroup from './components/createGroup';
 import UpdateList from './components/Lists/updateList';
 import EditListTask from './components/Tasks/updateTasks';
+import Home from './components/Home/home';
+
+
 import CreateListTask from './components/Tasks/CreateListTask';
 import LoginPage from './components/loginpage';
 
@@ -61,6 +64,9 @@ function App() {
         <Route path='/profile' exact={true}>
           <ProfileForm/>
         </Route>
+        <Route path='/tasks/create' exact={true}>
+          <CreateListTask/>
+        </Route>
         <Route path='/groups/create' exact={true}>
           <CreateAGroup/>
         </Route>
@@ -86,11 +92,17 @@ function App() {
           <h1>My Lists</h1>
         </Route>
         <Route path='/' exact={true} >
-          <h1>My Home Page</h1>
+          <Home/>
         </Route>
       </Switch>
     </BrowserRouter>
   );
 }
+
+{/* <Link to='/tasks/create'>
+<button>Create a Task</button>
+</Link> */}
+
+
 
 export default App;

@@ -13,7 +13,7 @@ function UsersList() {
   const following = followers[followers.length - 1];
   const usersArr = Object.values(useSelector(state => state.users))
   const users = usersArr.filter(user => user.id !== currUser.id)
-  
+
   useEffect(() => {
       // Get all users
       dispatch(getAllUsersThunk())
@@ -24,7 +24,7 @@ function UsersList() {
 
   }, [dispatch])
 
-  if (!following) return null
+  if (!following || !users || !followers) return null
   // People who follow you
   const followerIds = followers.map(ele => ele.id);
   console.log('followerIds', followerIds)
@@ -41,7 +41,7 @@ function UsersList() {
   const userComponents = users.map((user) => {
     return (
       <li key={user.id}>
-        
+
         <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
         {!followerIds.includes(user.id) &&
           <>
@@ -59,7 +59,7 @@ function UsersList() {
         <p>follower</p>
         </>}
       </li>
-      
+
   );
   });
 
