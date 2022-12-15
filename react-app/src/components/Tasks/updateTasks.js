@@ -6,27 +6,33 @@ import { editTaskThunk } from "../../store/tasks";
 function EditListTask() {
 const dispatch = useDispatch()
 const history = useHistory()
+const {listId} = useParams()
+const {taskId} = useParams()
+const task = useSelector(state => state.tasks[taskId])
+console.log(task)
 const user = useSelector(state => state.session)
-const [name, setName] = useState('')
-const [due, setDue] = useState('')
-const [notes, setNotes] = useState(null)
+const [name, setName] = useState(task.name||'')
+const [due, setDue] = useState(task.due || '')
+const [notes, setNotes] = useState(task.notes || '')
 const [errors, setErrors] = useState('')
-const listId = useParams()
-const list_id = Object.values(listId)[0]
+const [validationErrors, setValidationErrors] = useState([]);
+const [hasSubmitted, setHasSubmitted] = useState(false);
 const onsubmit = async (e) => {
   e.preventDefault();
 if (!errors.length) {
   const payload = {
-    name,
-    user_id: user.id,
-    list_id,
-    due,
-    notes
+    id: task.id,
+    name: name,
+    user_id: task.user_id,
+    due: due,
+    notes: notes,
+    list_id: task.list_id,
+    completed_by: task.completed_by
   }
 
   console.log(payload)
   const editTask = await dispatch(editTaskThunk(payload))
-  history.push(`/lists/${list_id}`)
+  history.push(`/lists/${listId}`)
 }
 }
 
@@ -34,34 +40,44 @@ return (
   <div>
     <form onSubmit={onsubmit}>
         <p> EDIT TASK </p>
-        <label>
+        <label htmlFor="name">
           <input
             type="text"
             placeholder="Name"
-            value={name}
             onChange={(e) => setName(e.target.value)}
+            value={name}
           />
         </label>
-        <label>
+        <label htmlFor="due">
           <input
-            type="text"
+            type="date"
             placeholder="Due"
-            value={due}
             onChange={(e) => setDue(e.target.value)}
+            value={due}
           />
         </label>
-        <label>
+        <label htmlFor="notes">
           <input
             type="text"
             placeholder="Notes"
-            value={notes}
             onChange={(e) => setNotes(e.target.value)}
+            value={notes}
           />
         </label>
-
-        <button className="submit" type="submit" hidden={errors.length !== 0}>Update Task</button>
+        <button className="submit" type="submit" hidden={validationErrors.length !== 0}>Update List</button>
       </form>
-    <button onClick={()=> history.push(`/lists/${list_id}`)}> back </button>
+      {setHasSubmitted && validationErrors.length > 0 && (
+                <div>
+                    Please fix these inputs:
+                    <ul>
+                        <ul>
+                            {validationErrors.map((error) => (
+                                <li key={error}>{error}</li>
+                            ))}
+                        </ul>
+                    </ul>
+                </div>)}
+    <button onClick={()=> history.push(`/lists/${listId}`)}> back </button>
   </div>
 )
 

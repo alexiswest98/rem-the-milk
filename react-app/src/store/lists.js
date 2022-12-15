@@ -12,17 +12,17 @@ export const GetOneListAction = (list) => {
   };
 };
 
-export const GetAllListAction = (Lists) => {
+export const GetAllListAction = (lists) => {
   return {
     type: GetAllLists,
-    Lists
+    lists
   };
 };
 
-export const CreateListAction = (List) => {
+export const CreateListAction = (list) => {
   return {
     type: CreateList,
-    List
+    list
   };
 };
 
@@ -85,17 +85,23 @@ export const EditListThunk = (list) => async (dispatch) => {
     const data = await res.json()
     // console.log("IN THUNK ACTION!!!!", data)
     dispatch(UpdateListAction(data))
+    console.log('Res.ok and dispatch hit.')
+    console.log('data = ',data)
     return data
   }
 }
 // Create List
 export const CreateListThunk = (list) => async (dispatch) => {
-  const res = await fetch(`/api/lists/`, {
+  const {id, name, due, notes, user_id, completed} = list
+  const res = await fetch(`/api/lists/new`, {
     method: 'POST',
+    headers: {'Content-Type':'application/json'},
     body: JSON.stringify(list)
   });
+  console.log('response =', res )
   if (res.ok) {
     const data = await res.json()
+    console.log("Hit the thunk, data = ", data)
     dispatch(CreateListAction(data))
     return data
   }
@@ -116,7 +122,7 @@ export default function listsReducer(state = {}, action) {
   switch (action.type) {
 
     case GetAllLists:
-      action.Lists.forEach(list => newState[list.id] = list)
+      action.lists.forEach(list => newState[list.id] = list)
       return newState
 
     case GetOneList:

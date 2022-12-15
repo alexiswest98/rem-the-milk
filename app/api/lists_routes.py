@@ -14,7 +14,7 @@ def lists_by_user():
   list_obj = [list.to_dict() for list in lists]
   return jsonify(list_obj)
 
-#get all lists of a group by group id 
+#get all lists of a group by group id
 @lists_routes.route('/groups/<int:group_id>')
 @login_required
 def lists_by_group(group_id):
@@ -33,7 +33,7 @@ def get_list(list_id):
     return {'errors': ['That list does not exist']}, 401
 
 #create new list
-@lists_routes.route('/', methods=['POST'])
+@lists_routes.route('/new', methods=['POST'])
 @login_required
 def create_lists():
   form = ListForm()

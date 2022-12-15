@@ -72,9 +72,9 @@ export const createTaskThunk = (task) => async (dispatch) => {
 
     const response = await fetch('/api/tasks', {
         method: 'POST',
+        headers: {'Content-Type':'application/json'},
         body: JSON.stringify(task)
     });
-
     if (response.ok) {
         const newTask = await response.json();
         createTaskAction(newTask)
@@ -102,14 +102,24 @@ export const getAllListTasksThunk = (list_id) => async (dispatch) => {
 }
 
 // Update a task
-export const editTaskThunk = (task, taskId) => async (dispatch) => {
-    const response = await fetch(`/api/tasks/${taskId}`, {
+export const editTaskThunk = (task) => async (dispatch) => {
+    const {id, name, due, notes, list_id, completed_by} = task
+    const response = await fetch(`/api/tasks/${task.id}`, {
         method: 'PUT',
-        body: JSON.stringify(task)
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({
+            name,
+            due,
+            notes,
+            list_id,
+            completed_by
+        })
     });
     if (response.ok) {
         const editedTask = await response.json();
         dispatch(updateTaskAction(editedTask));
+        console.log('Res.ok and dispatch hit.')
+        console.log('data = ',editedTask)
         return editedTask;
     };
 };
