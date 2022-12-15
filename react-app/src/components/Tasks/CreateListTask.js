@@ -7,6 +7,7 @@ function CreateListTask() {
 const dispatch = useDispatch()
 const history = useHistory()
 const user = useSelector(state => state.session)
+const userId = user.user.id
 const [name, setName] = useState('')
 const [due, setDue] = useState('')
 const [notes, setNotes] = useState(null)
@@ -18,14 +19,14 @@ const onsubmit = async (e) => {
 if (!errors.length) {
   const payload = {
     name,
-    user_id: user.id,
+    user_id: userId,
     list_id,
     due,
     notes
   }
-  console.log(payload)
+  console.log('We are in the CreateListTask Comp.. PAYLOAD:', payload)
   const newTask = await dispatch(createTaskThunk(payload))
-  history.push(`/lists/${list_id}`)
+  history.push('/dashboard')
 }
 }
 
