@@ -46,7 +46,7 @@ const ListPage = () => {
       <p>{task.name}</p>
       <div>{task.due}  complete
         <button onClick={() => complete(task)}>X</button>
-        <button onClick={()=> deleteTask(task.id)}>:wastebasket:</button>
+        <button onClick={()=> deleteTask(task.id)}>delete</button>
         <button onClick={()=> history.push(`/lists/${list_id}/Tasks/edit/${task.id}`)}>edit</button>
           </div>
       </div>
@@ -58,11 +58,3 @@ const ListPage = () => {
   )
 }
 export default ListPage;
-
-
-
-
-
-
-
-

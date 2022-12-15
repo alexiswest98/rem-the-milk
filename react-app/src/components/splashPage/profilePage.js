@@ -23,13 +23,13 @@ const ProfileForm = () => {
           <NavLink className="navlink" to={`/lists/${list.id}`} >
           {list.name}
           </NavLink>
-          <button onClick={()=> deleteList(list.id)}>:wastebasket:</button>
+          <span>Due Date: {list.due.slice(0, 17)}</span>
+          <button onClick={()=> deleteList(list.id)}>delete</button>
       <NavLink to={`/list/edit/${list.id}`}>
         <button> Edit List</button>
       </NavLink>
         </div>
       ))}
-      <div>follows components</div>
       <NavLink className="navlink" to={`/lists/new`} >
       <button>New List</button>
       </NavLink>
