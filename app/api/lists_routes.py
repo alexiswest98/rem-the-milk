@@ -64,11 +64,11 @@ def update_list(list_id):
   data = form.data
 
   if list and form.validate_on_submit():
-    list.name = data['name'] if data['name'] else list.name
-    list.user_id = data['user_id'] if data['user_id'] else list.user_id
-    list.due = data['due'] if data['due'] else list.due
-    list.notes = data['notes'] if data['notes'] else list.notes
-    list.group_id = data['group_id'] if data['group_id'] else list.group_id
+    list.name = data['name']
+    list.user_id = data['user_id']
+    list.due = data['due']
+    list.notes = data['notes']
+    list.group_id = data['group_id']
     # db.session.update()
     db.session.commit()
     return (list.to_dict())

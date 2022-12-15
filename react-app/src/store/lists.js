@@ -26,10 +26,10 @@ export const CreateListAction = (List) => {
   };
 };
 
-export const UpdateListAction = (List) => {
+export const UpdateListAction = (list) => {
   return {
     type: UpdateList,
-    List
+    list
   };
 };
 
@@ -75,12 +75,15 @@ export const DeleteListThunk = (list_id) => async (dispatch) => {
 
 // Edit List
 export const EditListThunk = (list) => async (dispatch) => {
+  // console.log("IN THUNKKKKKKKKK &&&&&&&&&")
   const res = await fetch(`/api/lists/${list.id}`, {
     method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(list)
   });
   if (res.ok) {
     const data = await res.json()
+    // console.log("IN THUNK ACTION!!!!", data)
     dispatch(UpdateListAction(data))
     return data
   }
@@ -122,7 +125,7 @@ export default function listsReducer(state = {}, action) {
 
     case UpdateList:
       newState = { ...state }
-      newState[action.list.id] = action.list
+      newState[action.list.id] = {...newState[action.list.id], ...action.list}
       return newState
 
     case DeleteList:

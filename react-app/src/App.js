@@ -18,9 +18,8 @@ import GetOneGroup from './components/oneGroup';
 import CreateAGroup from './components/createGroup';
 import UpdateList from './components/Lists/updateList';
 import EditListTask from './components/Tasks/updateTasks';
-
-
 import CreateListTask from './components/Tasks/CreateListTask';
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -39,7 +38,7 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
-      <GetFollowers/>
+      {/* <GetFollowers/> */}
       <Switch>
       {/* new new */}
       <Route path='/list/edit/:listId' exact={true}>

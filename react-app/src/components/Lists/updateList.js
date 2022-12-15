@@ -3,69 +3,101 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from 'react-router-dom'
 import { EditListThunk } from "../../store/lists";
 import { GetAllListsThunk } from "../../store/lists";
+
 function UpdateList() {
 const dispatch = useDispatch()
-const listId = useParams()
-const list_id = Object.values(listId)[0]
+const { listId } = useParams()
 const history = useHistory()
 const user = useSelector(state => state.session)
-const lists = useSelector(state => state.lists)
-const list = lists[list_id]
-console.log(list)
-const [name, setName] = useState(list.name || '')
-const [due, setDue] = useState(list.due || '')
-const [notes, setNotes] = useState(list.notes || '')
-const [errors, setErrors] = useState('')
+const list = useSelector(state => state.lists[listId])
+console.log("*******************************", list)
+
+
+const [newName, setNewName] = useState(list.name || "");
+const [newDue, setNewDue] = useState(list.due || "");
+const [newNotes, setNewNotes] = useState(list.notes || "");
+const [validationErrors, setValidationErrors] = useState([]);
+const [hasSubmitted, setHasSubmitted] = useState(false);
+
 useEffect(() => {
-  dispatch(GetAllListsThunk())
-}, [dispatch])
-const onsubmit = async (e) => {
+  const errors = []
+  if(!newName) errors.push("Name is required");
+  if (!newDue) errors.push("Due Date is required");
+  if (!newDue) errors.push("Due Date is required");
+  setValidationErrors(errors);
+  // dispatch(GetAllListsThunk())
+}, [newName, newDue, newNotes]);
+
+
+const onSubmit = async (e) => {
   e.preventDefault();
-if (!errors.length) {
-  const payload = {
-    id: list_id,
-    name,
-    user_id: user.id,
-    due,
-    notes
+
+  setHasSubmitted(true);
+  if (validationErrors.length) return alert(`Cannot Submit`);
+
+  const newList = {
+    id: list.id,
+    name: newName,
+    user_id: list.user_id,
+    due: newDue,
+    notes: newNotes,
+    group_id: list.group_id,
+    completed: list.completed
   }
-  console.log(payload)
-  const editList = await dispatch(EditListThunk(payload, list_id))
+
+  console.log("PAYLOADDDDDD", newList)
+  await dispatch(EditListThunk(newList))
+
+  // dispatch(GetAllListsThunk())
   history.push(`/profile`)
+
 }
-}
+
 return (
   <div>
-    <form onSubmit={onsubmit}>
+    <form onSubmit={onSubmit}>
       <p> EDIT LIST </p>
-        <label>
+        <label htmlFor="name">
           <input
             type="text"
             placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setNewName(e.target.value)}
+            value={newName}
           />
         </label>
-        <label>
+        <label htmlFor="due">
           <input
-            type="text"
+            type="date"
             placeholder="Due"
-            value={due}
-            onChange={(e) => setDue(e.target.value)}
+            onChange={(e) => setNewDue(e.target.value)}
+            value={newDue}
           />
         </label>
-        <label>
+        <label htmlFor="notes">
           <input
             type="text"
             placeholder="Notes"
-            value={notes}
-            onChange={(e) => setNotes(e.target.value)}
+            onChange={(e) => setNewNotes(e.target.value)}
+            value={newNotes}
           />
         </label>
-        <button className="submit" type="submit" hidden={errors.length !== 0}>Update List</button>
+        <button className="submit" type="submit" hidden={validationErrors.length !== 0}>Update List</button>
       </form>
+      {setHasSubmitted && validationErrors.length > 0 && (
+                <div>
+                    Please fix these inputs:
+                    <ul>
+                        <ul>
+                            {validationErrors.map((error) => (
+                                <li key={error}>{error}</li>
+                            ))}
+                        </ul>
+                    </ul>
+                </div>
+            )}
     <button onClick={()=> history.push('/profile')}> back </button>
   </div>
+  
 )
 }
 export default UpdateList;
