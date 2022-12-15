@@ -14,8 +14,8 @@ class Task(db.Model):
     due = db.Column(db.Date, nullable=False)
     notes = db.Column(db.String(1000))
     completed_by = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
-    # created_at = db.Column(db.DateTime, server_default=db.func.now())
-    # updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
     # Relationships
     task_to_user = db.relationship('User', foreign_keys=('Task.user_id'))
@@ -31,7 +31,7 @@ class Task(db.Model):
             'due': self.due,
             'notes': self.notes,
             'completed_by': self.completed_by,
-            # 'created_at': self.created_at,
-            # 'updated_at': self.updated_at
+            'created_at': self.created_at,
+            'updated_at': self.updated_at
             # 'task_to_list': self.task_to_list
         }
