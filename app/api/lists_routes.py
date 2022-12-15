@@ -1,7 +1,8 @@
-from flask import Blueprint, render_template, jsonify, request
+from flask import Blueprint, render_template, jsonify, request, json
 from flask_login import login_required, current_user
 from app.models import List, db, Task
 from app.forms.list_form import ListForm
+
 
 lists_routes = Blueprint('lists', __name__, url_prefix="/api/lists")
 
@@ -14,7 +15,7 @@ def lists_by_user():
   list_obj = [list.to_dict() for list in lists]
   return jsonify(list_obj)
 
-#get all lists of a group by group id 
+#get all lists of a group by group id
 @lists_routes.route('/groups/<int:group_id>')
 @login_required
 def lists_by_group(group_id):
@@ -64,11 +65,11 @@ def update_list(list_id):
   data = form.data
 
   if list and form.validate_on_submit():
-    list.name = data['name'] if data['name'] else list.name
-    list.user_id = data['user_id'] if data['user_id'] else list.user_id
-    list.due = data['due'] if data['due'] else list.due
-    list.notes = data['notes'] if data['notes'] else list.notes
-    list.group_id = data['group_id'] if data['group_id'] else list.group_id
+    list.name = data['name'] if data['name'] else json.loads(list.name)
+    list.user_id = data['user_id'] if data['user_id'] else json.loads(list.user_id)
+    list.due = data['due'] if data['due'] else json.loads(list.due)
+    list.notes = data['notes'] if data['notes'] else json.loads(list.notes)
+    list.group_id = data['group_id'] if data['group_id'] else json.loads(list.group_id)
     # db.session.update()
     db.session.commit()
     return (list.to_dict())

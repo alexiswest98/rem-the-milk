@@ -12,24 +12,24 @@ export const GetOneListAction = (list) => {
   };
 };
 
-export const GetAllListAction = (Lists) => {
+export const GetAllListAction = (lists) => {
   return {
     type: GetAllLists,
-    Lists
+    lists
   };
 };
 
-export const CreateListAction = (List) => {
+export const CreateListAction = (list) => {
   return {
     type: CreateList,
-    List
+    list
   };
 };
 
-export const UpdateListAction = (List) => {
+export const UpdateListAction = (list) => {
   return {
     type: UpdateList,
-    List
+    list
   };
 };
 
@@ -75,6 +75,7 @@ export const DeleteListThunk = (list_id) => async (dispatch) => {
 
 // Edit List
 export const EditListThunk = (list) => async (dispatch) => {
+  console.log("URL =", `/api/lists/${list.id}`)
   const res = await fetch(`/api/lists/${list.id}`, {
     method: 'PUT',
     body: JSON.stringify(list)
@@ -82,6 +83,8 @@ export const EditListThunk = (list) => async (dispatch) => {
   if (res.ok) {
     const data = await res.json()
     dispatch(UpdateListAction(data))
+    console.log('Res.ok and dispatch hit.')
+    console.log('data = ',data)
     return data
   }
 }
@@ -113,7 +116,7 @@ export default function listsReducer(state = {}, action) {
   switch (action.type) {
 
     case GetAllLists:
-      action.Lists.forEach(list => newState[list.id] = list)
+      action.lists.forEach(list => newState[list.id] = list)
       return newState
 
     case GetOneList:
