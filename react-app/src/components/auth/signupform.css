@@ -1,4 +1,4 @@
-.loginForm {
+.signupForm {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -7,14 +7,14 @@
     width: 400px;
 }
 
-.loginForm>button {
+.signupForm>button {
     background-color: rgb(30, 157, 255);
     color: rgb(255, 255, 255);
     width: 358px;
     height: 40px;
 }
 
-.loginInput {
+.signupInput {
     width: 350px;
     height: 40px;
     margin-bottom: 2%;

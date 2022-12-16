@@ -34,9 +34,6 @@ export default function GetGroups() {
 
             ))}
         </div>
-        {/* <Link to='/groups/create'>
-        <button>Create a Group</button>
-        </Link> */}
         </>
     )
 }

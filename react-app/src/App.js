@@ -18,11 +18,12 @@ import GetOneGroup from './components/oneGroup';
 import CreateAGroup from './components/createGroup';
 import UpdateList from './components/Lists/updateList';
 import EditListTask from './components/Tasks/updateTasks';
-import Home from './components/Home/home';
+import Home from './components/Home';
 
 
 import CreateListTask from './components/Tasks/CreateListTask';
 import LoginPage from './components/loginpage';
+import SignupPage from './components/signupPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -42,7 +43,6 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
-      {/* <GetFollowers/> */}
       <Switch>
       {/* new new */}
       <Route path='/list/edit/:listId' exact={true}>
@@ -80,10 +80,13 @@ function App() {
           <LoginPage />
         </Route>
         <Route path='/sign-up' exact={true}>
-          <SignUpForm />
+          <SignupPage />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
+        </ProtectedRoute>
+        <ProtectedRoute path='/followers' exact={true} >
+          <h1>FIX THIS</h1>
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />

@@ -22,22 +22,24 @@ function UsersList() {
       // Who youre following
       dispatch(getFollowingThunk())
 
-  }, [dispatch])
+  }, [dispatch, boolean])
 
   if (!following || !users || !followers) return null
   // People who follow you
   const followerIds = followers.map(ele => ele.id);
-  console.log('followerIds', followerIds)
+  // console.log('followerIds', followerIds)
 
   // People who you follow
   const arr = Object.values(following)
   const followingIds = arr.map(ele => ele.id)
-  console.log('following ids', followingIds)
+  // console.log('following ids', followingIds)
 
  const followButton = (userId) => {
-  dispatch(followThunk(userId))
   setBoolean(!boolean)
+  dispatch(followThunk(userId))
+  history.push("/users")
  }
+
   const userComponents = users.map((user) => {
     return (
       <li key={user.id}>
