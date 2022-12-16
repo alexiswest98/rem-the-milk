@@ -18,7 +18,7 @@ import CreateAGroup from './components/createGroup';
 import UpdateList from './components/Lists/updateList';
 import EditListTask from './components/UpdateTasks/updateTasks';
 import Home from './components/Home';
-
+import CreateATaskModal from './components/Tasks';
 
 import CreateListTask from './components/Tasks/CreateListTask';
 import LoginPage from './components/loginpage';
@@ -62,7 +62,7 @@ function App() {
           <ProfileForm/>
         </Route>
         <Route path='/tasks/create' exact={true}>
-          <CreateListTask/>
+          <CreateATaskModal/>
         </Route>
         <Route path='/groups/create' exact={true}>
           <CreateAGroup/>

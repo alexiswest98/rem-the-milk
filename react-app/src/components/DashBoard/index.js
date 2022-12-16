@@ -9,7 +9,7 @@ import { GetAllListsThunk } from "../../store/lists";
 
 export default function Dashboard() {
     const dispatch = useDispatch();
-
+  
 
     const dayTasks = Object.values(useSelector(state => state.specTask))
     const lists = Object.values(useSelector(state => state.lists))
