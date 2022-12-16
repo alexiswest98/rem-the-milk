@@ -12,10 +12,11 @@ const ListPage = () => {
   const tasks = useSelector(state => state.tasks)
   const {listId} = useParams()
 
-  // let flip = true
-  // const change = () => {
-  //   flip = !flip
-  // }
+  let flip = true
+  const change = () => {
+    flip = !flip
+    console.log('flip = ', flip)
+  }
 
   function convert(str) {
     const mnths = {
@@ -40,9 +41,21 @@ const ListPage = () => {
 
   useEffect(() => {
     dispatch(getAllListTasksThunk(+listId))
-  }, [dispatch])
+    let taskList
+    if (flip){
+      taskList= Object.values(tasks).filter(task => {
+        return task.completed_by == null})
+    }else{
+      taskList=Object.values(tasks).filter(task => {
+        return task.completed_by !== null})
+    }
+    console.log(taskList)
+  }, [dispatch, flip])
+
   const incomplete = Object.values(tasks).filter(task => {
     return task.completed_by == null})
+    const completed = Object.values(tasks).filter(task => {
+      return task.completed_by !== null})
   const complete = async(task) => {
     const payload = {
       id: task.id,
@@ -64,7 +77,7 @@ const ListPage = () => {
   console.log("component tasks = ",tasks)
   return(
     <div>
-        {incomplete.map(task=>(
+        {flip ? incomplete.map(task=>(
             <div key={task.id}>
       <p>{task.name}</p>
       <div>{task.notes}
@@ -73,10 +86,15 @@ const ListPage = () => {
         <button onClick={()=> history.push(`/lists/${listId}/Tasks/edit/${task.id}`)}>edit</button>
           </div>
       </div>
+        )) : completed.map(task => (
+          <div key={task.id}>
+            <p>{task.name}</p>
+            <p>{task.due}</p>
+          </div>
         ))}
       <button onClick={()=> history.push('/profile')}> back </button>
       <button onClick={() => history.push(`/Tasks/new/${listId}`)}> New Task</button>
-      {/* <button onClick={() => showComplete()}> {flip = null ? 'Show Unfinished': 'Show Complete'}</button> */}
+      <button onClick={() => history.push(`/lists/listId`)}> Show Complete</button>
     </div>
   )
 }

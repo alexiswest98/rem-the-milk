@@ -21,26 +21,17 @@ const NavBar = () => {
             Home
           </NavLink>
         </li>
-        {user?
-          <li>
-          <NavLink to='/dashboard' exact={true} activeClassName='active'>
-            Dashboard
-          </NavLink>
-        </li>
-          :
         <li>
           <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
+           {user? 'profile' : 'login'}
           </NavLink>
         </li>
-        }
         {user?
-        null
-        // <li>
-        // <NavLink path='/profile' exact={true} activeClassName='active'>
-        //   Lists
-        // </NavLink>
-        // </li>
+        <li>
+        <NavLink to='/dashboard' exact={true} activeClassName='active'>
+          Dashboard
+        </NavLink>
+      </li>
         :
         <li>
           <NavLink to='/sign-up' exact={true} activeClassName='active'>
