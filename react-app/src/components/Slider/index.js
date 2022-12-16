@@ -1,15 +1,15 @@
-import evan from '../../Images/me.png';
 import { useState } from 'react';
-import michael from '../../Images/boi.png';
-import gabe from '../../Images/gabe.png';
-import alex from '../../Images/alex.png';
+import michael from '../../Images/Michael.png';
+import gabe from '../../Images/Gabe1.png';
+import alex from '../../Images/Alexis1.png';
+import Evan from '../../Images/Evan.png';
 import Slider from 'react-slick';
 import './index.css'
 
 export default function SliderComp() {
 
 const images = [
-    evan,
+    Evan,
     michael,
     gabe,
     alex
@@ -34,9 +34,9 @@ const images = [
 return (
 
     <div className='allCar'>
-      <button className='arrow' onClick={handlePrevious}></button>
+      <button className='arrow-button-left' onClick={handlePrevious}></button>
       <img src={images[currentIndex]} alt="Slider image" />
-      <button className='arrow' onClick={handleNext}></button>
+      <button className='arrow-button-right' onClick={handleNext}></button>
     </div>
 
 )
