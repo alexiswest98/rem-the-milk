@@ -35,7 +35,7 @@ const ListPage = () => {
         Dec: "12"
       },
       date = str.split(" ");
-      console.log(date)
+      // console.log(date)
     return [date[3], mnths[date[2]], date[1]].join("-");
   }
 
@@ -68,14 +68,14 @@ const ListPage = () => {
       notes: task.notes
     }
     dispatch(editTaskThunk(payload))
-    console.log(`You tried to complete ${task.name} with user ${user.id}`)
-    console.log("task ID =", task.id)
+    // console.log(`You tried to complete ${task.name} with user ${user.id}`)
+    // console.log("task ID =", task.id)
   }
   const deleteTask = (task_id) => {
     dispatch(deleteTaskThunk(task_id))
   }
-  console.log(Object.values(listId)[0])
-  console.log("component tasks = ",tasks)
+  // console.log(Object.values(listId)[0])
+  // console.log("component tasks = ",tasks)
   return(
     <div>
         {flip ? incomplete.map(task=>(

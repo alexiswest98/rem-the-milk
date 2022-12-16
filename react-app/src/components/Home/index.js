@@ -6,8 +6,11 @@ import Slider from "react-slick";
 import SliderComp from "../Slider";
 import { useSelector } from "react-redux";
 
+
+
 export default function Home() {
     const user = useSelector(state => state.session.user)
+
     return (
         <>
     <div className="mainDiv">

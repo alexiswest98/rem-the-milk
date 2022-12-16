@@ -19,7 +19,7 @@ import UpdateList from './components/Lists/updateList';
 import EditListTask from './components/UpdateTasks/updateTasks';
 import Home from './components/Home';
 import CreateATaskModal from './components/Tasks';
-
+import NewHomePage from './components/newHome';
 import CreateListTask from './components/Tasks/CreateListTask';
 import LoginPage from './components/loginpage';
 import SignupPage from './components/signupPage';
@@ -93,6 +93,9 @@ function App() {
         <Route path='/lists' exact={true} >
           <h1>My Lists</h1>
         </Route>
+        <ProtectedRoute path='/home' exact={true} >
+          <NewHomePage/>
+        </ProtectedRoute>
         <Route path='/' exact={true} >
           <Home/>
         </Route>
