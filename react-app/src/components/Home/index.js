@@ -11,7 +11,7 @@ export default function Home() {
         <>
     <div className="mainDiv">
         <h1 className="homeTitle">The smart to-do app for busy people.</h1>
-        <Link to='/signup'>
+        <Link to='/sign-up'>
         <button className="signInButton">Sign Up Free</button>
         </Link>
         <SliderComp/>
