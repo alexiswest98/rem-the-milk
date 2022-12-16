@@ -69,22 +69,13 @@ export const completeTaskThunk = (task, task_id) => async (dispatch) => {
 
 // Create a task
 export const createTaskThunk = (task) => async (dispatch) => {
-    console.log('Task in thunk = ', task)
-    const { name, list_id, user_id, due, notes } = task;
     const response = await fetch('/api/tasks/new', {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
-        body: JSON.stringify(
-            name,
-            user_id,
-            list_id,
-            due,
-            notes,
-        )
+        body: JSON.stringify(task)
     });
     console.log('response =', response)
     if (response.ok) {
-        console.log()
         const newTask = await response.json();
         console.log("The new task in the Thunk", newTask)
         dispatch(createTaskAction(newTask))
