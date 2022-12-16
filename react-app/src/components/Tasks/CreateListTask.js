@@ -22,7 +22,6 @@ if (!errors.length) {
     list_id: listId,
     due,
     notes,
-    completed_by: null
   }
   console.log('We are in the CreateListTask Comp.. PAYLOAD:', payload)
   const newTask = await dispatch(createTaskThunk(payload))
