@@ -10,23 +10,23 @@ const user = useSelector(state => state.session)
 const userId = user.user.id
 const [name, setName] = useState('')
 const [due, setDue] = useState('')
-const [notes, setNotes] = useState(null)
+const [notes, setNotes] = useState('')
 const [errors, setErrors] = useState('')
-const listId = useParams()
-const list_id = Object.values(listId)[0]
+const {listId} = useParams()
 const onsubmit = async (e) => {
   e.preventDefault();
 if (!errors.length) {
   const payload = {
     name,
     user_id: userId,
-    list_id,
+    list_id: listId,
     due,
-    notes
+    notes,
+    completed_by: null
   }
   console.log('We are in the CreateListTask Comp.. PAYLOAD:', payload)
   const newTask = await dispatch(createTaskThunk(payload))
-  history.push('/dashboard')
+  history.push(`/lists/${listId}`)
 }
 }
 
@@ -42,12 +42,12 @@ return (
             onChange={(e) => setName(e.target.value)}
           />
         </label>
-        <label>
+        <label htmlFor="due">
           <input
-            type="text"
+            type="date"
             placeholder="Due"
-            value={due}
             onChange={(e) => setDue(e.target.value)}
+            value={due}
           />
         </label>
         <label>
@@ -61,7 +61,7 @@ return (
 
         <button className="submit" type="submit" hidden={errors.length !== 0}>Create Task</button>
       </form>
-    <button onClick={()=> history.push(`/lists/${list_id}`)}> back </button>
+    <button onClick={()=> history.push(`/lists/${listId}`)}> back </button>
   </div>
 )
 

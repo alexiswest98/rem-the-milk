@@ -9,17 +9,28 @@ const history = useHistory()
 const {listId} = useParams()
 const {taskId} = useParams()
 const task = useSelector(state => state.tasks[taskId])
-console.log(task)
-const user = useSelector(state => state.session)
+// console.log(task)
+const user = useSelector(state => state.session.user)
 const [name, setName] = useState(task.name||'')
 const [due, setDue] = useState(task.due || '')
 const [notes, setNotes] = useState(task.notes || '')
-const [errors, setErrors] = useState('')
 const [validationErrors, setValidationErrors] = useState([]);
 const [hasSubmitted, setHasSubmitted] = useState(false);
+
+useEffect(() => {
+  const errors = []
+  if(!name) errors.push("Name is required");
+  if (!due) errors.push("Due Date is required");
+  setValidationErrors(errors);
+}, [name, due, notes]);
+
+
 const onsubmit = async (e) => {
   e.preventDefault();
-if (!errors.length) {
+
+  setHasSubmitted(true);
+  if (validationErrors.length) return alert(`Cannot Submit`);
+
   const payload = {
     id: task.id,
     name: name,
@@ -30,10 +41,11 @@ if (!errors.length) {
     completed_by: task.completed_by
   }
 
-  console.log(payload)
+  console.log("payload", payload)
   const editTask = await dispatch(editTaskThunk(payload))
+  
   history.push(`/lists/${listId}`)
-}
+
 }
 
 return (
@@ -49,13 +61,13 @@ return (
           />
         </label>
         <label htmlFor="due">
-          <input
+        <input
             type="date"
             placeholder="Due"
             onChange={(e) => setDue(e.target.value)}
             value={due}
           />
-        </label>
+          </label>
         <label htmlFor="notes">
           <input
             type="text"

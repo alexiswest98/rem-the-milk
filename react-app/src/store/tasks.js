@@ -69,7 +69,7 @@ export const completeTaskThunk = (task, task_id) => async (dispatch) => {
 
 // Create a task
 export const createTaskThunk = (task) => async (dispatch) => {
-    const { name, list_id, user_id, due, notes  } = task;
+    const { name, list_id, user_id, due, notes, completed_by  } = task;
     const response = await fetch('/api/tasks/', {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
@@ -78,14 +78,16 @@ export const createTaskThunk = (task) => async (dispatch) => {
             list_id,
             user_id,
             due,
-            notes
+            notes,
         )
     });
+    console.log('response =', response)
     if (response.ok) {
         console.log()
         const newTask = await response.json();
         console.log("The new task in the Thunk", newTask)
         dispatch(createTaskAction(newTask))
+        return newTask
     };
 };
 
@@ -112,7 +114,8 @@ export const getAllListTasksThunk = (list_id) => async (dispatch) => {
 // Update a task
 export const editTaskThunk = (task) => async (dispatch) => {
     const {id, name, due, notes, list_id, completed_by} = task
-    const response = await fetch(`/api/tasks/${task.id}`, {
+    console.log(task)
+    const response = await fetch(`/api/tasks/${id}`, {
         method: 'PUT',
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify({
@@ -123,6 +126,7 @@ export const editTaskThunk = (task) => async (dispatch) => {
             completed_by
         })
     });
+    console.log('res = ', response)
     if (response.ok) {
         const editedTask = await response.json();
         dispatch(updateTaskAction(editedTask));

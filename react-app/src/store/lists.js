@@ -92,11 +92,17 @@ export const EditListThunk = (list) => async (dispatch) => {
 }
 // Create List
 export const CreateListThunk = (list) => async (dispatch) => {
-  const {id, name, due, notes, user_id, completed} = list
+  const {name, due, notes, user_id, completed} = list
   const res = await fetch(`/api/lists/new`, {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
-    body: JSON.stringify(list)
+    body: JSON.stringify({
+      name,
+      due,
+      notes,
+      user_id,
+      completed
+    })
   });
   console.log('response =', res )
   if (res.ok) {

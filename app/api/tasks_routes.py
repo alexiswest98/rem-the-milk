@@ -108,7 +108,7 @@ def update_task(task_id):
   form['csrf_token'].data = request.cookies['csrf_token']
   data = form.data
 
-  if task:
+  if task and form.validate_on_submit():
     task.name = data['name']
     task.user_id = data['user_id']
     task.due = data['due']
@@ -117,7 +117,7 @@ def update_task(task_id):
     db.session.commit()
     return (task.to_dict())
   if not task:
-    return jsonify('could not find task')
+    return {'errors': ['That task does not exist']}, 401
   else:
     return jsonify(form.errors)
 

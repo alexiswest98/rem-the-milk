@@ -10,7 +10,7 @@ const user = useSelector(state => state.session.user)
 const [name, setName] = useState('')
 const [due, setDue] = useState('')
 const [notes, setNotes] = useState(null)
-const [errors, setErrors] = useState('')
+const [validationErrors, setValidationErrors] = useState([])
 
 
 useEffect(() => {
@@ -18,14 +18,14 @@ useEffect(() => {
   if(!name) errors.push("Name is required");
   if (!due) errors.push("Due Date is required");
   // if (!due) errors.push("Due Date is required");
-  setErrors(errors);
+  setValidationErrors(errors);
 
 }, [name, due, notes]);
 const user_id = user.id
 console.log("user id = ", user_id)
 const onsubmit = async (e) => {
   e.preventDefault();
-if (!errors.length) {
+if (!validationErrors.length) {
   const payload = {
     name: name,
     user_id: user_id,
@@ -69,7 +69,7 @@ return (
           />
         </label>
 
-        <button className="submit" type="submit" hidden={errors.length !== 0}>Create List</button>
+        <button className="submit" type="submit" hidden={validationErrors.length !== 0}>Create List</button>
       </form>
     <button onClick={()=> history.push('/profile')}> back </button>
   </div>
