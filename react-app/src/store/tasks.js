@@ -143,7 +143,7 @@ export default function tasksReducer(state = {}, action) {
     switch (action.type) {
 
         case GETALLTASKS:
-            action.task.forEach(task => newState[task.id] = task)
+            action.tasks.forEach(task => newState[task.id] = task)
             return newState
 
         case GETLISTTASKS:
