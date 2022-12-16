@@ -85,6 +85,9 @@ function App() {
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>
+        <ProtectedRoute path='/followers' exact={true} >
+          <h1>FIX THIS</h1>
+        </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>

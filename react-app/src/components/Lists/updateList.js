@@ -22,7 +22,7 @@ useEffect(() => {
   const errors = []
   if(!newName) errors.push("Name is required");
   if (!newDue) errors.push("Due Date is required");
-  if (!newDue) errors.push("Due Date is required");
+  // if (!newDue) errors.push("Due Date is required");
   setValidationErrors(errors);
   // dispatch(GetAllListsThunk())
 }, [newName, newDue, newNotes]);

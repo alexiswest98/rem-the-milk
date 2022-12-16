@@ -48,7 +48,6 @@ export const followThunk = (userId) => async (dispatch) => {
     dispatch(followAction(newFollower.id))
   }
 
-
 };
 
 export const unfollowThunk = (userId) => async (dispatch) => {
