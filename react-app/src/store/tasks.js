@@ -70,13 +70,13 @@ export const completeTaskThunk = (task, task_id) => async (dispatch) => {
 // Create a task
 export const createTaskThunk = (task) => async (dispatch) => {
     const { name, list_id, user_id, due, notes, completed_by  } = task;
-    const res = await fetch('/api/tasks/', {
+    const response = await fetch('/api/tasks/', {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify({
             name,
-            list_id,
             user_id,
+            list_id,
             due,
             notes,
             completed_by
@@ -115,7 +115,7 @@ export const getAllListTasksThunk = (list_id) => async (dispatch) => {
 
 // Update a task
 export const editTaskThunk = (task) => async (dispatch) => {
-    const {id, name, due, notes, list_id, completed_by} = task
+    const {id, name, due, notes, list_id, user_id, completed_by} = task
     console.log(task)
     const response = await fetch(`/api/tasks/${id}`, {
         method: 'PUT',
@@ -123,6 +123,7 @@ export const editTaskThunk = (task) => async (dispatch) => {
         body: JSON.stringify({
             name,
             due,
+            user_id,
             notes,
             list_id,
             completed_by
