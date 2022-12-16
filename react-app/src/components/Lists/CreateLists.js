@@ -21,10 +21,13 @@ useEffect(() => {
   setValidationErrors(errors);
 
 }, [name, due, notes]);
+
 const user_id = user.id
 console.log("user id = ", user_id)
+
 const onsubmit = async (e) => {
   e.preventDefault();
+
 if (!validationErrors.length) {
   const payload = {
     name: name,
@@ -34,6 +37,7 @@ if (!validationErrors.length) {
     group_id: null,
     completed: false
   }
+  
   console.log(payload)
   const newSpot = await dispatch(CreateListThunk(payload))
   history.push(`/profile`)

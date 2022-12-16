@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams} from 'react-router-dom'
-import { Carousel } from 'react-responsive-carousel';
+// import { Carousel } from 'react-responsive-carousel';
 import './index.css'
 import Slider from "react-slick";
 import SliderComp from "../Slider";
