@@ -11,8 +11,8 @@ export default function GetGroups() {
     // Listen for change of state and grab groups from the slice
     const groups = Object.values(useSelector(state => state.groups));
     const currentUser = useSelector(state => state.session)
-    const curr = currentUser.user.id
-    console.log('current user =====================', currentUser.user.id)
+    // const curr = currentUser.user?.id
+    // console.log('current user =====================', currentUser.user.id)
 
     console.log('groups ----', groups)
     useEffect(() => {

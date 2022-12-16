@@ -4,14 +4,14 @@ import { Link, useParams} from 'react-router-dom'
 import './index.css'
 import Slider from "react-slick";
 import SliderComp from "../Slider";
-export default function Home() {
 
+export default function Home() {
 
     return (
         <>
     <div className="mainDiv">
         <h1 className="homeTitle">The smart to-do app for busy people.</h1>
-        <Link to='/signup'>
+        <Link to='/sign-up'>
         <button className="signInButton">Sign Up Free</button>
         </Link>
         <SliderComp/>

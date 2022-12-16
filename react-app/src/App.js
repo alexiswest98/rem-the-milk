@@ -16,7 +16,7 @@ import GetFollowers from './components/followers';
 import GetOneGroup from './components/oneGroup';
 import CreateAGroup from './components/createGroup';
 import UpdateList from './components/Lists/updateList';
-import EditListTask from './components/Tasks/updateTasks';
+import EditListTask from './components/UpdateTasks/updateTasks';
 import Home from './components/Home';
 
 
