@@ -5,9 +5,12 @@ import LogoutButton from './auth/LogoutButton';
 
 const NavBar = () => {
 
-  const curr = useSelector(state => state.session)
-  const currUser = curr.user.id
-  console.log(currUser)
+  // const user = useSelector(state => state.session.user)
+  // // const currUser = curr.user.id
+  // // console.log(currUser)
+  // if (user){
+  //   let currUser = user.id
+  // }
 
   return (
     <nav>
