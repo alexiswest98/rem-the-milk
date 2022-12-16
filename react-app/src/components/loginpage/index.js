@@ -14,12 +14,12 @@ export default function LoginPage() {
             <div className="blueDiv">
                 <div className="blueOuterDiv">
 
-                    <div className="logoTmDiv">
+                    {/* <div className="logoTmDiv">
                         <Link>
                             <img className="blueDivLogo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsi4RrdJVGqgipNu4HjfNAP5IjcPbxfjirYYSNUK-bFw&s" alt="site logo" />
                         </Link>
                         <h2 className="blueDivH2">Remember The Leches ™</h2>
-                    </div>
+                    </div> */}
 
                     <div className="blueDivQuote">
                         <h3 className="blueDivQuoteH3">"Always bear in mind that your own resolution to succeed, is more important than any other thing."</h3>
@@ -31,7 +31,6 @@ export default function LoginPage() {
 
             <div className="whiteDiv">
                 <div className="innerWhiteDiv">
-                    <button id='signupButtonLoginPage' onClick={() => signUpHistory()}>Sign Up</button>
                     <LoginForm />
                 </div>
 

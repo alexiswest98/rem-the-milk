@@ -7,6 +7,7 @@ body {
     width: 100%;
     height: 1000px;
     display: flex;
+    border-top: solid 1px white;
 }
 
 .signupLogoTmDiv{
@@ -17,7 +18,13 @@ body {
 
 .signupBlueDiv {
     width: 50%;
+    height: 1000px;
     background-color: rgb(3, 96, 191);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
 
 .signupwhiteDiv {
@@ -40,6 +47,10 @@ body {
 .signupblueDivQuote{
     width: 300px;
     text-overflow: none;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .signupblueDivQuoteH3{
@@ -50,6 +61,7 @@ body {
 .signupblueDivQuoteP {
     color: #e6eff9;
     font-size: 25px;
+    margin-bottom: 25%;
 }
 
 .signupinnerWhiteDiv{
@@ -66,4 +78,6 @@ body {
     display: flex;
     flex-direction: column;
     margin-left: 25%;
+    margin-top: 20%;
+    height: 600px;
 }

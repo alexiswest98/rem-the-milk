@@ -4,16 +4,17 @@ import { Link, useParams} from 'react-router-dom'
 import './index.css'
 import Slider from "react-slick";
 import SliderComp from "../Slider";
+import { useSelector } from "react-redux";
 
 export default function Home() {
-
+    const user = useSelector(state => state.session.user)
     return (
         <>
     <div className="mainDiv">
         <h1 className="homeTitle">The smart to-do app for busy people.</h1>
-        <Link to='/sign-up'>
+       {!user&& <Link to='/sign-up'>
         <button className="signInButton">Sign Up Free</button>
-        </Link>
+        </Link>}
         <SliderComp/>
     </div>
             <footer className='footer'>
