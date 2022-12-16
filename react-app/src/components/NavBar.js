@@ -19,6 +19,11 @@ const NavBar = () => {
       </NavLink>
       <ul>
         <li className="navbarLi">
+          <NavLink to='/home' exact={true} activeClassName='active'>
+            Home
+          </NavLink>
+        </li>
+        <li className="navbarLi">
           <NavLink to='/aboutUs' exact={true} activeClassName='active'>
             About Us
           </NavLink>
