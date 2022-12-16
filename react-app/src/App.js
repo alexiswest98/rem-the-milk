@@ -24,7 +24,7 @@ import CreateListTask from './components/Tasks/CreateListTask';
 import LoginPage from './components/loginpage';
 import SignupPage from './components/signupPage';
 import CompleteTasksPage from './components/Tasks/completedTasks';
-
+import IncompleteTasksPage from './components/Tasks/incompleteTasks';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -44,6 +44,9 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+      <Route path='/tasks/all' exact={true}>
+          <IncompleteTasksPage/>
+        </Route>
       <Route path='/tasks/completed' exact={true}>
           <CompleteTasksPage/>
         </Route>
