@@ -34,7 +34,7 @@ const onsubmit = async (e) => {
   const payload = {
     id: task.id,
     name: name,
-    due: "2022-12-15",
+    due: due.toString(),
     user_id: +user.id,
     // completed_by: null,
     list_id: task.list_id,

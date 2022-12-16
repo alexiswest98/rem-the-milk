@@ -30,21 +30,21 @@ const onsubmit = async (e) => {
   setHasSubmitted(true);
   if (validationErrors.length) return alert(`Cannot Submit`);
 
-  if (!validationErrors.length) {
   const payload = {
     name,
     user_id: userId,
     list_id: +listId,
-    due,
-    notes,
+    due: due.toString(),
+    notes
   }
-  console.log("***************", payload.date)
+
+  console.log("***************", payload.due)
 
   console.log('We are in the CreateListTask Comp.. PAYLOAD:', payload)
   await dispatch(createTaskThunk(payload))
   history.push(`/lists/${listId}`)
   }
-}
+
 
 return (
   <div>
@@ -74,7 +74,6 @@ return (
             onChange={(e) => setNotes(e.target.value)}
           />
         </label>
-
         <button className="submit" type="submit" hidden={validationErrors.length !== 0}>Create Task</button>
       </form>
       {setHasSubmitted && validationErrors.length > 0 && (
@@ -91,8 +90,8 @@ return (
     <button onClick={()=> history.push(`/lists/${listId}`)}> back </button>
   </div>
 )
-
-// THIS WAS UPDATED AT 4:56 ON THURSDAY
-
 }
+
+
+
 export default CreateListTask;
