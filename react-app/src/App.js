@@ -23,6 +23,7 @@ import Home from './components/Home';
 import CreateListTask from './components/Tasks/CreateListTask';
 import LoginPage from './components/loginpage';
 import SignupPage from './components/signupPage';
+import CompleteTasksPage from './components/Tasks/completedTasks';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -43,6 +44,9 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+      <Route path='/tasks/completed' exact={true}>
+          <CompleteTasksPage/>
+        </Route>
       <Route path='/list/edit/:listId' exact={true}>
           <UpdateList/>
         </Route>

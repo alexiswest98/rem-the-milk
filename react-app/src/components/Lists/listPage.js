@@ -94,7 +94,7 @@ const ListPage = () => {
         ))}
       <button onClick={()=> history.push('/profile')}> back </button>
       <button onClick={() => history.push(`/Tasks/new/${listId}`)}> New Task</button>
-      <button onClick={() => history.push(`/lists/listId`)}> Show Complete</button>
+      <button onClick={() => history.push(`/tasks/completed`)}> Show Complete</button>
     </div>
   )
 }
