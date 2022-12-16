@@ -23,15 +23,11 @@ const NavBar = () => {
             About Us
           </NavLink>
         </li>
-
         <li className="navbarLi">
           <NavLink to='/dashboard' exact={true} activeClassName='active'>
             Dashboard
           </NavLink>
         </li>
-
-
-
         <li className="navbarLi">
           <NavLink to='/users' exact={true} activeClassName='active'>
             Find Friends
@@ -42,13 +38,9 @@ const NavBar = () => {
             Followers
           </NavLink>
         </li>
-
         <li className="navbarLi" id="logoutnavbtnli">
           <LogoutButton />
         </li>
-        :
-        null
-        }
       </ul>
     </nav>
   );
