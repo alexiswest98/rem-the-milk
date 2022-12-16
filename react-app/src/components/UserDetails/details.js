@@ -1,55 +1,45 @@
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-import React, { useEffect } from "react";
-import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from "react";
+import { useParams, useHistory} from 'react-router-dom';
 import { getAllUsersThunk } from '../../store/users';
 import { followThunk } from '../../store/follows';
 import { unfollowThunk } from '../../store/follows';
+import './userDetails.css'
 
-function UserDetails({ setShowModal }) {
-    // const dispatch = useDispatch();
-    // const { id } = useParams();
-    // const spot = useSelector(state => state.spots[+id])
-    // const user = useSelector(state => state.session.user)
-    // // const userId = useSelector(state => state.session.user.id)
-    // const reviews = Object.values(useSelector(state => state.reviews))
-    // // console.log(spot)
-    // let reviewExists = reviews.find(review => review.userId === user?.id);
-
-    // let isOwner = spot?.ownerId === user?.id;
-
-    // useEffect(() => {
-    //     dispatch(getOneSpotThunk(+id))
-    //     dispatch(getAllReviewsThunk(+id));
-    // }, [dispatch, id])
-
-    // if (!spot || !spot.SpotImages) return null;
-
-    //here
-
+function UserDetails({ setShowModal, user }) {
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const [boolean, setBoolean] = useState(true)
+    const currUser = (useSelector(state => state.session.user))
     const followers = Object.values(useSelector(state => state.follows));
+    const following = followers[followers.length - 1];
+    const usersArr = Object.values(useSelector(state => state.users))
+    const users = usersArr.filter(user => user.id !== currUser.id)
+
+    console.log(user)
+
+    if (!following || !users || !followers) return null
+
     const followerIds = followers.map(ele => ele.id);
 
     const followButton = (userId) => {
         setBoolean(!boolean)
-        dispatch(followThunk(userId))
+        let success = dispatch(followThunk(userId))
+        if (success) return alert('Successfully followed :)')
+
         history.push("/users")
+        dispatch(getAllUsersThunk())
+        setShowModal(false)
        }
 
     return (
-        <h1>INSERT HERE </h1>
-        // {!followerIds.includes(user.id) &&
-        //     <>
-        //       <button onClick={ () => dispatch(followThunk(user.id))}>follow</button>
-        //     </>
-        //   }
-        //   {followerIds.includes(user.id) &&
-        //     <>
-        //     <button onClick={ () => dispatch(unfollowThunk(user.id)) }>Unfollow</button>
-        //     </>
-        //   }
+        <div className='user-div-in-modal'>
+            <h1>{user.user.username}</h1>
+            <h2>Email: {user.user.email}</h2>
+            <img src={user.user.image_url} className='user-modal-img'></img>
+        </div>
     )
 
 }
 
-export default IndivSpot;
+export default UserDetails;

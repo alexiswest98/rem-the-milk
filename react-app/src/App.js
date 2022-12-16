@@ -5,8 +5,7 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
-import User from './components/User';
+import UsersList from './components/UsersList/UsersList';
 import { authenticate } from './store/session';
 import ProfileForm from './components/splashPage/profilePage';
 import ListPage from './components/Lists/listPage';
@@ -44,7 +43,6 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-      {/* new new */}
       <Route path='/list/edit/:listId' exact={true}>
           <UpdateList/>
         </Route>
@@ -60,7 +58,6 @@ function App() {
       <Route path='/lists/:listId' exact={true}>
           <ListPage/>
         </Route>
-      {/* new new */}
         <Route path='/profile' exact={true}>
           <ProfileForm/>
         </Route>
@@ -87,9 +84,6 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/followers' exact={true} >
           <h1>FIX THIS</h1>
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
         </ProtectedRoute>
         <Route path='/lists' exact={true} >
           <h1>My Lists</h1>

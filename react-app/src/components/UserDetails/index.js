@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import UserDetails from './details'
+import UserDetails from './details';
 
-function GetUserDetailsModal() {
+function GetUserDetailsModal(user) {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
       <button
-      onClick={() => setShowModal(true)}>Get Details</button>
+      onClick={() => setShowModal(true)}>Get UserDetails</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <UserDetails setShowModal={setShowModal}/>
+          <UserDetails setShowModal={setShowModal} user={user}/>
         </Modal>
       )}
     </>

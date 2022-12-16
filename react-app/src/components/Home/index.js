@@ -18,7 +18,7 @@ export default function Home() {
     return (
     <div className="mainDiv">
         <h1>The smart to-do app for busy people.</h1>
-        <Link to='/signup'>
+        <Link to='/sign-up'>
         <button>Sign up Free</button>
         </Link>
         <Slider/>

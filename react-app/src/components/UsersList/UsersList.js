@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { getFollowingThunk, getFollowsThunk, followThunk, unfollowThunk } from '../store/follows';
-import { getAllUsersThunk } from '../store/users';
+import { getFollowingThunk, getFollowsThunk, followThunk, unfollowThunk } from '../../store/follows';
+import { getAllUsersThunk } from '../../store/users';
+import GetUserDetailsModal from '../UserDetails';
+import './usersList.css'
 
 function UsersList() {
   const dispatch = useDispatch();
@@ -40,36 +42,20 @@ function UsersList() {
   history.push("/users")
  }
 
-  const userComponents = users.map((user) => {
-    return (
-      <li key={user.id}>
-
-        <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
-        {!followerIds.includes(user.id) &&
-          <>
-            <button onClick={ () => dispatch(followThunk(user.id))}>follow</button>
-          </>
-        }
-        {followerIds.includes(user.id) &&
-          <>
-          <p>Im following</p>
-          <button onClick={ () => dispatch(unfollowThunk(user.id)) }>Unfollow</button>
-          </>
-        }
-        {followingIds.includes(user.id) &&
-        <>
-        <p>follower</p>
-        </>}
-      </li>
-
-  );
-  });
 
   return (
-    <>
-      <h1>User List: </h1>
-      <ul>{userComponents}</ul>
-    </>
+    <div className='whole-outer-find'>
+    <h1>Find your Friend By Email: </h1>
+    <div className='users-list-whole'>
+      {users.map(user => (
+        <div className='indiv-user-box'>
+        {user.email}
+        <GetUserDetailsModal user={user}/>
+        </div>
+        ))
+      }
+    </div>
+    </div>
   );
 }
 
