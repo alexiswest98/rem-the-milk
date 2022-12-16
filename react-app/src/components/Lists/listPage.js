@@ -67,8 +67,8 @@ const ListPage = () => {
         {incomplete.map(task=>(
             <div key={task.id}>
       <p>{task.name}</p>
-      <div>{task.due}  complete
-        <button onClick={() => complete(task)}>X</button>
+      <div>{task.notes}
+        <button onClick={() => complete(task)}>X</button> Complete
         <button onClick={()=> deleteTask(task.id)}>delete</button>
         <button onClick={()=> history.push(`/lists/${listId}/Tasks/edit/${task.id}`)}>edit</button>
           </div>
