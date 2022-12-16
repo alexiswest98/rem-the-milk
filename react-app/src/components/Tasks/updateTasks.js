@@ -9,7 +9,7 @@ const history = useHistory()
 const {listId} = useParams()
 const {taskId} = useParams()
 const task = useSelector(state => state.tasks[taskId])
-// console.log(task)
+console.log(task)
 const user = useSelector(state => state.session.user)
 const [name, setName] = useState(task.name||'')
 const [due, setDue] = useState(task.due || '')
@@ -34,16 +34,16 @@ const onsubmit = async (e) => {
   const payload = {
     id: task.id,
     name: name,
-    user_id: task.user_id,
-    due: due,
-    notes: notes,
+    due: "2022-12-15",
+    user_id: +user.id,
+    // completed_by: null,
     list_id: task.list_id,
-    completed_by: task.completed_by
+    notes: notes
   }
 
   console.log("payload", payload)
   const editTask = await dispatch(editTaskThunk(payload))
-  
+
   history.push(`/lists/${listId}`)
 
 }
