@@ -1,48 +1,48 @@
 .allCar {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .arrow-button-left {
-    position: relative;
-    background-color: transparent;
-    border: None;
-  }
+  position: relative;
+  background-color: transparent;
+  border: None;
+}
 
-  .arrow-button-left::before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-width: 10px;
-    border-color: transparent black transparent transparent;
-    border-style: solid;
-    left: -10px;
-    bottom: -10px;
-  }
+.arrow-button-left::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-width: 10px;
+  border-color: transparent black transparent transparent;
+  border-style: solid;
+  left: -10px;
+  bottom: -10px;
+}
 
-  .arrow-button-right {
-    position: relative;
-    background-color: transparent;
-    border: None;
-  }
+.arrow-button-right {
+  position: relative;
+  background-color: transparent;
+  border: None;
+}
 
-  .arrow-button-right::before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-width: 10px;
-    border-color: transparent transparent transparent black;
-    border-style: solid;
-    right: -10px;
-  }
+.arrow-button-right::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-width: 10px;
+  border-color: transparent transparent transparent black;
+  border-style: solid;
+  right: -10px;
+}
 
 .homeTitle {
-    font-size: 44px;
-    font-weight: 700;
-    color: #fff;
-    font-family: Arial, Helvetica, sans-serif
+  font-size: 44px;
+  font-weight: 700;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif
 }
