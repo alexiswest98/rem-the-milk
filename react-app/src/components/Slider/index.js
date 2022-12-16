@@ -1,38 +1,43 @@
-import evan from '../../Images/me.png';
-import michael from '../../Images/boi.png';
-import gabe from '../../Images/gabe.png';
-import alex from '../../Images/alex.png';
+import { useState } from 'react';
+import michael from '../../Images/Michael.png';
+import gabe from '../../Images/Gabe1.png';
+import alex from '../../Images/Alexis1.png';
+import Evan from '../../Images/Evan.png';
 import Slider from 'react-slick';
-
+import './index.css'
 
 export default function SliderComp() {
 
 const images = [
-    evan,
+    Evan,
     michael,
     gabe,
     alex
   ];
 
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    adaptiveHeight: true,
-    arrows: false,
-    swipe: true,
-    swipeToSlide: true
-  };
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  function handlePrevious() {
+    setCurrentIndex(currentIndex - 1);
+    if (currentIndex === 0) {
+        setCurrentIndex(3)
+    }
+  }
+
+  function handleNext() {
+    setCurrentIndex(currentIndex + 1)
+    if (currentIndex === 3) {
+        setCurrentIndex(0)
+    }
+  }
 
 return (
 
-    <Slider {...settings}>
-    {images.map((image) => (
-      <img src={image} alt="Slider image" style={{ width: '75%' }} />
-    ))}
-    </Slider>
+    <div className='allCar'>
+      <button className='arrow-button-left' onClick={handlePrevious}></button>
+      <img src={images[currentIndex]} alt="Slider image" />
+      <button className='arrow-button-right' onClick={handleNext}></button>
+    </div>
 
 )
 

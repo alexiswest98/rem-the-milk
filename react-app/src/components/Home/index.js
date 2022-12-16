@@ -5,23 +5,28 @@ import './index.css'
 import Slider from "react-slick";
 import SliderComp from "../Slider";
 export default function Home() {
-    // const [currentIndex, setCurrentIndex] = useState(0);
 
-    // function handlePrevious() {
-    //     setCurrentIndex(currentIndex - 1);
-    //   }
-
-    //   function handleNext() {
-    //     setCurrentIndex(currentIndex + 1);
-    //   }
 
     return (
+        <>
     <div className="mainDiv">
         <h1>The smart to-do app for busy people.</h1>
-        <Link to='/sign-up'>
+        <Link to='/signup'>
         <button>Sign up Free</button>
         </Link>
-        <Slider/>
+        <SliderComp/>
     </div>
+            <footer className='footer'>
+            <div>
+            A Remember The Leche clone by the Leche Team
+            </div>
+            <div>
+            <a className="linkedin" target="_blank" href='https://www.linkedin.com/in/michael-lacey-84875a243/'>Michael's LinkedIn</a>
+            <a className="linkedin" target="_blank" href='https://www.linkedin.com/in/alexis-west-596a6b203/'>Alexis's LinkedIn</a>
+            <a className="linkedin" target="_blank" href='https://www.linkedin.com/in/gabriel-day-536738201/'>Gabriel's LinkedIn</a>
+            <a className="linkedin" target="_blank" href='https://www.linkedin.com/in/evan-morgan-9a2723132/'>Evan's LinkedIn</a>
+            </div>
+          </footer>
+          </>
     )
 }
