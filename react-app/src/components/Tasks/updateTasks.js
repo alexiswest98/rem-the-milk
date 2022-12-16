@@ -12,10 +12,36 @@ const task = useSelector(state => state.tasks[taskId])
 console.log(task)
 const user = useSelector(state => state.session.user)
 const [name, setName] = useState(task.name||'')
-const [due, setDue] = useState(task.due || '')
+const [due, setDue] = useState(convert(task.due) || '')
 const [notes, setNotes] = useState(task.notes || '')
 const [validationErrors, setValidationErrors] = useState([]);
 const [hasSubmitted, setHasSubmitted] = useState(false);
+
+
+
+function convert(str) {
+  const mnths = {
+      Jan: "01",
+      Feb: "02",
+      Mar: "03",
+      Apr: "04",
+      May: "05",
+      Jun: "06",
+      Jul: "07",
+      Aug: "08",
+      Sep: "09",
+      Oct: "10",
+      Nov: "11",
+      Dec: "12"
+    },
+    date = str.split(" ");
+    console.log(date)
+  return [date[3], mnths[date[2]], date[1]].join("-");
+}
+
+// console.log('due = ',convert(task.due))
+//-> "2011-06-09"
+
 
 useEffect(() => {
   const errors = []
