@@ -83,7 +83,8 @@ function App() {
           <UsersList/>
         </ProtectedRoute>
         <ProtectedRoute path='/followers' exact={true} >
-          <h1>FIX THIS</h1>
+          {/* <h1>FIX THIS</h1> */}
+          <GetFollowers/>
         </ProtectedRoute>
         <Route path='/lists' exact={true} >
           <h1>My Lists</h1>

@@ -16,6 +16,8 @@ function UsersList() {
   const usersArr = Object.values(useSelector(state => state.users))
   const users = usersArr.filter(user => user.id !== currUser.id)
 
+
+
   useEffect(() => {
       // Get all users
       dispatch(getAllUsersThunk())

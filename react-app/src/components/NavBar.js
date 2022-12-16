@@ -36,12 +36,12 @@ const NavBar = () => {
         }
         {user?
         null
-        :
         // <li>
         // <NavLink path='/profile' exact={true} activeClassName='active'>
         //   Lists
         // </NavLink>
         // </li>
+        :
         <li>
           <NavLink to='/sign-up' exact={true} activeClassName='active'>
             Sign Up
