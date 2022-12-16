@@ -1,18 +1,67 @@
+
 .totalDash {
     display: flex;
-    flex-direction:row
+    flex-direction:row;
+    height: 100%;
+
 }
 
 .leftDash {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 50%;
+    background-image: url("../../Images/background.jpg");
+    height: 100%;
 }
 
 .rightDash {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items:center;
+    justify-content:flex-start;
     width: 50%;
+    /* background-color: rgb(0,96,191, .75);
+    position: relative;
+    z-index: -1; */
+}
+
+.whiteBack {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.activity {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+}
+
+.oneActivity {
+    box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 30px;
+    border-radius: 5px;
+    /* position: relative; */
+    /* background-color: white; */
+    /* z-index: 1; */
+}
+
+.statz {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.activeTitle {
+    color: white;
+    margin-top: 40px;
+    background-color:rgb(210,75,3);
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 10px;
+
+
 }

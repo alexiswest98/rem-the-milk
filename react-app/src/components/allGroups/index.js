@@ -23,8 +23,10 @@ export default function GetGroups() {
     if (!groups) return null
 
     return (
-        <>
-        <div className="groupsDiv">
+    <div className="totalGroups">
+        <h1 className="groupTitle">Your Groups</h1>
+        {/* <div className="groupsDiv"> */}
+        <div className="test">
             {groups.map(group => (
                 <Link className='groupLink' key={`a${group.id}`} style={{ textDecoration: 'none' }} to={`/groups/${group.id}`}>
                     <div className="eachGroupMap">
@@ -35,6 +37,7 @@ export default function GetGroups() {
 
             ))}
         </div>
-        </>
+        {/* </div> */}
+    </div>
     )
 }

@@ -6,52 +6,56 @@ import './index.css'
 import { getAllTasksByDayThunk } from "../../store/specTasks";
 import { GetAllListsThunk } from "../../store/lists";
 import { getAllTasksThunk } from "../../store/tasks";
+import background from '../../Images/background.jpg';
+import { getFollowsThunk } from "../../store/follows";
 // import specTasksReducer from "../../store/specTasks";
 
 export default function Dashboard() {
     const dispatch = useDispatch();
 
-    const Tasks = Object.values(useSelector(state => state.tasks))
-
-    console.log('alltaks--------------------', Tasks)
     const dayTasks = Object.values(useSelector(state => state.specTask))
-    console.log('DAYTAKS--------------------', dayTasks)
     const lists = Object.values(useSelector(state => state.lists))
     const currentUser = useSelector(state => state.session)
     const groups = useSelector(state => state.groups)
+    const followers = Object.values(useSelector(state => state.follows))
     useEffect(() => {
         dispatch(getAllTasksByDayThunk())
         dispatch(GetAllListsThunk())
-        dispatch(getAllTasksThunk())
+        dispatch(getFollowsThunk())
+
     }, [dispatch])
 
     return (
     <div className="totalDash">
       <div className="leftDash">
+        <div className="whiteBack">
         <div className="dayTasks">
           <h2>Tasks for the day</h2>
-      {dayTasks.map(task=>(
-        <div>
-        <p>{task.name}</p>
-        <p>{task.due}</p>
-        </div>
-      ))}
+          {dayTasks.map(task=>(
+          <div>
+          <p>{task.name}</p>
+          <p>{task.due}</p>
+          </div>
+          ))}
         </div>
         <div className="dashLists">
           <h3>Lists:</h3>
-        {lists.map(list=>(
-        <div>
-        <p>{list.name}</p>
+          {lists.map(list=>(
+          <div>
+          <p>{list.name}</p>
+          </div>
+          ))}
         </div>
-      ))}
         </div>
-
       </div>
     <div className="rightDash">
       <div className="statz">
-      <h3>Todays Activity</h3>
-      <div> Lists {lists.length}</div>
-      <div>Tasks due today {dayTasks.length}</div>
+      <h1 className="activeTitle">Todays Activity</h1>
+      <div className="activity">
+      <div className="oneActivity">Followers: {followers.length}</div>
+      <div className="oneActivity"> Lists {lists.length}</div>
+      <div className="oneActivity">Tasks due today {dayTasks.length}</div>
+      </div>
       </div>
       <GetGroups/>
       </div>

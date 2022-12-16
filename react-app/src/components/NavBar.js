@@ -46,6 +46,9 @@ const NavBar = () => {
         <li className="navbarLi" id="logoutnavbtnli">
           <LogoutButton />
         </li>
+        :
+        null
+        }
       </ul>
     </nav>
   );

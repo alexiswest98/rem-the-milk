@@ -86,7 +86,7 @@ export default function followsReducer(initialState = {}, action) {
 
     case UNFOLLOWUSER:
       newState = { followers: {}, ...initialState }
-      delete newState.followers[action.userThatFollows]
+      delete newState.followers[action.userId]
       return newState
 
     case GETFOLLOWERS:
