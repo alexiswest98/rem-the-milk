@@ -18,7 +18,7 @@ import GetOneGroup from './components/oneGroup';
 import CreateAGroup from './components/createGroup';
 import UpdateList from './components/Lists/updateList';
 import EditListTask from './components/Tasks/updateTasks';
-import Home from './components/Home/home';
+import Home from './components/Home';
 
 
 import CreateListTask from './components/Tasks/CreateListTask';
@@ -81,6 +81,8 @@ function App() {
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignupPage />
+        <Route path='/signup' exact={true}>
+          <SignUpForm />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>

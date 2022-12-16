@@ -1,0 +1,10 @@
+.mainDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.homeImgs{
+    width: 100%;
+}
