@@ -3,6 +3,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 
+
 const NavBar = () => {
 
   const user = useSelector(state => state.session.user)
@@ -33,24 +34,41 @@ const NavBar = () => {
           </NavLink>
         </li>
         }
+        {user?
+        null
+        // <li>
+        // <NavLink path='/profile' exact={true} activeClassName='active'>
+        //   Lists
+        // </NavLink>
+        // </li>
+        :
         <li>
           <NavLink to='/sign-up' exact={true} activeClassName='active'>
             Sign Up
           </NavLink>
         </li>
+        }
+        {user?
         <li>
           <NavLink to='/users' exact={true} activeClassName='active'>
             Find Friends
           </NavLink>
         </li>
+        :null}
+        {user?
         <li>
           <NavLink to='/followers' exact={true} activeClassName='active'>
             Followers
           </NavLink>
         </li>
-        <li>
+        :null}
+        {user?
+          <li>
           <LogoutButton />
         </li>
+        :
+        null
+        }
       </ul>
     </nav>
   );
