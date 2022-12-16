@@ -6,10 +6,10 @@ const DELETETASK = 'tasks/deleteTask'
 const UPDATETASK = 'tasks/updateTask'
 
 /* ___________ Action Creators   ___________ */
-export const getAllTasksAction = (task) => {
+export const getAllTasksAction = (tasks) => {
     return {
         type: GETALLTASKS,
-        task
+        tasks
     };
 };
 
