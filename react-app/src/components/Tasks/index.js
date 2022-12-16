@@ -9,3 +9,13 @@ export default function CreateATaskModal() {
 
     return (
         <div className="createTaskModalBtn">
+
+            <button onClick={() => setShowModal(true)} className='createTaskModalBtn'>Create Task </button>
+            {showModal && (
+                <Modal onClose={() => setShowModal(false)}>
+                    <CreateListTask setShowModal={setShowModal} />
+                </Modal>
+            )}
+        </div>
+    )
+}
