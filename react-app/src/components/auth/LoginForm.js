@@ -11,6 +11,12 @@ const LoginForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  // const demoLogin = async(e) => {
+  //   setEmail('demo@aa.io')
+  //   setPassword('password')
+  //   console.log('email = ',email,'pass = ', password)
+  //   await dispatch(login({email:'demo@aa.io', password:'password'}))
+  // }
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
@@ -40,7 +46,7 @@ const LoginForm = () => {
         ))}
       </div>
       <div>
-  
+
         <input
           className='loginInput'
           name='email'
@@ -51,7 +57,7 @@ const LoginForm = () => {
         />
       </div>
       <div>
-        
+
         <input
           className='loginInput'
           name='password'
@@ -61,7 +67,12 @@ const LoginForm = () => {
           onChange={updatePassword}
         />
       </div>
-        <button type='submit'>Login</button>
+      <button
+        className='button-basic'
+        type='submit'
+        onClick={() => {dispatch(login('demo@aa.io', 'password'))}}
+        >Login as Demo User</button>
+        <button className='button-basic' type='submit'>Login</button>
     </form>
   );
 };
