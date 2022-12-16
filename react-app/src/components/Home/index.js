@@ -5,23 +5,15 @@ import './index.css'
 import Slider from "react-slick";
 import SliderComp from "../Slider";
 export default function Home() {
-    // const [currentIndex, setCurrentIndex] = useState(0);
 
-    // function handlePrevious() {
-    //     setCurrentIndex(currentIndex - 1);
-    //   }
-
-    //   function handleNext() {
-    //     setCurrentIndex(currentIndex + 1);
-    //   }
 
     return (
     <div className="mainDiv">
-        <h1>The smart to-do app for busy people.</h1>
+        <h1 className="homeTitle">The smart to-do app for busy people.</h1>
         <Link to='/signup'>
-        <button>Sign up Free</button>
+        <button className="signInButton">Sign up Free</button>
         </Link>
-        <Slider/>
+        <SliderComp/>
     </div>
     )
 }

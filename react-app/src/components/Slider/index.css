@@ -1,4 +1,19 @@
-.test {
-    width: 50%;
-    height: 50%
+.allCar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow {
+    height: 20px;
+    width: 20px;
+    margin: 50px;
+}
+
+.homeTitle {
+    font-size: 44px;
+    font-weight: 700;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif
 }
