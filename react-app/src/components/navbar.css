@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: rgb(3, 96, 191);
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar>ul {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navbarLi {
+    display: flex;
+    margin-top: .85%;
+    color: rgb(215, 238, 214);
+    width: 150px;
+    align-items: center;
+    margin: none;
+    padding: none;
+}
+
+.navbarLi>a {
+    color: rgb(215, 238, 214);
+    text-decoration: none;
+}
+
+.logoutnavbtnli {
+    margin-bottom: 8%;
+}
+
+.navbarLiNoUser {
+    margin-right: 5%;
+    width: 150px;
+    color: white;
+    display: inline;
+    margin-top: 3%;
+    align-items: center;
+    margin: none;
+    padding: none;
+}
+
+.nonUserDiv {
+    background-color: rgb(3, 96, 191);
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.nonUserDiv>ul {
+
+    color: rgb(215, 238, 214);
+    display: flex;
+    flex-direction: row;
+}
+
+.navbarLiNoUser>a {
+    color: rgb(215, 238, 214);
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10.5%;
+}
+
+.navBarLogo>img {
+    width: 200px;
+    height: 70px;
+    display: flex;
+}
+ 
+ .navBarLogo {
+    width: 10%;
+    height: 100%;
+    justify-content: start;
+    align-self: start;
+} 
+
+.navBarLogoNoUser > img{
+    width: 200px;
+    height: 70px;
+    display: flex;
+    align-self: start;
+}
+
+.navBarLogoNoUser >a{
+    width: 10%;
+    height: 100%;
+    justify-content: start;
+    align-self: start;
+}

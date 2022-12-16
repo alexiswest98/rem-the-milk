@@ -34,7 +34,7 @@ export const deleteGroupAction = (groupId) => {
 
 export const createGroupThunk = (group) => async (dispatch) => {
   const { name, image_url, owner_id  } = group;
-  const response = await fetch('/api/groups',
+  const response = await fetch('/api/groups/create',
   {
  method: 'POST',
  headers: {'Content-Type':'application/json'},
@@ -53,7 +53,7 @@ export const createGroupThunk = (group) => async (dispatch) => {
 
 
 export const getGroupsThunk = () => async (dispatch) => {
-  const response = await fetch(`/api/groups`);
+  const response = await fetch(`/api/groups/all`);
   if (response.ok) {
     const data = await response.json();
     dispatch(getGroupsAction(data));
@@ -69,7 +69,7 @@ export const getGroupThunk = (groupId) => async (dispatch) => {
   }
 };
 
-//Thunk for deleting a spot
+//Thunk for deleting a group
 export const deleteGroupThunk = (groupId) => async (dispatch) => {
   const response = await fetch(`/api/groups/${groupId}`, {method: 'DELETE'});
   if (response.ok) {

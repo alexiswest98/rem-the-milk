@@ -2,6 +2,7 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from app.models.followers import follows
+from app.models.members import members
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -13,7 +14,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(100), nullable=False, unique=True)
     email = db.Column(db.String(100), nullable=False, unique=True)
     hashed_password = db.Column(db.String(500), nullable=False)
-    image_url = db.Column(db.String(1000), default='/static/userspic.png')
+    image_url = db.Column(db.String(1000), default='https://static.vecteezy.com/system/resources/previews/005/845/877/original/cute-cow-sitting-cartoon-icon-illustration-animal-icon-concept-isolated-premium-flat-cartoon-style-vector.jpg')
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
@@ -29,6 +30,14 @@ class User(db.Model, UserMixin):
         secondaryjoin=(follows.c.followed_id == id),
         backref=db.backref("following", lazy="dynamic"),
         lazy="dynamic"
+        )
+
+    #Relationship to join table
+    groups = db.relationship(
+        "Group",
+        secondary=members,
+        primaryjoin=(members.c.user_id == id),
+        backref=db.backref("users", lazy="dynamic")
         )
 
     @property

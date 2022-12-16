@@ -4,12 +4,20 @@ import session from './session'
 import groupReducer from './groups';
 import tasksReducer from './tasks';
 import listsReducer from './lists';
+import followsReducer from './follows';
+import specTasksReducer from './specTasks';
+import usersReducer from './users';
+import membersReducer from './members';
 
 const rootReducer = combineReducers({
   session,
   groups: groupReducer,
   tasks: tasksReducer,
-  lists: listsReducer
+  lists: listsReducer,
+  follows: followsReducer,
+  specTask: specTasksReducer,
+  users: usersReducer,
+  members: membersReducer
 });
 
 

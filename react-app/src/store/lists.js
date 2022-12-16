@@ -12,24 +12,24 @@ export const GetOneListAction = (list) => {
   };
 };
 
-export const GetAllListAction = (Lists) => {
+export const GetAllListAction = (lists) => {
   return {
     type: GetAllLists,
-    Lists
+    lists
   };
 };
 
-export const CreateListAction = (List) => {
+export const CreateListAction = (list) => {
   return {
     type: CreateList,
-    List
+    list
   };
 };
 
-export const UpdateListAction = (List) => {
+export const UpdateListAction = (list) => {
   return {
     type: UpdateList,
-    List
+    list
   };
 };
 
@@ -75,24 +75,39 @@ export const DeleteListThunk = (list_id) => async (dispatch) => {
 
 // Edit List
 export const EditListThunk = (list) => async (dispatch) => {
+  // console.log("IN THUNKKKKKKKKK &&&&&&&&&")
   const res = await fetch(`/api/lists/${list.id}`, {
     method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(list)
   });
   if (res.ok) {
     const data = await res.json()
+    // console.log("IN THUNK ACTION!!!!", data)
     dispatch(UpdateListAction(data))
+    console.log('Res.ok and dispatch hit.')
+    console.log('data = ',data)
     return data
   }
 }
 // Create List
 export const CreateListThunk = (list) => async (dispatch) => {
-  const res = await fetch(`/api/lists/`, {
+  const {name, due, notes, user_id, completed} = list
+  const res = await fetch(`/api/lists/new`, {
     method: 'POST',
-    body: JSON.stringify(list)
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({
+      name,
+      due,
+      notes,
+      user_id,
+      completed
+    })
   });
+  console.log('response =', res )
   if (res.ok) {
     const data = await res.json()
+    console.log("Hit the thunk, data = ", data)
     dispatch(CreateListAction(data))
     return data
   }
@@ -113,7 +128,7 @@ export default function listsReducer(state = {}, action) {
   switch (action.type) {
 
     case GetAllLists:
-      action.Lists.forEach(list => newState[list.id] = list)
+      action.lists.forEach(list => newState[list.id] = list)
       return newState
 
     case GetOneList:
@@ -122,7 +137,7 @@ export default function listsReducer(state = {}, action) {
 
     case UpdateList:
       newState = { ...state }
-      newState[action.list.id] = action.list
+      newState[action.list.id] = {...newState[action.list.id], ...action.list}
       return newState
 
     case DeleteList:

@@ -1,7 +1,6 @@
 from app.models import db, Group, environment, SCHEMA
 
-
-def seed_groups():
+def seed_groups(users):
     group1 = Group(
         name='App students', owner_id=1)
     group2 = Group(
@@ -18,7 +17,10 @@ def seed_groups():
         name='Potluck dinner', owner_id=6)
 
 
-
+    # #PUT SEED DATA HERE FOR MEMBERS IN GROUPS
+    for user in users:
+        group1.users.append(user)
+        group2.users.append(user)
 
     db.session.add(group1)
     db.session.add(group2)

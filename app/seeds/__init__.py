@@ -23,10 +23,10 @@ def seed():
         undo_tasks()
         undo_lists()
         undo_groups()
-    seed_users()
+    users = seed_users()
     seed_lists()
     seed_tasks()
-    seed_groups()
+    seed_groups(users)
 
 
     # Add other seed functions here

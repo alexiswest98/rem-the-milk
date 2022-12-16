@@ -6,12 +6,13 @@ const DELETETASK = 'tasks/deleteTask'
 const UPDATETASK = 'tasks/updateTask'
 
 /* ___________ Action Creators   ___________ */
-export const getAllTasksAction = (task) => {
+export const getAllTasksAction = (tasks) => {
     return {
         type: GETALLTASKS,
-        task
+        tasks
     };
 };
+
 
 export const getOneTaskAction = (task) => {
     return {
@@ -50,17 +51,35 @@ export const updateTaskAction = (task) => {
 
 /* ___________ T H U N K S   ___________ */
 
-// Create a task
-export const createTaskThunk = (task) => async (dispatch) => {
-
-    const response = await fetch('/api/tasks', {
-        method: 'POST',
+export const completeTaskThunk = (task, task_id) => async (dispatch) => {
+    console.log('we made it to the thunk')
+    const response = await fetch(`/api/tasks/${task_id}`, {
+        method: 'PUT',
         body: JSON.stringify(task)
     });
+    if (response.ok) {
+        console.log('response = ', response)
+        const editedTask = await response.json();
+        dispatch(updateTaskAction(editedTask));
+        return editedTask;
+    }else{
+        console.log('unsuccessful response = ',response)
+    };
+};
 
+// Create a task
+export const createTaskThunk = (task) => async (dispatch) => {
+    const response = await fetch('/api/tasks/new', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(task)
+    });
+    console.log('response =', response)
     if (response.ok) {
         const newTask = await response.json();
-        createTaskAction(newTask)
+        console.log("The new task in the Thunk", newTask)
+        dispatch(createTaskAction(newTask))
+        return newTask
     };
 };
 
@@ -73,6 +92,8 @@ export const getAllTasksThunk = () => async (dispatch) => {
     };
 };
 
+
+
 //get all tasks for list
 export const getAllListTasksThunk = (list_id) => async (dispatch) => {
   const response = await fetch(`/api/tasks/lists/${list_id}`)
@@ -83,14 +104,27 @@ export const getAllListTasksThunk = (list_id) => async (dispatch) => {
 }
 
 // Update a task
-export const editTaskThunk = (task, taskId) => async (dispatch) => {
-    const response = await fetch(`/api/tasks/${taskId}`, {
+export const editTaskThunk = (task) => async (dispatch) => {
+    const {id, name, due, notes, list_id, user_id, completed_by} = task
+    console.log(task)
+    const response = await fetch(`/api/tasks/${id}`, {
         method: 'PUT',
-        body: JSON.stringify(task)
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({
+            name,
+            due,
+            user_id,
+            notes,
+            list_id,
+            completed_by
+        })
     });
+    console.log('res = ', response)
     if (response.ok) {
         const editedTask = await response.json();
         dispatch(updateTaskAction(editedTask));
+        console.log('Res.ok and dispatch hit.')
+        console.log('data = ',editedTask)
         return editedTask;
     };
 };
@@ -115,11 +149,11 @@ export default function tasksReducer(state = {}, action) {
         case GETLISTTASKS:
             action.tasks.forEach(task => newState[task.id] = task)
             return newState
-            
+
         case UPDATETASK:
-            newState = { ...state }
-            newState[ action.task.id ] = action.task
-            return newState
+            newState={...state}
+            newState[action.task.id] = { ...newState[action.task.id], ...action.task };
+            return newState;
 
         case DELETETASK:
             newState = { ...state }

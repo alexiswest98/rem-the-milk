@@ -10,6 +10,7 @@ from .api.auth_routes import auth_routes
 from .api.followers import follow_routes
 from .api.groups_routes import groups_routes
 from .api.lists_routes import lists_routes
+from .api.members_routes import member_routes
 from .api.tasks_routes import tasks_routes
 from .seeds import seed_commands
 from .config import Config
@@ -39,7 +40,7 @@ app.register_blueprint(lists_routes, url_prefix="/api/lists")
 app.register_blueprint(tasks_routes, url_prefix="/api/tasks")
 app.register_blueprint(groups_routes, url_prefix="/api/groups")
 app.register_blueprint(follow_routes, url_prefix="/api/follows")
-
+app.register_blueprint(member_routes, url_prefix="/api/members")
 
 db.init_app(app)
 Migrate(app, db)
