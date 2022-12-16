@@ -20,14 +20,9 @@ function UserDetails({ setShowModal, user }) {
     //this is the user that is changing in modal
     const indivUser = user.user
 
-    //causes infinite loop
-    // useEffect(() => {
-    //     // Get a users followers
-    //     dispatch(getFollowsThunk())
-    //     // Who youre following
-    //     dispatch(getFollowingThunk())
-  
-    // }, [dispatch, boolean, followers, following])
+    function refreshPage() {
+        window.location.reload(false);
+      }
 
     if (!following || !users || !followers) return null;
 
@@ -40,10 +35,7 @@ function UserDetails({ setShowModal, user }) {
 
     const followButtonAction = async (id) => {
         let follow = await dispatch(followThunk(id))
-        // setBoolean(!boolean)
-        // Get a users followers
         await dispatch(getFollowsThunk())
-        // Who youre following
         await dispatch(getFollowingThunk())
         setShowModal(false)
         history.push("/users")
@@ -51,12 +43,10 @@ function UserDetails({ setShowModal, user }) {
 
     const unfollowButtonAction = async (id) => {
         let follow = await dispatch(unfollowThunk(id))
-        // setBoolean(!boolean)
-
         await dispatch(getFollowsThunk())
-        // Who youre following
         await dispatch(getFollowingThunk())
         setShowModal(false)
+        refreshPage()
         history.push("/users")
     }
 

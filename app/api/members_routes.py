@@ -3,7 +3,7 @@ from flask_login import login_required, current_user
 from app.models import Group, User, db
 from app.models.members import members
 
-member_routes = Blueprint('members', __name__)
+member_routes = Blueprint('members', __name__, url_prefix="/api/members")
 
 # Logged in as current user and get all members based off group.id
 @member_routes.route('/group/<int:groupId>', methods=["GET"])
@@ -58,7 +58,7 @@ def delete_memb(groupId, userId):
 
   if not group:
     return {'errors': ['This group does not exist']}, 401
- 
+
   for memb in membsInGroup:
     if memb[0] == userId:
       group.users.remove(delUser)

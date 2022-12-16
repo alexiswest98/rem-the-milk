@@ -23,6 +23,7 @@ import CreateATaskModal from './components/Tasks';
 import CreateListTask from './components/Tasks/CreateListTask';
 import LoginPage from './components/loginpage';
 import SignupPage from './components/signupPage';
+import CompleteTasksPage from './components/Tasks/completedTasks';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -43,6 +44,9 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+      <Route path='/tasks/completed' exact={true}>
+          <CompleteTasksPage/>
+        </Route>
       <Route path='/list/edit/:listId' exact={true}>
           <UpdateList/>
         </Route>
@@ -83,7 +87,8 @@ function App() {
           <UsersList/>
         </ProtectedRoute>
         <ProtectedRoute path='/followers' exact={true} >
-          <h1>FIX THIS</h1>
+          {/* <h1>FIX THIS</h1> */}
+          <GetFollowers/>
         </ProtectedRoute>
         <Route path='/lists' exact={true} >
           <h1>My Lists</h1>
