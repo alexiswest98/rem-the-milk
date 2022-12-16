@@ -5,7 +5,7 @@ import LogoutButton from './auth/LogoutButton';
 
 const NavBar = () => {
 
-  // const user = useSelector(state => state.session.user)
+  const user = useSelector(state => state.session.user)
   // // const currUser = curr.user.id
   // // console.log(currUser)
   // if (user){
@@ -20,16 +20,19 @@ const NavBar = () => {
             Home
           </NavLink>
         </li>
-        <li>
+        {user?
+          <li>
           <NavLink to='/dashboard' exact={true} activeClassName='active'>
             Dashboard
           </NavLink>
         </li>
+          :
         <li>
           <NavLink to='/login' exact={true} activeClassName='active'>
             Login
           </NavLink>
         </li>
+        }
         <li>
           <NavLink to='/sign-up' exact={true} activeClassName='active'>
             Sign Up
