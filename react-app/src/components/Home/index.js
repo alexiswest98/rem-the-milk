@@ -4,6 +4,8 @@ import { Link, useParams} from 'react-router-dom'
 import './index.css'
 import Slider from "react-slick";
 import SliderComp from "../Slider";
+
+
 export default function Home() {
 
 

@@ -17,10 +17,21 @@ const NavBar = () => {
     <nav>
       <ul>
         <li>
+        {!user ?
+            <NavLink to='/' exact={true} activeClassName='active'>
+               Home
+            </NavLink>
+            :
+            <NavLink to='/home' exact={true} >
+            Home
+            </NavLink>
+        }
+        </li>
+        {/* <li>
           <NavLink to='/' exact={true} activeClassName='active'>
             Home
           </NavLink>
-        </li>
+        </li> */}
         {user?
           <li>
           <NavLink to='/dashboard' exact={true} activeClassName='active'>

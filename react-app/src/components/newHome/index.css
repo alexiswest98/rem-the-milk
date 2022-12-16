@@ -1,0 +1,102 @@
+.whole-user-home-page {
+    width: 100%;
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.home-page-outer {
+    display: flex;
+    border: 2px rgb(0, 0, 255) solid;
+    width: 95%;
+    height: 100%;
+
+}
+
+.right-side-whole-page {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    border: 2px rgb(246, 246, 246) solid;
+
+}
+
+.home-action-nav-bar {
+    background-color: rgb(236, 236, 249);
+    border-right: 1px solid grey;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+}
+
+.center-page {
+    width: 70%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clock-side {
+    width: 25%;
+    height: 100%;
+    background-color: rgb(251, 132, 132);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clock {
+    width: 80%;
+
+}
+
+.home-prof-pic {
+    width: 40%;
+    height: 60%;
+    border-radius: 50%;
+    object-fit: cover;
+
+}
+
+.home-profile-image{
+    border-bottom: 1px solid grey;
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-profile-info {
+    border-bottom: 1px solid grey;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-user-name {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.home-profile-nav {
+    height: 66%;
+}
+
+.home-user-email {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.bubble-info-box {
+    border: 1px blue solid;
+    width: 90%;
+    height: 70%;
+    border-radius: 2em;
+}
