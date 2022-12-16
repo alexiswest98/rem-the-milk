@@ -37,6 +37,21 @@ function UserDetails({ setShowModal, user }) {
             <h1>{user.user.username}</h1>
             <h2>Email: {user.user.email}</h2>
             <img src={user.user.image_url} className='user-modal-img'></img>
+            {!followerIds.includes(user.id) &&
+            <>
+            <button onClick={ () => dispatch(followThunk(user.id))}>follow</button>
+            </>
+            }
+            {followerIds.includes(user.id) &&
+            <>
+                <p>Im following</p>
+                <button onClick={ () => dispatch(unfollowThunk(user.id)) }>Unfollow</button>
+            </>
+            }
+            {followingIds.includes(user.id) &&
+            <>
+                <p>follower</p>
+            </>}
         </div>
     )
 
