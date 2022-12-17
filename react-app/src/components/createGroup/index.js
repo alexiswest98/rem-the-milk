@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import './index.css';
 import { useHistory } from 'react-router-dom'
 import { createGroupThunk } from "../../store/groups";
-
+import { getGroupsThunk } from '../../store/groups';
 /* Create a group component */
-export default function CreateAGroup(){
+export default function CreateAGroup({setShowModal}){
     const dispatch = useDispatch()
     const history = useHistory()
     const currentUser = useSelector(state => state.session)
@@ -32,6 +32,8 @@ export default function CreateAGroup(){
             owner_id: currUser.id
         }
         const create = await dispatch(createGroupThunk(group))
+        dispatch(getGroupsThunk())
+        setShowModal(false)
         history.push('/dashboard')
     }
 
