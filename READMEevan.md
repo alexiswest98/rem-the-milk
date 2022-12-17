@@ -73,31 +73,29 @@ To get a local copy up and running follow these simple example steps.
 
 ## Feature Roadmap
 
-- [x] Spots
-    - [x] Create a spot
-    - [x] Load all spots
-    - [x] Load a spot by detail
-    - [ ] See list of current user's spots
-    - [x] Update a current user's spot
+- [x] Lists
+    - [x] Create a list
+    - [x] Load all lists
+    - [x] Update a current user's list
     - [x] Delete a current user's spot
-- [x] Reviews
+- [x] Tasks
     - [x] Create a review
     - [x] See all reviews of a spot
     - [ ] See all reviews of current user
     - [ ] Update a review
     - [x] Delete a review
-- [x] Images
+- [x] Groups
     - [x] Add an image to a spot
     - [x] Delete a spot image
     - [ ] Add an image to a review
     - [ ] Delete a review image
-- [ ] Bookings
+- [x] Members
     - [ ] Create a booking
     - [ ] See list of current user's bookings
     - [ ] See list of bookings by spot
     - [ ] Update a current user's booking
     - [ ] Delete a current user's booking
-- [ ] Spot Search Filter
+- [x] Following
     - [ ] page
     - [ ] size
     - [ ] minimum latitude
