@@ -46,16 +46,16 @@ To get a local copy up and running follow these simple example steps.
 
 
     HTTPS Authentification:
-    git clone https://github.com/ebmorgansb/Airbnb-Project.git
+    git clone https://github.com/alexiswest98/rem-the-milk.git
 
     SSH Authentification with SSH or HTTPS:
-    git@github.com:ebmorgansb/Airbnb-Project.git
+    git clone git@github.com:alexiswest98/rem-the-milk.git
 
-
-2. Navigate to the backend folder and npm install
-    npm install
+2. Install dependencies: pipenv install -r requirements.txt
+ 
+3. Navigate to the backend folder pipenv install
   
-3. Create a .env file in the root of the backend folder and copy the contents from the .env.example file:
+4. Create a .env file in the root of the backend folder and copy the contents from the .env.example file:
     cp .env.example .env
 
 4. Migrate and seed the files. There are the following json scripts for your convenience:
@@ -63,12 +63,13 @@ To get a local copy up and running follow these simple example steps.
     npm run seed
     
 5. Utilize npm start in the back-end folder.
-    npm start
+    pipenv shell
+    flask run
  
 6. Navigate to the frontend folder and npm install.
     npm install
     
-7. Utilize npm start in the front-end folder and you will be directed to: http://localhost:3000/
+7. Utilize npm start in the front-end folder and you will be directed to: http://localhost:5000/
     npm start
 
 ## Feature Roadmap
