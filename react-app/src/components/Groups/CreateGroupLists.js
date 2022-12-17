@@ -80,7 +80,6 @@ return (
 
         <button className="submit" type="submit" hidden={validationErrors.length !== 0}>Create List</button>
       </form>
-    <button onClick={()=> history.push(`/groups/${groupId}`)}> back </button>
   </div>
 )
 
