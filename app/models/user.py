@@ -32,7 +32,6 @@ class User(db.Model, UserMixin):
         lazy="dynamic"
         )
 
-
     #Relationship to join table
     groups = db.relationship(
         "Group",

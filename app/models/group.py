@@ -1,5 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from app.models.members import members
+from app.models.user import User
 
 class Group(db.Model):
     __tablename__ = 'groups'
@@ -28,3 +28,9 @@ class Group(db.Model):
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }
+
+members = db.Table(
+    "members",
+    db.Column('user_id', db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), primary_key=True),
+    db.Column('group_id', db.Integer, db.ForeignKey(add_prefix_for_prod("groups.id")), primary_key=True)
+)
