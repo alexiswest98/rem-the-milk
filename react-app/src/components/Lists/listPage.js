@@ -5,7 +5,7 @@ import { DeleteListThunk } from "../../store/lists";
 import { getAllListTasksThunk } from "../../store/tasks";
 import { editTaskThunk } from "../../store/tasks";
 import { deleteTaskThunk } from "../../store/tasks";
-import CreateTaskModal from "../simpTasks";
+import CreateATaskModal from "../ListTasks";
 
 const ListPage = () => {
   const history = useHistory()
@@ -85,8 +85,7 @@ const ListPage = () => {
           </div>
       </div>
         ))}
-        <CreateTaskModal/>
-        <p>^ add another task?</p>
+        <CreateATaskModal/>
         <p>_________________________________________________</p>
         <h2>Completed Tasks</h2>
         {completed.map(task=> (

@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router-dom'
 import { createTaskThunk } from "../../store/tasks";
 import './index.css'
 
-function CreateListTask() {
+function CreateListTask({setShowModal}) {
   const dispatch = useDispatch()
   const history = useHistory()
   const user = useSelector(state => state.session.user)
@@ -12,12 +12,12 @@ function CreateListTask() {
 
 
   const Tasks = Object.values(useSelector(state => state.tasks))
-  
+
     console.log('alltaks--------------------', Tasks)
     const dayTasks = Object.values(useSelector(state => state.specTask))
     console.log('DAYTAKS--------------------', dayTasks)
 
-    
+
   const [name, setName] = useState('')
   const [due, setDue] = useState('')
   const [notes, setNotes] = useState('')
@@ -51,6 +51,7 @@ function CreateListTask() {
 
     console.log('We are in the CreateListTask Comp.. PAYLOAD:', payload)
     await dispatch(createTaskThunk(payload))
+    setShowModal(false)
     history.push(`/lists/${listId}`)
   }
 

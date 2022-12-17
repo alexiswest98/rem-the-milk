@@ -9,6 +9,7 @@ import { deleteGroupThunk } from "../../store/groups";
 import CreateListModal from "../Lists";
 import EditListModal from "../EditList";
 import CreateTaskModal from "../simpTasks";
+import CreateATaskModal from "../ListTasks";
 
 
 export default function NewHomePage() {

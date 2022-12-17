@@ -9,7 +9,6 @@ import ListPage from "./listPage";
 import CreateListModal from "./index";
 import EditListModal from "../EditList";
 import CreateTaskModal from "../simpTasks";
-// import './index.css'
 
 export default function NewListPage() {
     const dispatch = useDispatch()
