@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import LoginForm from './components/auth/LoginForm';
-import SignUpForm from './components/auth/SignUpForm';
+// import LoginForm from './components/auth/LoginForm';
+// import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList/UsersList';
@@ -11,7 +11,7 @@ import ProfileForm from './components/splashPage/profilePage';
 import ListPage from './components/Lists/listPage';
 import Dashboard from './components/DashBoard';
 import CreateList from './components/Lists/CreateLists';
-import GetGroups from './components/allGroups';
+// import GetGroups from './components/allGroups';
 import GetFollowers from './components/followers';
 import GetOneGroup from './components/oneGroup';
 import CreateAGroup from './components/createGroup';
@@ -24,6 +24,7 @@ import CreateListTask from './components/Tasks/CreateListTask';
 import LoginPage from './components/loginpage';
 import SignupPage from './components/signupPage';
 import CompleteTasksPage from './components/Tasks/completedTasks';
+import AboutUsPage from './components/aboutUs';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -90,6 +91,9 @@ function App() {
           {/* <h1>FIX THIS</h1> */}
           <GetFollowers/>
         </ProtectedRoute>
+        <Route path='/aboutUs' exact={true} >
+          <AboutUsPage />
+        </Route>
         <Route path='/lists' exact={true} >
           <h1>My Lists</h1>
         </Route>
@@ -103,11 +107,5 @@ function App() {
     </BrowserRouter>
   );
 }
-
-{/* <Link to='/tasks/create'>
-<button>Create a Task</button>
-</Link> */}
-
-
 
 export default App;
