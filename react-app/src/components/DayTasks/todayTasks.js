@@ -4,6 +4,9 @@ import { useHistory, NavLink, Link } from 'react-router-dom';
 import { getAllTasksThunk } from "../../store/tasks";
 import { GetAllListsThunk } from "../../store/lists";
 // import IncompleteTasksPage from "../Tasks/incompleteTasks";
+import CreateListModal from "../Lists";
+import EditListModal from "../EditList";
+import CreateTaskModal from "../simpTasks";
 import DayTask from ".";
 
 export default function TodayTaskPage() {
@@ -60,14 +63,16 @@ export default function TodayTaskPage() {
                                 <Link to={'/tasks/month'}>
                                     <h4>Month</h4>
                                 </Link>
+                                <CreateTaskModal/>
                             </div>
                             <div className="nav-list-option">
                                 <h2>Lists</h2>
                                 {aloneLists.map(list => (
                                     <Link to={`/lists/${list.id}`}>
-                                    <h4>{list.name}</h4>
+                                    <h4>{list.name} <EditListModal listId={list.id}/></h4>
                                     </Link>
                                 ))}
+                                <CreateListModal/>
                             </div>
                             <div className="nav-group-list-option">
                                 <h4>Group Lists</h4>

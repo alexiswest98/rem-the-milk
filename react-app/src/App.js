@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import LoginForm from './components/auth/LoginForm';
-import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList/UsersList';
 import { authenticate } from './store/session';
 import ProfileForm from './components/splashPage/profilePage';
-import ListPage from './components/Lists/listPage';
 import Dashboard from './components/DashBoard';
 import CreateList from './components/Lists/CreateLists';
-import GetGroups from './components/allGroups';
 import GetFollowers from './components/followers';
 import GetOneGroup from './components/oneGroup';
 import CreateAGroup from './components/createGroup';
@@ -29,7 +25,8 @@ import CreateGroupList from './components/Groups/CreateGroupLists';
 import NewListPage from './components/Lists/newListPage';
 import TodayTaskPage from './components/DayTasks/todayTasks';
 import TomTaskPage from './components/TommTasks/tommTask';
-
+import MonthTaskPage from './components/MonthTasks/monthTasks';
+import CompTaskPage from './components/ListTasks/compTaskHome';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -57,16 +54,19 @@ function App() {
           <IncompleteTasksPage />
         </Route>
         <Route path='/tasks/completed' exact={true}>
-          <CompleteTasksPage />
+          <CompTaskPage />
         </Route>
-        <Route path='/tasks/incomplete' exact={true}>
+        {/* <Route path='/tasks/incomplete' exact={true}>
           <IncompleteTasksPage />
-        </Route>
+        </Route> */}
         <Route path='/tasks/today' exact={true}>
           <TodayTaskPage/>
         </Route>
         <Route path='/tasks/tomorrow' exact={true}>
           <TomTaskPage/>
+        </Route>
+        <Route path='/tasks/month' exact={true}>
+          <MonthTaskPage/>
         </Route>
         <Route path='/list/edit/:listId' exact={true}>
           <UpdateList />
