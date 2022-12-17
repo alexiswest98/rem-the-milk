@@ -26,12 +26,14 @@ import SignupPage from './components/signupPage';
 import CompleteTasksPage from './components/Tasks/completedTasks';
 import IncompleteTasksPage from './components/Tasks/incompleteTasks';
 import CreateGroupList from './components/Groups/CreateGroupLists';
+import NewListPage from './components/Lists/newListPage';
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -46,40 +48,43 @@ function App() {
       <NavBar />
       <Switch>
         <Route path='/groups/:groupId/list' exact={true}>
-          <CreateGroupList/>
+          <CreateGroupList />
         </Route>
-      <Route path='/tasks/all' exact={true}>
-          <IncompleteTasksPage/>
+        <Route path='/tasks/all' exact={true}>
+          <IncompleteTasksPage />
         </Route>
-      <Route path='/tasks/completed' exact={true}>
-          <CompleteTasksPage/>
+        <Route path='/tasks/completed' exact={true}>
+          <CompleteTasksPage />
         </Route>
-      <Route path='/list/edit/:listId' exact={true}>
-          <UpdateList/>
+        <Route path='/tasks/incomplete' exact={true}>
+          <IncompleteTasksPage />
         </Route>
-      <Route path='/lists/:listId/Tasks/edit/:taskId' exact={true}>
-          <EditListTask/>
+        <Route path='/list/edit/:listId' exact={true}>
+          <UpdateList />
         </Route>
-      <Route path='/Tasks/new/:listId' exact={true}>
-          <CreateListTask/>
+        <Route path='/lists/:listId/Tasks/edit/:taskId' exact={true}>
+          <EditListTask />
         </Route>
-      <Route path='/lists/new' exact={true}>
-          <CreateList/>
+        <Route path='/Tasks/new/:listId' exact={true}>
+          <CreateListTask />
         </Route>
-      <Route path='/lists/:listId' exact={true}>
-          <ListPage/>
+        <Route path='/lists/new' exact={true}>
+          <CreateList />
+        </Route>
+        <Route path='/lists/:listId' exact={true}>
+          <NewListPage/>
         </Route>
         <Route path='/profile' exact={true}>
-          <ProfileForm/>
+          <ProfileForm />
         </Route>
         <Route path='/tasks/create' exact={true}>
-          <CreateATaskModal/>
+          <CreateATaskModal />
         </Route>
         <Route path='/groups/create' exact={true}>
-          <CreateAGroup/>
+          <CreateAGroup />
         </Route>
         <Route path='/groups/:groupId' exact={true}>
-          <GetOneGroup/>
+          <GetOneGroup />
         </Route>
         <Route path='/dashboard' exact={true} >
           <Dashboard />
@@ -91,20 +96,20 @@ function App() {
           <SignupPage />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+          <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path='/followers' exact={true} >
           {/* <h1>FIX THIS</h1> */}
-          <GetFollowers/>
+          <GetFollowers />
         </ProtectedRoute>
         <Route path='/lists' exact={true} >
           <h1>My Lists</h1>
         </Route>
         <ProtectedRoute path='/home' exact={true} >
-          <NewHomePage/>
+          <NewHomePage />
         </ProtectedRoute>
         <Route path='/' exact={true} >
-          <Home/>
+          <Home />
         </Route>
       </Switch>
     </BrowserRouter>

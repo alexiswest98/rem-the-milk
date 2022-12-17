@@ -10,15 +10,13 @@ const { listId } = useParams()
 const history = useHistory()
 const user = useSelector(state => state.session)
 const list = useSelector(state => state.lists[listId])
-console.log("*******************************", list)
+// console.log("*******************************", list)
 
 const [newName, setNewName] = useState(list.name || "");
 const [newDue, setNewDue] = useState(convert(list.due) || "");
 const [newNotes, setNewNotes] = useState(list.notes || "");
 const [validationErrors, setValidationErrors] = useState([]);
 const [hasSubmitted, setHasSubmitted] = useState(false);
-
-
 
 
 function convert(str) {
@@ -41,9 +39,6 @@ function convert(str) {
   return [date[3], mnths[date[2]], date[1]].join("-");
 }
 
-
-
-
 useEffect(() => {
   const errors = []
   if(!newName) errors.push("Name is required");
@@ -52,6 +47,7 @@ useEffect(() => {
   setValidationErrors(errors);
   // dispatch(GetAllListsThunk())
 }, [newName, newDue, newNotes]);
+
 
 
 const onSubmit = async (e) => {
@@ -70,7 +66,7 @@ const onSubmit = async (e) => {
     completed: list.completed
   }
 
-  console.log("PAYLOADDDDDD", newList)
+  // console.log("PAYLOADDDDDD", newList)
   await dispatch(EditListThunk(newList))
 
   // dispatch(GetAllListsThunk())

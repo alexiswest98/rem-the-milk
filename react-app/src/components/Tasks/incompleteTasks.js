@@ -62,7 +62,7 @@ const deleteTask = (task_id) => {
 
   return(
     <div>
-      <h1>Completed Tasks</h1>
+      <h1>Incompleted Tasks</h1>
          {completed.map(task => (
           <div key={task.id}>
             <p>{task.name}</p>
