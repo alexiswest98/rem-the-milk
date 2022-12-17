@@ -11,8 +11,8 @@ export default function Members({setShowModal}) {
     const user = Object.values(useSelector(state=> state.session.user))
     const dispatch = useDispatch();
     let { groupId } = useParams();
-    const member = Object.values(useSelector(state=> state.members))
-    const members = member.slice(0, member.length-1)
+    const members = Object.values(useSelector(state=> state.members))
+    // const members = member.slice(0, member.length-1)
     const followers = Object.values(useSelector(state => state.follows))
     // console.log('followers = ', followers)
     const membersId = members.map(member => {
