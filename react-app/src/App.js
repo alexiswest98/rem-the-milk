@@ -27,6 +27,9 @@ import CompleteTasksPage from './components/Tasks/completedTasks';
 import IncompleteTasksPage from './components/Tasks/incompleteTasks';
 import CreateGroupList from './components/Groups/CreateGroupLists';
 import NewListPage from './components/Lists/newListPage';
+import TodayTaskPage from './components/DayTasks/todayTasks';
+import TomTaskPage from './components/TommTasks/tommTask';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -58,6 +61,12 @@ function App() {
         </Route>
         <Route path='/tasks/incomplete' exact={true}>
           <IncompleteTasksPage />
+        </Route>
+        <Route path='/tasks/today' exact={true}>
+          <TodayTaskPage/>
+        </Route>
+        <Route path='/tasks/tomorrow' exact={true}>
+          <TomTaskPage/>
         </Route>
         <Route path='/list/edit/:listId' exact={true}>
           <UpdateList />

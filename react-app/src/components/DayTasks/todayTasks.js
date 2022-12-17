@@ -3,10 +3,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory, NavLink, Link } from 'react-router-dom';
 import { getAllTasksThunk } from "../../store/tasks";
 import { GetAllListsThunk } from "../../store/lists";
-import IncompleteTasksPage from "../Tasks/incompleteTasks";
-import './index.css'
+// import IncompleteTasksPage from "../Tasks/incompleteTasks";
+import DayTask from ".";
 
-export default function NewHomePage() {
+export default function TodayTaskPage() {
     const dispatch = useDispatch()
     const history = useHistory()
     const user = useSelector(state => state.session.user);
@@ -81,13 +81,13 @@ export default function NewHomePage() {
                     </div>
                 </div>
                 <div className="center-page">
-                    <div className="completed-butts-div">
+                    {/* <div className="completed-butts-div">
                         <button onClick={() => incomOnClick()} className="comp-butt">Incompleted</button>
                         <button onClick={() => complOnClick()} className="incomp-butt">Completed</button>
-                    </div>
+                    </div> */}
                     <div className="center-box-outline">
                         {/* enter component here */}
-                        <IncompleteTasksPage/>
+                        <DayTask/>
                     </div>
                 </div>
                 <div className="clock-side">
