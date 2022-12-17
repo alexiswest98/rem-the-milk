@@ -1,1 +1,33 @@
-/* ignore */
+.createAGroupForm {
+    width: 400px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.createGroupInput {
+    width: 250px;
+    margin-bottom: 5%;
+}
+
+.createGroupBtn{
+    width: 260px;
+    height: 25px;
+    background-color: rgb(42,157,255);
+    color: rgb(255, 255, 255);
+}
+
+.createAGroupForm > h2 {
+    color: rgb(42,157,255);
+    margin-bottom: 2%;
+}
+
+.createGroupModalButton{
+    background-color: rgb(42,157,255);
+    color: rgb(255, 255, 255);
+    width: 100px;
+    height: 35px;
+    align-self: center;
+}

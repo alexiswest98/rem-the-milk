@@ -11,12 +11,6 @@ const LoginForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
-  // const demoLogin = async(e) => {
-  //   setEmail('demo@aa.io')
-  //   setPassword('password')
-  //   console.log('email = ',email,'pass = ', password)
-  //   await dispatch(login({email:'demo@aa.io', password:'password'}))
-  // }
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
@@ -34,7 +28,7 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/profile' />;
+    return <Redirect to='/dashboard' />;
   }
 
   return (

@@ -4,7 +4,9 @@
     color: rgb(255, 255, 255);
     width: 100px;
 }
-
+.completedTaskDiv{
+    margin-bottom: 2%;
+}
 .createTaskForm{
     width: 400px;
     height: 400px;

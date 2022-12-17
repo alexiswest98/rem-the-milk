@@ -3,13 +3,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from 'react-router-dom'
 import { editTaskThunk } from "../../store/tasks";
 
-function EditListTask() {
+function EditListTask({setShowModal, taskId}) {
 const dispatch = useDispatch()
 const history = useHistory()
 const {listId} = useParams()
-const {taskId} = useParams()
 const task = useSelector(state => state.tasks[taskId])
+<<<<<<< HEAD
 // console.log(task)
+=======
+console.log('taskId = ', taskId)
+>>>>>>> fridayNight
 const user = useSelector(state => state.session.user)
 const [name, setName] = useState(task.name||'')
 const [due, setDue] = useState(convert(task.due) || '')
@@ -68,7 +71,7 @@ const onsubmit = async (e) => {
 
   // console.log("payload", payload)
   const editTask = await dispatch(editTaskThunk(payload))
-
+  setShowModal(false)
   history.push(`/lists/${listId}`)
 
 }

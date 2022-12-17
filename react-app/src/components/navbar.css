@@ -10,7 +10,7 @@ html {
 
 .navbar {
     background-color: rgb(3, 96, 191);
-    height: 80px;
+    height: 10%;
     display: flex;
     justify-content: space-between;
 }
@@ -24,7 +24,7 @@ html {
     display: flex;
     margin-top: .85%;
     color: rgb(215, 238, 214);
-    width: 150px;
+    width:130px;
     align-items: center;
     margin: none;
     padding: none;
@@ -40,7 +40,6 @@ html {
 }
 
 .navbarLiNoUser {
-    margin-right: 5%;
     width: 150px;
     color: white;
     display: inline;

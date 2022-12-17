@@ -5,6 +5,7 @@ import './index.css'
 import Slider from "react-slick";
 import SliderComp from "../Slider";
 import { useSelector } from "react-redux";
+import MonthTask from "../MonthTasks";
 
 
 

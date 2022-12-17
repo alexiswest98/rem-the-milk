@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import './index.css'
 import { Link } from 'react-router-dom'
 import { getGroupsThunk } from "../../store/groups";
-import CreateAGroup from "../createGroup";
+import CreateGroupModal from '../createGroup/CreateGroupModal'
 
 export default function GetGroups() {
     const dispatch = useDispatch();
@@ -36,6 +36,7 @@ export default function GetGroups() {
                 </Link>
 
             ))}
+            <CreateGroupModal/>
         </div>
         {/* </div> */}
     </div>

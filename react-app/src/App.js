@@ -1,36 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import LoginForm from './components/auth/LoginForm';
-import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList/UsersList';
 import { authenticate } from './store/session';
 import ProfileForm from './components/splashPage/profilePage';
-import ListPage from './components/Lists/listPage';
 import Dashboard from './components/DashBoard';
 import CreateList from './components/Lists/CreateLists';
-import GetGroups from './components/allGroups';
 import GetFollowers from './components/followers';
 import GetOneGroup from './components/oneGroup';
 import CreateAGroup from './components/createGroup';
-import UpdateList from './components/Lists/updateList';
+// import UpdateList from './components/Lists/updateList';
 import EditListTask from './components/UpdateTasks/updateTasks';
 import Home from './components/Home';
-import CreateATaskModal from './components/Tasks';
+import CreateATaskModal from './components/ListTasks';
 import NewHomePage from './components/newHome';
-import CreateListTask from './components/Tasks/CreateListTask';
+import CreateListTask from './components/ListTasks/CreateListTask';
 import LoginPage from './components/loginpage';
 import SignupPage from './components/signupPage';
-import CompleteTasksPage from './components/Tasks/completedTasks';
+import CompleteTasksPage from './components/ListTasks/completedTasks';
+import IncompleteTasksPage from './components/ListTasks/incompleteTasks';
+import CreateGroupList from './components/Groups/CreateGroupLists';
+import NewListPage from './components/Lists/newListPage';
+import TodayTaskPage from './components/DayTasks/todayTasks';
+import TomTaskPage from './components/TommTasks/tommTask';
+import MonthTaskPage from './components/MonthTasks/monthTasks';
+import CompTaskPage from './components/ListTasks/compTaskHome';
+import AboutUsPage from './components/aboutUs'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -44,35 +48,53 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-      <Route path='/tasks/completed' exact={true}>
-          <CompleteTasksPage/>
+        <Route path='/groups/:groupId/list' exact={true}>
+          <CreateGroupList />
         </Route>
-      <Route path='/list/edit/:listId' exact={true}>
-          <UpdateList/>
+        {/* <Route path='/tasks/all' exact={true}>
+          <IncompleteTasksPage />
+        </Route> */}
+        <Route path='/tasks/completed' exact={true}>
+          <CompTaskPage />
         </Route>
-      <Route path='/lists/:listId/Tasks/edit/:taskId' exact={true}>
-          <EditListTask/>
+        {/* <Route path='/tasks/incomplete' exact={true}>
+          <IncompleteTasksPage />
+        </Route> */}
+        <Route path='/tasks/today' exact={true}>
+          <TodayTaskPage/>
         </Route>
-      <Route path='/Tasks/new/:listId' exact={true}>
-          <CreateListTask/>
+        <Route path='/tasks/tomorrow' exact={true}>
+          <TomTaskPage/>
         </Route>
-      <Route path='/lists/new' exact={true}>
-          <CreateList/>
+        <Route path='/tasks/month' exact={true}>
+          <MonthTaskPage/>
         </Route>
-      <Route path='/lists/:listId' exact={true}>
-          <ListPage/>
+        {/* <Route path='/list/edit/:listId' exact={true}>
+          <UpdateList />
+        </Route> */}
+        <Route path='/lists/:listId/Tasks/edit/:taskId' exact={true}>
+          <EditListTask />
+        </Route>
+        <Route path='/Tasks/new/:listId' exact={true}>
+          <CreateListTask />
+        </Route>
+        <Route path='/lists/new' exact={true}>
+          <CreateList />
+        </Route>
+        <Route path='/lists/:listId' exact={true}>
+          <NewListPage/>
         </Route>
         <Route path='/profile' exact={true}>
-          <ProfileForm/>
+          <ProfileForm />
         </Route>
         <Route path='/tasks/create' exact={true}>
-          <CreateATaskModal/>
+          <CreateATaskModal />
         </Route>
         <Route path='/groups/create' exact={true}>
-          <CreateAGroup/>
+          <CreateAGroup />
         </Route>
         <Route path='/groups/:groupId' exact={true}>
-          <GetOneGroup/>
+          <GetOneGroup />
         </Route>
         <Route path='/dashboard' exact={true} >
           <Dashboard />
@@ -84,30 +106,27 @@ function App() {
           <SignupPage />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+          <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path='/followers' exact={true} >
           {/* <h1>FIX THIS</h1> */}
-          <GetFollowers/>
+          <GetFollowers />
         </ProtectedRoute>
+        <Route path='/aboutUs' exact={true} >
+          <AboutUsPage />
+        </Route>
         <Route path='/lists' exact={true} >
           <h1>My Lists</h1>
         </Route>
         <ProtectedRoute path='/home' exact={true} >
-          <NewHomePage/>
+          <NewHomePage />
         </ProtectedRoute>
         <Route path='/' exact={true} >
-          <Home/>
+          <Home />
         </Route>
       </Switch>
     </BrowserRouter>
   );
 }
-
-{/* <Link to='/tasks/create'>
-<button>Create a Task</button>
-</Link> */}
-
-
 
 export default App;

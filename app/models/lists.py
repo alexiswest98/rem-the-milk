@@ -13,8 +13,8 @@ class List(db.Model):
     notes = db.Column(db.String(1000))
     group_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('groups.id')))
     completed = db.Column(db.Boolean, default=False)
-    created_at = db.Column(db.DateTime, server_default=db.func.now())
-    updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
+    # created_at = db.Column(db.DateTime, server_default=db.func.now())
+    # updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
     list_to_group = db.relationship('Group', back_populates='group_to_list')
     list_to_task = db.relationship('Task', back_populates='task_to_list', cascade="all, delete")
@@ -27,7 +27,9 @@ class List(db.Model):
             'name':self.name,
             'due':self.due,
             'notes':self.notes,
+            'group_id':self.group_id,
             'completed':self.completed,
-            'created_at':self.created_at,
-            'updated_at':self.updated_at
+            'group_id':self.group_id
+            # 'created_at':self.created_at,
+            # 'updated_at':self.updated_at
         }
