@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useHistory} from 'react-router-dom';
 import { Modal } from '../../context/Modal';
-// import UserDetails from './details';
 import CreateGroupList from './CreateGroupLists';
 function CreateGroupListModal(groupId) {
-  const dispatch = useDispatch();
   const history = useHistory();
   const [showModal, setShowModal] = useState(false);
 

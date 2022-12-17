@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Modal } from '../../context/Modal';
-// import Members from './members';
 import { getGroupsThunk } from '../../store/groups';
 import CreateAGroup from '.';
+import './index.css'
 
 
 function AddGroupModal(user) {
@@ -20,6 +20,7 @@ function AddGroupModal(user) {
   return (
     <>
       <button
+      className='createGroupModalButton'
       onClick={() => setShowModal(true)}>Create a group</button>
       {showModal && (
         <Modal onClose={() => onCloseAction()}>

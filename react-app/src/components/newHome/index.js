@@ -41,10 +41,10 @@ export default function NewHomePage() {
 
     return (
         <div className="whole-user-home-page">
-        <div className="home-page-outer">
+            <div className="home-page-outer">
                 <div className="home-action-nav-bar">
                     <div className="home-profile-image">
-                        <img src={user.image_url} alt="profile pic" className="home-prof-pic"/>
+                        <img src={user.image_url} alt="profile pic" className="home-prof-pic" />
                         <h3 className="home-user-name">{user.username}</h3>
                         <h4 className="home-user-email">{user.email}</h4>
                     </div>
@@ -69,25 +69,31 @@ export default function NewHomePage() {
                                 <Link to={'/tasks/month'}>
                                     <h4>Month</h4>
                                 </Link>
-                                <CreateTaskModal/>
+                                <CreateTaskModal />
                             </div>
                             <div className="nav-list-option">
                                 <h2>Lists</h2>
-                                {aloneLists.map(list => (
-                                    <Link to={`/lists/${list.id}`}>
-                                    <h4>{list.name} <EditListModal listId={list.id}/></h4>
-                                    </Link>
-                                ))}
-                                <CreateListModal/>
+                                <div className="listMapped">
+
+                                    {aloneLists.map(list => (
+                                        <Link to={`/lists/${list.id}`}>
+                                            <h4>{list.name} <EditListModal listId={list.id} /></h4>
+                                        </Link>
+                                    ))}
+                                    <CreateListModal />
+                                </div>
                             </div>
                             <div className="nav-group-list-option">
                                 <h4>Group Lists</h4>
+
+
                                 {groupLists.map(list => (
                                     <Link to={`/lists/${list.id}`}>
-                                    <h4>{list.name} <EditListModal listId={list.id}/></h4>
+                                        <h4>{list.name} <EditListModal listId={list.id} /></h4>
                                     </Link>
                                 ))}
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -98,13 +104,13 @@ export default function NewHomePage() {
                     </div>
                     <div className="center-box-outline">
                         {/* enter component here */}
-                        <IncompleteTasksPage/>
+                        <IncompleteTasksPage />
                     </div>
                 </div>
                 <div className="clock-side">
-                    <img src="https://cb2.scene7.com/is/image/CB2/CarloMrblBlkWllClckSHS19/$web_pdp_main_carousel_sm$/190410160814/carlo-black-marble-wall-clock.jpg" alt="clock" className="clock"/>
+                    <img src="https://cb2.scene7.com/is/image/CB2/CarloMrblBlkWllClckSHS19/$web_pdp_main_carousel_sm$/190410160814/carlo-black-marble-wall-clock.jpg" alt="clock" className="clock" />
                 </div>
-        </div>
+            </div>
         </div>
     )
 }
