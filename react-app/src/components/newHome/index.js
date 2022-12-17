@@ -9,7 +9,7 @@ export default function NewHomePage() {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user);
     const Tasks = Object.values(useSelector(state => state.tasks))
-    console.log(Tasks)
+    // console.log(Tasks)
 
     useEffect(() => {
         dispatch(getAllTasksThunk())

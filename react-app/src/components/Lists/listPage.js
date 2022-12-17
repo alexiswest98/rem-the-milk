@@ -16,7 +16,7 @@ const ListPage = () => {
   let flip = true
   const change = () => {
     flip = !flip
-    console.log('flip = ', flip)
+    // console.log('flip = ', flip)
   }
 
   function convert(str) {
@@ -50,7 +50,7 @@ const ListPage = () => {
       taskList=Object.values(tasks).filter(task => {
         return task.completed_by !== null})
     }
-    console.log(taskList)
+    // console.log(taskList)
   }, [dispatch, flip])
 
   const incomplete = Object.values(tasks).filter(task => {

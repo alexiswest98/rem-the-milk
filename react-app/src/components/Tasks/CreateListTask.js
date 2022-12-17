@@ -13,9 +13,9 @@ function CreateListTask() {
 
   const Tasks = Object.values(useSelector(state => state.tasks))
   
-    console.log('alltaks--------------------', Tasks)
+    // console.log('alltaks--------------------', Tasks)
     const dayTasks = Object.values(useSelector(state => state.specTask))
-    console.log('DAYTAKS--------------------', dayTasks)
+    // console.log('DAYTAKS--------------------', dayTasks)
 
     
   const [name, setName] = useState('')
@@ -47,9 +47,9 @@ function CreateListTask() {
       notes
     }
 
-    console.log("***************", payload.due)
+    // console.log("***************", payload.due)
 
-    console.log('We are in the CreateListTask Comp.. PAYLOAD:', payload)
+    // console.log('We are in the CreateListTask Comp.. PAYLOAD:', payload)
     await dispatch(createTaskThunk(payload))
     history.push(`/lists/${listId}`)
   }

@@ -14,8 +14,8 @@ export default function GetOneGroup() {
     let group = useSelector(state => state.groups[groupId]);
     let currUser = useSelector(state => state.session)
 
-    console.log('groupppp -----', group);
-    console.log('CurrentUser', currUser)
+    // console.log('groupppp -----', group);
+    // console.log('CurrentUser', currUser)
     useEffect(() => {
         dispatch(getGroupThunk(groupId));
     }, [groupId, dispatch]);
@@ -35,4 +35,3 @@ export default function GetOneGroup() {
         </div>
     )
 }
-

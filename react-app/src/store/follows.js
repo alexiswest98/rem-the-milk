@@ -60,7 +60,7 @@ export const unfollowThunk = (userId) => async (dispatch) => {
 
 export const getFollowsThunk = () => async (dispatch) => {
   const response = await fetch(`/api/follows/followers`);
-  console.log('data from getfollows thunk', response)
+  // console.log('data from getfollows thunk', response)
   if (response.ok) {
     const data = await response.json();
     dispatch(getFollowersAction(data));

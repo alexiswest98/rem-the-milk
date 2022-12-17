@@ -52,18 +52,18 @@ export const updateTaskAction = (task) => {
 /* ___________ T H U N K S   ___________ */
 
 export const completeTaskThunk = (task, task_id) => async (dispatch) => {
-    console.log('we made it to the thunk')
+    // console.log('we made it to the thunk')
     const response = await fetch(`/api/tasks/${task_id}`, {
         method: 'PUT',
         body: JSON.stringify(task)
     });
     if (response.ok) {
-        console.log('response = ', response)
+        // console.log('response = ', response)
         const editedTask = await response.json();
         dispatch(updateTaskAction(editedTask));
         return editedTask;
     }else{
-        console.log('unsuccessful response = ',response)
+        // console.log('unsuccessful response = ',response)
     };
 };
 
@@ -74,10 +74,10 @@ export const createTaskThunk = (task) => async (dispatch) => {
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify(task)
     });
-    console.log('response =', response)
+    // console.log('response =', response)
     if (response.ok) {
         const newTask = await response.json();
-        console.log("The new task in the Thunk", newTask)
+        // console.log("The new task in the Thunk", newTask)
         dispatch(createTaskAction(newTask))
         return newTask
     };
@@ -106,7 +106,7 @@ export const getAllListTasksThunk = (list_id) => async (dispatch) => {
 // Update a task
 export const editTaskThunk = (task) => async (dispatch) => {
     const {id, name, due, notes, list_id, user_id, completed_by} = task
-    console.log(task)
+    // console.log(task)
     const response = await fetch(`/api/tasks/${id}`, {
         method: 'PUT',
         headers: {'Content-Type':'application/json'},
@@ -119,12 +119,12 @@ export const editTaskThunk = (task) => async (dispatch) => {
             completed_by
         })
     });
-    console.log('res = ', response)
+    // console.log('res = ', response)
     if (response.ok) {
         const editedTask = await response.json();
         dispatch(updateTaskAction(editedTask));
-        console.log('Res.ok and dispatch hit.')
-        console.log('data = ',editedTask)
+        // console.log('Res.ok and dispatch hit.')
+        // console.log('data = ',editedTask)
         return editedTask;
     };
 };

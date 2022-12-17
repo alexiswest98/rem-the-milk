@@ -10,7 +10,7 @@ export default function GetFollowers() {
     const dispatch = useDispatch();
 
     const followers = Object.values(useSelector(state => state.follows));
-    console.log('followers ----', followers);
+    // console.log('followers ----', followers);
 
 
     useEffect(() => {

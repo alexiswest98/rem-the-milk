@@ -9,7 +9,7 @@ const history = useHistory()
 const {listId} = useParams()
 const {taskId} = useParams()
 const task = useSelector(state => state.tasks[taskId])
-console.log(task)
+// console.log(task)
 const user = useSelector(state => state.session.user)
 const [name, setName] = useState(task.name||'')
 const [due, setDue] = useState(convert(task.due) || '')
@@ -34,7 +34,7 @@ function convert(str) {
       Dec: "12"
     },
     date = str.split(" ");
-    console.log(date)
+    // console.log(date)
   return [date[3], mnths[date[2]], date[1]].join("-");
 }
 
@@ -66,7 +66,7 @@ const onsubmit = async (e) => {
     notes: notes
   }
 
-  console.log("payload", payload)
+  // console.log("payload", payload)
   const editTask = await dispatch(editTaskThunk(payload))
 
   history.push(`/lists/${listId}`)

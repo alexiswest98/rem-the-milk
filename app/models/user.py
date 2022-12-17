@@ -32,12 +32,15 @@ class User(db.Model, UserMixin):
         lazy="dynamic"
         )
 
+
     #Relationship to join table
-    many_groups = db.relationship(
+    groups = db.relationship(
         "Group",
         secondary=members,
-        back_populates="many_users"
-    )
+        primaryjoin=(members.c.user_id == id),
+        backref=db.backref("users", lazy="dynamic")
+        )
+
 
     @property
     def password(self):

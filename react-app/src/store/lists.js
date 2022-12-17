@@ -85,8 +85,8 @@ export const EditListThunk = (list) => async (dispatch) => {
     const data = await res.json()
     // console.log("IN THUNK ACTION!!!!", data)
     dispatch(UpdateListAction(data))
-    console.log('Res.ok and dispatch hit.')
-    console.log('data = ',data)
+    // console.log('Res.ok and dispatch hit.')
+    // console.log('data = ',data)
     return data
   }
 }
@@ -104,10 +104,10 @@ export const CreateListThunk = (list) => async (dispatch) => {
       completed
     })
   });
-  console.log('response =', res )
+  // console.log('response =', res )
   if (res.ok) {
     const data = await res.json()
-    console.log("Hit the thunk, data = ", data)
+    // console.log("Hit the thunk, data = ", data)
     dispatch(CreateListAction(data))
     return data
   }

@@ -10,7 +10,7 @@ export const getAllUsersAction = (users) => {
 export const getAllUsersThunk= (users) => async(dispatch) => {
     const response = await fetch('/api/users/');
     const users = await response.json();
-    console.log('users ------------------------------', users.users)
+    // console.log('users ------------------------------', users.users)
     dispatch(getAllUsersAction(users.users));
 }
 

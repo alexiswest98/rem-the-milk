@@ -10,7 +10,7 @@ const { listId } = useParams()
 const history = useHistory()
 const user = useSelector(state => state.session)
 const list = useSelector(state => state.lists[listId])
-console.log("*******************************", list)
+// console.log("*******************************", list)
 
 const [newName, setNewName] = useState(list.name || "");
 const [newDue, setNewDue] = useState(convert(list.due) || "");
@@ -37,7 +37,7 @@ function convert(str) {
       Dec: "12"
     },
     date = str.split(" ");
-    console.log(date)
+    // console.log(date)
   return [date[3], mnths[date[2]], date[1]].join("-");
 }
 
@@ -70,7 +70,7 @@ const onSubmit = async (e) => {
     completed: list.completed
   }
 
-  console.log("PAYLOADDDDDD", newList)
+  // console.log("PAYLOADDDDDD", newList)
   await dispatch(EditListThunk(newList))
 
   // dispatch(GetAllListsThunk())
