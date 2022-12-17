@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, NavLink, useParams, Redirect } from 'react-router-dom'
+import { DeleteListThunk } from "../../store/lists";
 import { getAllListTasksThunk } from "../../store/tasks";
 import { editTaskThunk } from "../../store/tasks";
 import { deleteTaskThunk } from "../../store/tasks";
-
+import CreateATaskModal from "../ListTasks";
 
 const ListPage = () => {
   const history = useHistory()
@@ -13,6 +14,12 @@ const ListPage = () => {
   const lists = useSelector(state => state.lists)
   const tasks = useSelector(state => state.tasks)
   const {listId} = useParams()
+
+
+  const deleteList = (listId) => {
+    dispatch(DeleteListThunk(listId))
+    history.push('/home')
+}
 
 
   function convert(str) {
@@ -43,6 +50,8 @@ const ListPage = () => {
 
   const incomplete = Object.values(tasks).filter(task => {
     return task.completed_by == null})
+  const completed = Object.values(tasks).filter(task => {
+    return task.completed_by !== null})
   const complete = async(task) => {
     const payload = {
       id: task.id,
@@ -64,19 +73,29 @@ const ListPage = () => {
   // console.log("component tasks = ",tasks)
   return(
     <div>
+      <h2>Tasks In Progress</h2>
         {incomplete.map(task=>(
             <div key={task.id}>
+              <p>___________________</p>
       <p>{task.name}</p>
       <div>{task.notes}
         <button onClick={() => complete(task)}>X</button> Complete
-        <button onClick={()=> deleteTask(task.id)}>delete</button>
-        <button onClick={()=> history.push(`/lists/${listId}/Tasks/edit/${task.id}`)}>edit</button>
+        <button onClick={()=> deleteTask(task.id)}>🗑</button>
+        <button onClick={()=> history.push(`/lists/${listId}/Tasks/edit/${task.id}`)}>✎</button>
           </div>
       </div>
         ))}
-      <button onClick={()=> history.push('/profile')}> back </button>
-      <button onClick={() => history.push(`/Tasks/new/${listId}`)}> New Task</button>
-      <button onClick={() => history.push(`/tasks/completed`)}> Show Complete</button>
+        <CreateATaskModal/>
+        <p>_________________________________________________</p>
+        <h2>Completed Tasks</h2>
+        {completed.map(task=> (
+          <div>
+            <p>{task.name}</p>
+            <p>___________________</p>
+          </div>
+        ))}
+      <button onClick={()=> deleteList(listId)}> delete List </button>
+      {/* <button onClick={() => history.push(`/tasks/completed`)}> Show Complete</button> */}
     </div>
   )
 }

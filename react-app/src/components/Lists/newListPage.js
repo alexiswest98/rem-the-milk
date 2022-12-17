@@ -4,9 +4,11 @@ import { useHistory, NavLink, Link } from 'react-router-dom';
 import { useParams } from "react-router-dom";
 import { getAllListTasksThunk, getAllTasksThunk } from "../../store/tasks";
 import { GetAllListsThunk } from "../../store/lists";
-import IncompleteTasksPage from "../Tasks/incompleteTasks";
+import IncompleteTasksPage from "../ListTasks/incompleteTasks";
 import ListPage from "./listPage";
-// import './index.css'
+import CreateListModal from "./index";
+import EditListModal from "../EditList";
+import CreateTaskModal from "../simpTasks";
 
 export default function NewListPage() {
     const dispatch = useDispatch()
@@ -19,6 +21,11 @@ export default function NewListPage() {
     const aloneLists = Lists.filter(list => list.group_id === null)
     const groupLists = Lists.filter(list => list.group_id !== null)
     // console.log("********", groupLists)
+
+
+    const createList = () => {
+        console.log('clicked')
+    }
 
     const incomOnClick = () => {
         history.push('/tasks/incomplete')
@@ -51,7 +58,7 @@ export default function NewListPage() {
                         <h4>Inbox</h4>
                         <div className="outer-nav-outline">
                             <div className="nav-task-option">
-                                <Link to={'/tasks/all'}>
+                                <Link to={'/home'}>
                                     <h4>All Tasks</h4>
                                 </Link>
                                 <Link to={'/tasks/today'}>
@@ -63,19 +70,23 @@ export default function NewListPage() {
                                 <Link to={'/tasks/month'}>
                                     <h4>Month</h4>
                                 </Link>
+                                <CreateTaskModal/>
                             </div>
                             <div className="nav-list-option">
                                 <h2>Lists</h2>
                                 {aloneLists.map(list => (
                                     <Link to={`/lists/${list.id}`}>
-                                    <h4>{list.name}</h4>
+                                    <h4>{list.name} <EditListModal listId={list.id}/></h4>
                                     </Link>
                                 ))}
+                                <CreateListModal/>
                             </div>
                             <div className="nav-group-list-option">
                                 <h4>Group Lists</h4>
                                 {groupLists.map(list => (
-                                    <h4>{list.name}</h4>
+                                    <Link to={`/lists/${list.id}`}>
+                                    <h4>{list.name} <EditListModal listId={list.id}/></h4>
+                                    </Link>
                                 ))}
                             </div>
                         </div>

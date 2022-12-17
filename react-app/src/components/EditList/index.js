@@ -2,29 +2,30 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory} from 'react-router-dom';
 import { Modal } from '../../context/Modal';
-import EditListTask from './updateTasks';
-import { getAllTasksThunk } from '../../store/tasks';
-function EditTaskModal({taskId}) {
-  const dispatch = useDispatch();
-//   const history = useHistory();
+import EditList from './EditListModal';
+
+function EditListModal () {const dispatch = useDispatch();
+  const history = useHistory();
   const [showModal, setShowModal] = useState(false);
+
 
   const onCloseAction = () => {
     setShowModal(false)
-    dispatch(getAllTasksThunk())
+    history.push("/home")
   }
 
   return (
     <>
       <button
+      className='editListButton'
       onClick={() => setShowModal(true)}>✎</button>
       {showModal && (
         <Modal onClose={() => onCloseAction()}>
-          <EditListTask setShowModal={setShowModal} taskId={taskId}/>
+          <EditList setShowModal={setShowModal}/>
         </Modal>
       )}
     </>
   );
 }
 
-export default EditTaskModal;
+export default EditListModal;

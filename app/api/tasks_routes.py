@@ -107,7 +107,6 @@ def update_task(task_id):
   task = Task.query.get(task_id)
   form['csrf_token'].data = request.cookies['csrf_token']
   data = form.data
-  print('**********************', data)
   if task and form.validate_on_submit():
     task.name = data['name']
     task.user_id = data['user_id']
