@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from 'react-router-dom'
 import { EditListThunk } from "../../store/lists";
-import { GetAllListsThunk } from "../../store/lists";
+import { EditGroupListThunk } from "../../store/lists";
 
 function EditList({setShowModal}) {
   const dispatch = useDispatch()
@@ -15,7 +15,7 @@ function EditList({setShowModal}) {
   const [newNotes, setNewNotes] = useState(list.notes || "");
   const [validationErrors, setValidationErrors] = useState([]);
   const [hasSubmitted, setHasSubmitted] = useState(false);
-
+  console.log('list',list)
 
 
 
@@ -65,8 +65,12 @@ function EditList({setShowModal}) {
       group_id: list.group_id,
       completed: list.completed
     }
-    console.log('newList = ', newList)
-    await dispatch(EditListThunk(newList))
+    // console.log('newList = ', )
+    if(newList.group_id !== null){
+      await dispatch(EditListThunk(newList))
+    }else{
+      await dispatch(EditGroupListThunk(newList))
+    }
     setShowModal(false)
     history.push(`/lists/${listId}`)
 
