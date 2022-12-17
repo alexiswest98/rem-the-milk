@@ -95,7 +95,9 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'image_url': self.image_url
+            'image_url': self.image_url,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at
         }
 
 
@@ -156,6 +158,7 @@ class List(db.Model):
             'name':self.name,
             'due':self.due,
             'notes':self.notes,
+            'group_id': self.group_id,
             'completed':self.completed,
             'created_at':self.created_at,
             'updated_at':self.updated_at
@@ -197,4 +200,3 @@ class Task(db.Model):
             'updated_at': self.updated_at
             # 'task_to_list': self.task_to_list
         }
-
