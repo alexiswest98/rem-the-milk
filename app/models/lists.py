@@ -27,6 +27,7 @@ class List(db.Model):
             'name':self.name,
             'due':self.due,
             'notes':self.notes,
+            'group_id':self.group_id,
             'completed':self.completed,
             'created_at':self.created_at,
             'updated_at':self.updated_at

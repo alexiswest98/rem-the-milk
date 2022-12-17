@@ -88,6 +88,7 @@
 .home-profile-nav {
     height: 66%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -109,4 +110,42 @@
     width: 90%;
     height: 90%;
     border-radius: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.nav-task-option {
+    width: 100%;
+    height: 33%;
+    border: 2px grey solid;
+    border-radius: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-list-option {
+    width: 100%;
+    height: 33%;
+    border: 2px grey solid;
+    border-radius: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-group-list-option {
+    width: 100%;
+    height: 33%;
+    border: 2px grey solid;
+    border-radius: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
