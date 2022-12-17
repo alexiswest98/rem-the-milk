@@ -13,29 +13,29 @@ import AddMemberModal from "../members";
 import CreateGroupListModal from "../Groups";
 // import Members from "../members/members";
 export default function GetOneGroup() {
-    const history = useHistory()
+    // const history = useHistory()
     const dispatch = useDispatch();
     const { groupId } = useParams();
     // Listen for change of state and grab groups from the slice
     const group = useSelector(state => state.groups[groupId]);
-    const currUser = useSelector(state => state.session)
+    // const currUser = useSelector(state => state.session)
     const lists = useSelector(state => state.lists)
     const members = Object.values(useSelector(state => state.members))
     const groupLists = Object.values(lists).filter(list => {
        return list.group_id == groupId})
-    console.log('groupLists', groupLists)
+    // console.log('groupLists', groupLists)
 
 
 
     const remove = async(id) => {
         dispatch(RemoveMemberThunk(groupId, id))
-        console.log('you hit the remove')
+        // console.log('you hit the remove')
       }
 
 
 
     useEffect(() => {
-        console.log('hit the use effect')
+        // console.log('hit the use effect')
         dispatch(getGroupsThunk());
         dispatch(GetAllListsThunk(groupId));
         dispatch(GetMembersThunk(groupId))

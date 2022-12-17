@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, NavLink, Link } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { getAllTasksThunk } from "../../store/tasks";
 import { GetAllListsThunk } from "../../store/lists";
 // import IncompleteTasksPage from "../Tasks/incompleteTasks";
@@ -13,20 +13,20 @@ export default function MonthTaskPage() {
     const dispatch = useDispatch()
     const history = useHistory()
     const user = useSelector(state => state.session.user);
-    const Tasks = Object.values(useSelector(state => state.tasks))
+    // const Tasks = Object.values(useSelector(state => state.tasks))
     const Lists = Object.values(useSelector(state => state.lists))
 
     const aloneLists = Lists.filter(list => list.group_id == null)
     const groupLists = Lists.filter(list => list.group_id !== null)
     // console.log("********", groupLists)
 
-    const incomOnClick = () => {
-        history.push('/tasks/incomplete')
-    }
+    // const incomOnClick = () => {
+    //     history.push('/tasks/incomplete')
+    // }
 
-    const complOnClick = () => {
-        history.push('/tasks/completed')
-    }
+    // const complOnClick = () => {
+    //     history.push('/tasks/completed')
+    // }
 
     useEffect(() => {
         dispatch(getAllTasksThunk())

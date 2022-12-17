@@ -24,7 +24,7 @@ function CreateList({ setShowModal }) {
   }, [name, due, notes]);
 
   const user_id = user.id
-  console.log("user id = ", user_id)
+  // console.log("user id = ", user_id)
 
   const onsubmit = async (e) => {
     e.preventDefault();
