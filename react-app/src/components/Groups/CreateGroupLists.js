@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from 'react-router-dom'
-import { CreateListThunk } from "../../store/lists";
+import { CreateGroupListThunk } from "../../store/lists";
 
-function CreateGroupList() {
+function CreateGroupList({setShowModal, groupId}) {
 const dispatch = useDispatch()
-const { groupId } = useParams()
+// const { groupId } = useParams()
+console.log(groupId)
 const history = useHistory()
 const user = useSelector(state => state.session.user)
-const group = useSelector(state => state.groups[groupId])
+const group = useSelector(state => state.groups[Object.values(groupId)[0]])
 console.log('group = ', group)
 const [name, setName] = useState('')
 const [due, setDue] = useState('')
@@ -37,13 +38,14 @@ if (!validationErrors.length) {
     user_id: user_id,
     due: due,
     notes: notes,
-    group_id: groupId,
+    group_id: Object.values(groupId)[0],
     completed: false
   }
 
   console.log(payload)
-  const newSpot = await dispatch(CreateListThunk(payload))
-  history.push(`/groups/${groupId}`)
+  const newSpot = await dispatch(CreateGroupListThunk(payload))
+  setShowModal(false)
+  history.push(`/groups/${Object.values(groupId)[0]}`)
 }
 }
 

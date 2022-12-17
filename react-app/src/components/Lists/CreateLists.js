@@ -9,7 +9,7 @@ const history = useHistory()
 const user = useSelector(state => state.session.user)
 const [name, setName] = useState('')
 const [due, setDue] = useState('')
-const [notes, setNotes] = useState(null)
+const [notes, setNotes] = useState('')
 const [validationErrors, setValidationErrors] = useState([])
 
 
@@ -34,8 +34,8 @@ if (!validationErrors.length) {
     user_id: user_id,
     due: due,
     notes: notes,
+    completed: false,
     group_id: null,
-    completed: false
   }
 
   console.log(payload)

@@ -83,7 +83,9 @@ export default function NewListPage() {
                             <div className="nav-group-list-option">
                                 <h4>Group Lists</h4>
                                 {groupLists.map(list => (
-                                    <h4>{list.name}</h4>
+                                    <Link to={`/lists/${list.id}`}>
+                                    <h4>{list.name} <EditListModal listId={list.id}/></h4>
+                                    </Link>
                                 ))}
                             </div>
                         </div>

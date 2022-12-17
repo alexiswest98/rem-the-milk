@@ -92,7 +92,7 @@ export const EditListThunk = (list) => async (dispatch) => {
 }
 // Create List
 export const CreateListThunk = (list) => async (dispatch) => {
-  const {name, due, notes, user_id, completed} = list
+  const {name, due, notes, user_id, completed, group_id} = list
   const res = await fetch(`/api/lists/new`, {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
@@ -101,7 +101,29 @@ export const CreateListThunk = (list) => async (dispatch) => {
       due,
       notes,
       user_id,
-      completed
+      completed,
+    })
+  });
+  console.log('response =', res )
+  if (res.ok) {
+    const data = await res.json()
+    console.log("Hit the thunk, data = ", data)
+    dispatch(CreateListAction(data))
+    return data
+  }
+}
+export const CreateGroupListThunk = (list) => async (dispatch) => {
+  const {name, due, notes, user_id, completed, group_id} = list
+  const res = await fetch(`/api/lists/new`, {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({
+      name,
+      due,
+      notes,
+      user_id,
+      completed,
+      group_id
     })
   });
   console.log('response =', res )

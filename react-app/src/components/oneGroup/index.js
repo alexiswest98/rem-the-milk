@@ -10,6 +10,7 @@ import { DeleteListThunk } from "../../store/lists";
 import { GetMembersThunk } from "../../store/members";
 import { RemoveMemberThunk } from "../../store/members";
 import AddMemberModal from "../members";
+import CreateGroupListModal from "../Groups";
 // import Members from "../members/members";
 export default function GetOneGroup() {
     const history = useHistory()
@@ -20,13 +21,9 @@ export default function GetOneGroup() {
     const currUser = useSelector(state => state.session)
     const lists = useSelector(state => state.lists)
     const members = Object.values(useSelector(state => state.members))
-
-    console.log('groupId = ', groupId)
     const groupLists = Object.values(lists).filter(list => {
-        return list.group_id = groupId})
-        console.log(groupLists)
-    console.log('groupppp -----', group);
-    console.log('CurrentUser', currUser)
+       return list.group_id == groupId})
+    console.log('groupLists', groupLists)
 
 
 
@@ -60,7 +57,7 @@ export default function GetOneGroup() {
                         <AddMemberModal/>
                         </div>
                     </div>
-                    {Object.values(lists).map(list=> (
+                    {Object.values(groupLists).map(list=> (
                         <div>
                             <p>_________________________________</p>
                             <p>{list.name}       due: {list.due}</p>
@@ -69,7 +66,7 @@ export default function GetOneGroup() {
 
                         </div>
                     ))}
-                    <button onClick={()=> history.push(`/groups/${group.id}/list`)}>Create New List</button>
+                    <CreateGroupListModal groupId={groupId}/>
                     <Link to='/dashboard'>
                     <button onClick={()=> {dispatch(deleteGroupThunk(groupId))}}>Delete your group</button>
                     </Link>
