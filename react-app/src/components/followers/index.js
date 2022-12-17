@@ -6,17 +6,17 @@ import { getFollowsThunk } from "../../store/follows";
 import { getAllUsersThunk } from "../../store/users";
 import {getFollowingThunk} from "../../store/follows"
 
-//?? displays following not followers 
+//?? displays following not followers
 export default function GetFollowers() {
     const dispatch = useDispatch();
     const len = Object.values(useSelector(state => state.follows)).length
-    const followerz = Object.values(useSelector(state => state.follows));
+    const follower = Object.values(useSelector(state => state.follows))
+    const followerz = follower.slice(0, follower.length-1)
     // console.log('followers ----', followers);
 
 
     useEffect(() => {
         dispatch(getFollowsThunk())
-        dispatch(getFollowingThunk())
         dispatch(getAllUsersThunk())
     }, [dispatch])
 
@@ -25,9 +25,9 @@ export default function GetFollowers() {
     if(!followers) return null;
 
     return (
-        <div className="followers-component">
+        // <div className="followers-component">
             <div className="follower-details">
-            <h1 className="followers-title">FOLLOWING</h1>
+            <h1 className="followers-title">Following</h1>
             <ul className="followers-list">
                 {Object.values(followerz).map(follower => (
                 <li className="Followers-Details">
@@ -36,13 +36,13 @@ export default function GetFollowers() {
                             <img className="followerImg" src={follower.image_url} />
                         {/* </div> */}
                         <div className="outer-name-div-shell">
-                            <h4>{follower.username}</h4>
+                            <h4 className="followerName">{follower.username}</h4>
                         </div>
                     {/* </div> */}
                 </li>
                 ))}
                 </ul>
             </div>
-        </div>
+        // </div>
     )
 }
