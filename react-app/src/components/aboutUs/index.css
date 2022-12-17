@@ -1,124 +1,45 @@
 .bigAboutUsDiv {
     display: flex;
-}
-
-
-.blueSideAboutUs {
-    border-top: 1px solid white;
-    height: 100vh;
-    background-color: white;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: -5%;
-}
-
-.whiteSideAboutUs {
-    width: 50%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    height: 90%;
 }
 
 .user1BlueSide {
-    margin-left: 35%;
-    /* width: 300px;
-    height: 400px; */
-    width: 30%;
-    height: 40%;
+    width: 25%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 2px 2px 30px rgb(27,96,191);
-    margin-top: 2%;
 }
 
-.user2BlueSide {
-    margin-left: 35%;
-    width: 30%;
-    height: 40%;
-    /* width: 300px;
-    height: 400px; */
+.inside-div-about-me {
+    width: 93%;
+    height: 60%;
+    box-shadow: 2px 2px 30px rgb(27,96,191);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 2%;
-    box-shadow: 2px 2px 30px rgb(27,96,191);
 }
 
-.user3BlueSide {
-    margin-right: 35%;
-    /* width: 300px;
-    height: 400px; */
-    width: 30%;
-    height: 40%;
-    margin-top: 2%;
+.prof-image-abt {
+    width: 100%;
+    height: auto;
+}
+
+.linkedin, .githubFooter {
+    color: rgb(9, 75, 168);
+}
+
+.connect-box {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 2px 2px 30px rgb(27,96,191);
 }
 
-.user4BlueSide {
-    width: 30%;
-    height: 40%;
-    margin-right: 35%;
-    margin-top: 2%;
-    /* width: 300px;
-    height: 400px; */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 2px 2px 30px rgb(27,96,191);
-}
-
-.user1BlueSide>img {
-    margin-top: 3%;
-    max-width: 350px;
-    max-height: 400px;
-
-}
-
-.user2BlueSide>img {
-    margin-top: 3%;
-    max-width: 300px;
-    max-height: 400px;
-
-}
-
-.user3BlueSide>img {
-    margin-top: 3%;
-    max-width: 320px;
-    max-height: 400px;
-
-}
-
-.user4BlueSide>img {
-    margin-top: 3%;
-    max-width: 312px;
-    max-height: 400px;
-
-}
-
-.user1BlueSide>a{
-    margin-top: 5%;
-    color: rgb(27,96,191);
-}
-.user2BlueSide>a{
-    margin-top: 5%;
-    color: rgb(27,96,191);
-}
-.user3BlueSide>a{
-    margin-top: 5%;
-    color: rgb(27,96,191);
-}
-.user4BlueSide>a{
-    margin-top: 5%;
-    color: rgb(27,96,191);
-}
+/* .links {
+    
+} */
