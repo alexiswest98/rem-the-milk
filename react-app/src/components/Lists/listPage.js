@@ -6,6 +6,7 @@ import { getAllListTasksThunk } from "../../store/tasks";
 import { editTaskThunk } from "../../store/tasks";
 import { deleteTaskThunk } from "../../store/tasks";
 import CreateATaskModal from "../ListTasks";
+import EditTaskModal from "../UpdateTasks";
 
 const ListPage = () => {
   const history = useHistory()
@@ -81,7 +82,9 @@ const ListPage = () => {
       <div>{task.notes}
         <button onClick={() => complete(task)}>X</button> Complete
         <button onClick={()=> deleteTask(task.id)}>🗑</button>
-        <button onClick={()=> history.push(`/lists/${listId}/Tasks/edit/${task.id}`)}>✎</button>
+        {/* <button onClick={()=> history.push(`/lists/${listId}/Tasks/edit/${task.id}`)}>✎</button>
+         */}
+         <EditTaskModal taskId={task.id}/>
           </div>
       </div>
         ))}

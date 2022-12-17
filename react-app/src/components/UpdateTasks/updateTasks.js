@@ -8,7 +8,7 @@ const dispatch = useDispatch()
 const history = useHistory()
 const {listId} = useParams()
 const task = useSelector(state => state.tasks[taskId])
-console.log(task)
+console.log('taskId = ', taskId)
 const user = useSelector(state => state.session.user)
 const [name, setName] = useState(task.name||'')
 const [due, setDue] = useState(convert(task.due) || '')
@@ -68,7 +68,7 @@ const onsubmit = async (e) => {
   console.log("payload", payload)
   const editTask = await dispatch(editTaskThunk(payload))
   setShowModal(false)
-  history.push(`/home`)
+  history.push(`/lists/${listId}`)
 
 }
 

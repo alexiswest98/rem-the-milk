@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, NavLink, Link } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { getAllTasksThunk } from "../../store/tasks";
 import { GetAllListsThunk, DeleteListThunk } from "../../store/lists";
 import CompleteTasksPage from "./completedTasks";
 import './index.css'
-import { deleteGroupThunk } from "../../store/groups";
 import CreateListModal from "../Lists";
 import EditListModal from "../EditList";
 import CreateTaskModal from "../simpTasks";
@@ -15,7 +14,7 @@ export default function CompTaskPage() {
     const dispatch = useDispatch()
     const history = useHistory()
     const user = useSelector(state => state.session.user);
-    const Tasks = Object.values(useSelector(state => state.tasks))
+    // const Tasks = Object.values(useSelector(state => state.tasks))
     const Lists = Object.values(useSelector(state => state.lists))
 
     const aloneLists = Lists.filter(list => list.group_id == null)
@@ -74,6 +73,8 @@ export default function CompTaskPage() {
                             </div>
                             <div className="nav-list-option">
                                 <h2>Lists</h2>
+                                <div className="listMapped">
+
                                 {aloneLists.map(list => (
                                     <Link to={`/lists/${list.id}`}>
                                     <h4>{list.name} <EditListModal listId={list.id}/></h4>
@@ -81,11 +82,12 @@ export default function CompTaskPage() {
                                 ))}
                                 <CreateListModal/>
                             </div>
+                                </div>
                             <div className="nav-group-list-option">
                                 <h4>Group Lists</h4>
                                 {groupLists.map(list => (
                                     <Link to={`/lists/${list.id}`}>
-                                    <h4>{list.name}</h4>
+                                    <h4>{list.name} <EditListModal listId={list.id}/></h4>
                                     </Link>
                                 ))}
                             </div>

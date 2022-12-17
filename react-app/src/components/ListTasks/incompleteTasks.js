@@ -41,10 +41,11 @@ function IncompleteTasksPage() {
       due: convert(task.due),
       user_id: +user.id,
       completed_by: +user.id,
-      list_id: task.list_id,
       notes: task.notes
     }
     dispatch(editTaskThunk(payload))
+    // console.log(`You tried to complete ${task.name} with user ${user.id}`)
+    // console.log("task ID =", task.id)
   }
 
 
@@ -63,7 +64,7 @@ const deleteTask = (task_id) => {
     <div>
       <h1>Incompleted Tasks</h1>
          {completed.map(task => (
-          <div key={task.id}>
+          <div key={task.id} className="completedTaskDiv">
             <p>{task.name}</p>
             <p>{task.notes}</p>
             <p>{task.due}</p>
