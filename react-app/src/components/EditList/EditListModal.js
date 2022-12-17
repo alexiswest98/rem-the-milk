@@ -14,6 +14,9 @@ function EditList({ setShowModal }) {
   const [newName, setNewName] = useState(list.name || "");
   const [newDue, setNewDue] = useState(convert(list.due) || "");
   const [newNotes, setNewNotes] = useState(list.notes || "");
+  const currentDate = new Date()
+  const finalDate = Date.parse(currentDate)
+
   const [validationErrors, setValidationErrors] = useState([]);
   // const [hasSubmitted, setHasSubmitted] = useState(false);
 
@@ -47,6 +50,7 @@ function EditList({ setShowModal }) {
     const errors = []
     if (!newDue) errors.push("Due Date is required");
     if (newName.length < 4 ) errors.push('Provide a list name with at least 4 characters');
+    if (Date.parse(newDue) < finalDate) validationErrors.push('Due date must be after today')
     setValidationErrors(errors);
   }, [newName, newDue, newNotes]);
 

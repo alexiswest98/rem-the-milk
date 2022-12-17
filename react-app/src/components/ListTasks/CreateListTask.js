@@ -9,8 +9,8 @@ function CreateListTask({ setShowModal }) {
   const history = useHistory()
   const user = useSelector(state => state.session.user)
   const userId = +user.id
-
-
+  const currentDate = new Date()
+  const finalDate = Date.parse(currentDate)
   // const Tasks = Object.values(useSelector(state => state.tasks))
 
   // console.log('alltaks--------------------', Tasks)
@@ -29,6 +29,7 @@ function CreateListTask({ setShowModal }) {
     const errors = []
     if (!name) errors.push("Name is required");
     if (!due) errors.push("Due Date is required");
+    if (Date.parse(due) < finalDate) validationErrors.push('Due date must be after today');
     setValidationErrors(errors);
   }, [name, due, notes]);
 

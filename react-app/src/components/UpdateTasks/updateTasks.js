@@ -7,6 +7,8 @@ function EditListTask({ setShowModal, taskId }) {
   const dispatch = useDispatch()
   const history = useHistory()
   const { listId } = useParams()
+  const currentDate = new Date()
+  const finalDate = Date.parse(currentDate)
   const task = useSelector(state => state.tasks[taskId])
   // console.log('taskId = ', taskId)
   const user = useSelector(state => state.session.user)
@@ -44,6 +46,7 @@ function EditListTask({ setShowModal, taskId }) {
   useEffect(() => {
     const errors = []
     if (name.length <4) errors.push("Name needs 4 or more characters");
+    if (Date.parse(due) < finalDate) validationErrors.push('Due date must be after today');
     if (!due) errors.push("Due Date is required");
     setValidationErrors(errors);
   }, [name, due, notes]);

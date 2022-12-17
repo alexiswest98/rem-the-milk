@@ -12,20 +12,22 @@ function CreateList({ setShowModal }) {
   const [due, setDue] = useState('')
   const [notes, setNotes] = useState('')
   const [validationErrors, setValidationErrors] = useState([])
-
+  const currentDate = new Date()
+  const finalDate = Date.parse(currentDate)
 
   useEffect(() => {
     const validationErrors = []
     if (!name) validationErrors.push("Name is required");
     if (name.length > 50) validationErrors.push('Name must not longer than 50 characters')
     if (!due) validationErrors.push("Due Date is required");
+    if (Date.parse(due) < finalDate) validationErrors.push('Due date must be after today')
     setValidationErrors(validationErrors);
 
   }, [name, due, notes]);
 
   const user_id = user.id
   // console.log("user id = ", user_id)
-
+  console.log('Due in the form', Date.parse(due))
   const onsubmit = async (e) => {
     e.preventDefault();
 

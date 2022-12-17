@@ -9,7 +9,8 @@ function CreateTask({ setShowModal }) {
   const history = useHistory()
   const user = useSelector(state => state.session.user)
   const userId = +user.id
-
+  const currentDate = new Date()
+  const finalDate = Date.parse(currentDate)
 
   const Tasks = Object.values(useSelector(state => state.tasks))
 
@@ -28,6 +29,7 @@ function CreateTask({ setShowModal }) {
   useEffect(() => {
     const errors = []
     if (name.length < 4) errors.push("Provide a name with at least 4 characters");
+    if (Date.parse(due) < finalDate) validationErrors.push('Due date must be after today');
     if (!due) errors.push("Due Date is required");
     setValidationErrors(errors);
   }, [name, due, notes]);
