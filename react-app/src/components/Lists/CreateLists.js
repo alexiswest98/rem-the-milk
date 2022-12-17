@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom'
 import { CreateListThunk } from "../../store/lists";
 
-function CreateList() {
+function CreateList({setShowModal}) {
 const dispatch = useDispatch()
 const history = useHistory()
 const user = useSelector(state => state.session.user)
@@ -37,10 +37,11 @@ if (!validationErrors.length) {
     group_id: null,
     completed: false
   }
-  
+
   console.log(payload)
   const newSpot = await dispatch(CreateListThunk(payload))
-  history.push(`/profile`)
+  setShowModal(false)
+  history.push(`/home`)
 }
 }
 
