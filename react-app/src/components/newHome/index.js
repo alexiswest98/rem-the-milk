@@ -15,7 +15,7 @@ export default function NewHomePage() {
     const dispatch = useDispatch()
     const history = useHistory()
     const user = useSelector(state => state.session.user);
-    const Tasks = Object.values(useSelector(state => state.tasks))
+    // const Tasks = Object.values(useSelector(state => state.tasks))
     const Lists = Object.values(useSelector(state => state.lists))
 
     const aloneLists = Lists.filter(list => list.group_id == null)
