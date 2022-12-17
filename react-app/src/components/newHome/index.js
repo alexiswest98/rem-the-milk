@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, NavLink, Link } from 'react-router-dom';
 import { getAllTasksThunk } from "../../store/tasks";
-import { GetAllListsThunk } from "../../store/lists";
+import { GetAllListsThunk, DeleteListThunk } from "../../store/lists";
 import IncompleteTasksPage from "../Tasks/incompleteTasks";
 import './index.css'
+import { deleteGroupThunk } from "../../store/groups";
 
 export default function NewHomePage() {
     const dispatch = useDispatch()
