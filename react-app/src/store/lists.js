@@ -80,6 +80,7 @@ export const EditListThunk = (list) => async (dispatch) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(list)
   });
+  console.log('edit hit, res = ', res)
   if (res.ok) {
     const data = await res.json()
     // console.log("IN THUNK ACTION!!!!", data)

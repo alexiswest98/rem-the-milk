@@ -5,7 +5,7 @@ import { Modal } from '../../context/Modal';
 // import UserDetails from './details';
 import EditList from './EditListModal';
 import { GetAllListsThunk } from '../../store/lists';
-function EditListModal (listId) {
+function EditListModal () {
   const dispatch = useDispatch();
   const history = useHistory();
   const [showModal, setShowModal] = useState(false);
@@ -23,7 +23,7 @@ function EditListModal (listId) {
       onClick={() => setShowModal(true)}>✎</button>
       {showModal && (
         <Modal onClose={() => onCloseAction()}>
-          <EditList setShowModal={setShowModal} listId={listId}/>
+          <EditList setShowModal={setShowModal}/>
         </Modal>
       )}
     </>

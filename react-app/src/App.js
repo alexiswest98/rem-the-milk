@@ -15,7 +15,7 @@ import GetGroups from './components/allGroups';
 import GetFollowers from './components/followers';
 import GetOneGroup from './components/oneGroup';
 import CreateAGroup from './components/createGroup';
-import UpdateList from './components/Lists/updateList';
+// import UpdateList from './components/Lists/updateList';
 import EditListTask from './components/UpdateTasks/updateTasks';
 import Home from './components/Home';
 import CreateATaskModal from './components/Tasks';
@@ -59,9 +59,9 @@ function App() {
         <Route path='/tasks/incomplete' exact={true}>
           <IncompleteTasksPage />
         </Route>
-        <Route path='/list/edit/:listId' exact={true}>
+        {/* <Route path='/list/edit/:listId' exact={true}>
           <UpdateList />
-        </Route>
+        </Route> */}
         <Route path='/lists/:listId/Tasks/edit/:taskId' exact={true}>
           <EditListTask />
         </Route>
