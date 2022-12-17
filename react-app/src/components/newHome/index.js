@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, NavLink, Link } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { getAllTasksThunk } from "../../store/tasks";
-import { GetAllListsThunk, DeleteListThunk } from "../../store/lists";
+import { GetAllListsThunk } from "../../store/lists";
 import IncompleteTasksPage from "../ListTasks/incompleteTasks";
 import './index.css'
-import { deleteGroupThunk } from "../../store/groups";
 import CreateListModal from "../Lists";
 import EditListModal from "../EditList";
 import CreateTaskModal from "../simpTasks";
-import CreateATaskModal from "../ListTasks";
+
 
 
 export default function NewHomePage() {
