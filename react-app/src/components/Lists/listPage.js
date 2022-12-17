@@ -50,6 +50,8 @@ const ListPage = () => {
 
   const incomplete = Object.values(tasks).filter(task => {
     return task.completed_by == null})
+  const completed = Object.values(tasks).filter(task => {
+    return task.completed_by !== null})
   const complete = async(task) => {
     const payload = {
       id: task.id,
@@ -71,8 +73,10 @@ const ListPage = () => {
   // console.log("component tasks = ",tasks)
   return(
     <div>
+      <h2>Tasks In Progress</h2>
         {incomplete.map(task=>(
             <div key={task.id}>
+              <p>___________________</p>
       <p>{task.name}</p>
       <div>{task.notes}
         <button onClick={() => complete(task)}>X</button> Complete
@@ -80,6 +84,14 @@ const ListPage = () => {
         <button onClick={()=> history.push(`/lists/${listId}/Tasks/edit/${task.id}`)}>edit</button>
           </div>
       </div>
+        ))}
+        <p>_________________________________________________</p>
+        <h2>Completed Tasks</h2>
+        {completed.map(task=> (
+          <div>
+            <p>{task.name}</p>
+            <p>___________________</p>
+          </div>
         ))}
       <button onClick={()=> deleteList(listId)}> delete </button>
       <button onClick={() => history.push(`/Tasks/new/${listId}`)}> New Task</button>
