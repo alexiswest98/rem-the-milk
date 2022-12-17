@@ -29,7 +29,7 @@ function CreateTask({ setShowModal }) {
   useEffect(() => {
     const errors = []
     if (name.length < 4) errors.push("Provide a name with at least 4 characters");
-    if (Date.parse(due) < finalDate) validationErrors.push('Due date must be after today');
+    if (Date.parse(due) < finalDate) errors.push('Due date must be after today');
     if (!due) errors.push("Due Date is required");
     setValidationErrors(errors);
   }, [name, due, notes]);
