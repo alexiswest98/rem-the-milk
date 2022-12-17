@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, NavLink, Link } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 import { getAllTasksThunk } from "../../store/tasks";
 import { GetAllListsThunk } from "../../store/lists";
 import IncompleteTasksPage from "../Tasks/incompleteTasks";
-import './index.css'
+import ListPage from "./listPage";
+// import './index.css'
 
-export default function NewHomePage() {
+export default function NewListPage() {
     const dispatch = useDispatch()
     const history = useHistory()
     const user = useSelector(state => state.session.user);
     const Tasks = Object.values(useSelector(state => state.tasks))
     const Lists = Object.values(useSelector(state => state.lists))
+    const {listId} = useParams()
 
     const aloneLists = Lists.filter(list => list.group_id === null)
     const groupLists = Lists.filter(list => list.group_id !== null)
@@ -85,7 +88,7 @@ export default function NewHomePage() {
                     </div>
                     <div className="center-box-outline">
                         {/* enter component here */}
-                        <IncompleteTasksPage/>
+                        <ListPage/>
                     </div>
                 </div>
                 <div className="clock-side">
