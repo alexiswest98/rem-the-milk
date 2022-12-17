@@ -17,8 +17,10 @@ export default function GetOneGroup() {
     const group = useSelector(state => state.groups[groupId]);
     const currUser = useSelector(state => state.session)
     const lists = useSelector(state => state.lists)
+
+    console.log('groupId = ', groupId)
     const groupLists = Object.values(lists).filter(list => {
-        return list.group_id == groupId})
+        return list.group_id = groupId})
         console.log(groupLists)
     console.log('groupppp -----', group);
     console.log('CurrentUser', currUser)
@@ -39,15 +41,18 @@ export default function GetOneGroup() {
 
                     <div className="eachGroupMap">
                         <img className='oneGroupImg' src={`${group.image_url}`} alt='group Pic'></img>
-                        <div className="oneGroup">{group.name}</div>
+                        <div className="oneGroup">{group.name}
+                        <button>add a member</button>
+                        <button>see all members</button>
+                        </div>
                     </div>
                     {Object.values(lists).map(list=> (
                         <div>
-                            <p>{list.name}</p>
-                            <p>{list.due}</p>
+                            <p>_________________________________</p>
+                            <p>{list.name}       due: {list.due}</p>
                             <p>{list.notes}</p>
-                            <p>{list.group_id}</p>
                             <button onClick={()=> deleteList(list.id)}>delete</button>
+
                         </div>
                     ))}
                     <button onClick={()=> history.push(`/groups/${group.id}/list`)}>Create New List</button>
