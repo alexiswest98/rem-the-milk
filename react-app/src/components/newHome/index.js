@@ -3,11 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory, NavLink, Link } from 'react-router-dom';
 import { getAllTasksThunk } from "../../store/tasks";
 import { GetAllListsThunk, DeleteListThunk } from "../../store/lists";
-import IncompleteTasksPage from "../Tasks/incompleteTasks";
+import IncompleteTasksPage from "../ListTasks/incompleteTasks";
 import './index.css'
 import { deleteGroupThunk } from "../../store/groups";
 import CreateListModal from "../Lists";
 import EditListModal from "../EditList";
+import CreateTaskModal from "../simpTasks";
 
 
 export default function NewHomePage() {
@@ -69,6 +70,7 @@ export default function NewHomePage() {
                                 <Link to={'/tasks/month'}>
                                     <h4>Month</h4>
                                 </Link>
+                                <CreateTaskModal/>
                             </div>
                             <div className="nav-list-option">
                                 <h2>Lists</h2>

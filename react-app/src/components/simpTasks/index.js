@@ -3,17 +3,16 @@ import { useDispatch } from 'react-redux';
 import { useHistory} from 'react-router-dom';
 import { Modal } from '../../context/Modal';
 // import UserDetails from './details';
-import CreateList from './CreateLists';
+import CreateTask from './createTask';
 
-
-function CreateListModal(user) {
+function CreateTaskModal(user) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [showModal, setShowModal] = useState(false);
 
   const onCloseAction = () => {
     setShowModal(false)
-    history.push("/home")
+    // history.push("/home")
   }
 
   return (
@@ -22,11 +21,11 @@ function CreateListModal(user) {
       onClick={() => setShowModal(true)}>+</button>
       {showModal && (
         <Modal onClose={() => onCloseAction()}>
-          <CreateList setShowModal={setShowModal} user={user}/>
+          <CreateTask setShowModal={setShowModal} user={user}/>
         </Modal>
       )}
     </>
   );
 }
 
-export default CreateListModal;
+export default CreateTaskModal;
