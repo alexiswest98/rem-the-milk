@@ -4,3 +4,17 @@
   margin: 10px;
   flex-direction: row;
 }
+.oneGroupAll {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.membersTotal {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

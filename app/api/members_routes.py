@@ -16,8 +16,7 @@ def get_members(groupId):
   for user in membs:
     currUser = User.query.get(user[0])
     membslist.append(currUser.to_dict())
-
-  # print(membslist)
+  print('In the backend do wwe have the membs', membslist)
   return jsonify(membslist)
 
 

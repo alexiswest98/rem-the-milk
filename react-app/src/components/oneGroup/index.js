@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import './index.css'
 import { Link, useParams} from 'react-router-dom'
 import { getGroupsThunk } from "../../store/groups";
 import { deleteGroupThunk } from "../../store/groups";
+import Members from "../members/members";
 import { GetAllListsThunk } from "../../store/lists";
 import { DeleteListThunk } from "../../store/lists";
 import { GetMembersThunk } from "../../store/members";
@@ -25,8 +26,9 @@ export default function GetOneGroup() {
     const groupLists = Object.values(lists).filter(list => {
         return list.group_id = groupId})
         console.log(groupLists)
-    console.log('groupppp -----', group);
-    console.log('CurrentUser', currUser)
+
+
+
 
 
 
@@ -51,9 +53,10 @@ export default function GetOneGroup() {
       }
     if (!group) return null
 
+
     return (
-        <div className="groupsDiv">
-            <div>
+        <div className="oneGroupAll">
+            <div>            <div>
                     <div className="eachGroupMap">
                         <img className='oneGroupImg' src={`${group.image_url}`} alt='group Pic'></img>
                         <div className="oneGroup">{group.name}
@@ -73,7 +76,7 @@ export default function GetOneGroup() {
                     <Link to='/dashboard'>
                     <button onClick={()=> {dispatch(deleteGroupThunk(groupId))}}>Delete your group</button>
                     </Link>
-        </div>
+            </div>
         <div className="membersTotal">
         <h1 className="MemberTitle">Group Members</h1>
         <div className="membersTotal">
@@ -89,5 +92,7 @@ export default function GetOneGroup() {
         </div>
         </div>
     </div>
+            <Members/>
+        </div>
     )
 }

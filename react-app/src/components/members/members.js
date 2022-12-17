@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // import './index.css'
 import { Link, useParams} from 'react-router-dom'
+<<<<<<< HEAD
 import { getFollowsThunk } from '../../store/follows';
 import { GetMembersThunk } from "../../store/members";
 import { AddMemberThunk } from "../../store/members";
@@ -30,11 +31,26 @@ export default function Members({setShowModal}) {
 
     useEffect(() => {
         dispatch(getFollowsThunk(user.id))
+=======
+import { GetMembersThunk } from "../../store/members";
+
+export default function Members() {
+    const history = useHistory()
+    const dispatch = useDispatch();
+    let { groupId } = useParams();
+
+
+    let members = Object.values(useSelector(state => state.members))
+    console.log('Members in my oneGroup comp', members)
+
+    useEffect(() => {
+>>>>>>> coolevan
         dispatch(GetMembersThunk(groupId))
     }, [groupId, dispatch]);
 
     return (
         <div className="membersTotal">
+<<<<<<< HEAD
         <h1 className="MemberTitle">Add members from follows</h1>
         <div className="membersTotal">
         {viable.map(follower=>(
@@ -44,10 +60,21 @@ export default function Members({setShowModal}) {
             {follower.username}
             </div>
 
+=======
+        <h1 className="MemberTitle">Group Members</h1>
+        <div className="membersTotal">
+        {members.map(member=>(
+          <div>
+          <p>{member.username}</p>
+>>>>>>> coolevan
           </div>
         ))}
         </div>
         </div>
     )
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> coolevan
