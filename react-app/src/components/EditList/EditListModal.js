@@ -15,7 +15,7 @@ function EditList({setShowModal}) {
   const [newNotes, setNewNotes] = useState(list.notes || "");
   const [validationErrors, setValidationErrors] = useState([]);
   const [hasSubmitted, setHasSubmitted] = useState(false);
-  console.log('list',list)
+
 
 
 
@@ -46,9 +46,7 @@ function EditList({setShowModal}) {
     const errors = []
     if(!newName) errors.push("Name is required");
     if (!newDue) errors.push("Due Date is required");
-    // if (!newDue) errors.push("Due Date is required");
     setValidationErrors(errors);
-    // dispatch(GetAllListsThunk())
   }, [newName, newDue, newNotes]);
 
 
@@ -65,7 +63,6 @@ function EditList({setShowModal}) {
       group_id: list.group_id,
       completed: list.completed
     }
-    // console.log('newList = ', )
     if(newList.group_id !== null){
       await dispatch(EditListThunk(newList))
     }else{
@@ -119,7 +116,6 @@ function EditList({setShowModal}) {
                   </div>
               )}
     </div>
-
   )
   }
 export default EditList;
