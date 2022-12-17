@@ -10,6 +10,7 @@ import background from '../../Images/background.jpg';
 import { getFollowsThunk } from "../../store/follows";
 // import specTasksReducer from "../../store/specTasks";
 
+
 export default function Dashboard() {
     const dispatch = useDispatch();
 
@@ -22,7 +23,6 @@ export default function Dashboard() {
         dispatch(getAllTasksByDayThunk())
         dispatch(GetAllListsThunk())
         dispatch(getFollowsThunk())
-
     }, [dispatch])
 
     return (
@@ -30,18 +30,18 @@ export default function Dashboard() {
       <div className="leftDash">
         <div className="whiteBack">
         <div className="dayTasks">
-          <h2>Tasks for the day</h2>
+          <h1 className="leftTitles">Tasks for the day:</h1>
           {dayTasks.map(task=>(
-          <div>
+          <div className="dayTaskz">
           <p>{task.name}</p>
-          <p>{task.due}</p>
+          <p>{task.due.slice(0,17)}</p>
           </div>
           ))}
         </div>
         <div className="dashLists">
-          <h3>Lists:</h3>
+          <h1 className="leftTitles">Your Lists:</h1>
           {lists.map(list=>(
-          <div>
+          <div className="leftLists">
           <p>{list.name}</p>
           </div>
           ))}

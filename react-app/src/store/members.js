@@ -1,4 +1,5 @@
 import UsersList from "../components/UsersList/UsersList"
+import { groupListThunk } from "./lists"
 
 const AddMember = 'members/AddMember'
 const RemoveMember = 'members/RemoveMember'
@@ -28,26 +29,42 @@ export const AddMemberAction = (member) => {
 
 
 export const GetMembersThunk = (groupId) => async (dispatch) => {
-  const res = await fetch(`/api/members/${groupId}`)
+  const res = await fetch(`/api/members/group/${groupId}`)
+  console.log('made it to the thunk, res = ', res)
   if(res.ok){
     const data = await res.json();
+    console.log('data = ', data)
     dispatch(GetMembersAction(data))
+    return data
   }
 }
 
 export const RemoveMemberThunk = (groupId, userId) => async (dispatch) => {
-  const res = await fetch(`/api/members/${groupId}/delete/${userId}`)
+  const res = await fetch(`/api/members/delete/${userId}/group/${groupId}`,{
+  method: 'Delete',
+  body: JSON.stringify({groupId, userId})
+  }
+  )
+  console.log('you are in the remove member thunk, res = ', res)
   if(res.ok){
     const data = await res.json();
-    dispatch(RemoveMemberAction(data))
+    dispatch(GetMembersThunk(groupId))
+    console.log('res successful, data = ', data)
   }
 }
 
 export const AddMemberThunk = (groupId, userId) => async (dispatch) => {
-  const res = await fetch(`/api/members/${groupId}/add/${userId}`)
+  const res = await fetch(`/api/members/add/${userId}/group/${groupId}`,{
+  method: 'POST',
+  headers: {'Content-Type':'application/json'},
+  body: JSON.stringify({groupId, userId})
+  }
+  )
+  console.log('you are in the add member thunk, res = ', res)
   if(res.ok){
     const data = await res.json();
-    dispatch(AddMemberAction(data))
+    dispatch(GetMembersThunk(groupId))
+    console.log('res successful, data = ', data)
   }
 }
 
@@ -66,7 +83,7 @@ export default function membersReducer(state = {}, action){
 
     case RemoveMember:
       newState = { ...state }
-      delete newState.members[action.member.id]
+      delete newState.member[action.member.id]
       return newState
 
     default:

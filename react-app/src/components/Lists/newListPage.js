@@ -1,33 +1,34 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, NavLink, Link } from 'react-router-dom';
-import { getAllTasksThunk } from "../../store/tasks";
-import { GetAllListsThunk, DeleteListThunk } from "../../store/lists";
+import { useParams } from "react-router-dom";
+import { getAllListTasksThunk, getAllTasksThunk } from "../../store/tasks";
+import { GetAllListsThunk } from "../../store/lists";
 import IncompleteTasksPage from "../ListTasks/incompleteTasks";
-import './index.css'
-import { deleteGroupThunk } from "../../store/groups";
-import CreateListModal from "../Lists";
+import ListPage from "./listPage";
+import CreateListModal from "./index";
 import EditListModal from "../EditList";
 import CreateTaskModal from "../simpTasks";
-import CreateATaskModal from "../ListTasks";
 
-
-export default function NewHomePage() {
+export default function NewListPage() {
     const dispatch = useDispatch()
     const history = useHistory()
     const user = useSelector(state => state.session.user);
     const Tasks = Object.values(useSelector(state => state.tasks))
     const Lists = Object.values(useSelector(state => state.lists))
+    const {listId} = useParams()
 
-    const aloneLists = Lists.filter(list => list.group_id == null)
+    const aloneLists = Lists.filter(list => list.group_id === null)
     const groupLists = Lists.filter(list => list.group_id !== null)
     // console.log("********", groupLists)
+
 
     const createList = () => {
         console.log('clicked')
     }
+
     const incomOnClick = () => {
-        history.push('/home')
+        history.push('/tasks/incomplete')
     }
 
     const complOnClick = () => {
@@ -35,9 +36,9 @@ export default function NewHomePage() {
     }
 
     useEffect(() => {
-        dispatch(getAllTasksThunk())
+        dispatch(getAllListTasksThunk(listId))
         dispatch(GetAllListsThunk())
-    }, [dispatch])
+    }, [dispatch, listId])
 
     return (
         <div className="whole-user-home-page">
@@ -93,12 +94,12 @@ export default function NewHomePage() {
                 </div>
                 <div className="center-page">
                     <div className="completed-butts-div">
-                        <button onClick={() => incomOnClick()} className="comp-butt">Incompleted</button>
-                        <button onClick={() => complOnClick()} className="incomp-butt">Completed</button>
+                        {/* <button onClick={() => incomOnClick()} className="comp-butt">Incompleted</button>
+                        <button onClick={() => complOnClick()} className="incomp-butt">Completed</button> */}
                     </div>
                     <div className="center-box-outline">
                         {/* enter component here */}
-                        <IncompleteTasksPage/>
+                        <ListPage/>
                     </div>
                 </div>
                 <div className="clock-side">

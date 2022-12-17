@@ -2,17 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, NavLink, Link } from 'react-router-dom';
 import { getAllTasksThunk } from "../../store/tasks";
-import { GetAllListsThunk, DeleteListThunk } from "../../store/lists";
-import IncompleteTasksPage from "../ListTasks/incompleteTasks";
-import './index.css'
-import { deleteGroupThunk } from "../../store/groups";
+import { GetAllListsThunk } from "../../store/lists";
+// import IncompleteTasksPage from "../Tasks/incompleteTasks";
 import CreateListModal from "../Lists";
 import EditListModal from "../EditList";
 import CreateTaskModal from "../simpTasks";
-import CreateATaskModal from "../ListTasks";
+import TomTask from ".";
 
-
-export default function NewHomePage() {
+export default function TomTaskPage() {
     const dispatch = useDispatch()
     const history = useHistory()
     const user = useSelector(state => state.session.user);
@@ -23,11 +20,8 @@ export default function NewHomePage() {
     const groupLists = Lists.filter(list => list.group_id !== null)
     // console.log("********", groupLists)
 
-    const createList = () => {
-        console.log('clicked')
-    }
     const incomOnClick = () => {
-        history.push('/home')
+        history.push('/tasks/incomplete')
     }
 
     const complOnClick = () => {
@@ -92,13 +86,13 @@ export default function NewHomePage() {
                     </div>
                 </div>
                 <div className="center-page">
-                    <div className="completed-butts-div">
+                    {/* <div className="completed-butts-div">
                         <button onClick={() => incomOnClick()} className="comp-butt">Incompleted</button>
                         <button onClick={() => complOnClick()} className="incomp-butt">Completed</button>
-                    </div>
+                    </div> */}
                     <div className="center-box-outline">
                         {/* enter component here */}
-                        <IncompleteTasksPage/>
+                        <TomTask/>
                     </div>
                 </div>
                 <div className="clock-side">

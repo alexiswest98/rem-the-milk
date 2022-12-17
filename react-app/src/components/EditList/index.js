@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory} from 'react-router-dom';
 import { Modal } from '../../context/Modal';
-import EditListTask from './updateTasks';
-import { getAllTasksThunk } from '../../store/tasks';
-function EditTaskModal({taskId}) {
+// import UserDetails from './details';
+import EditList from './EditListModal';
+import { GetAllListsThunk } from '../../store/lists';
+function EditListModal () {
   const dispatch = useDispatch();
-//   const history = useHistory();
+  const history = useHistory();
   const [showModal, setShowModal] = useState(false);
+  const user = useSelector(state => state.session.user);
+
 
   const onCloseAction = () => {
     setShowModal(false)
-    dispatch(getAllTasksThunk())
+    history.push("/home")
   }
 
   return (
@@ -20,11 +23,11 @@ function EditTaskModal({taskId}) {
       onClick={() => setShowModal(true)}>✎</button>
       {showModal && (
         <Modal onClose={() => onCloseAction()}>
-          <EditListTask setShowModal={setShowModal} taskId={taskId}/>
+          <EditList setShowModal={setShowModal}/>
         </Modal>
       )}
     </>
   );
 }
 
-export default EditTaskModal;
+export default EditListModal;

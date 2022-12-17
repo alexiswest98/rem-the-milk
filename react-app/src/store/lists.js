@@ -75,24 +75,52 @@ export const DeleteListThunk = (list_id) => async (dispatch) => {
 
 // Edit List
 export const EditListThunk = (list) => async (dispatch) => {
-  // console.log("IN THUNKKKKKKKKK &&&&&&&&&")
-  const res = await fetch(`/api/lists/${list.id}`, {
+  const {id, name, user_id, due, notes, group_id, completed} = list
+  const res = await fetch(`/api/lists/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(list)
+    body: JSON.stringify({
+      id,
+      name,
+      user_id,
+      due,
+      notes,
+      completed
+    })
   });
+  console.log('edit hit, res = ', res)
   if (res.ok) {
     const data = await res.json()
-    // console.log("IN THUNK ACTION!!!!", data)
     dispatch(UpdateListAction(data))
-    console.log('Res.ok and dispatch hit.')
-    console.log('data = ',data)
+    return data
+  }
+}
+
+export const EditGroupListThunk = (list) => async (dispatch) => {
+  const {id, name, user_id, due, notes, group_id, completed} = list
+  const res = await fetch(`/api/lists/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      id,
+      name,
+      user_id,
+      due,
+      notes,
+      group_id,
+      completed
+    })
+  });
+  console.log('edit hit, res = ', res)
+  if (res.ok) {
+    const data = await res.json()
+    dispatch(UpdateListAction(data))
     return data
   }
 }
 // Create List
 export const CreateListThunk = (list) => async (dispatch) => {
-  const {name, due, notes, user_id, completed} = list
+  const {name, due, notes, user_id, completed, group_id} = list
   const res = await fetch(`/api/lists/new`, {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
@@ -101,7 +129,29 @@ export const CreateListThunk = (list) => async (dispatch) => {
       due,
       notes,
       user_id,
-      completed
+      completed,
+    })
+  });
+  console.log('response =', res )
+  if (res.ok) {
+    const data = await res.json()
+    console.log("Hit the thunk, data = ", data)
+    dispatch(CreateListAction(data))
+    return data
+  }
+}
+export const CreateGroupListThunk = (list) => async (dispatch) => {
+  const {name, due, notes, user_id, completed, group_id} = list
+  const res = await fetch(`/api/lists/new`, {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({
+      name,
+      due,
+      notes,
+      user_id,
+      completed,
+      group_id
     })
   });
   console.log('response =', res )
@@ -114,7 +164,7 @@ export const CreateListThunk = (list) => async (dispatch) => {
 }
 
 // Get lists by group
-export const groupListThunk = (group, groupId) => async (dispatch) => {
+export const groupListThunk = (groupId) => async (dispatch) => {
   const response = await fetch(`/api/lists/groups/${groupId}`);
   const group = await response.json();
   dispatch(GetListsByGroupAction(group))
@@ -151,7 +201,7 @@ export default function listsReducer(state = {}, action) {
       return newState
 
     case GETLISTSBYGROUP:
-      newState[action.group.id] = action.group
+      action.lists.forEach(list => newState[list.id] = list)
       return newState
 
     default:

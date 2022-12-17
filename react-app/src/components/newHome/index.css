@@ -1,6 +1,6 @@
 .whole-user-home-page {
     width: 100%;
-    height:100%;
+    height:90%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,6 +38,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .clock-side {
@@ -87,6 +88,10 @@
 
 .home-profile-nav {
     height: 66%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .home-user-email {
@@ -99,4 +104,79 @@
     width: 90%;
     height: 70%;
     border-radius: 2em;
+}
+
+.outer-nav-outline {
+    border: 1px blue solid;
+    width: 90%;
+    height: 90%;
+    border-radius: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.nav-task-option {
+    width: 100%;
+    height: 33%;
+    border: 2px grey solid;
+    border-radius: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-list-option {
+    width: 100%;
+    height: 33%;
+    border: 2px grey solid;
+    border-radius: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.nav-group-list-option {
+    width: 100%;
+    height: 33%;
+    border: 2px grey solid;
+    border-radius: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.center-box-outline {
+    border: 2px solid blue;
+    width: 90%;
+    height: 90%;
+    margin-top: 2%;
+    overflow-y: scroll;
+}
+
+.completed-butts-div {
+    display: flex;
+    width: 40%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.comp-butt {
+    padding: 2%;
+    border-radius: 1em;;
+    background-color: rgb(6, 119, 8);
+    color: white;
+}
+
+.incomp-butt {
+    padding: 2%;
+    border-radius: 1em;;
+    background-color: rgb(236, 236, 249);
 }

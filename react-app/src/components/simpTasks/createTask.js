@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from 'react-router-dom'
 import { createTaskThunk } from "../../store/tasks";
-import './index.css'
+// import './index.css'
 
-function CreateListTask() {
+function CreateTask({ setShowModal }) {
   const dispatch = useDispatch()
   const history = useHistory()
   const user = useSelector(state => state.session.user)
@@ -42,16 +42,17 @@ function CreateListTask() {
     const payload = {
       name,
       user_id: userId,
-      list_id: +listId,
       due: due.toString(),
       notes
     }
 
-    console.log("***************", payload.due)
+    // console.log("***************", payload.due)
 
-    console.log('We are in the CreateListTask Comp.. PAYLOAD:', payload)
+    console.log('SUBMIT ###########', payload)
     await dispatch(createTaskThunk(payload))
-    history.push(`/lists/${listId}`)
+    setShowModal(false)
+
+    history.push(`/home`)
   }
 
 
@@ -106,4 +107,4 @@ function CreateListTask() {
 
 
 
-export default CreateListTask;
+export default CreateTask;

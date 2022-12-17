@@ -74,10 +74,10 @@ export const createTaskThunk = (task) => async (dispatch) => {
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify(task)
     });
-    console.log('response =', response)
+    // console.log('response =', response)
     if (response.ok) {
         const newTask = await response.json();
-        console.log("The new task in the Thunk", newTask)
+        // console.log("The new task in the Thunk", newTask)
         dispatch(createTaskAction(newTask))
         return newTask
     };

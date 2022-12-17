@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from 'react-router-dom'
-import { CreateListThunk } from "../../store/lists";
+import { useHistory, useParams } from 'react-router-dom'
+import { CreateGroupListThunk } from "../../store/lists";
 
-function CreateList({setShowModal}) {
+function CreateGroupList({setShowModal, groupId}) {
 const dispatch = useDispatch()
+// const { groupId } = useParams()
+console.log(groupId)
 const history = useHistory()
 const user = useSelector(state => state.session.user)
+const group = useSelector(state => state.groups[Object.values(groupId)[0]])
+console.log('group = ', group)
 const [name, setName] = useState('')
 const [due, setDue] = useState('')
-const [notes, setNotes] = useState('')
+const [notes, setNotes] = useState(null)
 const [validationErrors, setValidationErrors] = useState([])
 
 
@@ -34,14 +38,14 @@ if (!validationErrors.length) {
     user_id: user_id,
     due: due,
     notes: notes,
-    completed: false,
-    group_id: null,
+    group_id: Object.values(groupId)[0],
+    completed: false
   }
 
   console.log(payload)
-  const newSpot = await dispatch(CreateListThunk(payload))
+  const newSpot = await dispatch(CreateGroupListThunk(payload))
   setShowModal(false)
-  history.push(`/home`)
+  history.push(`/groups/${Object.values(groupId)[0]}`)
 }
 }
 
@@ -76,11 +80,10 @@ return (
 
         <button className="submit" type="submit" hidden={validationErrors.length !== 0}>Create List</button>
       </form>
-    <button onClick={()=> history.push('/profile')}> back </button>
   </div>
 )
 
 
 
 }
-export default CreateList;
+export default CreateGroupList;

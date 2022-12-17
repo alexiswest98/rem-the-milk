@@ -10,7 +10,7 @@ html {
 
 .navbar {
     background-color: rgb(3, 96, 191);
-    height: 80px;
+    height: 10%;
     display: flex;
     justify-content: space-between;
 }

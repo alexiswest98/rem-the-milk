@@ -1,30 +1,33 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory} from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { Modal } from '../../context/Modal';
-import EditListTask from './updateTasks';
-import { getAllTasksThunk } from '../../store/tasks';
-function EditTaskModal({taskId}) {
-  const dispatch = useDispatch();
-//   const history = useHistory();
-  const [showModal, setShowModal] = useState(false);
+import Members from './members';
+import { getFollowsThunk } from '../../store/follows';
 
+
+function AddMemberModal(user) {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const [showModal, setShowModal] = useState(false);
+  const { groupId } = useParams
   const onCloseAction = () => {
     setShowModal(false)
-    dispatch(getAllTasksThunk())
+    dispatch(getFollowsThunk())
+
   }
 
   return (
     <>
       <button
-      onClick={() => setShowModal(true)}>✎</button>
+      onClick={() => setShowModal(true)}>Add members</button>
       {showModal && (
         <Modal onClose={() => onCloseAction()}>
-          <EditListTask setShowModal={setShowModal} taskId={taskId}/>
+          <Members setShowModal={setShowModal}/>
         </Modal>
       )}
     </>
   );
 }
 
-export default EditTaskModal;
+export default AddMemberModal;
