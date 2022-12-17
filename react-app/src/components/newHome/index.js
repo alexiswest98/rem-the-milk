@@ -22,9 +22,9 @@ export default function NewHomePage() {
     const groupLists = Lists.filter(list => list.group_id !== null)
     // console.log("********", groupLists)
 
-    const createList = () => {
-        console.log('clicked')
-    }
+    // const createList = () => {
+    //     console.log('clicked')
+    // }
     const incomOnClick = () => {
         history.push('/home')
     }

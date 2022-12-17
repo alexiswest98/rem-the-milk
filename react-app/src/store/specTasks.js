@@ -28,7 +28,7 @@ export const getAllTasksByDayThunk = () => async (dispatch) => {
     const response = await fetch('/api/tasks/day');
     if (response.ok) {
         const tasks = await response.json();
-        console.log('in the thunk for dayTasks', tasks)
+        // console.log('in the thunk for dayTasks', tasks)
         dispatch(getAllTasksDayAction(tasks));
     };
 };

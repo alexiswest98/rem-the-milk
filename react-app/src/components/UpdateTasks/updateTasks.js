@@ -8,7 +8,7 @@ function EditListTask({ setShowModal, taskId }) {
   const history = useHistory()
   const { listId } = useParams()
   const task = useSelector(state => state.tasks[taskId])
-  console.log('taskId = ', taskId)
+  // console.log('taskId = ', taskId)
   const user = useSelector(state => state.session.user)
   const [name, setName] = useState(task.name || '')
   const [due, setDue] = useState(convert(task.due) || '')
@@ -68,7 +68,7 @@ function EditListTask({ setShowModal, taskId }) {
     // console.log("payload", payload)
     await dispatch(editTaskThunk(payload))
     setShowModal(false)
-    history.push(`/lists/${listId}`)
+    // history.push(`/lists/${listId}`)
 
   }
 

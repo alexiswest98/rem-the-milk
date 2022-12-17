@@ -23,17 +23,13 @@ export default function NewListPage() {
     // console.log("********", groupLists)
 
 
-    const createList = () => {
-        console.log('clicked')
-    }
+    // const incomOnClick = () => {
+    //     history.push('/tasks/incomplete')
+    // }
 
-    const incomOnClick = () => {
-        history.push('/tasks/incomplete')
-    }
-
-    const complOnClick = () => {
-        history.push('/tasks/completed')
-    }
+    // const complOnClick = () => {
+    //     history.push('/tasks/completed')
+    // }
 
     useEffect(() => {
         dispatch(getAllListTasksThunk(listId))

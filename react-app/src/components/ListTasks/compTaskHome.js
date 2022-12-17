@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, Link } from 'react-router-dom';
 import { getAllTasksThunk } from "../../store/tasks";
-import { GetAllListsThunk, DeleteListThunk } from "../../store/lists";
+import { GetAllListsThunk } from "../../store/lists";
 import CompleteTasksPage from "./completedTasks";
 import './index.css'
 import CreateListModal from "../Lists";
@@ -23,9 +23,9 @@ export default function CompTaskPage() {
 
 
 
-    const createList = () => {
-        console.log('clicked')
-    }
+    // const createList = () => {
+    //     console.log('clicked')
+    // }
     const incomOnClick = () => {
         history.push('/home')
     }

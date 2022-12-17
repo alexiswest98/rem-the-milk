@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, useParams } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { createTaskThunk } from "../../store/tasks";
 import './index.css'
 
@@ -12,12 +12,12 @@ function CreateTask({ setShowModal }) {
 
 
   const Tasks = Object.values(useSelector(state => state.tasks))
-  
+
     // console.log('alltaks--------------------', Tasks)
     const dayTasks = Object.values(useSelector(state => state.specTask))
     // console.log('DAYTAKS--------------------', dayTasks)
 
-    
+
   const [name, setName] = useState('')
   const [due, setDue] = useState('')
   const [notes, setNotes] = useState('')
@@ -48,7 +48,7 @@ function CreateTask({ setShowModal }) {
 
     // console.log("***************", payload.due)
 
-    console.log('SUBMIT ###########', payload)
+    // console.log('SUBMIT ###########', payload)
     await dispatch(createTaskThunk(payload))
     setShowModal(false)
 

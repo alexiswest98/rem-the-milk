@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, useParams } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { CreateGroupListThunk } from "../../store/lists";
 
 function CreateGroupList({setShowModal, groupId}) {
 const dispatch = useDispatch()
 // const { groupId } = useParams()
-console.log(groupId)
+// console.log(groupId)
 const history = useHistory()
 const user = useSelector(state => state.session.user)
 const group = useSelector(state => state.groups[Object.values(groupId)[0]])
-console.log('group = ', group)
+// console.log('group = ', group)
 const [name, setName] = useState('')
 const [due, setDue] = useState('')
 const [notes, setNotes] = useState(null)
@@ -27,7 +27,7 @@ useEffect(() => {
 }, [name, due, notes]);
 
 const user_id = user.id
-console.log("user id = ", user_id)
+// console.log("user id = ", user_id)
 
 const onsubmit = async (e) => {
   e.preventDefault();
@@ -42,8 +42,8 @@ if (!validationErrors.length) {
     completed: false
   }
 
-  console.log(payload)
-  const newSpot = await dispatch(CreateGroupListThunk(payload))
+  // console.log(payload)
+  await dispatch(CreateGroupListThunk(payload))
   setShowModal(false)
   history.push(`/groups/${Object.values(groupId)[0]}`)
 }
