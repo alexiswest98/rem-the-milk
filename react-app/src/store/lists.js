@@ -75,7 +75,6 @@ export const DeleteListThunk = (list_id) => async (dispatch) => {
 
 // Edit List
 export const EditListThunk = (list) => async (dispatch) => {
-  // console.log("IN THUNKKKKKKKKK &&&&&&&&&")
   const res = await fetch(`/api/lists/${list.id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },

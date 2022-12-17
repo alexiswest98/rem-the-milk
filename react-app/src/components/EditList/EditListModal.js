@@ -49,11 +49,14 @@ useEffect(() => {
 
 
 
-const onSubmit = async (e) => {
-  e.preventDefault();
+const onSubmit = async () => {
 
   setHasSubmitted(true);
-  if (validationErrors.length) return alert(`Cannot Submit`);
+  if (validationErrors.length){
+    console.log('cannot submit')
+    return;
+  }
+
 
   const newList = {
     id: list.id,
@@ -64,7 +67,6 @@ const onSubmit = async (e) => {
     group_id: list.group_id,
     completed: list.completed
   }
-
   await dispatch(EditListThunk(newList))
   setShowModal(false)
   history.push(`/home`)
@@ -99,7 +101,7 @@ return (
             value={newNotes}
           />
         </label>
-        <button className="submit" type="submit" hidden={validationErrors.length !== 0}>Update List</button>
+        <button className="submit" type="submit" hidden={validationErrors.length !== 0} onClick={()=> onSubmit()}>Update List</button>
       </form>
       {setHasSubmitted && validationErrors.length > 0 && (
                 <div>
@@ -113,7 +115,6 @@ return (
                     </ul>
                 </div>
             )}
-    <button onClick={()=> history.push('/profile')}> back </button>
   </div>
 
 )
