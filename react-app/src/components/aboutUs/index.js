@@ -28,8 +28,10 @@ export default function AboutUsPage() {
                     <img src={Evan} alt="user2" className='prof-image-abt' />
                     <div className='connect-box'>
                         <h4>Let's Connect</h4>
+                        <div className='links'>
                         <a className="linkedin" target="_blank" href='https://www.linkedin.com/in/evan-morgan-9a2723132/'>LinkedIn</a>
                         <a className="githubFooter" target="_blank" href='https://github.com/ebmorgansb'>Github</a>
+                        </div>
                     </div>
                 </div>
 
@@ -40,8 +42,10 @@ export default function AboutUsPage() {
                     <img src={Gabe} alt="user3" className='prof-image-abt' />
                     <div className='connect-box'>
                         <h4>Let's Connect</h4>
+                        <div className='links'>
                         <a className="linkedin" target="_blank" href='https://www.linkedin.com/in/gabriel-day-536738201/'>LinkedIn</a>
                         <a className="githubFooter" target="_blank" href='https://github.com/Gabetd'>Github</a>
+                        </div>
                     </div>
                 </div>
 
@@ -52,8 +56,10 @@ export default function AboutUsPage() {
                     <img src={Michael} alt="user4" className='prof-image-abt' />
                     <div className='connect-box'>
                         <h4>Let's Connect</h4>
+                        <div className='links'>
                         <a className="linkedin" target="_blank" href='https://www.linkedin.com/in/michael-lacey-84875a243/'>LinkedIn</a>
                         <a className="githubFooter" target="_blank" href='https://github.com/MichaelLacey'>Github</a>
+                        </div>
                     </div>
                 </div>
             </div>
