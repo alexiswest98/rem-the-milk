@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Group, User, db
-from app.models.members import members
+from app.models import members
 
 member_routes = Blueprint('members', __name__, url_prefix="/api/members")
 

@@ -4,7 +4,7 @@ from .tasks import seed_tasks, undo_tasks
 from .lists import seed_lists, undo_lists
 from .groups import seed_groups, undo_groups
 
-from app.models.db import db, environment, SCHEMA
+from app.models import db, environment, SCHEMA
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
