@@ -1,1 +1,6 @@
 /* ignore */
+.member-list{
+  display: flex;
+  margin: 10px;
+  flex-direction: row;
+}

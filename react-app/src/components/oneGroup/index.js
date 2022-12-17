@@ -3,12 +3,14 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import './index.css'
 import { Link, useParams} from 'react-router-dom'
-import { getGroupThunk } from "../../store/groups";
+import { getGroupsThunk } from "../../store/groups";
 import { deleteGroupThunk } from "../../store/groups";
 import { GetAllListsThunk } from "../../store/lists";
 import { DeleteListThunk } from "../../store/lists";
 import { GetMembersThunk } from "../../store/members";
-
+import { RemoveMemberThunk } from "../../store/members";
+import AddMemberModal from "../members";
+// import Members from "../members/members";
 export default function GetOneGroup() {
     const history = useHistory()
     const dispatch = useDispatch();
@@ -17,6 +19,7 @@ export default function GetOneGroup() {
     const group = useSelector(state => state.groups[groupId]);
     const currUser = useSelector(state => state.session)
     const lists = useSelector(state => state.lists)
+    const members = Object.values(useSelector(state => state.members))
 
     console.log('groupId = ', groupId)
     const groupLists = Object.values(lists).filter(list => {
@@ -24,9 +27,21 @@ export default function GetOneGroup() {
         console.log(groupLists)
     console.log('groupppp -----', group);
     console.log('CurrentUser', currUser)
+
+
+
+    const remove = async(id) => {
+        dispatch(RemoveMemberThunk(groupId, id))
+        console.log('you hit the remove')
+      }
+
+
+
     useEffect(() => {
-        dispatch(getGroupThunk(groupId));
+        console.log('hit the use effect')
+        dispatch(getGroupsThunk());
         dispatch(GetAllListsThunk(groupId));
+        dispatch(GetMembersThunk(groupId))
         dispatch(GetMembersThunk(groupId))
 
     }, [groupId, dispatch]);
@@ -38,12 +53,11 @@ export default function GetOneGroup() {
 
     return (
         <div className="groupsDiv">
-
+            <div>
                     <div className="eachGroupMap">
                         <img className='oneGroupImg' src={`${group.image_url}`} alt='group Pic'></img>
                         <div className="oneGroup">{group.name}
-                        <button>add a member</button>
-                        <button>see all members</button>
+                        <AddMemberModal/>
                         </div>
                     </div>
                     {Object.values(lists).map(list=> (
@@ -60,5 +74,20 @@ export default function GetOneGroup() {
                     <button onClick={()=> {dispatch(deleteGroupThunk(groupId))}}>Delete your group</button>
                     </Link>
         </div>
+        <div className="membersTotal">
+        <h1 className="MemberTitle">Group Members</h1>
+        <div className="membersTotal">
+        {members.map(member=>(
+          <div>
+          <div className="member-list">
+            <button onClick={() => remove(member.id)}>remove from group</button>
+            {member.username}
+            </div>
+
+          </div>
+        ))}
+        </div>
+        </div>
+    </div>
     )
 }

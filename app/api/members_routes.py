@@ -22,9 +22,10 @@ def get_members(groupId):
 
 
 # #Logged in as current user and add members to a group
-@member_routes.route('/group/<int:groupId>/add/<int:userId>', methods=["POST"])
+@member_routes.route('/add/<int:userId>/group/<int:groupId>', methods=["POST"])
 @login_required
 def add_memb(groupId, userId):
+  print('****************************************** Hit The Add *******************************')
   membsInGroup = db.session.query(members).filter(members.c.group_id==groupId).all()
   newUser = User.query.get(userId)
   # print("##############", membsInGroup)
@@ -48,9 +49,10 @@ def add_memb(groupId, userId):
 
 
 # #Logged in as current user and delete members to a group
-@member_routes.route('/group/<int:groupId>/delete/<int:userId>', methods=["DELETE"])
+@member_routes.route('/delete/<int:userId>/group/<int:groupId>', methods=["DELETE"])
 @login_required
 def delete_memb(groupId, userId):
+  print('****************************************** Hit The Removal *******************************')
   membsInGroup = db.session.query(members).filter(members.c.group_id==groupId).all()
   delUser = User.query.get(userId)
   # print("##############", membsInGroup)
