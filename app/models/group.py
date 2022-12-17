@@ -18,16 +18,6 @@ class Group(db.Model):
     group_to_list = db.relationship('List', back_populates='list_to_group', cascade="all, delete")
     group_to_user = db.relationship('User', back_populates='user_who_created_group')
 
-
-        #Relationship to join table
-    groups = db.relationship(
-        "Group",
-        secondary=members,
-        primaryjoin=(members.c.user_id == id),
-        back_populates="users"
-    )
-
-
     def to_dict(self):
         return {
             'id': self.id,
