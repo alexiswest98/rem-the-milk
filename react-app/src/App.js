@@ -25,6 +25,7 @@ import LoginPage from './components/loginpage';
 import SignupPage from './components/signupPage';
 import CompleteTasksPage from './components/Tasks/completedTasks';
 import IncompleteTasksPage from './components/Tasks/incompleteTasks';
+import CreateGroupList from './components/Groups/CreateGroupLists';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -44,6 +45,9 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+        <Route path='/groups/:groupId/list' exact={true}>
+          <CreateGroupList/>
+        </Route>
       <Route path='/tasks/all' exact={true}>
           <IncompleteTasksPage/>
         </Route>

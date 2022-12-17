@@ -114,7 +114,7 @@ export const CreateListThunk = (list) => async (dispatch) => {
 }
 
 // Get lists by group
-export const groupListThunk = (group, groupId) => async (dispatch) => {
+export const groupListThunk = (groupId) => async (dispatch) => {
   const response = await fetch(`/api/lists/groups/${groupId}`);
   const group = await response.json();
   dispatch(GetListsByGroupAction(group))
@@ -151,7 +151,7 @@ export default function listsReducer(state = {}, action) {
       return newState
 
     case GETLISTSBYGROUP:
-      newState[action.group.id] = action.group
+      action.lists.forEach(list => newState[list.id] = list)
       return newState
 
     default:
