@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory, NavLink, Link } from 'react-router-dom';
 import { getAllTasksThunk } from "../../store/tasks";
 import { GetAllListsThunk, DeleteListThunk } from "../../store/lists";
-import IncompleteTasksPage from "../ListTasks/incompleteTasks";
+import CompleteTasksPage from "./completedTasks";
 import './index.css'
 import { deleteGroupThunk } from "../../store/groups";
 import CreateListModal from "../Lists";
@@ -11,7 +11,7 @@ import EditListModal from "../EditList";
 import CreateTaskModal from "../simpTasks";
 
 
-export default function NewHomePage() {
+export default function CompTaskPage() {
     const dispatch = useDispatch()
     const history = useHistory()
     const user = useSelector(state => state.session.user);
@@ -85,7 +85,7 @@ export default function NewHomePage() {
                                 <h4>Group Lists</h4>
                                 {groupLists.map(list => (
                                     <Link to={`/lists/${list.id}`}>
-                                    <h4>{list.name} <EditListModal listId={list.id}/></h4>
+                                    <h4>{list.name}</h4>
                                     </Link>
                                 ))}
                             </div>
@@ -99,7 +99,7 @@ export default function NewHomePage() {
                     </div>
                     <div className="center-box-outline">
                         {/* enter component here */}
-                        <IncompleteTasksPage/>
+                        <CompleteTasksPage/>
                     </div>
                 </div>
                 <div className="clock-side">

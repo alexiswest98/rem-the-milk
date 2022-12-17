@@ -1,29 +1,81 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory, NavLink, useParams, Redirect } from 'react-router-dom'
 import { getAllTasksByDayThunk } from "../../store/specTasks";
 import React, { useEffect, useState } from "react";
-
+import { editTaskThunk } from "../../store/tasks";
+import { deleteTaskThunk } from "../../store/tasks";
 
 export default function DayTask() {
+    const history = useHistory()
+    const user = useSelector(state => state.session.user);
     const dispatch = useDispatch();
-
-    const dayTasks = Object.values(useSelector(state => state.specTask))
+    const lists = useSelector(state => state.lists)
+    const tasks = useSelector(state => state.tasks)
+    const {listId} = useParams()
 
     useEffect(() => {
         dispatch(getAllTasksByDayThunk())
-    }, [dispatch])
+    }, [dispatch, tasks])
 
-return(
+  function convert(str) {
+    const mnths = {
+        Jan: "01",
+        Feb: "02",
+        Mar: "03",
+        Apr: "04",
+        May: "05",
+        Jun: "06",
+        Jul: "07",
+        Aug: "08",
+        Sep: "09",
+        Oct: "10",
+        Nov: "11",
+        Dec: "12"
+      },
+      date = str.split(" ");
+      // console.log(date)
+    return [date[3], mnths[date[2]], date[1]].join("-");
+  }
+
+  const complete = async(task) => {
+    const payload = {
+      id: task.id,
+      name: task.name,
+      due: convert(task.due),
+      user_id: +user.id,
+      completed_by: +user.id,
+      list_id: task.list_id,
+      notes: task.notes
+    }
+    dispatch(editTaskThunk(payload))
+    history.push('/tasks/completed')
+    // console.log(`You tried to complete ${task.name} with user ${user.id}`)
+    // console.log("task ID =", task.id)
+  }
+
+  const deleteTask = (task_id) => {
+    dispatch(deleteTaskThunk(task_id))
+    dispatch(getAllTasksByDayThunk())
+    
+  }
+
+    const dayTasks = Object.values(useSelector(state => state.specTask))
+    const incomdayTasks = dayTasks.filter(task => task.completed_by == null)
 
 
-<div>
-{dayTasks.map(task=>(
-<div>
-<p>{task.name}</p>
-<p>{task.due.slice(0,17)}</p>
-</div>
-))}
-</div>
-
-)
+    return(
+        <div>
+          <h1>Incompleted Tasks</h1>
+             {incomdayTasks.map(task => (
+              <div key={task.id}>
+                <p>{task.name}</p>
+                <p>{task.notes}</p>
+                <p>{task.due}</p>
+            <button onClick={() => complete(task)}>X</button> Complete
+            <button onClick={()=> deleteTask(task.id)}>delete</button>
+              </div>
+            ))}
+        </div>
+      )
 
 }

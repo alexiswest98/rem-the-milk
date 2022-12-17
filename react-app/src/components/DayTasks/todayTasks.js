@@ -2,16 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, NavLink, Link } from 'react-router-dom';
 import { getAllTasksThunk } from "../../store/tasks";
-import { GetAllListsThunk, DeleteListThunk } from "../../store/lists";
-import IncompleteTasksPage from "../ListTasks/incompleteTasks";
-import './index.css'
-import { deleteGroupThunk } from "../../store/groups";
+import { GetAllListsThunk } from "../../store/lists";
+// import IncompleteTasksPage from "../Tasks/incompleteTasks";
 import CreateListModal from "../Lists";
 import EditListModal from "../EditList";
 import CreateTaskModal from "../simpTasks";
+import DayTask from ".";
 
-
-export default function NewHomePage() {
+export default function TodayTaskPage() {
     const dispatch = useDispatch()
     const history = useHistory()
     const user = useSelector(state => state.session.user);
@@ -22,13 +20,8 @@ export default function NewHomePage() {
     const groupLists = Lists.filter(list => list.group_id !== null)
     // console.log("********", groupLists)
 
-
-
-    const createList = () => {
-        console.log('clicked')
-    }
     const incomOnClick = () => {
-        history.push('/home')
+        history.push('/tasks/incomplete')
     }
 
     const complOnClick = () => {
@@ -85,7 +78,7 @@ export default function NewHomePage() {
                                 <h4>Group Lists</h4>
                                 {groupLists.map(list => (
                                     <Link to={`/lists/${list.id}`}>
-                                    <h4>{list.name} <EditListModal listId={list.id}/></h4>
+                                    <h4>{list.name}</h4>
                                     </Link>
                                 ))}
                             </div>
@@ -93,13 +86,13 @@ export default function NewHomePage() {
                     </div>
                 </div>
                 <div className="center-page">
-                    <div className="completed-butts-div">
+                    {/* <div className="completed-butts-div">
                         <button onClick={() => incomOnClick()} className="comp-butt">Incompleted</button>
                         <button onClick={() => complOnClick()} className="incomp-butt">Completed</button>
-                    </div>
+                    </div> */}
                     <div className="center-box-outline">
                         {/* enter component here */}
-                        <IncompleteTasksPage/>
+                        <DayTask/>
                     </div>
                 </div>
                 <div className="clock-side">

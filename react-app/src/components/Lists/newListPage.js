@@ -4,7 +4,7 @@ import { useHistory, NavLink, Link } from 'react-router-dom';
 import { useParams } from "react-router-dom";
 import { getAllListTasksThunk, getAllTasksThunk } from "../../store/tasks";
 import { GetAllListsThunk } from "../../store/lists";
-import IncompleteTasksPage from "../Tasks/incompleteTasks";
+import IncompleteTasksPage from "../ListTasks/incompleteTasks";
 import ListPage from "./listPage";
 import CreateListModal from "./index";
 import EditListModal from "../EditList";
