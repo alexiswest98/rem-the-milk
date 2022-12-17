@@ -12,7 +12,7 @@ Remember the Leche is a Full Stack web application inspired by Remember the Milk
 
 -[Database Schema](https://github.com/ebmorgansb/Airbnb-Project/wiki/Database-Schema)
 
--[Feature List](https://github.com/ebmorgansb/Airbnb-Project/wiki/Feature-List)
+-[Feature List](https://github.com/alexiswest98/rem-the-milk/wiki/Feature-List)
 
 -[Redux Shape](https://github.com/ebmorgansb/Airbnb-Project/wiki/Redux-Shape)
 
