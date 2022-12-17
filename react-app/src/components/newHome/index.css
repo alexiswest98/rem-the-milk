@@ -87,6 +87,9 @@
 
 .home-profile-nav {
     height: 66%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .home-user-email {
@@ -98,5 +101,12 @@
     border: 1px blue solid;
     width: 90%;
     height: 70%;
+    border-radius: 2em;
+}
+
+.outer-nav-outline {
+    border: 1px blue solid;
+    width: 90%;
+    height: 90%;
     border-radius: 2em;
 }

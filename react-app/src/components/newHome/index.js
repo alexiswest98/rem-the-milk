@@ -30,10 +30,21 @@ export default function NewHomePage() {
                         </div>
                     </div>
                     <div className="home-profile-nav">
-                        <h1>NAV</h1>
+                        <div className="outer-nav-outline">
+                            <div className="nav-task-option">
+
+                            </div>
+                            <div className="nav-list-option">
+
+                            </div>
+                            <div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className="center-page">
+                    {/* enter component here */}
                     <span>LIST</span>
                 </div>
                 <div className="clock-side">
