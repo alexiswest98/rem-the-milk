@@ -113,7 +113,11 @@ To get a local copy up and running follow these simple example steps.
     - [ ] Page for spot images beyond 5
 
 ## Get in touch!
-https://github.com/alexiswest98
-- [GitHub](https://github.com/ebmorgansb)
-- [Linkedin](https://www.linkedin.com/in/evan-morgan-9a2723132/)
-- 
+- [Alexis' GitHub](https://github.com/alexiswest98)
+- [Alexis' Linkedin](https://www.linkedin.com/in/alexis-west-596a6b203/)
+- [Evan's GitHub](https://github.com/ebmorgansb)
+- [Evan's Linkedin](https://www.linkedin.com/in/evan-morgan-9a2723132/)
+- [Michael's GitHub](https://github.com/ebmorgansb)
+- [Michael's Linkedin](https://www.linkedin.com/in/michael-lacey-84875a243/)
+- [Gabriel's GitHub](https://github.com/Gabetd)
+- [Gabriel's Linkedin](https://www.linkedin.com/in/gabriel-day-536738201/)
