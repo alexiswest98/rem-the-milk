@@ -18,10 +18,13 @@ class Group(db.Model):
     group_to_list = db.relationship('List', back_populates='list_to_group', cascade="all, delete")
     group_to_user = db.relationship('User', back_populates='user_who_created_group')
 
-    users = db.relationship(
-        "User",
+
+        #Relationship to join table
+    groups = db.relationship(
+        "Group",
         secondary=members,
-        back_populates="groups"
+        primaryjoin=(members.c.user_id == id),
+        back_populates="users"
     )
 
 

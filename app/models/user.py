@@ -23,6 +23,7 @@ class User(db.Model, UserMixin):
     user_who_created_group = db.relationship('Group', back_populates='group_to_user')
     user_to_list = db.relationship('List', back_populates='list_to_user')
 
+    
     followers = db.relationship(
         "User",
         secondary=follows,
@@ -32,12 +33,10 @@ class User(db.Model, UserMixin):
         lazy="dynamic"
         )
 
-    #Relationship to join table
-    groups = db.relationship(
-        "Group",
+    users = db.relationship(
+        "User",
         secondary=members,
-        primaryjoin=(members.c.user_id == id),
-        back_populates="users"
+        back_populates="groups"
     )
 
     @property
