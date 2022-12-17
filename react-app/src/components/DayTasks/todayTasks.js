@@ -78,7 +78,7 @@ export default function TodayTaskPage() {
                                 <h4>Group Lists</h4>
                                 {groupLists.map(list => (
                                     <Link to={`/lists/${list.id}`}>
-                                    <h4>{list.name}</h4>
+                                    <h4>{list.name} <EditListModal listId={list.id}/></h4>
                                     </Link>
                                 ))}
                             </div>
