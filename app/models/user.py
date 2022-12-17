@@ -15,8 +15,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(100), nullable=False, unique=True)
     hashed_password = db.Column(db.String(500), nullable=False)
     image_url = db.Column(db.String(1000), default='https://static.vecteezy.com/system/resources/previews/005/845/877/original/cute-cow-sitting-cartoon-icon-illustration-animal-icon-concept-isolated-premium-flat-cartoon-style-vector.jpg')
-    # created_at = db.Column(db.DateTime, server_default=db.func.now())
-    # updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
     # Relationships
     # user_to_task = db.relationship('Task', back_populates='task_to_user')
