@@ -96,7 +96,6 @@ const ListPage = () => {
           </div>
         ))}
       <button onClick={()=> deleteList(listId)}> delete List </button>
-      {/* <button onClick={() => history.push(`/tasks/completed`)}> Show Complete</button> */}
     </div>
   )
 }
