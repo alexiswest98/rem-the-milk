@@ -8,6 +8,7 @@ import IncompleteTasksPage from "../ListTasks/incompleteTasks";
 import ListPage from "./listPage";
 import CreateListModal from "./index";
 import EditListModal from "../EditList";
+import CreateTaskModal from "../simpTasks";
 // import './index.css'
 
 export default function NewListPage() {
@@ -58,7 +59,7 @@ export default function NewListPage() {
                         <h4>Inbox</h4>
                         <div className="outer-nav-outline">
                             <div className="nav-task-option">
-                                <Link to={'/tasks/all'}>
+                                <Link to={'/home'}>
                                     <h4>All Tasks</h4>
                                 </Link>
                                 <Link to={'/tasks/today'}>
@@ -70,6 +71,7 @@ export default function NewListPage() {
                                 <Link to={'/tasks/month'}>
                                     <h4>Month</h4>
                                 </Link>
+                                <CreateTaskModal/>
                             </div>
                             <div className="nav-list-option">
                                 <h2>Lists</h2>

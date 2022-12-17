@@ -50,9 +50,9 @@ function App() {
         <Route path='/groups/:groupId/list' exact={true}>
           <CreateGroupList />
         </Route>
-        <Route path='/tasks/all' exact={true}>
+        {/* <Route path='/tasks/all' exact={true}>
           <IncompleteTasksPage />
-        </Route>
+        </Route> */}
         <Route path='/tasks/completed' exact={true}>
           <CompTaskPage />
         </Route>
