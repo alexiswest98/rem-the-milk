@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory} from 'react-router-dom';
 import { Modal } from '../../context/Modal';
-import UserDetails from './details';
 import EditListTask from './updateTasks';
-import {getAllTasksThunk} from '../../store/groups';
-
-function EditTaskModal() {
+import { getAllTasksThunk } from '../../store/tasks';
+function EditTaskModal({taskId}) {
   const dispatch = useDispatch();
 //   const history = useHistory();
   const [showModal, setShowModal] = useState(false);
@@ -19,10 +17,10 @@ function EditTaskModal() {
   return (
     <>
       <button
-      onClick={() => setShowModal(true)}>Edit Task</button>
+      onClick={() => setShowModal(true)}>✎</button>
       {showModal && (
         <Modal onClose={() => onCloseAction()}>
-          <EditListTask setShowModal={setShowModal}/>
+          <EditListTask setShowModal={setShowModal} taskId={taskId}/>
         </Modal>
       )}
     </>

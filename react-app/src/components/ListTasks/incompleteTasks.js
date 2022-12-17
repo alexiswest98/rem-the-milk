@@ -4,6 +4,7 @@ import { useHistory, NavLink, useParams, Redirect } from 'react-router-dom'
 import { getAllTasksThunk } from "../../store/tasks";
 import { editTaskThunk } from "../../store/tasks";
 import { deleteTaskThunk } from "../../store/tasks";
+import EditTaskModal from "../UpdateTasks";
 
 function IncompleteTasksPage() {
   const history = useHistory()
@@ -46,7 +47,7 @@ function IncompleteTasksPage() {
     dispatch(editTaskThunk(payload))
   }
 
-  
+
 const deleteTask = (task_id) => {
   dispatch(deleteTaskThunk(task_id))
 }
@@ -67,7 +68,8 @@ const deleteTask = (task_id) => {
             <p>{task.notes}</p>
             <p>{task.due}</p>
         <button onClick={() => complete(task)}>X</button> Complete
-        <button onClick={()=> deleteTask(task.id)}>delete</button>
+        <button onClick={()=> deleteTask(task.id)}>🗑</button>
+        <EditTaskModal taskId={task.id}/>
           </div>
         ))}
     </div>

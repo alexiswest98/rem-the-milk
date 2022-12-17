@@ -5,7 +5,7 @@ import { DeleteListThunk } from "../../store/lists";
 import { getAllListTasksThunk } from "../../store/tasks";
 import { editTaskThunk } from "../../store/tasks";
 import { deleteTaskThunk } from "../../store/tasks";
-
+import CreateTaskModal from "../simpTasks";
 
 const ListPage = () => {
   const history = useHistory()
@@ -80,11 +80,13 @@ const ListPage = () => {
       <p>{task.name}</p>
       <div>{task.notes}
         <button onClick={() => complete(task)}>X</button> Complete
-        <button onClick={()=> deleteTask(task.id)}>delete</button>
-        <button onClick={()=> history.push(`/lists/${listId}/Tasks/edit/${task.id}`)}>edit</button>
+        <button onClick={()=> deleteTask(task.id)}>🗑</button>
+        <button onClick={()=> history.push(`/lists/${listId}/Tasks/edit/${task.id}`)}>✎</button>
           </div>
       </div>
         ))}
+        <CreateTaskModal/>
+        <p>^ add another task?</p>
         <p>_________________________________________________</p>
         <h2>Completed Tasks</h2>
         {completed.map(task=> (
@@ -93,9 +95,8 @@ const ListPage = () => {
             <p>___________________</p>
           </div>
         ))}
-      <button onClick={()=> deleteList(listId)}> delete </button>
-      <button onClick={() => history.push(`/Tasks/new/${listId}`)}> New Task</button>
-      <button onClick={() => history.push(`/tasks/completed`)}> Show Complete</button>
+      <button onClick={()=> deleteList(listId)}> delete List </button>
+      {/* <button onClick={() => history.push(`/tasks/completed`)}> Show Complete</button> */}
     </div>
   )
 }
