@@ -28,10 +28,13 @@ export const AddMemberAction = (member) => {
 
 
 export const GetMembersThunk = (groupId) => async (dispatch) => {
-  const res = await fetch(`/api/members/${groupId}`)
+  const res = await fetch(`/api/members/group/${groupId}`)
+  console.log('made it to the thunk, res = ', res)
   if(res.ok){
     const data = await res.json();
+    console.log('data = ', data)
     dispatch(GetMembersAction(data))
+    return data
   }
 }
 

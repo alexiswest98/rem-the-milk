@@ -7,6 +7,7 @@ import { getGroupThunk } from "../../store/groups";
 import { deleteGroupThunk } from "../../store/groups";
 import { GetAllListsThunk } from "../../store/lists";
 import { DeleteListThunk } from "../../store/lists";
+import { GetMembersThunk } from "../../store/members";
 
 export default function GetOneGroup() {
     const history = useHistory()
@@ -24,6 +25,8 @@ export default function GetOneGroup() {
     useEffect(() => {
         dispatch(getGroupThunk(groupId));
         dispatch(GetAllListsThunk(groupId));
+        dispatch(GetMembersThunk(groupId))
+
     }, [groupId, dispatch]);
 
     const deleteList = (list_id) => {

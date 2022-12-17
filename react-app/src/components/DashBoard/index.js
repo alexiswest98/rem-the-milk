@@ -10,6 +10,7 @@ import background from '../../Images/background.jpg';
 import { getFollowsThunk } from "../../store/follows";
 // import specTasksReducer from "../../store/specTasks";
 
+
 export default function Dashboard() {
     const dispatch = useDispatch();
 
@@ -22,7 +23,6 @@ export default function Dashboard() {
         dispatch(getAllTasksByDayThunk())
         dispatch(GetAllListsThunk())
         dispatch(getFollowsThunk())
-
     }, [dispatch])
 
     return (
