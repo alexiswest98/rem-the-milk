@@ -6,6 +6,8 @@ import { getAllListTasksThunk, getAllTasksThunk } from "../../store/tasks";
 import { GetAllListsThunk } from "../../store/lists";
 import IncompleteTasksPage from "../Tasks/incompleteTasks";
 import ListPage from "./listPage";
+import CreateListModal from "./index";
+import EditListModal from "../EditList";
 // import './index.css'
 
 export default function NewListPage() {
@@ -19,6 +21,11 @@ export default function NewListPage() {
     const aloneLists = Lists.filter(list => list.group_id === null)
     const groupLists = Lists.filter(list => list.group_id !== null)
     // console.log("********", groupLists)
+
+
+    const createList = () => {
+        console.log('clicked')
+    }
 
     const incomOnClick = () => {
         history.push('/tasks/incomplete')
@@ -68,9 +75,10 @@ export default function NewListPage() {
                                 <h2>Lists</h2>
                                 {aloneLists.map(list => (
                                     <Link to={`/lists/${list.id}`}>
-                                    <h4>{list.name}</h4>
+                                    <h4>{list.name} <EditListModal listId={list.id}/></h4>
                                     </Link>
                                 ))}
+                                <CreateListModal/>
                             </div>
                             <div className="nav-group-list-option">
                                 <h4>Group Lists</h4>
