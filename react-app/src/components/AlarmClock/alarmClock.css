@@ -1,0 +1,88 @@
+
+#main-container {
+    background: url('https://64.media.tumblr.com/f16632041cc5b28d8a0d59fca0e83637/tumblr_omlg0yRWJN1rtynt1o1_1280.jpg');
+    background-size: cover;
+    width: 100%;
+    height: 30%;
+}
+
+#clock {
+    height: 120px;
+    font-size: 40px;
+    font-family: arial;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    text-shadow: -1.5px 1.5px 0 rgb(0, 0, 0),
+        1.5px 1.5px 0 rgb(0, 0, 0),
+        1.5px -1.5px 0 rgb(0, 0, 0),
+        -1.5px -1.5px 0 rgb(0, 0, 0);
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+h2 {
+    text-align: center;
+
+
+}
+
+#alarm-container {
+    text-align: center;
+    font-family: Verdana;
+    font-size: 0.6em;
+    padding: 0.7em;
+    color: white;
+}
+
+label {
+    display: inline-block;
+}
+
+.timeofday {
+    background-color: #eee;
+}
+
+.bigger {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#sounds {
+    text-align: center;
+    padding-top: 20px;
+}
+
+#setButton {
+    float: left;
+    background-color: lightgreen;
+    margin-top: 10px;
+    border-radius: 0.5em;
+}
+
+#clearButton {
+    float: right;
+    background-color: red;
+    margin-top: 10px;
+    border: none;
+    border-radius: 0.5em;
+}
+
+
+#alarmmins {
+    text-overflow: ellipsis;
+    width: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.title-set {
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    text-shadow: -1.5px 1.5px 0 rgb(0, 0, 0),
+        1.5px 1.5px 0 rgb(0, 0, 0),
+        1.5px -1.5px 0 rgb(0, 0, 0),
+        -1.5px -1.5px 0 rgb(0, 0, 0);
+}

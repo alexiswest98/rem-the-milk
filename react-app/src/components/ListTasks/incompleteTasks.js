@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, NavLink, useParams, Redirect } from 'react-router-dom'
+// import { useHistory, NavLink, useParams, Redirect } from 'react-router-dom'
 import { getAllTasksThunk } from "../../store/tasks";
 import { editTaskThunk } from "../../store/tasks";
 import { deleteTaskThunk } from "../../store/tasks";
 import EditTaskModal from "../UpdateTasks";
 
 function IncompleteTasksPage() {
-  const history = useHistory()
+  // const history = useHistory()
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
-  const lists = useSelector(state => state.lists)
+  // const lists = useSelector(state => state.lists)
   const tasks = useSelector(state => state.tasks)
-  const {listId} = useParams()
+  // const {listId} = useParams()
 
   function convert(str) {
     const mnths = {

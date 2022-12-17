@@ -8,6 +8,7 @@ import './index.css'
 import CreateListModal from "../Lists";
 import EditListModal from "../EditList";
 import CreateTaskModal from "../simpTasks";
+import AlarmClock from "../AlarmClock/AlarmClock";
 
 
 
@@ -15,16 +16,16 @@ export default function NewHomePage() {
     const dispatch = useDispatch()
     const history = useHistory()
     const user = useSelector(state => state.session.user);
-    const Tasks = Object.values(useSelector(state => state.tasks))
+    // const Tasks = Object.values(useSelector(state => state.tasks))
     const Lists = Object.values(useSelector(state => state.lists))
 
     const aloneLists = Lists.filter(list => list.group_id == null)
     const groupLists = Lists.filter(list => list.group_id !== null)
     // console.log("********", groupLists)
 
-    const createList = () => {
-        console.log('clicked')
-    }
+    // const createList = () => {
+    //     console.log('clicked')
+    // }
     const incomOnClick = () => {
         history.push('/home')
     }
@@ -107,7 +108,7 @@ export default function NewHomePage() {
                     </div>
                 </div>
                 <div className="clock-side">
-                    <img src="https://cb2.scene7.com/is/image/CB2/CarloMrblBlkWllClckSHS19/$web_pdp_main_carousel_sm$/190410160814/carlo-black-marble-wall-clock.jpg" alt="clock" className="clock" />
+                    <AlarmClock/>
                 </div>
             </div>
         </div>

@@ -4,18 +4,18 @@ import { useHistory, useParams } from 'react-router-dom'
 import { createTaskThunk } from "../../store/tasks";
 import './index.css'
 
-function CreateListTask({setShowModal}) {
+function CreateListTask({ setShowModal }) {
   const dispatch = useDispatch()
   const history = useHistory()
   const user = useSelector(state => state.session.user)
   const userId = +user.id
 
 
-  const Tasks = Object.values(useSelector(state => state.tasks))
+  // const Tasks = Object.values(useSelector(state => state.tasks))
 
-    console.log('alltaks--------------------', Tasks)
-    const dayTasks = Object.values(useSelector(state => state.specTask))
-    console.log('DAYTAKS--------------------', dayTasks)
+  // console.log('alltaks--------------------', Tasks)
+  // const dayTasks = Object.values(useSelector(state => state.specTask))
+  // console.log('DAYTAKS--------------------', dayTasks)
 
 
   const [name, setName] = useState('')
@@ -47,9 +47,9 @@ function CreateListTask({setShowModal}) {
       notes
     }
 
-    console.log("***************", payload.due)
+    // console.log("***************", payload.due)
 
-    console.log('We are in the CreateListTask Comp.. PAYLOAD:', payload)
+    // console.log('We are in the CreateListTask Comp.. PAYLOAD:', payload)
     await dispatch(createTaskThunk(payload))
     setShowModal(false)
     history.push(`/lists/${listId}`)
@@ -60,6 +60,11 @@ function CreateListTask({setShowModal}) {
     <div>
       <form onSubmit={onsubmit} className='createTaskForm'>
         <h3 className="createTaskH3">New Task</h3>
+        <div className="errorsDiv">
+          {validationErrors.map((error, ind) => (
+            <div key={ind}>{error}</div>
+          ))}
+        </div>
         <label>
           <input
             className="createTaskInput"
@@ -87,19 +92,9 @@ function CreateListTask({setShowModal}) {
             onChange={(e) => setNotes(e.target.value)}
           />
         </label>
-        <button className="submit" id='createTaskSubmitBtn'type="submit" disabled={validationErrors.length !== 0}>Create Task</button>
+        <button className="submit" id='createTaskSubmitBtn' type="submit" disabled={validationErrors.length !== 0}>Create Task</button>
       </form>
-      {setHasSubmitted && validationErrors.length > 0 && (
-        <div className="createTaskErrorsDiv">
-          Please fix these inputs:
-          <ul className="createTaskErrorsUl">
-            <ul>
-              {validationErrors.map((error) => (
-                <li key={error}>{error}</li>
-              ))}
-            </ul>
-          </ul>
-        </div>)}
+
       {/* <button onClick={()=> history.push(`/lists/${listId}`)}> back </button> */}
     </div>
   )

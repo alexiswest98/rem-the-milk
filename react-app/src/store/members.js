@@ -30,10 +30,10 @@ export const AddMemberAction = (member) => {
 
 export const GetMembersThunk = (groupId) => async (dispatch) => {
   const res = await fetch(`/api/members/group/${groupId}`)
-  console.log('made it to the thunk, res = ', res)
+  // console.log('made it to the thunk, res = ', res)
   if(res.ok){
     const data = await res.json();
-    console.log('data = ', data)
+    // console.log('data = ', data)
     dispatch(GetMembersAction(data))
     return data
   }
@@ -45,11 +45,11 @@ export const RemoveMemberThunk = (groupId, userId) => async (dispatch) => {
   body: JSON.stringify({groupId, userId})
   }
   )
-  console.log('you are in the remove member thunk, res = ', res)
+  // console.log('you are in the remove member thunk, res = ', res)
   if(res.ok){
     const data = await res.json();
     dispatch(GetMembersThunk(groupId))
-    console.log('res successful, data = ', data)
+    // console.log('res successful, data = ', data)
   }
 }
 
@@ -60,11 +60,11 @@ export const AddMemberThunk = (groupId, userId) => async (dispatch) => {
   body: JSON.stringify({groupId, userId})
   }
   )
-  console.log('you are in the add member thunk, res = ', res)
+  // console.log('you are in the add member thunk, res = ', res)
   if(res.ok){
     const data = await res.json();
     dispatch(GetMembersThunk(groupId))
-    console.log('res successful, data = ', data)
+    // console.log('res successful, data = ', data)
   }
 }
 
