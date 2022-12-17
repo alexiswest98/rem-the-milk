@@ -23,7 +23,7 @@ export default function GetFollowers() {
             <h1>followers component</h1>
             {Object.values(followers).map(follower => (
                 <div>
-                    <img src={follower.image_url}/>
+                    <img src={follower.image_url} className='followers-img'/>
                     <p>{follower.username}</p>
                 </div>
             ))}

@@ -37,8 +37,8 @@ class User(db.Model, UserMixin):
         "Group",
         secondary=members,
         primaryjoin=(members.c.user_id == id),
-        backref=db.backref("users", lazy="dynamic")
-        )
+        back_populates="users"
+    )
 
     @property
     def password(self):
