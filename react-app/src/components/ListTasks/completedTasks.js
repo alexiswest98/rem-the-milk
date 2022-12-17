@@ -4,6 +4,7 @@ import { useHistory, NavLink, useParams, Redirect } from 'react-router-dom'
 import { getAllTasksThunk } from "../../store/tasks";
 import { editTaskThunk } from "../../store/tasks";
 import { deleteTaskThunk } from "../../store/tasks";
+import './index.css'
 
 function CompleteTasksPage() {
   const history = useHistory()
@@ -60,9 +61,9 @@ const deleteTask = (task_id) => {
 
   return(
     <div>
-      <h1>Incompleted Tasks</h1>
+      <h1>Completed Tasks</h1>
          {completed.map(task => (
-          <div key={task.id}>
+          <div key={task.id} className="completedTaskDiv">
             <p>{task.name}</p>
             <p>{task.notes}</p>
             <p>{task.due}</p>
