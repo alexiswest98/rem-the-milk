@@ -33,12 +33,11 @@ class User(db.Model, UserMixin):
         )
 
     #Relationship to join table
-    groups = db.relationship(
+    many_groups = db.relationship(
         "Group",
         secondary=members,
-        primaryjoin=(members.c.user_id == id),
-        backref=db.backref("users", lazy="dynamic")
-        )
+        back_populates="many_users"
+    )
 
     @property
     def password(self):
@@ -58,4 +57,3 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'image_url': self.image_url
         }
-

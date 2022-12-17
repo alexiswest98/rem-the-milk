@@ -19,8 +19,8 @@ def seed_groups(users):
 
     # #PUT SEED DATA HERE FOR MEMBERS IN GROUPS
     for user in users:
-        group1.users.append(user)
-        group2.users.append(user)
+        group1.many_users.append(user)
+        group2.many_users.append(user)
 
     db.session.add(group1)
     db.session.add(group2)
