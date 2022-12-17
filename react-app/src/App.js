@@ -27,6 +27,7 @@ import TodayTaskPage from './components/DayTasks/todayTasks';
 import TomTaskPage from './components/TommTasks/tommTask';
 import MonthTaskPage from './components/MonthTasks/monthTasks';
 import CompTaskPage from './components/ListTasks/compTaskHome';
+import AboutUsPage from './components/aboutUs'
 
 function App() {
   const [loaded, setLoaded] = useState(false);

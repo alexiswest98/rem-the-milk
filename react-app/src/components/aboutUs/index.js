@@ -4,7 +4,6 @@ import Alexis from '../../Images/Alexis1.png'
 import Gabe from '../../Images/Gabe1.png'
 import Evan from '../../Images/Evan.png'
 import Michael from '../../Images/Michael.png'
-import { Link, Redirect } from 'react-router-dom'
 
 export default function AboutUsPage() {
 
