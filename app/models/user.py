@@ -14,9 +14,9 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(100), nullable=False, unique=True)
     email = db.Column(db.String(100), nullable=False, unique=True)
     hashed_password = db.Column(db.String(500), nullable=False)
-    image_url = db.Column(db.String(1000), default='/static/userspic.png')
-    # created_at = db.Column(db.DateTime, server_default=db.func.now())
-    # updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
+    image_url = db.Column(db.String(1000), default='https://static.vecteezy.com/system/resources/previews/005/845/877/original/cute-cow-sitting-cartoon-icon-illustration-animal-icon-concept-isolated-premium-flat-cartoon-style-vector.jpg')
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
     # Relationships
     # user_to_task = db.relationship('Task', back_populates='task_to_user')
@@ -37,8 +37,8 @@ class User(db.Model, UserMixin):
         "Group",
         secondary=members,
         primaryjoin=(members.c.user_id == id),
-        backref=db.backref("users", lazy="dynamic")
-        )
+        back_populates="users"
+    )
 
     @property
     def password(self):

@@ -1,0 +1,17 @@
+.dash-profile-image {
+    width: 30%;
+    height: 40%
+}
+
+.whole-profile-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10%;
+}
+
+/* UNIVERSAL FONT */
+body {
+    font-family: Arial, Helvetica, sans-serif
+}

@@ -3,66 +3,73 @@ import { useDispatch, useSelector } from "react-redux";
 import './index.css';
 import { useHistory } from 'react-router-dom'
 import { createGroupThunk } from "../../store/groups";
-
+import { getGroupsThunk } from '../../store/groups';
 /* Create a group component */
-export default function CreateAGroup(){
+export default function CreateAGroup({ setShowModal }) {
     const dispatch = useDispatch()
     const history = useHistory()
     const currentUser = useSelector(state => state.session)
     const currUser = currentUser.user
-    const [ name, setName ] = useState('');
-    const [ imageUrl, setImageUrl ] = useState(
+    const [name, setName] = useState('');
+    const [imageUrl, setImageUrl] = useState(
         'https://moodlehub.ca/pluginfile.php/6842/mod_book/chapter/9131/group2.jpg'
-        );
-    const [ validationErrors, setValidationErrors ] = useState([])
+    );
+    const [validationErrors, setValidationErrors] = useState([])
 
     /* Validation errors for form */
     useEffect(() => {
         const validationErrors = [];
-        if(!name)
-        if (!imageUrl)
-        setValidationErrors(validationErrors)
-    }, [ name, imageUrl ])
+        // if (!name) validationErrors.push('Please Provide a name');
+        if (name.length > 40) validationErrors.push('Please provide a group name less than 50 characters');
+        if (name.length < 4) validationErrors.push('Please provide a longer group name')
+        if (!imageUrl) validationErrors.push('Please provide an image url');
+        setValidationErrors(validationErrors);
+    }, [name, imageUrl]);
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const group = {
             name,
             image_url: imageUrl,
             owner_id: currUser.id
         }
-        const create = await dispatch(createGroupThunk(group))
-        history.push('/dashboard')
+        await dispatch(createGroupThunk(group))
+            dispatch(getGroupsThunk())
+            setShowModal(false)
+            history.push('/dashboard')
     }
 
 
     return (
         <form onSubmit={handleSubmit} className='createAGroupForm'>
-            <ul className="createGroupErrors">
-                {validationErrors.map((error, idx) => {
-                    <li key={idx}>{error}</li>
-                })}
-            </ul>
+            <div className="errorsDiv">
+        {validationErrors.map((error, ind) => (
+          <div key={ind}>{error}</div>
+        ))}
+      </div>
             <h2>Create A Group</h2>
             <label>
-                Name
                 <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
+                    className="createGroupInput"
+                    placeholder="Name"
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
                 />
             </label>
             <label>
-                Group Image
+
                 <input
-                type="url"
-                value={imageUrl}
-                onChange={(e) => setImageUrl(e.target.value)}
-                required
+                    className="createGroupInput"
+                    placeholder="Add image url"
+                    type="url"
+                    value={imageUrl}
+                    onChange={(e) => setImageUrl(e.target.value)}
+                    required
                 />
             </label>
-            <button type="submit" className="createGroupBtn" disabled={validationErrors.length > 0}>Create</button>
+            <button type="submit" className="createGroupBtn" disabled={validationErrors.length}>Create</button>
         </form>
 
     )

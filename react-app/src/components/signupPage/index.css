@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.signupPageMainDiv{
+    width: 100%;
+    height: 1000px;
+    display: flex;
+    border-top: solid 1px white;
+}
+
+.signupLogoTmDiv{
+    display: flex;
+    align-items: center;
+    margin-bottom: 25%;
+}
+
+.signupBlueDiv {
+    width: 50%;
+    height: 1000px;
+    background-color: rgb(3, 96, 191);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.signupwhiteDiv {
+    width: 50%;
+    background-color: #ffffff;
+}
+.signupblueDivH2 {
+    margin: 0;
+    color: white;
+    width: 170px;
+    text-overflow: none;
+    margin-top: 5%;
+}
+.signupblueDivLogo{
+    width: 110px;
+    height: 100px;
+    margin-top: 1%;
+}
+
+.signupblueDivQuote{
+    width: 300px;
+    text-overflow: none;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signupblueDivQuoteH3{
+    color: #e6eff9;
+    font-size: 35px;
+}
+
+.signupblueDivQuoteP {
+    color: #e6eff9;
+    font-size: 25px;
+    margin-bottom: 25%;
+}
+
+.signupinnerWhiteDiv{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+    margin-top: 25%;
+    align-items: flex-end;
+}
+
+.signupBlueOuterDiv{
+    display: flex;
+    flex-direction: column;
+    margin-left: 25%;
+    margin-top: 20%;
+    height: 600px;
+}

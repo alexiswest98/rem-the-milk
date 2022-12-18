@@ -1,0 +1,19 @@
+
+.followerImg {
+max-height: 50px;
+border-radius: 25px;
+}
+
+.followers-component{
+  display: flex;
+  width: 60%;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.follower-details{
+  margin-left: 80%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}

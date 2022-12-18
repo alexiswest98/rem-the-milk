@@ -3,16 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import './index.css'
 import { Link } from 'react-router-dom'
 import { getGroupsThunk } from "../../store/groups";
-import CreateAGroup from "../createGroup";
+import CreateGroupModal from '../createGroup/CreateGroupModal'
 
 export default function GetGroups() {
     const dispatch = useDispatch();
 
     // Listen for change of state and grab groups from the slice
     const groups = Object.values(useSelector(state => state.groups));
-    const currentUser = useSelector(state => state.session)
-    const curr = currentUser.user.id
-    console.log('current user =====================', currentUser.user.id)
+    const user = useSelector(state => state.session.user)
+    if(user){
+        console.log('current user =====================', user.id)
+    }
 
     console.log('groups ----', groups)
     useEffect(() => {
@@ -22,8 +23,10 @@ export default function GetGroups() {
     if (!groups) return null
 
     return (
-        <>
-        <div className="groupsDiv">
+    <div className="totalGroups">
+        <h1 className="groupTitle">Your Groups</h1>
+        {/* <div className="groupsDiv"> */}
+        <div className="test">
             {groups.map(group => (
                 <Link className='groupLink' key={`a${group.id}`} style={{ textDecoration: 'none' }} to={`/groups/${group.id}`}>
                     <div className="eachGroupMap">
@@ -33,10 +36,9 @@ export default function GetGroups() {
                 </Link>
 
             ))}
+            <CreateGroupModal/>
         </div>
-        <Link to='/groups/create'>
-        <button>Create a Group</button>
-        </Link>
-        </>
+        {/* </div> */}
+    </div>
     )
 }

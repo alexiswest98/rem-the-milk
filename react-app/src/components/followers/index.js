@@ -11,16 +11,23 @@ export default function GetFollowers() {
 
     const followers = Object.values(useSelector(state => state.follows));
     console.log('followers ----', followers);
-    
+
 
     useEffect(() => {
         dispatch(getFollowsThunk())
         dispatch(getAllUsersThunk())
     }, [dispatch])
-    
+
     return (
-        <div>
-            <h1>followers component</h1>
+        <div className="followers-component">
+            <h1 className="follower-details">followers</h1>
+            {Object.values(followers).map(follower => (
+                <div className="follower-details">
+                    <span>
+                        <img className="followerImg" src={follower.image_url}/> {follower.username}
+                        </span>
+                </div>
+            ))}
         </div>
     )
 }

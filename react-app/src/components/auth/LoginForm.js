@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import { login } from '../../store/session';
+import "./LoginForm.css"
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -27,19 +28,21 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/profile' />;
+    return <Redirect to='/dashboard' />;
   }
 
   return (
-    <form onSubmit={onLogin}>
+    <form onSubmit={onLogin} className='loginForm'>
+        <h3>Been here before? Welcome back!</h3>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
       <div>
-        <label htmlFor='email'>Email</label>
+
         <input
+          className='loginInput'
           name='email'
           type='text'
           placeholder='Email'
@@ -48,16 +51,22 @@ const LoginForm = () => {
         />
       </div>
       <div>
-        <label htmlFor='password'>Password</label>
+
         <input
+          className='loginInput'
           name='password'
           type='password'
           placeholder='Password'
           value={password}
           onChange={updatePassword}
         />
-        <button type='submit'>Login</button>
       </div>
+      <button
+        className='button-basic'
+        type='submit'
+        onClick={() => {dispatch(login('demo@aa.io', 'password'))}}
+        >Login as Demo User</button>
+        <button className='button-basic' type='submit'>Login</button>
     </form>
   );
 };

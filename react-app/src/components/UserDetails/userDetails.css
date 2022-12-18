@@ -1,0 +1,11 @@
+.user-div-in-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-modal-img {
+    height: 30%;
+    width: 20%;
+}

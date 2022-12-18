@@ -6,10 +6,10 @@ const DELETETASK = 'tasks/deleteTask'
 const UPDATETASK = 'tasks/updateTask'
 
 /* ___________ Action Creators   ___________ */
-export const getAllTasksAction = (task) => {
+export const getAllTasksAction = (tasks) => {
     return {
         type: GETALLTASKS,
-        task
+        tasks
     };
 };
 
@@ -69,15 +69,17 @@ export const completeTaskThunk = (task, task_id) => async (dispatch) => {
 
 // Create a task
 export const createTaskThunk = (task) => async (dispatch) => {
-
-    const response = await fetch('/api/tasks', {
+    const response = await fetch('/api/tasks/new', {
         method: 'POST',
+        headers: {'Content-Type':'application/json'},
         body: JSON.stringify(task)
     });
-
+    // console.log('response =', response)
     if (response.ok) {
         const newTask = await response.json();
-        createTaskAction(newTask)
+        // console.log("The new task in the Thunk", newTask)
+        dispatch(createTaskAction(newTask))
+        return newTask
     };
 };
 
@@ -102,14 +104,27 @@ export const getAllListTasksThunk = (list_id) => async (dispatch) => {
 }
 
 // Update a task
-export const editTaskThunk = (task, taskId) => async (dispatch) => {
-    const response = await fetch(`/api/tasks/${taskId}`, {
+export const editTaskThunk = (task) => async (dispatch) => {
+    const {id, name, due, notes, list_id, user_id, completed_by} = task
+    console.log(task)
+    const response = await fetch(`/api/tasks/${id}`, {
         method: 'PUT',
-        body: JSON.stringify(task)
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({
+            name,
+            due,
+            user_id,
+            notes,
+            list_id,
+            completed_by
+        })
     });
+    console.log('res = ', response)
     if (response.ok) {
         const editedTask = await response.json();
         dispatch(updateTaskAction(editedTask));
+        console.log('Res.ok and dispatch hit.')
+        console.log('data = ',editedTask)
         return editedTask;
     };
 };

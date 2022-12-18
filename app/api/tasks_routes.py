@@ -78,13 +78,13 @@ def get_month_tasks():
   return jsonify(taskobject)
 
 # #create new simple task
-@tasks_routes.route('/', methods=['POST'])
+@tasks_routes.route('/new', methods=['POST'])
 @login_required
 def create_task():
   form = CreateTaskForm()
   form['csrf_token'].data = request.cookies['csrf_token']
   data = form.data
-
+  print('**********************', data, '**********************')
   if form.validate_on_submit():
     new_task = Task(
       name = data['name'],
@@ -107,8 +107,7 @@ def update_task(task_id):
   task = Task.query.get(task_id)
   form['csrf_token'].data = request.cookies['csrf_token']
   data = form.data
-
-  if task:
+  if task and form.validate_on_submit():
     task.name = data['name']
     task.user_id = data['user_id']
     task.due = data['due']
@@ -117,7 +116,7 @@ def update_task(task_id):
     db.session.commit()
     return (task.to_dict())
   if not task:
-    return jsonify('could not find task')
+    return {'errors': ['That task does not exist']}, 401
   else:
     return jsonify(form.errors)
 

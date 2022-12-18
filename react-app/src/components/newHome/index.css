@@ -1,0 +1,203 @@
+.whole-user-home-page {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.home-page-outer {
+    display: flex;
+    border: 2px rgb(0, 0, 255) solid;
+    width: 95%;
+    height: 100%;
+
+}
+
+.right-side-whole-page {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    border: 2px rgb(246, 246, 246) solid;
+
+}
+
+.home-action-nav-bar {
+    background-color: rgb(236, 236, 249);
+    border-right: 1px solid grey;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+}
+
+.center-page {
+    width: 70%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.clock-side {
+    width: 25%;
+    height: 100%;
+    background-color: rgb(251, 132, 132);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clock {
+    width: 80%;
+
+}
+
+.home-prof-pic {
+    width: 40%;
+    height: 60%;
+    border-radius: 50%;
+    object-fit: cover;
+
+}
+
+.home-profile-image {
+    border-bottom: 1px solid grey;
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-profile-info {
+    border-bottom: 1px solid grey;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-user-name {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.home-profile-nav {
+    height: 66%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-user-email {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.bubble-info-box {
+    border: 1px blue solid;
+    width: 90%;
+    height: 70%;
+    border-radius: 2em;
+}
+
+.outer-nav-outline {
+    border: 1px blue solid;
+    width: 90%;
+    height: 90%;
+    border-radius: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.nav-task-option {
+    width: 100%;
+    height: 33%;
+    border: 2px grey solid;
+    border-radius: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.nav-list-option {
+    width: 100%;
+    height: 33%;
+    border: 2px grey solid;
+    border-radius: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* overflow-y: auto; */
+    /* overflow: hidden; */
+}
+.listMapped{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+}
+
+
+.listMapped>button {
+    width: 30px;
+    margin: 0 auto;
+}
+
+.nav-task-option>button {
+    width: 30px;
+}
+
+
+.nav-group-list-option {
+    width: 100%;
+    height: 33%;
+    border: 2px grey solid;
+    border-radius: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* overflow: hidden; */
+}
+
+.center-box-outline {
+    border: 2px solid blue;
+    width: 90%;
+    height: 90%;
+    margin-top: 2%;
+    overflow-y: scroll;
+}
+
+.completed-butts-div {
+    display: flex;
+    width: 40%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.comp-butt {
+    padding: 2%;
+    border-radius: 1em;
+    ;
+    background-color: rgb(6, 119, 8);
+    color: white;
+}
+
+.incomp-butt {
+    padding: 2%;
+    border-radius: 1em;
+    ;
+    background-color: rgb(236, 236, 249);
+}
