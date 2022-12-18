@@ -1,11 +1,17 @@
 import './index.css'
-import React from "react";
+import React, { useEffect } from "react";
 import Alexis from '../../Images/Alexis1.png'
 import Gabe from '../../Images/Gabe1.png'
 import Evan from '../../Images/Evan.png'
 import Michael from '../../Images/Michael.png'
+import { GetUsersGroupsThunk } from "../../store/allmems";
+import { useDispatch } from "react-redux";
 
 export default function AboutUsPage() {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(GetUsersGroupsThunk())
+    }, [dispatch])
 
     return (
         <div className="bigAboutUsDiv">

@@ -4,22 +4,25 @@ import './index.css'
 import { Link } from 'react-router-dom'
 import { getGroupsThunk } from "../../store/groups";
 import CreateGroupModal from '../createGroup/CreateGroupModal'
+import { GetUsersGroupsThunk } from "../../store/allmems";
+
 
 export default function GetGroups() {
     const dispatch = useDispatch();
 
     // Listen for change of state and grab groups from the slice
     const groups = Object.values(useSelector(state => state.groups));
+    const otherGroups = Object.values(useSelector(state => state.userGroups))
     const user = useSelector(state => state.session.user)
     if(user){
         console.log('current user =====================', user.id)
     }
 
-    console.log('groups ----', groups)
+    console.log('groups ----', groups.push(... otherGroups))
     useEffect(() => {
         dispatch(getGroupsThunk())
+        dispatch(GetUsersGroupsThunk())
     }, [dispatch])
-
     if (!groups) return null
 
     return (
