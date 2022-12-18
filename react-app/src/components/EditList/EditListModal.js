@@ -50,6 +50,10 @@ function EditList({ setShowModal }) {
     setValidationErrors(errors);
   }, [newName, newDue, newNotes]);
 
+  // const today = new Date()
+  // console.log('date = ', today)
+  // const date = list.due
+  // console.log('compaire = ', date >= today)
 
   const onSubmit = async () => {
 
