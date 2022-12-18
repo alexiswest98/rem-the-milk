@@ -8,13 +8,13 @@ Remember the Leche is a Full Stack web application inspired by Remember the Milk
 [**https://remember-the-leche.onrender.com/**](https://remember-the-leche.onrender.com/)
 
 ## Project Wiki
--[API-Routes]()
+-[API-Routes](https://github.com/alexiswest98/rem-the-milk/wiki/API-Routes)
 
--[Database Schema](https://github.com/ebmorgansb/Airbnb-Project/wiki/Database-Schema)
+-[Database Schema](https://github.com/alexiswest98/rem-the-milk/wiki/Database-Schema)
 
 -[Feature List](https://github.com/alexiswest98/rem-the-milk/wiki/Feature-List)
 
--[Redux Shape](https://github.com/ebmorgansb/Airbnb-Project/wiki/Redux-Shape)
+-[Redux Shape](https://github.com/alexiswest98/rem-the-milk/wiki/Redux-Shape)
 
 #### Frameworks, Platforms, & Libraries:
 - ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
