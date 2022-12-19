@@ -41,7 +41,7 @@ function EditList({ setShowModal }) {
 
   const curr = new Date()
   const now = new Date(curr)
-  now.setDate(now.getDate() - 2)
+  now.setDate(now.getDate() - 1)
 
   useEffect(() => {
     const errors = []
@@ -70,7 +70,7 @@ function EditList({ setShowModal }) {
       group_id: list.group_id,
       completed: list.completed
     }
-    
+
     {(list.group_id)?
       await dispatch(EditGroupListThunk(newList))
       :

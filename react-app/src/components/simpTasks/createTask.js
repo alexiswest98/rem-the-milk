@@ -27,7 +27,7 @@ function CreateTask({ setShowModal }) {
   // const { listId } = useParams()
   const curr = new Date()
   const now = new Date(curr)
-  now.setDate(now.getDate() - 2)
+  now.setDate(now.getDate() - 1)
 
   useEffect(() => {
     const errors = []
