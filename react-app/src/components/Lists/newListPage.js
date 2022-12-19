@@ -6,9 +6,10 @@ import { getAllListTasksThunk, getAllTasksThunk } from "../../store/tasks";
 import { GetAllListsThunk } from "../../store/lists";
 import IncompleteTasksPage from "../ListTasks/incompleteTasks";
 import ListPage from "./listPage";
-import CreateListModal from "./index";
+import CreateListModal from "../Lists";
 import EditListModal from "../EditList";
 import CreateTaskModal from "../simpTasks";
+import AlarmClock from "../AlarmClock/AlarmClock";
 
 export default function NewListPage() {
     const dispatch = useDispatch()
@@ -70,12 +71,15 @@ export default function NewListPage() {
                             </div>
                             <div className="nav-list-option">
                                 <h2>Lists</h2>
+                                <div className="listMapped">
+
                                 {aloneLists.map(list => (
                                     <Link to={`/lists/${list.id}`}>
                                     <h4>{list.name} <EditListModal listId={list.id}/></h4>
                                     </Link>
                                 ))}
-                                <CreateListModal/>
+                                <CreateListModal />
+                                </div>
                             </div>
                             <div className="nav-group-list-option">
                                 <h4>Group Lists</h4>
@@ -99,8 +103,8 @@ export default function NewListPage() {
                     </div>
                 </div>
                 <div className="clock-side">
-                    <img src="https://cb2.scene7.com/is/image/CB2/CarloMrblBlkWllClckSHS19/$web_pdp_main_carousel_sm$/190410160814/carlo-black-marble-wall-clock.jpg" alt="clock" className="clock"/>
-                </div>
+                <AlarmClock/>
+                </div>  
         </div>
         </div>
     )
