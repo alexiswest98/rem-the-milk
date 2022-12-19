@@ -4,3 +4,11 @@
 .createTaskH3{
     color: rgb(42,157,255);
 }
+
+.add-task-button {
+    background-color: rgb(2, 112, 2);
+    color: white;
+    border: none;
+    font-weight: bold;
+    margin: 2%;
+}

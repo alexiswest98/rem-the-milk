@@ -19,6 +19,7 @@ function CreateListModal(user) {
   return (
     <>
       <button
+      className='add-task-button'
       onClick={() => setShowModal(true)}>+</button>
       {showModal && (
         <Modal onClose={() => onCloseAction()}>

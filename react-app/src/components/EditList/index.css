@@ -1,0 +1,8 @@
+.editListButton {
+    color: rgb(0, 0, 0);
+    border: none;
+    background-color: rgb(227, 204, 248);
+    font-weight: bold;
+    width: 15px;
+    border-radius: 1em;
+}

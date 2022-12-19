@@ -9,7 +9,7 @@
 
 .home-page-outer {
     display: flex;
-    border: 2px rgb(0, 0, 255) solid;
+    border: 1px solid grey;
     width: 95%;
     height: 100%;
 
@@ -24,7 +24,7 @@
 }
 
 .home-action-nav-bar {
-    background-color: rgb(236, 236, 249);
+    /* background-color: rgb(236, 236, 249); */
     border-right: 1px solid grey;
     width: 25%;
     display: flex;
@@ -94,20 +94,41 @@
     align-items: center;
 }
 
+.inbox-title {
+    color: rgb(0, 0, 0);
+}
+
 .home-user-email {
     margin-block-start: 0;
     margin-block-end: 0;
 }
 
 .bubble-info-box {
-    border: 1px blue solid;
-    width: 90%;
-    height: 70%;
+    border: 1.5px blue solid;
+    width: 92%;
+    height: 80%;
     border-radius: 2em;
+    display: flex;
+}
+
+.bubble-info-indiv {
+    width: 33%;
+}
+
+.bubb-inside-contain {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#right-border-bubb {
+    border-right: 1px solid blue;
 }
 
 .outer-nav-outline {
-    border: 1px blue solid;
     width: 90%;
     height: 90%;
     border-radius: 2em;
@@ -146,30 +167,21 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow-y: auto;
+    overflow-y: scroll;
 }
+
+.listMapped::-webkit-scrollbar {
+    display: none;
+  }
 
 
 .listMapped>button {
     width: 30px;
-    margin: 0 auto;
+    margin: 2%;
 }
 
 .nav-task-option>button {
     width: 30px;
-}
-
-
-.nav-group-list-option {
-    width: 100%;
-    height: 33%;
-    border: 2px grey solid;
-    border-radius: 2em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* overflow: hidden; */
 }
 
 .center-box-outline {
@@ -178,6 +190,7 @@
     height: 90%;
     margin-top: 2%;
     overflow-y: scroll;
+    border-radius: 1em;
 }
 
 .completed-butts-div {
@@ -198,6 +211,10 @@
 .incomp-butt {
     padding: 2%;
     border-radius: 1em;
-    ;
     background-color: rgb(236, 236, 249);
+}
+
+.inbox-info-titles {
+    color: rgb(0, 87, 153);
+    word-break: break-all;
 }

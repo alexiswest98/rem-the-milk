@@ -4,6 +4,8 @@ import { getAllTasksByDayThunk } from "../../store/specTasks";
 import React, { useEffect, useState } from "react";
 import { editTaskThunk } from "../../store/tasks";
 import { deleteTaskThunk } from "../../store/tasks";
+import { getAllTasksThunk } from "../../store/tasks";
+import EditTaskModal from "../UpdateTasks";
 
 export default function DayTask() {
     const history = useHistory()
@@ -44,24 +46,23 @@ export default function DayTask() {
       due: convert(task.due),
       user_id: +user.id,
       completed_by: +user.id,
-      list_id: task.list_id,
       notes: task.notes
     }
     dispatch(editTaskThunk(payload))
-    history.push('/tasks/completed')
     // console.log(`You tried to complete ${task.name} with user ${user.id}`)
     // console.log("task ID =", task.id)
   }
 
   const deleteTask = (task_id) => {
     dispatch(deleteTaskThunk(task_id))
-    dispatch(getAllTasksByDayThunk())
-    
   }
+  
+    useEffect(() => {
+      dispatch(getAllTasksThunk())
+    }, [dispatch])
 
     const dayTasks = Object.values(useSelector(state => state.specTask))
     const incomdayTasks = dayTasks.filter(task => task.completed_by == null)
-
 
     return(
         <div>
@@ -73,6 +74,7 @@ export default function DayTask() {
                 <p>{task.due}</p>
             <button onClick={() => complete(task)}>X</button> Complete
             <button onClick={()=> deleteTask(task.id)}>delete</button>
+            <EditTaskModal taskId={task.id}/>
               </div>
             ))}
         </div>
