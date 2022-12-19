@@ -42,9 +42,11 @@ function EditListTask({ setShowModal, taskId }) {
 
 
   useEffect(() => {
+    const now = new Date()
     const errors = []
     if (name.length <4) errors.push("Name needs 4 or more characters");
     if (!due) errors.push("Due Date is required");
+    if (new Date(due) <= now) errors.push('Please select a date in the future')
     setValidationErrors(errors);
   }, [name, due, notes]);
 

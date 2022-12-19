@@ -31,9 +31,9 @@ export default function GetGroups() {
         {/* <div className="groupsDiv"> */}
         <div className="test">
             {groups.map(group => (
-                <Link className='groupLink' key={`a${group.id}`} style={{ textDecoration: 'none' }} to={`/groups/${group.id}`}>
+                <Link className='groupLink' style={{ textDecoration: 'none' }} to={`/groups/${group.id}`}>
                     <div className="eachGroupMap">
-                        <img key={`b${group.id}`} className='groupImg' src={`${group.image_url}`} alt='group Pic'></img>
+                        <img className='groupImg' src={`${group.image_url}`} alt='group Pic'></img>
                         <div className="groupName">{group.name}</div>
                     </div>
                 </Link>
@@ -41,7 +41,6 @@ export default function GetGroups() {
             ))}
             <CreateGroupModal/>
         </div>
-        {/* </div> */}
     </div>
     )
 }

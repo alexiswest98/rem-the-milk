@@ -40,13 +40,13 @@ function EditList({ setShowModal }) {
     return [date[3], mnths[date[2]], date[1]].join("-");
   }
 
-
-
+  const now = new Date()
 
   useEffect(() => {
     const errors = []
     if (!newDue) errors.push("Due Date is required");
     if (newName.length < 4 ) errors.push('Provide a list name with at least 4 characters');
+    if (new Date(newDue) <= now) errors.push('Please select a date in the future')
     setValidationErrors(errors);
   }, [newName, newDue, newNotes]);
 

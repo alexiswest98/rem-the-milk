@@ -15,10 +15,12 @@ function CreateList({ setShowModal }) {
 
 
   useEffect(() => {
+    const now = new Date()
     const validationErrors = []
     if (!name) validationErrors.push("Name is required");
     if (name.length > 50) validationErrors.push('Name must not longer than 50 characters')
     if (!due) validationErrors.push("Due Date is required");
+    if (new Date(due) <= now) validationErrors.push('Please select a date in the future')
     setValidationErrors(validationErrors);
 
   }, [name, due, notes]);
