@@ -33,7 +33,7 @@ function CreateListTask({ setShowModal }) {
     const errors = []
     if (!name) errors.push("Name is required");
     if (!due) errors.push("Due Date is required");
-    if (new Date(due) <= now) validationErrors.push('Please select a date in the future')
+    if (new Date(due) <= now) errors.push('Please select a date in the future')
     setValidationErrors(errors);
   }, [name, due, notes]);
 
