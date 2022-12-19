@@ -65,7 +65,7 @@ function EditList({ setShowModal }) {
       id: list.id,
       name: name,
       user_id: list.user_id,
-      due: due,
+      due: due.toString(),
       notes: notes,
       group_id: list.group_id,
       completed: list.completed

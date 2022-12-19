@@ -126,7 +126,7 @@
 }
 
 .need-for-llists::-webkit-scrollbar {
-    overflow-y: hidden;
+    display: none;
 }
 
 /* #border-bott-list-task {

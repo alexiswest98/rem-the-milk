@@ -18,8 +18,15 @@ function EditListTask({ setShowModal, taskId }) {
   const [due, setDue] = useState(convert(task.due) || '')
   const [notes, setNotes] = useState(task.notes || '')
   const [validationErrors, setValidationErrors] = useState([]);
-  // const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
+  useEffect(() => {
+    const errors = []
+    if (name.length < 4) errors.push("Name needs 4 or more characters");
+    if (!due) errors.push("Due Date is required");
+    if (new Date(due) <= now) errors.push('Please select a date in the future')
+    setValidationErrors(errors);
+  }, [name, due, notes]);
 
   function convert(str) {
     // console.log(str)
@@ -50,32 +57,24 @@ function EditListTask({ setShowModal, taskId }) {
 
   now.setDate(now.getDate() - 1)
 
-  useEffect(() => {
-    const errors = []
-    if (name.length < 4) errors.push("Name needs 4 or more characters");
-    if (!due) errors.push("Due Date is required");
-    if (new Date(due) <= now) errors.push('Please select a date in the future')
-    setValidationErrors(errors);
-  }, [name, due, notes]);
-
 
   const onsubmit = async (e) => {
     e.preventDefault();
 
-    // setHasSubmitted(true);
+    setHasSubmitted(true);
     if (validationErrors.length) return alert(`Cannot Submit`);
 
     const payload = {
       id: task.id,
       name: name,
       due: due.toString(),
-      user_id: +user.id,
-      // completed_by: null,
-      list_id: task.list_id,
+      user_id: task.user_id,
+      // completed_by: task.completed_by,
+      // list_id: task.list_id,
       notes: notes
     }
 
-    // console.log("payload", payload)
+    console.log("payload", payload)
     await dispatch(editTaskThunk(payload))
     setShowModal(false)
     // task.list_id ?

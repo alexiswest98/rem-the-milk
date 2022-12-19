@@ -1,6 +1,7 @@
 
 .wrapper{
   height: 10%;
+  width: 100%;
   position: relative;
   border-radius: 1em;
   cursor: default;
@@ -8,22 +9,22 @@
 .wrapper .display,
 .wrapper span{
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 60%;
+  left: 60%;
   transform: translate(-50%, -50%);
   
 }
 .wrapper .display{
   z-index: 999;
-  height: 5em;
-  width: 10em;
+  height: 90%;
+  width: 100%;
   background: rgb(0, 0, 0);
   border-radius: 6px;
   text-align: center;
 }
 
 .display #time{
-  line-height: 85px;
+  line-height: 60px;
   color: #fff;
   font-size: 40px;
   font-weight: 600;
