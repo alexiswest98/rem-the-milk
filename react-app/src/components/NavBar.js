@@ -38,7 +38,7 @@ const NavBar = () => {
           </div>
           <div className="navbarLi">
             <NavLink to='/followers' exact={true} className='active'>
-              Followers
+              Following
             </NavLink>
           </div>
           <div id="logoutnavbtnli">

@@ -120,7 +120,7 @@ function EditListTask({ setShowModal, taskId }) {
             value={notes}
           />
         </label>
-        <button className="createGroupBtn" type="submit" disabled={validationErrors.length}>Update Task</button>
+        <button className="submit" type="submit" disabled={validationErrors.length}>Update Task</button>
       </form>
 
       {/* <button onClick={()=> history.push(`/lists/${listId}`)}> back </button> */}

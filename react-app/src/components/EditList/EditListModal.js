@@ -90,18 +90,18 @@ function EditList({ setShowModal }) {
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <label>
+      <label htmlFor="name">
           <input
-            className="createListInput"
+            className="createGroupInput"
             type="text"
             placeholder="Name"
-            value={newName}
             onChange={(e) => setNewName(e.target.value)}
+            value={newName}
           />
         </label>
         <label htmlFor="due">
           <input
-            className="createListInput"
+            className="createGroupInput"
             type="date"
             placeholder="Due"
             onChange={(e) => setNewDue(e.target.value)}
@@ -110,14 +110,14 @@ function EditList({ setShowModal }) {
         </label>
         <label htmlFor="notes">
           <input
-            className="createListInput"
+            className="createGroupInput"
             type="text"
             placeholder="Notes"
             onChange={(e) => setNewNotes(e.target.value)}
             value={newNotes}
           />
         </label>
-        <button className="createGroupBtn" type="submit" onClick={() => onSubmit()}>Update List</button>
+        <button className="submit" type="submit" onClick={() => onSubmit()}>Update List</button>
       </form>
 
     </div>
