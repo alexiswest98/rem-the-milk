@@ -22,16 +22,20 @@ export default function GetFollowers() {
         <div className="followers-component">
             <div className="follower-details">
             <h1 className="followers-title">FOLLOWERS</h1>
+            <ul className="followers-list">
                 {Object.values(followers).map(follower => (
-                    <div className="prof-follower-div">
-                        <div className="outer-prof-div-shell">
+                <li className="Followers-Details">
+                    {/* <div className="prof-follower-div">
+                        <div className="outer-prof-div-shell"> */}
                             <img className="followerImg" src={follower.image_url} />
-                        </div>
+                        {/* </div> */}
                         <div className="outer-name-div-shell">
                             <h4>{follower.username}</h4>
                         </div>
-                    </div>
+                    {/* </div> */}
+                </li>
                 ))}
+                </ul>
             </div>
         </div>
     )
