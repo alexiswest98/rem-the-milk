@@ -9,15 +9,11 @@ import {getFollowingThunk} from "../../store/follows"
 //?? displays following not followers 
 export default function GetFollowers() {
     const dispatch = useDispatch();
-<<<<<<< HEAD
-    
-=======
     const len = Object.values(useSelector(state => state.follows)).length
     const followerz = Object.values(useSelector(state => state.follows));
     // console.log('followers ----', followers);
 
 
->>>>>>> finalTouches
     useEffect(() => {
         dispatch(getFollowsThunk())
         dispatch(getFollowingThunk())
