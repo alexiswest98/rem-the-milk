@@ -13,7 +13,4 @@ app/dev.db
 .app/models/members
 .app/models/followers
 .app/models/db
-.app/api
-.app/forms
 
-.app/migrations
