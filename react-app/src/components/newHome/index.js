@@ -11,7 +11,6 @@ import CreateTaskModal from "../simpTasks";
 import AlarmClock from "../AlarmClock/AlarmClock";
 
 
-
 export default function NewHomePage() {
     const dispatch = useDispatch()
     const history = useHistory()

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useHistory, useParams} from 'react-router-dom';
 import { Modal } from '../../context/Modal';
 import EditListTask from './updateTasks';
-// import { getAllTasksThunk } from '../../store/tasks';
+
 function EditTaskModal({taskId}) {
   // const dispatch = useDispatch();
   const history = useHistory();
@@ -19,7 +19,8 @@ function EditTaskModal({taskId}) {
   return (
     <>
       <button
-      onClick={() => setShowModal(true)}>✎</button>
+      id='edit-pencil'
+      onClick={() => setShowModal(true)}>✏️</button>
       {showModal && (
         <Modal onClose={() => onCloseAction()}>
           <EditListTask setShowModal={setShowModal} taskId={taskId}/>

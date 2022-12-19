@@ -18,7 +18,7 @@ function EditListModal () {const dispatch = useDispatch();
     <>
       <button
       className='editListButton'
-      onClick={() => setShowModal(true)}>✎</button>
+      onClick={() => setShowModal(true)}>✏️</button>
       {showModal && (
         <Modal onClose={() => onCloseAction()}>
           <EditList setShowModal={setShowModal}/>

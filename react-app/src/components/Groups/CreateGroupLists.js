@@ -1,66 +1,65 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom'
+import { useParams } from 'react-router-dom';
 import { CreateGroupListThunk } from "../../store/lists";
 
-function CreateGroupList({setShowModal, groupId}) {
-const dispatch = useDispatch()
-// const { groupId } = useParams()
-// console.log(groupId)
-const history = useHistory()
-const user = useSelector(state => state.session.user)
-const group = useSelector(state => state.groups[Object.values(groupId)[0]])
-// console.log('group = ', group)
-const [name, setName] = useState('')
-const [due, setDue] = useState('')
-const [notes, setNotes] = useState(null)
-const [validationErrors, setValidationErrors] = useState([])
+function CreateGroupList({ setShowModal}) {
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const user = useSelector(state => state.session.user)
+  const [name, setName] = useState('')
+  const [due, setDue] = useState('')
+  const [notes, setNotes] = useState('')
+  const [validationErrors, setValidationErrors] = useState([])
+  const { groupId }  = useParams();
 
-const curr = new Date()
-const now = new Date(curr)
-now.setDate(now.getDate() - 2)
 
-useEffect(() => {
-  const errors = []
-  if(!name) errors.push("Name is required");
-  if (!due) errors.push("Due Date is required");
-  if (new Date(due) <= now) validationErrors.push('Please select a date in the future')
-  setValidationErrors(errors);
+  const curr = new Date()
+  const now = new Date(curr)
+  now.setDate(now.getDate() - 2)
 
-}, [name, due, notes]);
+  useEffect(() => {
+    const validationErrors = []
+    if (!name) validationErrors.push("Name is required");
+    if (name.length > 50) validationErrors.push('Name must not longer than 50 characters')
+    if (!due) validationErrors.push("Due Date is required");
+    if (new Date(due) <= now) validationErrors.push('Please select a date in the future')
+    setValidationErrors(validationErrors);
 
-const user_id = user.id
-// console.log("user id = ", user_id)
+  }, [name, due, notes]);
 
-const onsubmit = async (e) => {
-  e.preventDefault();
+  const user_id = user.id
+  // console.log("user id = ", user_id)
+  console.log('Due in the form', Date.parse(due))
+  const onsubmit = async (e) => {
+    e.preventDefault();
 
-if (!validationErrors.length) {
-  const payload = {
-    name: name,
-    user_id: user_id,
-    due: due,
-    notes: notes,
-    group_id: Object.values(groupId)[0],
-    completed: false
+    if (!validationErrors.length) {
+      const payload = {
+        name: name,
+        user_id: user_id,
+        due: due,
+        notes: notes,
+        completed: false,
+        group_id: groupId,
+      }
+
+
+      await dispatch(CreateGroupListThunk(payload))
+      setShowModal(false)
+    }
   }
 
-  // console.log(payload)
-  await dispatch(CreateGroupListThunk(payload))
-  setShowModal(false)
-  history.push(`/groups/${Object.values(groupId)[0]}`)
-}
-}
-
-return (
-  <div>
+  return (
+    <div>
       <form onSubmit={onsubmit} className='createListForm'>
         <p> NEW LIST </p>
         <div className="errorsDiv">
-        {validationErrors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
+          {validationErrors.map((error, ind) => (
+            <div key={ind}>{error}</div>
+          ))}
+        </div>
         <label>
           <input
             className="createListInput"
@@ -91,8 +90,9 @@ return (
 
         <button className="submit" id="createListSubmitBtn" type="submit" disabled={validationErrors.length}>Create List</button>
       </form>
-  </div>
-)
+      {/* <button onClick={()=> history.push('/profile')}> back </button> */}
+    </div>
+  )
 
 
 

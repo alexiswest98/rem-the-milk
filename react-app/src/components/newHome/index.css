@@ -64,7 +64,6 @@
 }
 
 .home-profile-image {
-    border-bottom: 1px solid grey;
     height: 25%;
     display: flex;
     flex-direction: column;
@@ -73,7 +72,6 @@
 }
 
 .home-profile-info {
-    border-bottom: 1px solid grey;
     height: 20%;
     display: flex;
     flex-direction: column;
@@ -104,15 +102,17 @@
 }
 
 .bubble-info-box {
-    border: 1.5px blue solid;
+    border: 1.5px solid rgb(3, 96, 191);
     width: 92%;
     height: 80%;
     border-radius: 2em;
     display: flex;
+    background-color: rgb(251, 132, 132)
 }
 
 .bubble-info-indiv {
     width: 33%;
+    height: 100%;
 }
 
 .bubb-inside-contain {
@@ -122,10 +122,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: rgb(0, 0, 0);
 }
 
 #right-border-bubb {
-    border-right: 1px solid blue;
+    border-right: 1px solid rgb(3, 96, 191);
 }
 
 .outer-nav-outline {
@@ -175,22 +176,14 @@
   }
 
 
-.listMapped>button {
-    width: 30px;
-    margin: 2%;
-}
-
-.nav-task-option>button {
-    width: 30px;
-}
-
 .center-box-outline {
     border: 2px solid blue;
     width: 90%;
     height: 90%;
     margin-top: 2%;
-    overflow-y: scroll;
     border-radius: 1em;
+    background-image: url('https://64.media.tumblr.com/6e7eb23058753cd99a2af53c2bf0c36f/279386bc7dc97711-bf/s1280x1920/89a83b43b9f21e29db5955fb8bd5056d9aa63e54.jpg');
+    background-size: cover;
 }
 
 .completed-butts-div {
@@ -217,4 +210,9 @@
 .inbox-info-titles {
     color: rgb(0, 87, 153);
     word-break: break-all;
+}
+
+#edit-pencil, #delete-butt-emoji {
+    width: 2em;
+    font-weight: bold;
 }

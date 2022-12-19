@@ -10,28 +10,33 @@ function CompleteTasksPage() {
   const dispatch = useDispatch();
   const tasks = useSelector(state => state.tasks)
 
-const deleteTask = (task_id) => {
-  dispatch(deleteTaskThunk(task_id))
-}
+  const deleteTask = (task_id) => {
+    dispatch(deleteTaskThunk(task_id))
+  }
 
   useEffect(() => {
     dispatch(getAllTasksThunk())
   }, [dispatch])
 
-    const completed = Object.values(tasks).filter(task => {
-      return task.completed_by != null})
+  const completed = Object.values(tasks).filter(task => {
+    return task.completed_by != null
+  })
 
-  return(
-    <div>
-      <h1>Completed Tasks</h1>
-         {completed.map(task => (
+  return (
+    <div className="whole-incomplete-task">
+      <h1 id="incomp-title">Completed Tasks</h1>
+      <div id="overflow-here">
+        {completed.map(task => (
           <div key={task.id} className="completedTaskDiv">
-            <p>{task.name}</p>
-            <p>{task.notes}</p>
-            <p>{task.due}</p>
-        <button onClick={()=> deleteTask(task.id)}>delete</button>
+            <h4>Notes: {task.name}</h4>
+            <p>Due: {task.notes}</p>
+            <p>{task.due.slice(0, 17)}</p>
+            <div className="outer-box-actions-incom">
+              <button id="delete-butt-emoji" onClick={() => deleteTask(task.id)}>🗑</button>
+            </div>
           </div>
         ))}
+      </div>
     </div>
   )
 }

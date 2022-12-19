@@ -16,25 +16,29 @@ function IncompleteTasksPage() {
 
   function convert(str) {
     const mnths = {
-        Jan: "01",
-        Feb: "02",
-        Mar: "03",
-        Apr: "04",
-        May: "05",
-        Jun: "06",
-        Jul: "07",
-        Aug: "08",
-        Sep: "09",
-        Oct: "10",
-        Nov: "11",
-        Dec: "12"
-      },
+      Jan: "01",
+      Feb: "02",
+      Mar: "03",
+      Apr: "04",
+      May: "05",
+      Jun: "06",
+      Jul: "07",
+      Aug: "08",
+      Sep: "09",
+      Oct: "10",
+      Nov: "11",
+      Dec: "12"
+    },
       date = str.split(" ");
-      // console.log(date)
+    // console.log(date)
     return [date[3], mnths[date[2]], date[1]].join("-");
   }
+  
+  useEffect(() => {
+    dispatch(getAllTasksThunk())
+  }, [dispatch])
 
-  const complete = async(task) => {
+  const complete = async (task) => {
     const payload = {
       id: task.id,
       name: task.name,
@@ -46,34 +50,39 @@ function IncompleteTasksPage() {
     dispatch(editTaskThunk(payload))
     // console.log(`You tried to complete ${task.name} with user ${user.id}`)
     // console.log("task ID =", task.id)
+  }
 
+  const deleteTask = (task_id) => {
+    dispatch(deleteTaskThunk(task_id))
   }
 
 
-const deleteTask = (task_id) => {
-  dispatch(deleteTaskThunk(task_id))
-}
+  const completed = Object.values(tasks).filter(task => {
+    return task.completed_by === null
+  })
 
-  useEffect(() => {
-    dispatch(getAllTasksThunk())
-  }, [dispatch])
-
-    const completed = Object.values(tasks).filter(task => {
-      return task.completed_by === null})
-
-  return(
+  return (
     <div className="whole-incomplete-task">
-      <h1>Incompleted Tasks</h1>
-         {completed.map(task => (
+      <h1 id="incomp-title">Incompleted Tasks</h1>
+      <div id="overflow-here">
+        {completed.map(task => (
           <div key={task.id} className="completedTaskDiv">
-            <p>{task.name}</p>
-            <p>{task.notes}</p>
-            <p>{task.due}</p>
-        <button onClick={() => complete(task)}>X</button> Complete
-        <button onClick={()=> deleteTask(task.id)}>🗑</button>
-        <EditTaskModal taskId={task.id}/>
+            <h4>{task.name}</h4>
+            <p>Notes: {task.notes}</p>
+            <p>Due: {task.due.slice(0, 17)}</p>
+            <div className="outer-box-actions-incom">
+              <div className="complete-div-incom">
+                <span>Complete:   </span>
+                <button id="complete-button" onClick={() => complete(task)}>X</button>
+              </div>
+              <div className="edit-del-div-incom">
+                <EditTaskModal taskId={task.id} />
+                <button id="delete-butt-emoji" onClick={() => deleteTask(task.id)}>🗑</button>
+              </div>
+            </div>
           </div>
         ))}
+      </div>
     </div>
   )
 }

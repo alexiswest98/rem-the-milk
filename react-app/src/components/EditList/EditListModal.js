@@ -5,6 +5,7 @@ import { EditListThunk } from "../../store/lists";
 import { EditGroupListThunk } from "../../store/lists";
 import './index.css'
 
+//working
 function EditList({ setShowModal }) {
   const dispatch = useDispatch()
   const { listId } = useParams()
@@ -18,8 +19,6 @@ function EditList({ setShowModal }) {
 
   const [validationErrors, setValidationErrors] = useState([]);
   // const [hasSubmitted, setHasSubmitted] = useState(false);
-
-
 
 
   function convert(str) {

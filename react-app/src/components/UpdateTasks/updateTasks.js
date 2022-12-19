@@ -3,14 +3,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from 'react-router-dom'
 import { editTaskThunk } from "../../store/tasks";
 
+//THIS WORKS!!!
 function EditListTask({ setShowModal, taskId }) {
   const dispatch = useDispatch()
   const history = useHistory()
-  const { listId } = useParams()
+  // const { listId } = useParams()
   const currentDate = new Date()
-  console.log(currentDate, 'this is current date')
+  // console.log(currentDate, 'this is current date')
   const finalDate = Date.parse(currentDate)
-  console.log(finalDate, "final date")
+  // console.log(finalDate, "final date")
   const task = useSelector(state => state.tasks[taskId])
   // console.log('taskId = ', taskId)
   const user = useSelector(state => state.session.user)
@@ -49,6 +50,7 @@ function EditListTask({ setShowModal, taskId }) {
   const now = new Date(curr)
 
   now.setDate(now.getDate() - 2)
+
   useEffect(() => {
     const errors = []
     if (name.length <4) errors.push("Name needs 4 or more characters");
@@ -69,7 +71,7 @@ function EditListTask({ setShowModal, taskId }) {
       name: name,
       due: due.toString(),
       user_id: +user.id,
-      // completed_by: null,
+      completed_by: null,
       list_id: task.list_id,
       notes: notes
     }

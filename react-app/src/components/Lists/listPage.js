@@ -14,32 +14,31 @@ const ListPage = () => {
   const dispatch = useDispatch();
   const lists = useSelector(state => state.lists)
   const tasks = useSelector(state => state.tasks)
-  const {listId} = useParams()
+  const { listId } = useParams()
 
 
   const deleteList = (listId) => {
     dispatch(DeleteListThunk(listId))
     history.push('/home')
-}
-
+  }
 
   function convert(str) {
     const mnths = {
-        Jan: "01",
-        Feb: "02",
-        Mar: "03",
-        Apr: "04",
-        May: "05",
-        Jun: "06",
-        Jul: "07",
-        Aug: "08",
-        Sep: "09",
-        Oct: "10",
-        Nov: "11",
-        Dec: "12"
-      },
+      Jan: "01",
+      Feb: "02",
+      Mar: "03",
+      Apr: "04",
+      May: "05",
+      Jun: "06",
+      Jul: "07",
+      Aug: "08",
+      Sep: "09",
+      Oct: "10",
+      Nov: "11",
+      Dec: "12"
+    },
       date = str.split(" ");
-      // console.log(date)
+    // console.log(date)
     return [date[3], mnths[date[2]], date[1]].join("-");
   }
 
@@ -50,10 +49,13 @@ const ListPage = () => {
   }, [dispatch])
 
   const incomplete = Object.values(tasks).filter(task => {
-    return task.completed_by == null})
+    return task.completed_by == null
+  })
   const completed = Object.values(tasks).filter(task => {
-    return task.completed_by !== null})
-  const complete = async(task) => {
+    return task.completed_by !== null
+  })
+
+  const complete = async (task) => {
     const payload = {
       id: task.id,
       name: task.name,
@@ -72,33 +74,46 @@ const ListPage = () => {
   }
   // console.log(Object.values(listId)[0])
   // console.log("component tasks = ",tasks)
-  return(
-    <div>
-      <h2>Tasks In Progress</h2>
-        {incomplete.map(task=>(
-            <div key={task.id}>
-              <p>___________________</p>
-      <p>{task.name}</p>
-      <div>{task.notes}
-        <button onClick={() => complete(task)}>X</button> Complete
-        <button onClick={()=> deleteTask(task.id)}>🗑</button>
-        {/* <button onClick={()=> history.push(`/lists/${listId}/Tasks/edit/${task.id}`)}>✎</button>
-         */}
-         <EditTaskModal taskId={task.id}/>
+
+
+  return (
+    <div className="whole-incomplete-task" id="whole-div-row-list">
+      <div className="need-for-llists" id="border-bott-list-task">
+      <h1 id="incomp-title">Tasks In Progress</h1>
+      <div id="overflow-here">
+        {incomplete.map(task => (
+          <div key={task.id} className="completedTaskDiv">
+            <h4>{task.name}</h4>
+            <p>Notes: {task.notes}</p>
+            <p>Due: {task.due.slice(0, 17)}</p>
+            <div className="outer-box-actions-incom">
+              <div className="complete-div-incom">
+                <span>Complete:   </span>
+                <button id="complete-button" onClick={() => complete(task)}>X</button>
+              </div>
+              <div className="edit-del-div-incom">
+                <EditTaskModal taskId={task.id} />
+                <button id="delete-butt-emoji" onClick={() => deleteTask(task.id)}>🗑</button>
+              </div>
+            </div>
           </div>
+        ))}
       </div>
-        ))}
-        <CreateATaskModal/>
-        <p>_________________________________________________</p>
-        <h2>Completed Tasks</h2>
-        {completed.map(task=> (
-          <div>
+      <CreateATaskModal />
+      </div>
+      <div className="need-for-llists">
+      <h1 id="incomp-title">Tasks Completed</h1>
+      <div id="overflow-here">
+        {completed.map(task => (
+          <div key={task.id} className="completedTaskDiv">
             <p>{task.name}</p>
-            <p>___________________</p>
           </div>
         ))}
-      <button onClick={()=> deleteList(listId)}> delete List </button>
-      {/* <button onClick={() => history.push(`/tasks/completed`)}> Show Complete</button> */}
+      </div>
+      <div className="make-list-del-div">
+        <button class="activity-butt btn-7" onClick={() => deleteList(listId)}>🗑 List </button>
+      </div>
+      </div>
     </div>
   )
 }

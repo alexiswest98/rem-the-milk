@@ -9,8 +9,7 @@ export default function CreateATaskModal() {
 
     return (
         <div className="createTaskModalBtn">
-
-            <button onClick={() => setShowModal(true)} className='createTaskModalBtn'>Add task</button>
+            <button onClick={() => setShowModal(true)} class="logout-butt btn-1">Add task</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <CreateListTask setShowModal={setShowModal} />
