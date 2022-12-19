@@ -12,12 +12,12 @@ function CreateTask({ setShowModal }) {
 
 
   const Tasks = Object.values(useSelector(state => state.tasks))
-  
+
     // console.log('alltaks--------------------', Tasks)
     const dayTasks = Object.values(useSelector(state => state.specTask))
     // console.log('DAYTAKS--------------------', dayTasks)
 
-    
+
   const [name, setName] = useState('')
   const [due, setDue] = useState('')
   const [notes, setNotes] = useState('')
@@ -25,10 +25,12 @@ function CreateTask({ setShowModal }) {
   // const [hasSubmitted, setHasSubmitted] = useState(false);
   // const { listId } = useParams()
 
+  const now = new Date()
   useEffect(() => {
     const errors = []
     if (name.length < 4) errors.push("Provide a name with at least 4 characters");
     if (!due) errors.push("Due Date is required");
+    if (new Date(due) <= now) errors.push('Please select a date in the future')
     setValidationErrors(errors);
   }, [name, due, notes]);
 

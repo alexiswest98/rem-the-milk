@@ -13,7 +13,7 @@ function CreateListModal(user) {
 
   const onCloseAction = () => {
     setShowModal(false)
-    history.push("/home")
+    // history.push("/home")
   }
 
   return (

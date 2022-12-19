@@ -70,7 +70,10 @@ function EditListTask({ setShowModal, taskId }) {
     // console.log("payload", payload)
     await dispatch(editTaskThunk(payload))
     setShowModal(false)
-    history.push(`/lists/${listId}`)
+    // task.list_id ?
+    // history.push(`/lists/${listId}`)
+    // :
+    // history.push(`/home`)
 
   }
 
