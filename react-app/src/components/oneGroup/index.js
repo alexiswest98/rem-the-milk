@@ -93,7 +93,7 @@ export default function GetOneGroup() {
                 <div className="memberDivs">
                   {member.email}
                 </div>
-                <button onClick={() => remove(member.id)} className='deleteMembInGroup'>remove from group</button>
+                <button onClick={() => remove(member.id)} className='deleteMembInGroup'>remove</button>
               </div>
 
             </div>

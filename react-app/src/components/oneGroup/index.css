@@ -114,7 +114,7 @@
   border-radius: 10px;
   color: white;
   display: inline-block;
-  height: 3em;
+  height: 2em;
   font-size: 16px;
 }
 .deleteGroupBtn:hover,
@@ -125,7 +125,7 @@
 
 .MemberTitle{
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   color: rgb(27, 96, 191);
   margin-bottom: 1%;
 }
