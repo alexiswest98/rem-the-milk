@@ -14,6 +14,9 @@ function EditList({ setShowModal }) {
   const [newName, setNewName] = useState(list.name || "");
   const [newDue, setNewDue] = useState(convert(list.due) || "");
   const [newNotes, setNewNotes] = useState(list.notes || "");
+  const currentDate = new Date()
+  const finalDate = Date.parse(currentDate)
+
   const [validationErrors, setValidationErrors] = useState([]);
   // const [hasSubmitted, setHasSubmitted] = useState(false);
 

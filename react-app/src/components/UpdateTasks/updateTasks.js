@@ -7,6 +7,10 @@ function EditListTask({ setShowModal, taskId }) {
   const dispatch = useDispatch()
   const history = useHistory()
   const { listId } = useParams()
+  const currentDate = new Date()
+  console.log(currentDate, 'this is current date')
+  const finalDate = Date.parse(currentDate)
+  console.log(finalDate, "final date")
   const task = useSelector(state => state.tasks[taskId])
   // console.log('taskId = ', taskId)
   const user = useSelector(state => state.session.user)
@@ -18,6 +22,7 @@ function EditListTask({ setShowModal, taskId }) {
 
 
   function convert(str) {
+    console.log(str)
     const mnths = {
       Jan: "01",
       Feb: "02",
@@ -36,7 +41,7 @@ function EditListTask({ setShowModal, taskId }) {
     // console.log(date)
     return [date[3], mnths[date[2]], date[1]].join("-");
   }
-
+console.log(due, 'this is due')
   // console.log('due = ',convert(task.due))
   //-> "2011-06-09"
 
@@ -45,6 +50,7 @@ function EditListTask({ setShowModal, taskId }) {
     const now = new Date()
     const errors = []
     if (name.length <4) errors.push("Name needs 4 or more characters");
+    if (Date.parse(due) < finalDate) errors.push('Due date must be after today');
     if (!due) errors.push("Due Date is required");
     if (new Date(due) <= now) errors.push('Please select a date in the future')
     setValidationErrors(errors);

@@ -9,8 +9,8 @@ function CreateListTask({ setShowModal }) {
   const history = useHistory()
   const user = useSelector(state => state.session.user)
   const userId = +user.id
-
-
+  const currentDate = new Date()
+  const finalDate = Date.parse(currentDate)
   // const Tasks = Object.values(useSelector(state => state.tasks))
 
   // console.log('alltaks--------------------', Tasks)
