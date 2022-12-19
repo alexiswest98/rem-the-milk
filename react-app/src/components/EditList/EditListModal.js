@@ -12,11 +12,9 @@ function EditList({ setShowModal }) {
   const history = useHistory()
   // const user = useSelector(state => state.session)
   const list = useSelector(state => state.lists[listId])
-  const [newName, setNewName] = useState(list.name || "");
-  const [newDue, setNewDue] = useState(convert(list.due) || "");
-  const [newNotes, setNewNotes] = useState(list.notes || "");
-
-
+  const [name, setName] = useState(list.name || "");
+  const [due, setDue] = useState(convert(list.due) || "");
+  const [notes, setNotes] = useState(list.notes || "");
   const [validationErrors, setValidationErrors] = useState([]);
   // const [hasSubmitted, setHasSubmitted] = useState(false);
 
@@ -47,11 +45,11 @@ function EditList({ setShowModal }) {
 
   useEffect(() => {
     const errors = []
-    if (!newDue) errors.push("Due Date is required");
-    if (newName.length < 4 ) errors.push('Provide a list name with at least 4 characters');
-    if (new Date(newDue) <= now) errors.push('Please select a date in the future')
+    if (!due) errors.push("Due Date is required");
+    if (name.length < 4 ) errors.push('Provide a list name with at least 4 characters');
+    if (new Date(due) <= now) errors.push('Please select a date in the future')
     setValidationErrors(errors);
-  }, [newName, newDue, newNotes]);
+  }, [name, due, notes]);
 
   // const today = new Date()
   // console.log('date = ', today)
@@ -62,15 +60,17 @@ function EditList({ setShowModal }) {
 
     // setHasSubmitted(true);
     if (validationErrors.length) return alert(`Cannot Submit`);
+
     const newList = {
       id: list.id,
-      name: newName,
+      name: name,
       user_id: list.user_id,
-      due: newDue,
-      notes: newNotes,
+      due: due,
+      notes: notes,
       group_id: list.group_id,
       completed: list.completed
     }
+    
     {(list.group_id)?
       await dispatch(EditGroupListThunk(newList))
       :
@@ -94,8 +94,8 @@ function EditList({ setShowModal }) {
             className="createGroupInput"
             type="text"
             placeholder="Name"
-            onChange={(e) => setNewName(e.target.value)}
-            value={newName}
+            onChange={(e) => setName(e.target.value)}
+            value={name}
           />
         </label>
         <label htmlFor="due">
@@ -103,8 +103,8 @@ function EditList({ setShowModal }) {
             className="createGroupInput"
             type="date"
             placeholder="Due"
-            onChange={(e) => setNewDue(e.target.value)}
-            value={newDue}
+            onChange={(e) => setDue(e.target.value)}
+            value={due}
           />
         </label>
         <label htmlFor="notes">
@@ -112,8 +112,8 @@ function EditList({ setShowModal }) {
             className="createGroupInput"
             type="text"
             placeholder="Notes"
-            onChange={(e) => setNewNotes(e.target.value)}
-            value={newNotes}
+            onChange={(e) => setNotes(e.target.value)}
+            value={notes}
           />
         </label>
         <button className="submit" type="submit" onClick={() => onSubmit()}>Update List</button>
