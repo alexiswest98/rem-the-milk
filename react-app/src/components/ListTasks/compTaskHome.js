@@ -120,8 +120,8 @@ export default function CompTaskPage() {
                 </div>
                 <div className="center-page">
                     <div className="completed-butts-div">
-                        <button onClick={() => incomOnClick()} className="comp-butt">Incompleted</button>
-                        <button onClick={() => complOnClick()} className="incomp-butt">Completed</button>
+                        <button onClick={() => incomOnClick()} className="incomp-butt">Incompleted</button>
+                        <button onClick={() => complOnClick()} className="comp-butt">Completed</button>
                     </div>
                     <div className="center-box-outline">
                         {/* enter component here */}
