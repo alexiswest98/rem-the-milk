@@ -51,10 +51,16 @@ if (!validationErrors.length) {
 
 return (
   <div>
-    <form onSubmit={onsubmit}>
-      <p> NEW LIST </p>
+      <form onSubmit={onsubmit} className='createListForm'>
+        <p> NEW LIST </p>
+        <div className="errorsDiv">
+        {validationErrors.map((error, ind) => (
+          <div key={ind}>{error}</div>
+        ))}
+      </div>
         <label>
           <input
+            className="createListInput"
             type="text"
             placeholder="Name"
             value={name}
@@ -63,6 +69,7 @@ return (
         </label>
         <label htmlFor="due">
           <input
+            className="createListInput"
             type="date"
             placeholder="Due"
             onChange={(e) => setDue(e.target.value)}
@@ -71,6 +78,7 @@ return (
         </label>
         <label htmlFor="notes">
           <input
+            className="createListInput"
             type="text"
             placeholder="Notes"
             onChange={(e) => setNotes(e.target.value)}
@@ -78,7 +86,7 @@ return (
           />
         </label>
 
-        <button className="submit" type="submit" hidden={validationErrors.length !== 0}>Create List</button>
+        <button className="submit" id="createListSubmitBtn" type="submit" disabled={validationErrors.length}>Create List</button>
       </form>
   </div>
 )
