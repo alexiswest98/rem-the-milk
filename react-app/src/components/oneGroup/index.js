@@ -71,7 +71,9 @@ export default function GetOneGroup() {
           ))}
         </div>
         <div className="createListDeleteGroup">
+          <div>
           <CreateGroupListModal groupId={groupId} />
+          </div>
           <Link to='/dashboard'>
             <button onClick={() => { dispatch(deleteGroupThunk(groupId)) }} className='deleteGroupBtn'>Delete your group</button>
           </Link>
@@ -91,7 +93,7 @@ export default function GetOneGroup() {
                 <div className="memberDivs">
                   {member.email}
                 </div>
-                <button onClick={() => remove(member.id)} className='RemoveFromGroupBtn'>remove from group</button>
+                <button onClick={() => remove(member.id)} className='deleteMembInGroup'>remove from group</button>
               </div>
 
             </div>

@@ -20,6 +20,7 @@ function AddMemberModal(user) {
   return (
     <>
       <button
+      className="logout-butt btn-1"
       onClick={() => setShowModal(true)}>Add members</button>
       {showModal && (
         <Modal onClose={() => onCloseAction()}>
