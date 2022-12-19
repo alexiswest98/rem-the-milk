@@ -1,12 +1,4 @@
-.followerImg {
-  height: 95%;
-  width: 17%;
-  border-radius: 50%;
-}
 
-.followers-title {
-  margin-bottom: 2%;
-}
 
 .followers-component {
   width: 100%;
@@ -18,11 +10,12 @@
 }
 
 .follow-div {
-  height: 5%;
+  height: 10%;
   width: 100%;
   display: flex;  
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .follower-details {
@@ -31,7 +24,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 80%;
+  height: 90%;
   overflow-y: scroll;
 }
 
@@ -44,19 +37,20 @@
   height: 20%;
 }
 
-.outer-prof-div-shell {
-  height: 80%;
-  width: 90%;
+.outer-name-img-shell {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.outer-name-div-shell {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.outer-name-div-shell {
-  height: 100%;
-  width: 30%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-left: 5%;
+.followerImg {
+  height: 95%;
+  width: 20%;
+  border-radius: 50%;
 }
