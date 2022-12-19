@@ -14,15 +14,13 @@ export default function GetFollowers() {
     const followerz = follower.slice(0, follower.length-1)
     // console.log('followers ----', followers);
 
-
     useEffect(() => {
         dispatch(getFollowsThunk())
         dispatch(getAllUsersThunk())
     }, [dispatch])
 
-    const followers = Object.values(useSelector(state => state.follows));
 
-    if(!followers) return null;
+    if(!followerz) return null;
 
     return (
         // <div className="followers-component">

@@ -4,6 +4,8 @@ import { getAllTasksByTomThunk } from "../../store/specTasks";
 import React, { useEffect } from "react";
 import { editTaskThunk } from "../../store/tasks";
 import { deleteTaskThunk } from "../../store/tasks";
+import { getAllTasksThunk } from "../../store/tasks";
+import EditTaskModal from "../UpdateTasks";
 
 export default function TomTask() {
     const history = useHistory()
@@ -44,20 +46,20 @@ export default function TomTask() {
       due: convert(task.due),
       user_id: +user.id,
       completed_by: +user.id,
-      list_id: task.list_id,
       notes: task.notes
     }
     dispatch(editTaskThunk(payload))
-    history.push('/tasks/completed')
     // console.log(`You tried to complete ${task.name} with user ${user.id}`)
     // console.log("task ID =", task.id)
   }
 
   const deleteTask = (task_id) => {
     dispatch(deleteTaskThunk(task_id))
-    dispatch(getAllTasksByTomThunk())
-    history.push('/tasks/tomorrow')
   }
+  
+    useEffect(() => {
+      dispatch(getAllTasksThunk())
+    }, [dispatch])
 
     const tomTasks = Object.values(useSelector(state => state.specTask))
     const incomTomTasks = tomTasks.filter(task => task.completed_by == null)
@@ -73,6 +75,7 @@ export default function TomTask() {
                 <p>{task.due}</p>
             <button onClick={() => complete(task)}>X</button> Complete
             <button onClick={()=> deleteTask(task.id)}>delete</button>
+            <EditTaskModal taskId={task.id}/>
               </div>
             ))}
         </div>

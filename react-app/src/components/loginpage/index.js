@@ -14,8 +14,8 @@ export default function LoginPage() {
             <div className="blueDiv">
                 <div className="blueOuterDiv">
                     <div className="blueDivQuote">
-                        <h3 className="blueDivQuoteH3">"Always bear in mind that your own resolution to succeed, is more important than any other thing."</h3>
-                        <p className="blueDivQuoteP"> - Abraham Lincoln</p>
+                        <h3 className="blueDivQuoteH3">“If debugging is the process of removing software bugs, then programming must be the process of putting them in.”</h3>
+                        <p className="blueDivQuoteP"> ― Edsger W. Dijkstra</p>
                     </div>
                 </div>
             </div>

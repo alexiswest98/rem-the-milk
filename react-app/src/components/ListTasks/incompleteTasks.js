@@ -62,7 +62,7 @@ const deleteTask = (task_id) => {
       return task.completed_by === null})
 
   return(
-    <div>
+    <div className="whole-incomplete-task">
       <h1>Incompleted Tasks</h1>
          {completed.map(task => (
           <div key={task.id} className="completedTaskDiv">
@@ -77,4 +77,5 @@ const deleteTask = (task_id) => {
     </div>
   )
 }
+
 export default IncompleteTasksPage;
