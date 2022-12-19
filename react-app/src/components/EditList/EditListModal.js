@@ -68,10 +68,10 @@ function EditList({ setShowModal }) {
       group_id: list.group_id,
       completed: list.completed
     }
-    if (newList.group_id !== null) {
-      await dispatch(EditListThunk(newList))
-    } else {
+    {(list.group_id)?
       await dispatch(EditGroupListThunk(newList))
+      :
+      await dispatch(EditListThunk(newList))
     }
     setShowModal(false)
     history.push(`/lists/${listId}`)
