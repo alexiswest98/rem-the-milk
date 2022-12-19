@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-// import './index.css'
+import './index.css'
 import { useParams} from 'react-router-dom'
 import { getFollowsThunk } from '../../store/follows';
 import { GetMembersThunk } from "../../store/members";
@@ -12,6 +12,7 @@ export default function Members({setShowModal}) {
     const dispatch = useDispatch();
     let { groupId } = useParams();
     const members = Object.values(useSelector(state=> state.members))
+    // const members = member.slice(0, member.length-1)
     const followers = Object.values(useSelector(state => state.follows))
     // console.log('followers = ', followers)
     const membersId = members.map(member => {
