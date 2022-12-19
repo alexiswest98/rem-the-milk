@@ -1,7 +1,8 @@
 
 .groupImg {
-    width: 30%;
-    height: 70%;
+    width: 40%;
+    height: 83%;
+    object-fit: contain;
 }
 
 .groupName {
@@ -11,7 +12,7 @@
     flex-wrap: wrap;
     word-break: break-word;
     height: 100%;
-    width: 70%;
+    width: 60%;
     overflow: scroll;
 }
 
@@ -40,13 +41,14 @@
 
 .test {
     display: flex;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
     align-items: flex-end;
     height: 70%;
     width: 93%;
     overflow-y: scroll;
+    align-content: flex-start;
 }
 
 .test::-webkit-scrollbar {
