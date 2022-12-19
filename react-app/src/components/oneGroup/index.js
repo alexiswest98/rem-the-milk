@@ -78,8 +78,6 @@ export default function GetOneGroup() {
             <button onClick={() => { dispatch(deleteGroupThunk(groupId)) }} className='deleteGroupBtn'>Delete your group</button>
           </Link>
         </div>
-
-
       </div>
       <div className="membersTotal">
         <h1 className="MemberTitle">Group Members</h1>

@@ -41,7 +41,7 @@ export default function Members({setShowModal}) {
         {viable.map(follower=>(
           <div>
           <div className="member-list">
-            <button onClick={() => add(follower.id)}>add to group</button>
+            <button className="logout-butt btn-1" onClick={() => add(follower.id)}>add to group</button>
             {follower.username}
             </div>
 

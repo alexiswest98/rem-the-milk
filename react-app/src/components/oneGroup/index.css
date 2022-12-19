@@ -114,8 +114,11 @@
   border-radius: 10px;
   color: white;
   display: inline-block;
-  height: 2em;
+  height: 4em;
   font-size: 16px;
+  border: none;
+  padding: 1%;
+  width: 6.1em;
 }
 .deleteGroupBtn:hover,
 .deleteGroupBtn:focus {
