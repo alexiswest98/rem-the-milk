@@ -20,7 +20,7 @@ function AddGroupModal(user) {
   return (
     <>
       <button
-      className='createGroupModalButton'
+      className="custom-btn btn-14"
       onClick={() => setShowModal(true)}>Create a group</button>
       {showModal && (
         <Modal onClose={() => onCloseAction()}>
