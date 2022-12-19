@@ -1,19 +1,52 @@
-
 .followerImg {
-max-height: 50px;
-border-radius: 25px;
+  height: 100%;
+  width: 30%;
+  border-radius: 50%;
 }
 
-.followers-component{
+.followers-title {
+  margin-bottom: 2%;
+}
+
+.followers-component {
+  width: 100%;
+  height: 90%;
   display: flex;
-  width: 60%;
-  justify-content: center;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.follower-details{
-  margin-left: 80%;
+.follower-details {
+  display: flex;  
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.prof-follower-div {
   display: flex;
-  justify-content: left;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 15%;
+}
+
+.outer-prof-div-shell {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.outer-name-div-shell {
+  height: 100%;
+  width: 30%;
+  display: flex;
+  justify-content: flex-start;
   align-items: center;
 }

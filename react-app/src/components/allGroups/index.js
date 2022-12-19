@@ -27,7 +27,10 @@ export default function GetGroups() {
 
     return (
     <div className="totalGroups">
-        <h1 className="groupTitle">Your Groups</h1>
+        <div className='top-div-group'>
+        <h2 className="groupTitle">Your Groups</h2>
+        <CreateGroupModal/>
+        </div>
         {/* <div className="groupsDiv"> */}
         <div className="test">
             {groups.map(group => (
@@ -37,9 +40,7 @@ export default function GetGroups() {
                         <div className="groupName">{group.name}</div>
                     </div>
                 </Link>
-
             ))}
-            <CreateGroupModal/>
         </div>
     </div>
     )
