@@ -10,3 +10,10 @@ app/dev.db
 .app/models/group
 .app/models/tasks
 .app/models/user
+.app/models/members
+.app/models/followers
+.app/models/db
+.app/api
+.app/forms
+
+.app/migrations
