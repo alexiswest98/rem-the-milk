@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import './index.css'
 import { Link, useParams} from 'react-router-dom'
-import { getGroupsThunk } from "../../store/groups";
+import { getAllGroupsThunk } from "../../store/groups";
 import { deleteGroupThunk } from "../../store/groups";
 import { GetAllListsThunk } from "../../store/lists";
 import { DeleteListThunk } from "../../store/lists";
@@ -23,24 +23,20 @@ export default function GetOneGroup() {
     const members = Object.values(useSelector(state => state.members))
     const groupLists = Object.values(lists).filter(list => {
        return list.group_id == groupId})
-    // console.log('groupLists', groupLists)
 
-
+        // console.log('grouplists=',groupLists)
+        // console.log('group=',group)
 
     const remove = async(id) => {
         dispatch(RemoveMemberThunk(groupId, id))
-        // console.log('you hit the remove')
       }
-
+    //   const owner = group.owner_id === currUser.id
 
 
     useEffect(() => {
-        // console.log('hit the use effect')
-        dispatch(getGroupsThunk());
+        dispatch(getAllGroupsThunk());
         dispatch(GetAllListsThunk(groupId));
         dispatch(GetMembersThunk(groupId))
-        dispatch(GetMembersThunk(groupId))
-
     }, [groupId, dispatch]);
 
     const deleteList = (list_id) => {
@@ -70,6 +66,7 @@ export default function GetOneGroup() {
                     <Link to='/dashboard'>
                     <button onClick={()=> {dispatch(deleteGroupThunk(groupId))}}>Delete your group</button>
                     </Link>
+
         </div>
         <div className="membersTotal">
         <h1 className="MemberTitle">Group Members</h1>

@@ -60,6 +60,15 @@ export const getGroupsThunk = () => async (dispatch) => {
   }
 };
 
+export const getAllGroupsThunk = () => async (dispatch) => {
+  const response = await fetch(`/api/groups/act/all`);
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(getGroupsAction(data));
+  }
+};
+
+
 
 export const getGroupThunk = (groupId) => async (dispatch) => {
   const response = await fetch(`/api/groups/${groupId}`);

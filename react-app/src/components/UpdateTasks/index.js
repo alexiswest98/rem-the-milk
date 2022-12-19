@@ -12,7 +12,7 @@ function EditTaskModal({taskId}) {
 
   const onCloseAction = () => {
     setShowModal(false)
-    // history.push(`/lists/${listId}`)
+    // history.push(`/home`)
     // dispatch(getAllTasksThunk())
   }
 

@@ -26,9 +26,11 @@ function CreateListTask({ setShowModal }) {
   const { listId } = useParams()
 
   useEffect(() => {
+    const now = new Date()
     const errors = []
     if (!name) errors.push("Name is required");
     if (!due) errors.push("Due Date is required");
+    if (new Date(due) <= now) validationErrors.push('Please select a date in the future')
     setValidationErrors(errors);
   }, [name, due, notes]);
 

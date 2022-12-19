@@ -6,7 +6,7 @@ __pycache__/
 .vscode/
 app/dev.db
 
-.app/models/lists
-.app/models/group
-.app/models/tasks
-.app/models/user
+# .app/models/lists
+# .app/models/group
+# .app/models/tasks
+# .app/models/user
