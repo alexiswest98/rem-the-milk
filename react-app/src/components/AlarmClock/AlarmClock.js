@@ -17,8 +17,8 @@ function CurrentTime() {
 	const seconds = time.getSeconds();
 
 	return (
-		<div class="wrapper">
-			<div class="display">
+		<div className="wrapper">
+			<div className="wrapper display">
 				<div id="time">{hours}:{minutes}:{seconds}</div>
 			</div>
 		</div>
