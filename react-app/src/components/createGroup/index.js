@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom'
 import { createGroupThunk } from "../../store/groups";
 import { getGroupsThunk } from '../../store/groups';
 /* Create a group component */
+
 export default function CreateAGroup({ setShowModal }) {
     const dispatch = useDispatch()
     const history = useHistory()
