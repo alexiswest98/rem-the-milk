@@ -24,15 +24,13 @@ export default function GetOneGroup() {
     const groupLists = Object.values(lists).filter(list => {
        return list.group_id == groupId})
 
-        console.log('grouplists=',groupLists)
-        console.log('group=',group)
-
-
+        // console.log('grouplists=',groupLists)
+        // console.log('group=',group)
 
     const remove = async(id) => {
         dispatch(RemoveMemberThunk(groupId, id))
       }
-    //   console.log()
+    //   const owner = group.owner_id === currUser.id
 
 
     useEffect(() => {
@@ -65,9 +63,10 @@ export default function GetOneGroup() {
                         </div>
                     ))}
                     <CreateGroupListModal groupId={groupId}/>
-                        <Link to='/dashboard'>
+                    <Link to='/dashboard'>
                     <button onClick={()=> {dispatch(deleteGroupThunk(groupId))}}>Delete your group</button>
                     </Link>
+
         </div>
         <div className="membersTotal">
         <h1 className="MemberTitle">Group Members</h1>
