@@ -4,9 +4,14 @@ __pycache__/
 .venv
 .DS_Store
 .vscode/
+.app/dev.db
 app/dev.db
-
+app.dev.db
+dev.db
 .app/models/lists
 .app/models/group
 .app/models/tasks
 .app/models/user
+.app/models/members
+.app/models/followers
+.app/models/db

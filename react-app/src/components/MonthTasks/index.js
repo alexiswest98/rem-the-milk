@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, NavLink, useParams, Redirect } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { getAllTasksByMonthThunk } from "../../store/specTasks";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { editTaskThunk } from "../../store/tasks";
 import { deleteTaskThunk } from "../../store/tasks";
 
@@ -9,9 +9,9 @@ export default function MonthTask() {
     const history = useHistory()
     const user = useSelector(state => state.session.user);
     const dispatch = useDispatch();
-    const lists = useSelector(state => state.lists)
+    // const lists = useSelector(state => state.lists)
     const tasks = useSelector(state => state.tasks)
-    const {listId} = useParams()
+    // const {listId} = useParams()
 
     useEffect(() => {
         dispatch(getAllTasksByMonthThunk())

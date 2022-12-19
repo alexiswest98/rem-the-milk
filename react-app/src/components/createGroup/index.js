@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom'
 import { createGroupThunk } from "../../store/groups";
 import { getGroupsThunk } from '../../store/groups';
 /* Create a group component */
+
 export default function CreateAGroup({ setShowModal }) {
     const dispatch = useDispatch()
     const history = useHistory()
@@ -19,9 +20,9 @@ export default function CreateAGroup({ setShowModal }) {
     /* Validation errors for form */
     useEffect(() => {
         const validationErrors = [];
-        // if (!name) validationErrors.push('Please Provide a name');
+        if (!name) validationErrors.push('Please Provide a name');
         if (name.length > 40) validationErrors.push('Please provide a group name less than 50 characters');
-        if (name.length < 4) validationErrors.push('Please provide a longer group name')
+        // if (name.length < 4) validationErrors.push('Please provide a longer group name')
         if (!imageUrl) validationErrors.push('Please provide an image url');
         setValidationErrors(validationErrors);
     }, [name, imageUrl]);
@@ -69,7 +70,9 @@ export default function CreateAGroup({ setShowModal }) {
                     required
                 />
             </label>
-            <button type="submit" className="createGroupBtn" disabled={validationErrors.length}>Create</button>
+            <div className="outer-sub-create-div">
+            <button type="submit" className="logout-butt btn-1" disabled={validationErrors.length}>Create</button>
+            </div>
         </form>
 
     )

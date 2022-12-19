@@ -111,7 +111,7 @@ export const EditGroupListThunk = (list) => async (dispatch) => {
       completed
     })
   });
-  console.log('edit hit, res = ', res)
+  console.log('group edit hit, res = ', res)
   if (res.ok) {
     const data = await res.json()
     dispatch(UpdateListAction(data))
@@ -132,10 +132,10 @@ export const CreateListThunk = (list) => async (dispatch) => {
       completed,
     })
   });
-  console.log('response =', res )
+  // console.log('response =', res )
   if (res.ok) {
     const data = await res.json()
-    console.log("Hit the thunk, data = ", data)
+    // console.log("Hit the thunk, data = ", data)
     dispatch(CreateListAction(data))
     return data
   }
@@ -154,10 +154,10 @@ export const CreateGroupListThunk = (list) => async (dispatch) => {
       group_id
     })
   });
-  console.log('response =', res )
+  // console.log('response =', res )
   if (res.ok) {
     const data = await res.json()
-    console.log("Hit the thunk, data = ", data)
+    // console.log("Hit the thunk, data = ", data)
     dispatch(CreateListAction(data))
     return data
   }

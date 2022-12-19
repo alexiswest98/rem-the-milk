@@ -9,13 +9,13 @@ function CreateListTask({ setShowModal }) {
   const history = useHistory()
   const user = useSelector(state => state.session.user)
   const userId = +user.id
+  const currentDate = new Date()
+  const finalDate = Date.parse(currentDate)
+  // const Tasks = Object.values(useSelector(state => state.tasks))
 
-
-  const Tasks = Object.values(useSelector(state => state.tasks))
-
-  console.log('alltaks--------------------', Tasks)
-  const dayTasks = Object.values(useSelector(state => state.specTask))
-  console.log('DAYTAKS--------------------', dayTasks)
+  // console.log('alltaks--------------------', Tasks)
+  // const dayTasks = Object.values(useSelector(state => state.specTask))
+  // console.log('DAYTAKS--------------------', dayTasks)
 
 
   const [name, setName] = useState('')
@@ -25,10 +25,15 @@ function CreateListTask({ setShowModal }) {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const { listId } = useParams()
 
+  const curr = new Date()
+  const now = new Date(curr)
+  now.setDate(now.getDate() - 2)
+  
   useEffect(() => {
     const errors = []
     if (!name) errors.push("Name is required");
     if (!due) errors.push("Due Date is required");
+    if (new Date(due) <= now) validationErrors.push('Please select a date in the future')
     setValidationErrors(errors);
   }, [name, due, notes]);
 
@@ -47,9 +52,9 @@ function CreateListTask({ setShowModal }) {
       notes
     }
 
-    console.log("***************", payload.due)
+    // console.log("***************", payload.due)
 
-    console.log('We are in the CreateListTask Comp.. PAYLOAD:', payload)
+    // console.log('We are in the CreateListTask Comp.. PAYLOAD:', payload)
     await dispatch(createTaskThunk(payload))
     setShowModal(false)
     history.push(`/lists/${listId}`)

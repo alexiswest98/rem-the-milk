@@ -14,6 +14,8 @@ function EditList({ setShowModal }) {
   const [newName, setNewName] = useState(list.name || "");
   const [newDue, setNewDue] = useState(convert(list.due) || "");
   const [newNotes, setNewNotes] = useState(list.notes || "");
+
+
   const [validationErrors, setValidationErrors] = useState([]);
   // const [hasSubmitted, setHasSubmitted] = useState(false);
 
@@ -40,16 +42,22 @@ function EditList({ setShowModal }) {
     return [date[3], mnths[date[2]], date[1]].join("-");
   }
 
-
-
+  const curr = new Date()
+  const now = new Date(curr)
+  now.setDate(now.getDate() - 2)
 
   useEffect(() => {
     const errors = []
     if (!newDue) errors.push("Due Date is required");
     if (newName.length < 4 ) errors.push('Provide a list name with at least 4 characters');
+    if (new Date(newDue) <= now) errors.push('Please select a date in the future')
     setValidationErrors(errors);
   }, [newName, newDue, newNotes]);
 
+  // const today = new Date()
+  // console.log('date = ', today)
+  // const date = list.due
+  // console.log('compaire = ', date >= today)
 
   const onSubmit = async () => {
 
@@ -64,16 +72,15 @@ function EditList({ setShowModal }) {
       group_id: list.group_id,
       completed: list.completed
     }
-    if (newList.group_id !== null) {
-      await dispatch(EditListThunk(newList))
-    } else {
+    {(list.group_id)?
       await dispatch(EditGroupListThunk(newList))
+      :
+      await dispatch(EditListThunk(newList))
     }
     setShowModal(false)
     history.push(`/lists/${listId}`)
 
   }
-
   return (
     <div>
       <form onSubmit={onSubmit} className='createAGroupForm'>
@@ -83,7 +90,7 @@ function EditList({ setShowModal }) {
           <div key={ind}>{error}</div>
         ))}
       </div>
-        <label htmlFor="name">
+      <label htmlFor="name">
           <input
             className="createGroupInput"
             type="text"
@@ -110,7 +117,7 @@ function EditList({ setShowModal }) {
             value={newNotes}
           />
         </label>
-        <button className="createGroupBtn" type="submit" onClick={() => onSubmit()}>Update List</button>
+        <button className="submit" type="submit" onClick={() => onSubmit()}>Update List</button>
       </form>
 
     </div>

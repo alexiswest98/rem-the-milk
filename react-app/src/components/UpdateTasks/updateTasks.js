@@ -7,8 +7,12 @@ function EditListTask({ setShowModal, taskId }) {
   const dispatch = useDispatch()
   const history = useHistory()
   const { listId } = useParams()
+  const currentDate = new Date()
+  console.log(currentDate, 'this is current date')
+  const finalDate = Date.parse(currentDate)
+  console.log(finalDate, "final date")
   const task = useSelector(state => state.tasks[taskId])
-  console.log('taskId = ', taskId)
+  // console.log('taskId = ', taskId)
   const user = useSelector(state => state.session.user)
   const [name, setName] = useState(task.name || '')
   const [due, setDue] = useState(convert(task.due) || '')
@@ -18,6 +22,7 @@ function EditListTask({ setShowModal, taskId }) {
 
 
   function convert(str) {
+    console.log(str)
     const mnths = {
       Jan: "01",
       Feb: "02",
@@ -36,15 +41,19 @@ function EditListTask({ setShowModal, taskId }) {
     // console.log(date)
     return [date[3], mnths[date[2]], date[1]].join("-");
   }
-
+// console.log(due, 'this is due')
   // console.log('due = ',convert(task.due))
   //-> "2011-06-09"
 
+  const curr = new Date()
+  const now = new Date(curr)
 
+  now.setDate(now.getDate() - 2)
   useEffect(() => {
     const errors = []
     if (name.length <4) errors.push("Name needs 4 or more characters");
     if (!due) errors.push("Due Date is required");
+    if (new Date(due) <= now) errors.push('Please select a date in the future')
     setValidationErrors(errors);
   }, [name, due, notes]);
 
@@ -68,7 +77,10 @@ function EditListTask({ setShowModal, taskId }) {
     // console.log("payload", payload)
     await dispatch(editTaskThunk(payload))
     setShowModal(false)
-    history.push(`/lists/${listId}`)
+    // task.list_id ?
+    // history.push(`/lists/${listId}`)
+    // :
+    // history.push(`/home`)
 
   }
 
@@ -108,7 +120,7 @@ function EditListTask({ setShowModal, taskId }) {
             value={notes}
           />
         </label>
-        <button className="createGroupBtn" type="submit" disabled={validationErrors.length}>Update Task</button>
+        <button className="submit" type="submit" disabled={validationErrors.length}>Update Task</button>
       </form>
 
       {/* <button onClick={()=> history.push(`/lists/${listId}`)}> back </button> */}

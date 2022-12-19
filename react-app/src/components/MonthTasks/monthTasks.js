@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, NavLink, Link } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { getAllTasksThunk } from "../../store/tasks";
 import { GetAllListsThunk } from "../../store/lists";
 // import IncompleteTasksPage from "../Tasks/incompleteTasks";
@@ -8,25 +8,26 @@ import CreateListModal from "../Lists";
 import EditListModal from "../EditList";
 import CreateTaskModal from "../simpTasks";
 import MonthTask from ".";
+import AlarmClock from "../AlarmClock/AlarmClock";
 
 export default function MonthTaskPage() {
     const dispatch = useDispatch()
     const history = useHistory()
     const user = useSelector(state => state.session.user);
-    const Tasks = Object.values(useSelector(state => state.tasks))
+    // const Tasks = Object.values(useSelector(state => state.tasks))
     const Lists = Object.values(useSelector(state => state.lists))
 
     const aloneLists = Lists.filter(list => list.group_id == null)
     const groupLists = Lists.filter(list => list.group_id !== null)
     // console.log("********", groupLists)
 
-    const incomOnClick = () => {
-        history.push('/tasks/incomplete')
-    }
+    // const incomOnClick = () => {
+    //     history.push('/tasks/incomplete')
+    // }
 
-    const complOnClick = () => {
-        history.push('/tasks/completed')
-    }
+    // const complOnClick = () => {
+    //     history.push('/tasks/completed')
+    // }
 
     useEffect(() => {
         dispatch(getAllTasksThunk())
@@ -67,12 +68,15 @@ export default function MonthTaskPage() {
                             </div>
                             <div className="nav-list-option">
                                 <h2>Lists</h2>
+                                <div className="listMapped">
+
                                 {aloneLists.map(list => (
                                     <Link to={`/lists/${list.id}`}>
                                     <h4>{list.name} <EditListModal listId={list.id}/></h4>
                                     </Link>
                                 ))}
                                 <CreateListModal/>
+                                </div>
                             </div>
                             <div className="nav-group-list-option">
                                 <h4>Group Lists</h4>
@@ -96,7 +100,7 @@ export default function MonthTaskPage() {
                     </div>
                 </div>
                 <div className="clock-side">
-                    <img src="https://cb2.scene7.com/is/image/CB2/CarloMrblBlkWllClckSHS19/$web_pdp_main_carousel_sm$/190410160814/carlo-black-marble-wall-clock.jpg" alt="clock" className="clock"/>
+                <AlarmClock/>
                 </div>
         </div>
         </div>

@@ -8,6 +8,7 @@ import followsReducer from './follows';
 import specTasksReducer from './specTasks';
 import usersReducer from './users';
 import membersReducer from './members';
+import userMembersReducer from './allmems';
 
 const rootReducer = combineReducers({
   session,
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
   follows: followsReducer,
   specTask: specTasksReducer,
   users: usersReducer,
-  members: membersReducer
+  members: membersReducer,
+  userGroups: userMembersReducer
 });
 
 

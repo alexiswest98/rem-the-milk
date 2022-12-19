@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect, useState } from "react";
-import { useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { getAllUsersThunk } from '../../store/users';
 import { getFollowingThunk } from '../../store/follows';
 import { getFollowsThunk } from '../../store/follows';
@@ -22,7 +22,7 @@ function UserDetails({ setShowModal, user }) {
 
     function refreshPage() {
         window.location.reload(false);
-      }
+    }
 
     if (!following || !users || !followers) return null;
 
@@ -56,20 +56,20 @@ function UserDetails({ setShowModal, user }) {
             <h2>Email: {indivUser.email}</h2>
             <img src={indivUser.image_url} className='user-modal-img'></img>
             {!followerIds.includes(indivUser.id) &&
-                <>
-                <button onClick={() => followButtonAction(indivUser.id)}>follow</button>
-                </>
+                <div className='follow-modal-dets'>
+                    <button className='activity-butt btn-7 ' onClick={() => followButtonAction(indivUser.id)}>follow</button>
+                </div>
             }
             {followerIds.includes(indivUser.id) &&
-                <>
-                <p>Im following</p>
-                <button onClick={() => unfollowButtonAction(indivUser.id)}>Unfollow</button>
-                </>
+                <div className='follow-modal-dets'>
+                    <h4>Im following</h4>
+                    <button className='activity-butt btn-7 ' onClick={() => unfollowButtonAction(indivUser.id)}>Unfollow</button>
+                </div>
             }
             {followingIds.includes(user.id) &&
-                <>
-                <p>follower</p>
-                </>
+                <div className='follow-modal-dets'>
+                    <h4>follower</h4>
+                </div>
             }
         </div>
     )

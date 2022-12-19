@@ -8,6 +8,7 @@ import CreateListModal from "../Lists";
 import EditListModal from "../EditList";
 import CreateTaskModal from "../simpTasks";
 import TomTask from ".";
+import AlarmClock from "../AlarmClock/AlarmClock";
 
 export default function TomTaskPage() {
     const dispatch = useDispatch()
@@ -67,12 +68,15 @@ export default function TomTaskPage() {
                             </div>
                             <div className="nav-list-option">
                                 <h2>Lists</h2>
+                                <div className="listMapped">
+
                                 {aloneLists.map(list => (
                                     <Link to={`/lists/${list.id}`}>
                                     <h4>{list.name} <EditListModal listId={list.id}/></h4>
                                     </Link>
                                 ))}
                                 <CreateListModal/>
+                                </div>
                             </div>
                             <div className="nav-group-list-option">
                                 <h4>Group Lists</h4>
@@ -96,7 +100,7 @@ export default function TomTaskPage() {
                     </div>
                 </div>
                 <div className="clock-side">
-                    <img src="https://cb2.scene7.com/is/image/CB2/CarloMrblBlkWllClckSHS19/$web_pdp_main_carousel_sm$/190410160814/carlo-black-marble-wall-clock.jpg" alt="clock" className="clock"/>
+                <AlarmClock/>
                 </div>
         </div>
         </div>

@@ -12,12 +12,22 @@
     margin-bottom: 5%;
 }
 
-.createGroupBtn{
-    width: 260px;
-    height: 25px;
-    background-color: rgb(42,157,255);
-    color: rgb(255, 255, 255);
+
+/* create group submit button*/
+.outer-sub-create-div {
+    width: 40%;
 }
+
+
+.btn-1 {
+    background: rgb(6,14,131);
+    background: linear-gradient(0deg, rgba(6,14,131,1) 0%, rgba(12,25,180,1) 100%);
+    border: none;
+  }
+  .btn-1:hover {
+     background: rgb(0,3,255);
+  background: linear-gradient(0deg, rgba(0,3,255,1) 0%, rgba(2,126,251,1) 100%);
+  }
 
 .createAGroupForm > h2 {
     color: rgb(42,157,255);
@@ -25,9 +35,67 @@
 }
 
 .createGroupModalButton{
-    background-color: rgb(42,157,255);
-    color: rgb(255, 255, 255);
+    background-color: rgb(234, 245, 255);
+    color: rgb(0, 0, 0);
     width: 100px;
     height: 35px;
     align-self: center;
+    border-radius: 0.4em;
+    border: none;
 }
+
+.custom-btn {
+    color: #fff;
+    width: 130px;
+    height: 40px;
+    padding: 10px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+}
+
+.btn-14 {
+    position: relative;
+    color: #00aced;
+    border: none;
+    z-index: 2;
+  }
+  .btn-14:before,
+  .btn-14:after {
+    position: absolute;
+    content: "";
+    width: 20%;
+    height: 20%;
+    border: 1px solid;
+    
+    z-index: -1;
+    transition: all 0.3s ease;
+  }
+  .btn-14:before{
+     top: 0;
+     left: 0;
+     border-bottom-color: transparent;
+     border-right-color: transparent;
+     border-top-color: rgb(5, 87, 169);
+     border-left-color: rgb(5, 87, 169);
+  }
+  .btn-14:after{
+     bottom: 0;
+     right: 0;
+     border-top-color: transparent;
+     border-left-color: transparent;
+     border-bottom-color: rgb(5, 87, 169);
+     border-right-color: rgb(5, 87, 169);
+  }
+  .btn-14:hover:before,
+  .btn-14:hover:after {
+    border-color: rgb(5, 87, 169);
+    height: 100%;
+    width: 100%;
+    box-shadow: 0 0 5px rgb(5, 87, 169), 0 0 5px rgb(5, 87, 169) inset;
+  }
+  

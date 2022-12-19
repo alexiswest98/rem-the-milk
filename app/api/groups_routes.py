@@ -11,6 +11,12 @@ def get_groups():
   groups = Group.query.filter(Group.owner_id == current_user.id).all()
   return jsonify([group.to_dict() for group in groups])
 
+@groups_routes.route('/act/all')
+@login_required
+def get_all_groups():
+  groups = Group.query.all()
+  return jsonify([group.to_dict() for group in groups])
+
 #delete a current user's group based on id
 @groups_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
