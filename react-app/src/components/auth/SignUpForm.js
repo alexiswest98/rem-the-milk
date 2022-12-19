@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch} from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import './signupform.css'
@@ -12,6 +12,20 @@ const SignUpForm = () => {
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    let errs = []
+    if(!username) errs.push('please provide username')
+    if(!email) errs.push('please provide email')
+    if(password !== repeatPassword) errs.push('Passwords do not match')
+    if(!email.includes('@') || email.length < 5) errs.push('please enter a valid email')
+    if(email.length > 200) errs.push('email too long')
+    if(username.length > 200) errs.push('username too long')
+    if(username === email) errs.push('username and email cannot be the same')
+    if(username.length > 200 || username.length < 4) errs.push('username must be between 4 and 200 characters')
+    setErrors(errs)
+  }, [username, email, password, repeatPassword]);
+
 
   const onSignUp = async (e) => {
     e.preventDefault();

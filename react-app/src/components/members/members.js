@@ -22,6 +22,7 @@ export default function Members({setShowModal}) {
   const viable = followers.filter(follow => {
     return !membersId.includes(follow.id)
   })
+  console.log(viable)
     const add = async(id) => {
       dispatch(AddMemberThunk(groupId, id))
       // console.log('you hit the add')

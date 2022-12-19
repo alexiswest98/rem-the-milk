@@ -25,8 +25,6 @@ export default function GetOneGroup() {
     return list.group_id == groupId
   })
 
-  // console.log('grouplists=',groupLists)
-  // console.log('group=',group)
 
   const remove = async (id) => {
     dispatch(RemoveMemberThunk(groupId, id))
@@ -61,7 +59,7 @@ export default function GetOneGroup() {
               <Link className="groupListLink" key={`a{${list.id}`} to={`/lists/${list.id}`}>
 
                 <p id="listDueName">{list.name}       </p>
-                <p id="listDueName">due: {list.due}</p>
+                <p id="listDueName">Due: {list.due.slice(0, 17)}</p>
 
               </Link>
               <p id="listDueName">{list.notes}</p>
@@ -75,7 +73,7 @@ export default function GetOneGroup() {
           <CreateGroupListModal groupId={groupId} />
           </div>
           <Link to='/dashboard'>
-            <button onClick={() => { dispatch(deleteGroupThunk(groupId)) }} className='deleteGroupBtn'>Delete your group</button>
+            <button onClick={() => { dispatch(deleteGroupThunk(groupId)) }} className='deleteGroupBtn'>Delete group</button>
           </Link>
         </div>
       </div>

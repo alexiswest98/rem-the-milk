@@ -111,19 +111,21 @@
 /*``````````````````````````````` */
 .deleteGroupBtn{
   background-color: rgb(252, 0, 0); /* Green */
-  border-radius: 10px;
+  border-radius: 5px;
   color: white;
   display: inline-block;
-  height: 4em;
+  height: 2em;
   font-size: 16px;
   border: none;
   padding: 1%;
-  width: 6.1em;
+  width: 8em;
+  background: linear-gradient(0deg, rgb(100, 2, 2) 0%, rgb(250, 22, 22) 100%);
 }
 .deleteGroupBtn:hover,
 .deleteGroupBtn:focus {
   box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
-  transform: translateY(-0.15em);
+  background:linear-gradient(0deg, rgb(250, 22, 22) 0%, rgb(250, 22, 22) 100%);
+
 }
 
 .MemberTitle{
