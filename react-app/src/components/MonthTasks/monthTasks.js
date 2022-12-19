@@ -8,7 +8,7 @@ import CreateListModal from "../Lists";
 import EditListModal from "../EditList";
 import CreateTaskModal from "../simpTasks";
 import MonthTask from ".";
-import AlarmClock from "../AlarmClock/AlarmClock";
+import CurrentTime from "../AlarmClock/AlarmClock";
 
 export default function MonthTaskPage() {
     const dispatch = useDispatch()
@@ -112,7 +112,7 @@ export default function MonthTaskPage() {
                     </div>
                 </div>
                 <div className="clock-side">
-                    <AlarmClock />
+                <CurrentTime/>
                 </div>
             </div>
         </div>

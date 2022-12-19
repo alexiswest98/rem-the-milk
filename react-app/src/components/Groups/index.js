@@ -14,6 +14,7 @@ function CreateGroupListModal(groupId) {
   return (
     <>
       <button
+      className="logout-butt btn-1"
       onClick={() => setShowModal(true)}>Create New List</button>
       {showModal && (
         <Modal onClose={() => onCloseAction()}>

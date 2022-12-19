@@ -81,9 +81,13 @@
 }
 
 .deleteListInGroup {
-  width: 50%;
+  width: 30%;
   align-self: center;
   margin-bottom: 1%;
+  background-color: red;
+  border: none;
+  color: white;
+  border-radius: 1em;
 }
 
 .member-list {
@@ -99,19 +103,29 @@
 .createListDeleteGroup {
   display: flex;
   justify-content: center;
+  align-items: center;
+  width: 100%;
+  justify-content: space-evenly;
 }
 
 /*``````````````````````````````` */
-.deleteGroupBtn {
-  margin-left: 25%;
-  width: 150px;
-  height: 30px;
-  margin-bottom: 1%;
+.deleteGroupBtn{
+  background-color: rgb(252, 0, 0); /* Green */
+  border-radius: 10px;
+  color: white;
+  display: inline-block;
+  height: 2em;
+  font-size: 16px;
+}
+.deleteGroupBtn:hover,
+.deleteGroupBtn:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.15em);
 }
 
 .MemberTitle{
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   color: rgb(27, 96, 191);
   margin-bottom: 1%;
 }
@@ -133,4 +147,15 @@
 /*   =====================================   */
 .RemoveFromGroupBtn{
   margin-bottom: 1%;
+}
+
+.deleteMembInGroup {
+  width: 50%;
+  align-self: center;
+  margin-bottom: 1%;
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 1%;
+  border-radius: 0.6em;
 }

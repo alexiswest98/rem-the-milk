@@ -8,7 +8,7 @@ import './index.css'
 import CreateListModal from "../Lists";
 import EditListModal from "../EditList";
 import CreateTaskModal from "../simpTasks";
-import AlarmClock from "../AlarmClock/AlarmClock";
+import CurrentTime from "../AlarmClock/AlarmClock";
 
 
 export default function NewHomePage() {
@@ -124,7 +124,7 @@ export default function NewHomePage() {
                     </div>
                 </div>
                 <div className="clock-side">
-                    <AlarmClock />
+                    <CurrentTime/>
                 </div>
             </div>
         </div>

@@ -1,58 +1,28 @@
-import React from "react";
-import "./alarmClock.css"
-import "./clock"
+import React, { useState, useEffect } from 'react';
+import './Clock.css'
 
-export default function AlarmClock() {
+function CurrentTime() {
+	const [time, setTime] = useState(new Date());
+
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setTime(new Date());
+		}, 1000);
+
+		return () => clearInterval(interval);
+	}, []);
+
+	const hours = time.getHours();
+	const minutes = time.getMinutes();
+	const seconds = time.getSeconds();
 
 	return (
-		<body>
-		<div id='main-container'>
-			<h2 id='clock'></h2>
-
-		<div id='alarm-container'>
-			<h3 class="title-set">Set Alarm Time</h3>
-				<label>
-					<div>
-					<select id='alarmhrs' ></select>
-					</div>
-				</label>
-				<label>
-					<div>
-					<select id='alarmmins'></select>
-					</div>
-				</label>
-				<label>
-					<div>
-					<select id='alarmsecs' ></select>
-					</div>
-				</label>
-				<label>
-					<div>
-						<select id="ampm">
-							<option value="AM">AM</option>
-							<option value="PM">PM</option>
-						</select>
-					</div>
-				</label>
-				</div>
-				
-				<div id='buttonHolder'>
-					<div>
-						<button  id='setButton' onClick='alarmSet()'>Set Alarm</button>
-			</div>
-			
-			<div>
-				<button  id='clearButton' onClick='alarmClear()'>Clear Alarm</button>
+		<div class="wrapper">
+			<div class="display">
+				<div id="time">{hours}:{minutes}:{seconds}</div>
 			</div>
 		</div>
-		</div>
-
-		<script type='text/javascript' src='clock.js'></script>
-	</body>
-
-	)
-
+	);
 }
 
-// onClick={() => alarmSet()}
-// onClick={() => alarmClear()}
+export default CurrentTime;
