@@ -5,7 +5,6 @@ import { getFollowingThunk, getFollowsThunk, followThunk, unfollowThunk } from '
 import { getAllUsersThunk } from '../../store/users';
 import GetUserDetailsModal from '../UserDetails';
 import './usersList.css'
-import MonthTask from '../MonthTasks';
 
 function UsersList() {
   const dispatch = useDispatch();
