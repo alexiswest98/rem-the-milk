@@ -25,8 +25,11 @@ function CreateListTask({ setShowModal }) {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const { listId } = useParams()
 
+  const curr = new Date()
+  const now = new Date(curr)
+  now.setDate(now.getDate() - 2)
+  
   useEffect(() => {
-    const now = new Date()
     const errors = []
     if (!name) errors.push("Name is required");
     if (!due) errors.push("Due Date is required");

@@ -14,8 +14,7 @@ function EditList({ setShowModal }) {
   const [newName, setNewName] = useState(list.name || "");
   const [newDue, setNewDue] = useState(convert(list.due) || "");
   const [newNotes, setNewNotes] = useState(list.notes || "");
-  const currentDate = new Date()
-  const finalDate = Date.parse(currentDate)
+
 
   const [validationErrors, setValidationErrors] = useState([]);
   // const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -43,7 +42,9 @@ function EditList({ setShowModal }) {
     return [date[3], mnths[date[2]], date[1]].join("-");
   }
 
-  const now = new Date
+  const curr = new Date()
+  const now = new Date(curr)
+  now.setDate(now.getDate() - 2)
 
   useEffect(() => {
     const errors = []
@@ -89,18 +90,18 @@ function EditList({ setShowModal }) {
           <div key={ind}>{error}</div>
         ))}
       </div>
-        <label htmlFor="name">
+      <label>
           <input
-            className="createGroupInput"
+            className="createListInput"
             type="text"
             placeholder="Name"
-            onChange={(e) => setNewName(e.target.value)}
             value={newName}
+            onChange={(e) => setNewName(e.target.value)}
           />
         </label>
         <label htmlFor="due">
           <input
-            className="createGroupInput"
+            className="createListInput"
             type="date"
             placeholder="Due"
             onChange={(e) => setNewDue(e.target.value)}
@@ -109,7 +110,7 @@ function EditList({ setShowModal }) {
         </label>
         <label htmlFor="notes">
           <input
-            className="createGroupInput"
+            className="createListInput"
             type="text"
             placeholder="Notes"
             onChange={(e) => setNewNotes(e.target.value)}

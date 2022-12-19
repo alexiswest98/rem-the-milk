@@ -1,3 +1,13 @@
+.followerImg {
+  height: 50%;
+  width: 40%;
+  border-radius: 50%;
+}
+
+.followers-title {
+  margin-bottom: 2%;
+}
+
 .followers-component {
   display: flex;
   width: 60%;
@@ -9,8 +19,11 @@
 
 .follower-details {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: left;
+  width: 100%;
+  height: 100%;
 }
 
 .followerImg {
@@ -18,3 +31,26 @@
   border-radius: 25px;
 }
 
+.outer-prof-div-shell {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.outer-name-div-shell {
+    display: flex;
+    align-items: center;
+}
+
+.followers-list {
+  display: flex;
+  flex-wrap: wrap;
+  height: 60%;
+}
+
+.Followers-Details{
+  width: 20%;
+  height: 50%;
+}

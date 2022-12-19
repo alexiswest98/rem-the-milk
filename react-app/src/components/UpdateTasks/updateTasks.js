@@ -41,16 +41,17 @@ function EditListTask({ setShowModal, taskId }) {
     // console.log(date)
     return [date[3], mnths[date[2]], date[1]].join("-");
   }
-console.log(due, 'this is due')
+// console.log(due, 'this is due')
   // console.log('due = ',convert(task.due))
   //-> "2011-06-09"
 
+  const curr = new Date()
+  const now = new Date(curr)
 
+  now.setDate(now.getDate() - 2)
   useEffect(() => {
-    const now = new Date()
     const errors = []
     if (name.length <4) errors.push("Name needs 4 or more characters");
-    if (Date.parse(due) < finalDate) errors.push('Due date must be after today');
     if (!due) errors.push("Due Date is required");
     if (new Date(due) <= now) errors.push('Please select a date in the future')
     setValidationErrors(errors);
