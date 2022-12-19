@@ -2,3 +2,18 @@
 button{
     cursor: pointer;
 }
+
+
+.deleteGroupBtn{
+    background-color: rgb(231, 69, 69); /* Green */
+    border-radius: 10px;
+    color: white;
+    display: inline-block;
+    height: 25px;
+    font-size: 16px;
+}
+.deleteGroupBtn:hover,
+.deleteGroupBtn:focus {
+    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+    transform: translateY(-0.15em);
+  }
