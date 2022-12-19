@@ -16,12 +16,15 @@ const [due, setDue] = useState('')
 const [notes, setNotes] = useState(null)
 const [validationErrors, setValidationErrors] = useState([])
 
+const curr = new Date()
+const now = new Date(curr)
+now.setDate(now.getDate() - 2)
 
 useEffect(() => {
   const errors = []
   if(!name) errors.push("Name is required");
   if (!due) errors.push("Due Date is required");
-  // if (!due) errors.push("Due Date is required");
+  if (new Date(due) <= now) validationErrors.push('Please select a date in the future')
   setValidationErrors(errors);
 
 }, [name, due, notes]);

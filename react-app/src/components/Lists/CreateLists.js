@@ -12,11 +12,13 @@ function CreateList({ setShowModal }) {
   const [due, setDue] = useState('')
   const [notes, setNotes] = useState('')
   const [validationErrors, setValidationErrors] = useState([])
-  const currentDate = new Date()
-  const finalDate = Date.parse(currentDate)
+
+
+  const curr = new Date()
+  const now = new Date(curr)
+  now.setDate(now.getDate() - 2)
 
   useEffect(() => {
-    const now = new Date()
     const validationErrors = []
     if (!name) validationErrors.push("Name is required");
     if (name.length > 50) validationErrors.push('Name must not longer than 50 characters')

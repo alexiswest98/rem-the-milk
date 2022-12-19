@@ -25,12 +25,13 @@ function CreateTask({ setShowModal }) {
   const [validationErrors, setValidationErrors] = useState([])
   // const [hasSubmitted, setHasSubmitted] = useState(false);
   // const { listId } = useParams()
+  const curr = new Date()
+  const now = new Date(curr)
+  now.setDate(now.getDate() - 2)
 
-  const now = new Date()
   useEffect(() => {
     const errors = []
     if (name.length < 4) errors.push("Provide a name with at least 4 characters");
-    if (Date.parse(due) < finalDate) errors.push('Due date must be after today');
     if (!due) errors.push("Due Date is required");
     if (new Date(due) <= now) errors.push('Please select a date in the future')
     setValidationErrors(errors);
