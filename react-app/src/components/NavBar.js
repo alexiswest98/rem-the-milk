@@ -53,7 +53,7 @@ const NavBar = () => {
   if (!user) return (
     <div className="navbar" id="logged-out-nav">
       <div className="navBarLogo">
-        <NavLink to='/home'>
+        <NavLink to='/'>
           <img src={whiteLogo} alt="logo" className="logo-img" />
         </NavLink>
       </div>

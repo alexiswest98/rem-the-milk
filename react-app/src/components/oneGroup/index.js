@@ -48,7 +48,8 @@ export default function GetOneGroup() {
       <div className="oneGroupTopHalf">
         <div className="eachGroupMap">
           <img className='oneGroupImg' src={`${group.image_url}`} alt='group Pic'></img>
-          <div className="oneGroup">{group.name}
+          <div className="oneGroup">
+            <h2>{group.name}</h2>
             <AddMemberModal />
           </div>
         </div>

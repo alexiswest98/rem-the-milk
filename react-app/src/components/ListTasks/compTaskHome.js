@@ -58,7 +58,7 @@ export default function CompTaskPage() {
                             <div className="bubble-info-indiv">
                                 <div className="bubb-inside-contain" id="right-border-bubb">
                                 <h4>{completedTasks}</h4>
-                                <span>completed</span>
+                                <span className="need-contain">done</span>
                                 </div>
                             </div>
                             <div className="bubble-info-indiv">

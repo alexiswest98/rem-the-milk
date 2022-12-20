@@ -20,9 +20,9 @@ export default function Members({setShowModal}) {
     })
     // console.log('members id"s = ', membersId)
   const viable = followers.filter(follow => {
-    return !membersId.includes(follow.id) && follow
+    return !membersId.includes(follow.id) && follow.id
   })
-  console.log(viable)
+  // console.log(viable)
     const add = async(id) => {
       dispatch(AddMemberThunk(groupId, id))
       // console.log('you hit the add')
