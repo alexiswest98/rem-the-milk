@@ -23,7 +23,8 @@ function GetUserDetailsModal(user) {
   return (
     <>
       <button
-      onClick={() => setShowModal(true)}>Get UserDetails</button>
+      className="logout-butt btn-1"
+      onClick={() => setShowModal(true)}>Get User Details</button>
       {showModal && (
         <Modal onClose={() => onCloseAction()}>
           <UserDetails setShowModal={setShowModal} user={user}/>

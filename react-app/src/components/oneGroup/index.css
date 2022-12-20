@@ -1,1 +1,168 @@
-/* ignore */
+.member-list {
+  display: flex;
+  margin: 10px;
+  flex-direction: row;
+}
+
+
+.membersTotal {
+  /* display: flex;
+  flex: wrap;
+  flex-direction: row; */
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 5%;
+}
+.membersTotal2{
+  display: flex;
+  flex: wrap;
+  flex-direction: row;
+}
+
+.eachGroupMap {
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  margin-top: 1%;
+}
+
+.oneGroup {
+  font-size: xx-large;
+  color: rgb(27, 96, 191);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.oneGroupImg {
+  width: 15%;
+  height: 15%;
+  box-shadow: 2px 2px 15px rgb(27, 96, 191);
+  margin-bottom: 1%;
+}
+
+.listMappedBigDiv {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20%;
+  overflow-y: scroll;
+  max-height: 300px;
+  margin-bottom: 3%;
+}
+
+.notesMapped {
+  margin-top: 1%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 25%;
+  margin-bottom: 2%;
+  /* margin: 0% 1% 1% 0%; */
+  box-shadow: 2px 2px 15px rgb(27, 96, 191);
+}
+
+.onegroupListHeader {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1%;
+  margin-top: 1%;
+  width: 15%;
+  height: 40px;
+  color: rgb(27, 96, 191);
+  margin: 1% auto;
+  border-bottom: 2px solid rgb(27, 96, 191);
+}
+
+#listDueName {
+  margin: .05% auto;
+}
+
+.deleteListInGroup {
+  width: 30%;
+  align-self: center;
+  margin-bottom: 1%;
+  background-color: red;
+  border: none;
+  color: white;
+  border-radius: 1em;
+}
+
+.member-list {
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+}
+
+.oneGroupTopHalf {
+  height: 20%;
+}
+
+.createListDeleteGroup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+/*``````````````````````````````` */
+.deleteGroupBtn{
+  background-color: rgb(252, 0, 0); /* Green */
+  border-radius: 5px;
+  color: white;
+  display: inline-block;
+  height: 2em;
+  font-size: 16px;
+  border: none;
+  padding: 1%;
+  width: 8em;
+  background: linear-gradient(0deg, rgb(100, 2, 2) 0%, rgb(250, 22, 22) 100%);
+}
+.deleteGroupBtn:hover,
+.deleteGroupBtn:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  background:linear-gradient(0deg, rgb(250, 22, 22) 0%, rgb(250, 22, 22) 100%);
+
+}
+
+.MemberTitle{
+  display: flex;
+  justify-content: center;
+  color: rgb(27, 96, 191);
+  margin-bottom: 1%;
+}
+
+.membersTotal2{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5%;
+}
+
+.outerMembers-list {
+  width: 20%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1%;
+  box-shadow: 2px 2px 15px rgb(27, 96, 191);
+}
+/*   =====================================   */
+.RemoveFromGroupBtn{
+  margin-bottom: 1%;
+}
+
+.deleteMembInGroup {
+  width: 50%;
+  align-self: center;
+  margin-bottom: 1%;
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 1%;
+  border-radius: 0.6em;
+}

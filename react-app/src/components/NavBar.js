@@ -5,81 +5,77 @@ import LogoutButton from './auth/LogoutButton';
 import './navbar.css'
 import { logout } from './../store/session'
 import whiteLogo from '../Images/logowhite.png'
+
+
 const NavBar = () => {
   const dispatch = useDispatch()
   const user = useSelector(state => state.session.user)
 
 
   if (user) return (
-    <nav className="navbar">
-      <NavLink to='/'>
-        <div className="navBarLogo">
-          <img src={whiteLogo} alt="" />
+    <div className="navbar">
+      <div className="navBarLogo">
+        <NavLink to='/home'>
+          <img src={whiteLogo} alt="logo" className="logo-img" />
+        </NavLink>
+      </div>
+      <div className="second-half-nav-bar">
+        <div className="nav-bar-list">
+          <div className="navbarLi">
+            <NavLink to='/aboutUs' exact={true} className='active'>
+              About Us
+            </NavLink>
+          </div>
+          <div className="navbarLi">
+            <NavLink to='/dashboard' exact={true} className='active'>
+              Dashboard
+            </NavLink>
+          </div>
+          <div className="navbarLi">
+            <NavLink to='/users' exact={true} className='active'>
+              Find Friends
+            </NavLink>
+          </div>
+          <div className="navbarLi">
+            <NavLink to='/followers' exact={true} className='active'>
+              Following
+            </NavLink>
+          </div>
+          <div id="logoutnavbtnli">
+            <LogoutButton />
+          </div>
         </div>
-      </NavLink>
-      <ul>
-        <li className="navbarLi">
-          <NavLink to='/home' exact={true} activeClassName='active'>
-            Home
-          </NavLink>
-        </li>
-        <li className="navbarLi">
-          <NavLink to='/aboutUs' exact={true} activeClassName='active'>
-            About Us
-          </NavLink>
-        </li>
-        <li className="navbarLi">
-          <NavLink to='/dashboard' exact={true} activeClassName='active'>
-            Dashboard
-          </NavLink>
-        </li>
-        <li className="navbarLi">
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Find Friends
-          </NavLink>
-        </li>
-        <li className="navbarLi">
-          <NavLink to='/followers' exact={true} activeClassName='active'>
-            Followers
-          </NavLink>
-        </li>
-        <li className="navbarLi" id="logoutnavbtnli">
-          <LogoutButton />
-        </li>
-      </ul>
-    </nav>
+      </div>
+    </div>
   );
+
+
   if (!user) return (
-    <div className="nonUserDiv">
-      <NavLink to='/'>
-        <div className="navBarLogoNoUser">
-          <img src={whiteLogo} alt="" />
+    <div className="navbar" id="logged-out-nav">
+      <div className="navBarLogo">
+        <NavLink to='/'>
+          <img src={whiteLogo} alt="logo" className="logo-img" />
+        </NavLink>
+      </div>
+      <div className="second-half-nav-bar">
+        <div className="nav-bar-list">
+          <div className="navbarLi">
+            <NavLink to='/aboutUs' exact={true} className="active">
+              About Us
+            </NavLink>
+          </div>
+          <div className="new-navbarLi">
+            <NavLink to='/login' exact={true} className='logout-butt btn-6 active'>
+              Login
+            </NavLink>
+          </div>
+          <div className="new-navbarLi">
+            <NavLink to='/sign-up' exact={true} className='logout-butt btn-6 active'>
+              Sign Up
+            </NavLink>
+          </div>
         </div>
-        <div>
-          <p></p>
-        </div>
-      </NavLink>
-
-      <ul>
-        <li className="navbarLiNoUser">
-          <NavLink to='/aboutUs' exact={true} activeClassName='active'>
-            About Us
-          </NavLink>
-        </li>
-
-        <li className="navbarLiNoUser">
-          <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
-          </NavLink>
-        </li>
-
-        <li className="navbarLiNoUser">
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
-            Sign Up
-          </NavLink>
-        </li>
-
-      </ul>
+      </div>
     </div>
   )
 }

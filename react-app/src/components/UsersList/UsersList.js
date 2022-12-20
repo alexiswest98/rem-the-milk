@@ -16,15 +16,13 @@ function UsersList() {
   const usersArr = Object.values(useSelector(state => state.users))
   const users = usersArr.filter(user => user.id !== currUser.id)
 
-
-
   useEffect(() => {
-      // Get all users
-      dispatch(getAllUsersThunk())
-      // Get a users followers
-      dispatch(getFollowsThunk())
-      // Who youre following
-      dispatch(getFollowingThunk())
+    // Get all users
+    dispatch(getAllUsersThunk())
+    // Get a users followers
+    dispatch(getFollowsThunk())
+    // Who youre following
+    dispatch(getFollowingThunk())
 
   }, [dispatch, boolean])
 
@@ -38,25 +36,28 @@ function UsersList() {
   const followingIds = arr.map(ele => ele.id)
   // console.log('following ids', followingIds)
 
- const followButton = (userId) => {
-  setBoolean(!boolean)
-  dispatch(followThunk(userId))
-  history.push("/users")
- }
-
+  const followButton = (userId) => {
+    setBoolean(!boolean)
+    dispatch(followThunk(userId))
+    history.push("/users")
+  }
 
   return (
     <div className='whole-outer-find'>
-    <h1>Find your Friend By Email: </h1>
-    <div className='users-list-whole'>
-      {users.map(user => (
-        <div className='indiv-user-box'>
-        {user.email}
-        <GetUserDetailsModal user={user}/>
-        </div>
+      <div className='title-div-for-find'>
+        <h1>Find your Friend By Email</h1>
+      </div>
+      <div className='users-list-whole'>
+        {users.map(user => (
+          <div className='indiv-user-box'>
+            <h4 className='email'>{user.email}</h4>
+            <div className='userdetail-width'>
+            <GetUserDetailsModal user={user} />
+            </div>
+          </div>
         ))
-      }
-    </div>
+        }
+      </div>
     </div>
   );
 }

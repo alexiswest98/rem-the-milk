@@ -1,0 +1,138 @@
+
+.createTaskModalBtn{
+    background-color: rgb(30, 157, 255);
+    color: rgb(255, 255, 255);
+    width: 20%;
+}
+.createTaskForm{
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.createTaskInput {
+    width: 250px;
+    margin-bottom: 5%;
+}
+
+.createTaskInputDate{
+    width: 255PX;
+    margin-bottom: 5%;
+}
+#createTaskSubmitBtn{
+    width: 260px;
+    height: 25px;
+    background-color: rgb(42,157,255);
+    color: rgb(255, 255, 255);
+}
+
+.createTaskErrorsDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.createTaskErrorsUl{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 15%;
+}
+
+.createTaskH3{
+    color: rgb(42,157,255);
+}
+
+.whole-incomplete-task {
+    background-color: rgb(255, 255, 255, 0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+#incomp-title {
+    color: rgb(39, 0, 103);
+}
+
+#overflow-here{
+    margin-bottom: 2%;
+    overflow-y: scroll;
+    margin: 2%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#overflow-here::-webkit-scrollbar {
+    display: none;
+}
+
+.completedTaskDiv {
+    margin: 2%;
+    padding: 1%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid blue ;
+    border-radius: 1em;
+}
+
+.outer-box-actions-incom {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.complete-div-incom {
+    width: 80%;
+    margin-left: 1%;
+}
+
+#complete-button {
+    color: white;
+    background-color: red;
+    border-radius: 1em;
+    border: none;
+    width: 6%;
+    cursor: pointer;
+}
+
+.edit-del-div-incom {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.need-for-llists {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.need-for-llists::-webkit-scrollbar {
+    overflow-y: hidden;
+}
+
+/* #border-bott-list-task {
+    border-bottom: 1px solid blue;
+} */
+
+#whole-div-row-list {
+    flex-direction: row;
+}

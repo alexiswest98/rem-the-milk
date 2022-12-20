@@ -30,7 +30,7 @@ export const authenticate = () => async (dispatch) => {
 }
 
 export const login = (email, password) => async (dispatch) => {
-  console.log('credentails = ',email, password)
+  // console.log('credentails = ',email, password)
   const response = await fetch('/api/auth/login', {
     method: 'POST',
     headers: {
@@ -42,7 +42,7 @@ export const login = (email, password) => async (dispatch) => {
     })
   });
 
-  console.log('login res = ', response)
+  // console.log('login res = ', response)
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))

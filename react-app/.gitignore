@@ -21,3 +21,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+.app/models/lists
+.app/models/group
+.app/models/tasks
+.app/models/user

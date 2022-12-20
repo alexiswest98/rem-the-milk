@@ -1,0 +1,83 @@
+.followerImg {
+  height: 40%;
+  width: 40%;
+  border-radius: 50%;
+}
+
+.followers-title {
+  margin-top: 100px;
+  font-size: 42px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+.followers-component {
+  display: flex;
+  width: 60%;
+  height: 90%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.follower-details {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: left; */
+  width: 100%;
+  height: 100%;
+}
+
+.followerImg {
+  /* max-height: 60px; */
+  border-radius: 25px;
+  padding: 7px;
+}
+
+.outer-prof-div-shell {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.outer-name-div-shell {
+    display: flex;
+    align-items: center;
+}
+
+.followers-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
+}
+
+.Followers-Details{
+  width: 32%;
+  height: 80%;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column
+} */
+
+ #root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.followerName {
+  margin: 5px;
+  font-size: 24px;
+}

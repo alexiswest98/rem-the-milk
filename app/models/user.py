@@ -37,8 +37,8 @@ class User(db.Model, UserMixin):
         "Group",
         secondary=members,
         primaryjoin=(members.c.user_id == id),
-        backref=db.backref("users", lazy="dynamic")
-        )
+        back_populates="users"
+    )
 
     @property
     def password(self):
@@ -56,5 +56,14 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'image_url': self.image_url
+            'image_url': self.image_url,
+            # 'groups': self.group.id
+        }
+    def mem_to_dict(self, groupId):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email,
+            'image_url': self.image_url,
+            'group_id': groupId
         }

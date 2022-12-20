@@ -1,28 +1,29 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useHistory} from 'react-router-dom';
+// import { useDispatch } from 'react-redux';
+import { useHistory, useParams} from 'react-router-dom';
 import { Modal } from '../../context/Modal';
-import UserDetails from './details';
 import EditListTask from './updateTasks';
-import {getAllTasksThunk} from '../../store/groups';
 
-function EditTaskModal() {
-  const dispatch = useDispatch();
-//   const history = useHistory();
+function EditTaskModal({taskId}) {
+  // const dispatch = useDispatch();
+  const history = useHistory();
+  const {listId} = useParams()
   const [showModal, setShowModal] = useState(false);
 
   const onCloseAction = () => {
     setShowModal(false)
-    dispatch(getAllTasksThunk())
+    // history.push(`/home`)
+    // dispatch(getAllTasksThunk())
   }
 
   return (
     <>
       <button
-      onClick={() => setShowModal(true)}>Edit Task</button>
+      id='edit-pencil'
+      onClick={() => setShowModal(true)}>✏️</button>
       {showModal && (
         <Modal onClose={() => onCloseAction()}>
-          <EditListTask setShowModal={setShowModal}/>
+          <EditListTask setShowModal={setShowModal} taskId={taskId}/>
         </Modal>
       )}
     </>

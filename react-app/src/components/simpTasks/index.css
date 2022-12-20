@@ -1,0 +1,15 @@
+.errorsDiv{
+    font-size: small;
+}
+.createTaskH3{
+    color: rgb(42,157,255);
+}
+
+.add-task-button {
+    background-color: rgb(0, 136, 0);
+    color: white;
+    border: none;
+    font-weight: bold;
+    margin: 2%;
+    width: 1.5em;
+}

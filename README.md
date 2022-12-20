@@ -1,151 +1,107 @@
-# Flask React Project
+![logowhite 1e56aaae](https://user-images.githubusercontent.com/104551393/208228222-1d71f578-0855-4f19-a94f-89cea62b76ef.png)
 
-This is the starter for the Flask React project.
+# About
 
-## Getting started
-1. Clone this repository (only this branch)
+Remember the Leche is a Full Stack web application inspired by Remember the Milk. On Remember the Leche you can organize, plan, and execute all your most important tasks!
 
-2. Install dependencies
+## Check out our live Remember the Leche site:
+[**https://remember-the-leche.onrender.com/**](https://remember-the-leche.onrender.com/)
 
-      ```bash
-      pipenv install -r requirements.txt
-      ```
+## Project Wiki
+-[API-Routes](https://github.com/alexiswest98/rem-the-milk/wiki/API-Routes)
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
+-[Database Schema](https://github.com/alexiswest98/rem-the-milk/wiki/Database-Schema)
 
-4. Make sure the SQLite3 database connection URL is in the **.env** file
+-[Feature List](https://github.com/alexiswest98/rem-the-milk/wiki/Feature-List)
 
-5. This starter organizes all tables inside the `flask_schema` schema, defined
-   by the `SCHEMA` environment variable.  Replace the value for
-   `SCHEMA` with a unique name, **making sure you use the snake_case
-   convention**.
+-[Redux Shape](https://github.com/alexiswest98/rem-the-milk/wiki/Redux-Shape)
 
-6. Get into your pipenv, migrate your database, seed your database, and run your Flask app
+#### Frameworks, Platforms, & Libraries:
+- ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+- ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
+- ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+- ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
+- ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+- ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+- ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+- ![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
+- ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
-   ```bash
-   pipenv shell
-   ```
-
-   ```bash
-   flask db upgrade
-   ```
-
-   ```bash
-   flask seed all
-   ```
-
-   ```bash
-   flask run
-   ```
-
-7. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+ #### Editors, IDEs, & Misc:
+ - ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+ - ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
 
 
-## Deployment through Render.com
+#### Database:
+- ![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
 
-First, refer to your Render.com deployment articles for more detailed
-instructions about getting started with [Render.com], creating a production
-database, and deployment debugging tips.
+<!-- GETTING STARTED -->
+## Getting Started
 
-From the [Dashboard], click on the "New +" button in the navigation bar, and
-click on "Web Service" to create the application that will be deployed.
+To get a local copy up and running follow these simple example steps.
 
-Look for the name of the application you want to deploy, and click the "Connect"
-button to the right of the name.
+1. Clone the repo:
 
-Now, fill out the form to configure the build and start commands, as well as add
-the environment variables to properly deploy the application.
+    HTTPS Authentification:
+    git clone https://github.com/alexiswest98/rem-the-milk.git
 
-### Part A: Configure the Start and Build Commands
+    SSH Authentification with SSH or HTTPS:
+    git clone git@github.com:alexiswest98/rem-the-milk.git
 
-Start by giving your application a name.
+2. Install dependencies: pipenv install -r requirements.txt
+ 
+3. Navigate to the root: pipenv install
+  
+4. Create a .env file in the root of the backend folder and copy the contents from the .env.example file:
+    cp .env.example .env
 
-Leave the root directory field blank. By default, Render will run commands from
-the root directory.
+4. Migrate and seed the files. Enter the shell via pipenv shell, then:
+    flask db upgrade
+    flask seed all
+    
+5. Utilize pipenv shell in the root folder.
+    pipenv shell
+    flask run
+ 
+6. Navigate to the frontend react folder and npm install.
+    npm install
+    
+7. Utilize npm start in the front-end folder and you will be directed to: http://localhost:3000/
+    npm start
 
-Make sure the Environment field is set set to "Python 3", the Region is set to
-the location closest to you, and the Branch is set to "main".
+## Feature Roadmap
 
-Next, add your Build command. This is a script that should include everything
-that needs to happen _before_ starting the server.
+- [x] Lists
+    - [x] Create a list
+    - [x] Load all lists
+    - [x] Create a list associated with a group
+    - [x] Update a current user's list
+    - [x] Delete a current user's list
+- [x] Tasks
+    - [x] Create a task
+    - [x] See all tasks of current user
+    - [x] Update a current user's task
+    - [x] Delete a task
+- [x] Groups
+    - [x] Create a group for the current user
+    - [x] Get all groups of current user
+    - [x] Delete a group
+- [x] Members
+    - [x] Add a member to a specified group
+    - [x] Remove a member from a specified group
+    - [x] Get all members based off of group id
+- [x] Following
+    - [x] Current user can follow another user
+    - [x] Current user can unfollow another user
+    - [x] Can get followers of current user
+    - [x] Can get following of current user
 
-For your Flask project, enter the following command into the Build field, all in
-one line:
-
-```shell
-# build command - enter all in one line
-npm install --prefix react-app &&
-npm run build --prefix react-app &&
-pip install -r requirements.txt &&
-pip install psycopg2 &&
-flask db upgrade &&
-flask seed all
-```
-
-This script will install dependencies for the frontend, and run the build
-command in the __package.json__ file for the frontend, which builds the React
-application. Then, it will install the dependencies needed for the Python
-backend, and run the migration and seed files.
-
-Now, add your start command in the Start field:
-
-```shell
-# start script
-gunicorn app:app
-```
-
-_If you are using websockets, use the following start command instead for increased performance:_
-
-`gunicorn --worker-class eventlet -w 1 app:app`
-
-### Part B: Add the Environment Variables
-
-Click on the "Advanced" button at the bottom of the form to configure the
-environment variables your application needs to access to run properly. In the
-development environment, you have been securing these variables in the __.env__
-file, which has been removed from source control. In this step, you will need to
-input the keys and values for the environment variables you need for production
-into the Render GUI.
-
-Click on "Add Environment Variable" to start adding all of the variables you
-need for the production environment.
-
-Add the following keys and values in the Render GUI form:
-
-- SECRET_KEY (click "Generate" to generate a secure secret for production)
-- FLASK_ENV production
-- FLASK_APP app
-- SCHEMA (your unique schema name, in snake_case)
-- REACT_APP_BASE_URL (use render.com url, located at top of page, similar to
-  https://this-application-name.onrender.com)
-
-In a new tab, navigate to your dashboard and click on your Postgres database
-instance.
-
-Add the following keys and values:
-
-- DATABASE_URL (copy value from Internal Database URL field)
-
-_Note: Add any other keys and values that may be present in your local __.env__
-file. As you work to further develop your project, you may need to add more
-environment variables to your local __.env__ file. Make sure you add these
-environment variables to the Render GUI as well for the next deployment._
-
-Next, choose "Yes" for the Auto-Deploy field. This will re-deploy your
-application every time you push to main.
-
-Now, you are finally ready to deploy! Click "Create Web Service" to deploy your
-project. The deployment process will likely take about 10-15 minutes if
-everything works as expected. You can monitor the logs to see your build and
-start commands being executed, and see any errors in the build process.
-
-When deployment is complete, open your deployed site and check to see if you
-successfully deployed your Flask application to Render! You can find the URL for
-your site just below the name of the Web Service at the top of the page.
-
-
-hi friends 
-
-[Render.com]: https://render.com/
-[Dashboard]: https://dashboard.render.com/
+## Get in touch!
+- [Alexis' GitHub](https://github.com/alexiswest98)
+- [Alexis' Linkedin](https://www.linkedin.com/in/alexis-west-596a6b203/)
+- [Evan's GitHub](https://github.com/ebmorgansb)
+- [Evan's Linkedin](https://www.linkedin.com/in/evan-morgan-9a2723132/)
+- [Michael's GitHub](https://github.com/ebmorgansb)
+- [Michael's Linkedin](https://www.linkedin.com/in/michael-lacey-84875a243/)
+- [Gabriel's GitHub](https://github.com/Gabetd)
+- [Gabriel's Linkedin](https://www.linkedin.com/in/gabriel-day-536738201/)

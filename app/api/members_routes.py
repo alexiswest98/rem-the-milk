@@ -10,24 +10,32 @@ member_routes = Blueprint('members', __name__, url_prefix="/api/members")
 @login_required
 def get_members(groupId):
   membs = db.session.query(members).filter(members.c.group_id == groupId and members.c.user_id == current_user.id).all()
-  # print("##############", membs)
+
 
   membslist = []
   for user in membs:
     currUser = User.query.get(user[0])
-    membslist.append(currUser.to_dict())
+    membslist.append(currUser.mem_to_dict(groupId))
+  # print('In the backend do wwe have the membs', membslist)
+  return jsonify(membslist)
 
-  # print(membslist)
+@member_routes.route('/all', methods=["GET"])
+@login_required
+def get_all_members():
+  membs = db.session.query(members).filter(members.c.user_id == current_user.id).all()
+  membslist = []
+  for user in membs:
+    currUser = Group.query.get(user[1])
+    membslist.append(currUser.to_dict())
+  # print('In the backend do wwe have the membs', membslist)
   return jsonify(membslist)
 
 
-# #Logged in as current user and add members to a group
-@member_routes.route('/group/<int:groupId>/add/<int:userId>', methods=["POST"])
+@member_routes.route('/add/<int:userId>/group/<int:groupId>', methods=["POST"])
 @login_required
 def add_memb(groupId, userId):
   membsInGroup = db.session.query(members).filter(members.c.group_id==groupId).all()
   newUser = User.query.get(userId)
-  # print("##############", membsInGroup)
   group = Group.query.get(groupId)
 
   if not group:
@@ -48,9 +56,10 @@ def add_memb(groupId, userId):
 
 
 # #Logged in as current user and delete members to a group
-@member_routes.route('/group/<int:groupId>/delete/<int:userId>', methods=["DELETE"])
+@member_routes.route('/delete/<int:userId>/group/<int:groupId>', methods=["DELETE"])
 @login_required
 def delete_memb(groupId, userId):
+  print('****************************************** Hit The Removal *******************************')
   membsInGroup = db.session.query(members).filter(members.c.group_id==groupId).all()
   delUser = User.query.get(userId)
   # print("##############", membsInGroup)

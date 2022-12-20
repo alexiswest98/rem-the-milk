@@ -18,12 +18,19 @@ class Group(db.Model):
     group_to_list = db.relationship('List', back_populates='list_to_group', cascade="all, delete")
     group_to_user = db.relationship('User', back_populates='user_who_created_group')
 
+    users = db.relationship(
+        "User",
+        secondary=members,
+        back_populates="groups"
+    )
+
+
     def to_dict(self):
         return {
             'id': self.id,
             'name': self.name,
             'image_url': self.image_url,
             'owner_id': self.owner_id,
-            'created_at': self.created_at,
-            'updated_at': self.updated_at
+            # 'created_at': self.created_at,
+            # 'updated_at': self.updated_at
         }

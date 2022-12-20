@@ -31,7 +31,7 @@ class Task(db.Model):
             'due': self.due,
             'notes': self.notes,
             'completed_by': self.completed_by,
-            'created_at': self.created_at,
-            'updated_at': self.updated_at
+            # 'created_at': self.created_at,
+            # 'updated_at': self.updated_at
             # 'task_to_list': self.task_to_list
         }

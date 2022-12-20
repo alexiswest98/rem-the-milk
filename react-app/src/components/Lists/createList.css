@@ -1,0 +1,36 @@
+.createListForm{
+    width: 400px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.createListInput {
+    width: 250px;
+    margin-bottom: 5%;
+}
+
+#createListSubmitBtn{
+    width: 260px;
+    height: 25px;
+    background-color: rgb(42,157,255);
+    color: rgb(255, 255, 255);
+}
+
+.errorsDiv{
+    margin-bottom: 3%;
+    margin-top: 3%;
+}
+
+.createListForm > p {
+    color: rgb(42,157,255);
+}
+
+.make-list-del-div {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

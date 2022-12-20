@@ -1,0 +1,32 @@
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory} from 'react-router-dom';
+import { Modal } from '../../context/Modal';
+// import UserDetails from './details';
+import CreateTask from './createTask';
+
+function CreateTaskModal(user) {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const [showModal, setShowModal] = useState(false);
+
+  const onCloseAction = () => {
+    setShowModal(false)
+    // history.push("/home")
+  }
+
+  return (
+    <>
+      <button
+      className='add-task-button'
+      onClick={() => setShowModal(true)}>+</button>
+      {showModal && (
+        <Modal onClose={() => onCloseAction()}>
+          <CreateTask setShowModal={setShowModal} user={user}/>
+        </Modal>
+      )}
+    </>
+  );
+}
+
+export default CreateTaskModal;

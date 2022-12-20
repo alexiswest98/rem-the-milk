@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import User, Group, db
 from ..forms.group_form import GroupForm
-groups_routes = Blueprint('groups', __name__)
+groups_routes = Blueprint('groups', __name__, url_prefix="/api/groups")
 
 #get all groups of current user
 @groups_routes.route('/all')
@@ -11,7 +11,13 @@ def get_groups():
   groups = Group.query.filter(Group.owner_id == current_user.id).all()
   return jsonify([group.to_dict() for group in groups])
 
-#delete a current user's group based on id 
+@groups_routes.route('/act/all')
+@login_required
+def get_all_groups():
+  groups = Group.query.all()
+  return jsonify([group.to_dict() for group in groups])
+
+#delete a current user's group based on id
 @groups_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def delete_group(id):

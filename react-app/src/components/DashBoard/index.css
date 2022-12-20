@@ -2,7 +2,7 @@
 .totalDash {
     display: flex;
     flex-direction:row;
-    height: 100%;
+    height: 90%;
 
 }
 
@@ -10,33 +10,59 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     width: 50%;
-    background-image: url("../../Images/background.jpg");
+    background-image: url("https://64.media.tumblr.com/597b4753fca02dd83eb935a599afad2a/tumblr_pd6kmx615e1xchla7o1_250.gifv");
+    background-size: cover;
     height: 100%;
 }
 
-.rightDash {
+.fit-whole-white-back {
+    width: 100%;
+    height: 100%;
+}
+
+.today-date-box {
+    height: 20%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.task-title-box {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.tay-dasks-box {
+    height: 70%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items:center;
-    justify-content:flex-start;
-    width: 50%;
-    /* background-color: rgb(0,96,191, .75);
-    position: relative;
-    z-index: -1; */
+    align-items: center;
+    overflow-y: scroll;
 }
+
+.tay-dasks-box::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* https://64.media.tumblr.com/bc94a04e7da049da4a371892b6af2d98/tumblr_oqpsyrHQJU1s8tqb9o1_1280.gifv */
+
 
 .whiteBack {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-}
-
-.activity {
     display: flex;
-    flex-direction: row;
-    margin: 20px;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(255, 255, 255, 0.4);
+    height: 80%;
+    width: 60%;
+    border-radius: 1em;
 }
 
 .oneActivity {
@@ -49,10 +75,72 @@
     /* z-index: 1; */
 }
 
+.dayTaskz {
+    padding: 0.5em;
+    background-color:rgb(3, 62, 121);
+    border-radius: 1em;
+    margin: 0.2em;
+    color: white;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.leftLists {
+    padding: 5px;
+    background-color: rgb(0,96,191);
+    border-radius: 10px;
+    margin: 5px;
+    color: white;
+}
+
+.leftTitles {
+    padding: 0.5em;
+    height: 100%;
+    color: white;
+    text-shadow: -1.5px 1.5px 0 rgb(0, 62, 19),
+    1.5px 1.5px 0 rgb(0, 62, 19),
+    1.5px -1.5px 0 rgb(0, 62, 19),
+    -1.5px -1.5px 0 rgb(0, 62, 19);
+}
+
+.align-left-tasks {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+}
+
+.today-date {
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-shadow: -1.7px 1.7px 0 rgb(3, 62, 121),
+    1.7px 1.7px 0 rgb(3, 62, 121),
+    1.7px -1.7px 0 rgb(3, 62, 121),
+    -1.7px -1.7px 0 rgb(3, 62, 121);
+    width: 95%;
+}
+
+.rightDash {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content:flex-start;
+    width: 50%;
+    height: 100%;
+    /* background-color: rgb(0,96,191, .75);
+    position: relative;
+    z-index: -1; */
+}
+
 .statz {
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 40%;
+    width: 100%;
 }
 
 .activeTitle {
@@ -62,6 +150,49 @@
     padding: 20px;
     font-family: Arial, Helvetica, sans-serif;
     border-radius: 10px;
+}
 
+.groups-box {
+    height: 60%;
+    width: 100%;
+}
 
+.title-div {
+    height: 70%;
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.activity {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+    height: 40%;
+    width: 80%;
+}
+
+.info-boxes {
+    width: 30%;
+    height: 52%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5em;
+    color: white;
+}
+
+#first-box-info {
+    background-color: #ee5c8a;
+}
+
+#sec-box-info {
+    background-color: #35a3ab;
+}
+
+#third-box-info {
+    background-color: #3d57ea
 }
