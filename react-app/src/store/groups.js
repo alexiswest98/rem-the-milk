@@ -47,7 +47,8 @@ export const createGroupThunk = (group) => async (dispatch) => {
 
  if (response.ok) {
    const newGroup = await response.json();
-   createGroupAction(newGroup)
+   createGroupAction(newGroup);
+   return newGroup;
     }
 };
 
@@ -65,6 +66,7 @@ export const getAllGroupsThunk = () => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     dispatch(getGroupsAction(data));
+    return data;
   }
 };
 
@@ -75,6 +77,7 @@ export const getGroupThunk = (groupId) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     dispatch(getGroupAction(data));
+    return data;
   }
 };
 
@@ -83,6 +86,7 @@ export const deleteGroupThunk = (groupId) => async (dispatch) => {
   const response = await fetch(`/api/groups/${groupId}`, {method: 'DELETE'});
   if (response.ok) {
     dispatch(deleteGroupAction(groupId));
+    return response;
   }
 };
 

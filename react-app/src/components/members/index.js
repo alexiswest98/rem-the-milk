@@ -11,24 +11,37 @@ function AddMemberModal(user) {
   const history = useHistory();
   const [showModal, setShowModal] = useState(false);
   const { groupId } = useParams
+
   const onCloseAction = () => {
     setShowModal(false)
     dispatch(getFollowsThunk())
 
   }
 
-  return (
-    <>
-      <button
-      className="logout-butt btn-1"
-      onClick={() => setShowModal(true)}>Add members</button>
-      {showModal && (
-        <Modal onClose={() => onCloseAction()}>
-          <Members setShowModal={setShowModal}/>
-        </Modal>
-      )}
-    </>
-  );
+  function AddMemberModal(user) {
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const [showModal, setShowModal] = useState(false);
+    const { groupId } = useParams
+    const onCloseAction = () => {
+      setShowModal(false)
+      dispatch(getFollowsThunk())
+  
+    }
+  
+    return (
+      <>
+        <button
+        className="logout-butt btn-1"
+        onClick={() => setShowModal(true)}>Add members</button>
+        {showModal && (
+          <Modal onClose={() => onCloseAction()}>
+            <Members setShowModal={setShowModal}/>
+          </Modal>
+        )}
+      </>
+    );
+  }
 }
 
 export default AddMemberModal;
