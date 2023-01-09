@@ -4,6 +4,7 @@ const CreateList = 'lists/createList' //done
 const UpdateList = 'lists/updateList' //done
 const DeleteList = 'lists/deleteList' //done
 const GETLISTSBYGROUP = 'groups/lists'
+
 /* -----------ACTION----------- */
 export const GetOneListAction = (list) => {
   return {
