@@ -23,13 +23,8 @@ function CreateList({ setShowModal }) {
 
   }, [name, due, notes]);
 
-<<<<<<< HEAD
 const user_id = user.id
 // console.log("user id = ", user_id)
-=======
-  const user_id = user.id
-  console.log("user id = ", user_id)
->>>>>>> fridayNight
 
   const onsubmit = async (e) => {
     e.preventDefault();
@@ -50,15 +45,6 @@ const user_id = user.id
       history.push(`/home`)
     }
   }
-<<<<<<< HEAD
-  
-  // console.log(payload)
-  const newSpot = await dispatch(CreateListThunk(payload))
-  history.push(`/profile`)
-}
-}
-=======
->>>>>>> fridayNight
 
   return (
     <div>

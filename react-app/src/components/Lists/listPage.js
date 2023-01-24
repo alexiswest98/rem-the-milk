@@ -16,20 +16,12 @@ const ListPage = () => {
   const tasks = useSelector(state => state.tasks)
   const {listId} = useParams()
 
-<<<<<<< HEAD
-  let flip = true
-  const change = () => {
-    flip = !flip
-    // console.log('flip = ', flip)
-  }
-=======
 
   const deleteList = (listId) => {
     dispatch(DeleteListThunk(listId))
     history.push('/home')
 }
 
->>>>>>> fridayNight
 
   function convert(str) {
     const mnths = {
@@ -54,21 +46,8 @@ const ListPage = () => {
 
   useEffect(() => {
     dispatch(getAllListTasksThunk(+listId))
-<<<<<<< HEAD
-    let taskList
-    if (flip){
-      taskList= Object.values(tasks).filter(task => {
-        return task.completed_by == null})
-    }else{
-      taskList=Object.values(tasks).filter(task => {
-        return task.completed_by !== null})
-    }
-    // console.log(taskList)
-  }, [dispatch, flip])
-=======
 
   }, [dispatch])
->>>>>>> fridayNight
 
   const incomplete = Object.values(tasks).filter(task => {
     return task.completed_by == null})

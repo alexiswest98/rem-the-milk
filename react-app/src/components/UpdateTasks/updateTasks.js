@@ -8,11 +8,7 @@ const dispatch = useDispatch()
 const history = useHistory()
 const {listId} = useParams()
 const task = useSelector(state => state.tasks[taskId])
-<<<<<<< HEAD
-// console.log(task)
-=======
-console.log('taskId = ', taskId)
->>>>>>> fridayNight
+// console.log('taskId = ', taskId)
 const user = useSelector(state => state.session.user)
 const [name, setName] = useState(task.name||'')
 const [due, setDue] = useState(convert(task.due) || '')

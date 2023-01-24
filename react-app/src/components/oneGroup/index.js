@@ -27,10 +27,6 @@ export default function GetOneGroup() {
 
 
 
-<<<<<<< HEAD
-    console.log('groupppp -----', group);
-    console.log('CurrentUser', currUser)
-=======
     const remove = async(id) => {
         dispatch(RemoveMemberThunk(groupId, id))
         console.log('you hit the remove')
@@ -38,7 +34,6 @@ export default function GetOneGroup() {
 
 
 
->>>>>>> fridayNight
     useEffect(() => {
         console.log('hit the use effect')
         dispatch(getGroupsThunk());
