@@ -48,30 +48,31 @@ const NavBar = () => {
       </div>
     </div>
   );
-
-
+  //home page bar 
   if (!user) return (
     <div className="navbar" id="logged-out-nav">
-      <div className="navBarLogo">
-        <NavLink to='/'>
-          <img src={whiteLogo} alt="logo" className="logo-img" />
-        </NavLink>
-      </div>
-      <div className="second-half-nav-bar">
-        <div className="nav-bar-list">
-          <div className="navbarLi">
-            <NavLink to='/aboutUs' exact={true} className="active">
-              About Us
+      <div className="inner-nav-bar">
+        <div className="navBarLogo">
+          <NavLink to='/'>
+            <img src={whiteLogo} alt="logo" className="logo-img" />
+          </NavLink>
+        </div>
+        <div className="second-half-nav-bar">
+          <div className="nav-bar-list">
+            <NavLink to='/aboutUs' exact={true} className="navbarLi">
+              <div className="about-us-home">
+                About Us
+              </div>
             </NavLink>
-          </div>
-          <div className="new-navbarLi">
-            <NavLink to='/login' exact={true} className='logout-butt btn-6 active'>
-              Login
+            <NavLink to='/login' exact={true} className="navbarLi-navig">
+              <div className="home-page-navig">
+                Login
+              </div>
             </NavLink>
-          </div>
-          <div className="new-navbarLi">
-            <NavLink to='/sign-up' exact={true} className='logout-butt btn-6 active'>
-              Sign Up
+            <NavLink to='/sign-up' exact={true} className="navbarLi-navig">
+              <div className="home-page-navig">
+                Sign Up
+              </div>
             </NavLink>
           </div>
         </div>

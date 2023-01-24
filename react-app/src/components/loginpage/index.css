@@ -1,9 +1,9 @@
 
 .loginPageMainDiv {
     width: 100%;
-    height: 90%;
+    height: 90vh;
     display: flex;
-    border-top: 1px solid white;
+    /* border-top: 1px solid white; */
 }
 
 .logoTmDiv {
@@ -14,7 +14,11 @@
 
 .blueDiv {
     width: 50%;
-    background-color: rgb(3, 96, 191);
+    height: 100%;
+    background-color: rgb(2, 53, 105);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .whiteDiv {
@@ -52,14 +56,22 @@
 
 .blueDivQuoteH3 {
     color: #e6eff9;
-    font-size: 35px;
+    font-size: 2.2em;
     margin-bottom: 5%;
+}
+
+.credentials {
+    /* border: 1px solid white; */
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .blueDivQuoteP {
     color: #e6eff9;
-    font-size: 25px;
-    margin-bottom: 25%;
+    font-size: 1.5em;
 }
 
 /* #signupButtonLoginPage{
@@ -87,5 +99,9 @@
 .blueOuterDiv{
     display: flex;
     flex-direction: column;
+    height: 100%;
+}
+
+.lilleche {
     height: 100%;
 }

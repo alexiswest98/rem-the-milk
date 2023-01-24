@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import './index.css'
+// import './index.css'
 import { useParams} from 'react-router-dom'
 import { getFollowsThunk } from '../../store/follows';
 import { GetMembersThunk } from "../../store/members";
 import { AddMemberThunk } from "../../store/members";
+
 export default function Members({setShowModal}) {
     const history = useHistory()
     const user = Object.values(useSelector(state=> state.session.user))

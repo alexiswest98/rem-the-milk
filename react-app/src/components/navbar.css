@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -8,29 +9,40 @@ html {
     padding: 0;
 }
 
-.navbar {
-    background-color: rgb(3, 96, 191);
-    display: flex;
-    flex-direction: row;
-    height: 10%;
-    width: 100%;
+@font-face {
+    font-family: 'MuseoSansRounded';
+    src: url('../fonts/MuseoSansRounded500.otf');
+    font-weight: normal;
+    font-style: normal;
+  }
 
+* {
+    font-family: MuseoSansRounded;
 }
 
-.navbarLi {
-    border: 1px solid white;
-    border-radius: 0.2em;
-    width: 10%;
-    padding: 0.5%;
+/* starts here */
+.navbar {
+    /* background-color: rgb(2, 53, 105);
+     */
+     background: linear-gradient(to bottom, 
+     rgb(1, 32, 63), 
+     rgb(2, 37, 72), 
+     rgb(1, 44, 87), 
+     rgb(2, 53, 105));
+
     display: flex;
+    flex-direction: row;
+    height: 10vh;
+    width: 100%;
     justify-content: center;
     align-items: center;
 }
 
-.navbarLi:hover,
-.navbarLi:focus {
-  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
-  transform: translateY(-0.15em);
+.inner-nav-bar {
+    display: flex;
+    height: 100%;
+    width: 98%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4)
 }
 
 #logoutnavbtnli {
@@ -39,21 +51,23 @@ html {
 
 .navBarLogo {
     height: 100%;
-    width: 35%;
+    width: 65%;
+    /* background-color: bisque; */
 }
 
 .logo-img {
-    height: 90%;
-    width: 40%;
+    height: 97%;
+    width: 23%;
     object-fit: cover;
 }
 
 .second-half-nav-bar {
-    width: 65%;
+    width: 35%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    /* background-color: rgb(4, 58, 0); */
 
 }
 
@@ -62,12 +76,52 @@ html {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-end;
     width: 100%;
     height: 100%;
 }
 
-.active {
+.navbarLi {
+    border: 1px solid white;
+    border-radius: 0.2em;
+    width: 17%;
+    padding: 1.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8%;
+}
+
+.navbarLi:hover,
+.navbarLi:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  /* transform: translateY(-0.1em); */
+  border: none;
+  background: rgb(255,27,0);
+  background: linear-gradient(180deg, rgba(255,27,0,1) 0%, rgba(251,75,2,1) 100%);
+
+}
+
+.navbarLi-navig {
+    border-radius: 0.3em;
+    width: 17%;
+    padding: 1.8%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(0,3,255);
+    background: linear-gradient(0deg, rgba(0,3,255,1) 0%, rgba(2,126,251,1) 100%);
+    border: none;
+    margin-right: 8%;
+}
+
+.navbarLi-navig:hover {
+    box-shadow: 0 0 5px 2px rgb(127, 147, 246);
+    background: transparent;
+    transition: 10ms ease;
+}
+
+.about-us-home, .home-page-navig {
     color: rgb(241, 248, 255);
 }
 

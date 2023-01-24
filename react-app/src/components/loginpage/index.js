@@ -1,7 +1,9 @@
 import React from "react";
 import { Link, useHistory } from 'react-router-dom'
 import LoginForm from "../auth/LoginForm";
-import './index.css'
+import './index.css';
+import milk from "../../Images/lilleche.png"
+
 export default function LoginPage() {
     const history = useHistory();
 
@@ -15,7 +17,11 @@ export default function LoginPage() {
                 <div className="blueOuterDiv">
                     <div className="blueDivQuote">
                         <h3 className="blueDivQuoteH3">“If debugging is the process of removing software bugs, then programming must be the process of putting them in.”</h3>
-                        <p className="blueDivQuoteP"> ― Edsger W. Dijkstra</p>
+                        <div className="credentials">
+                            <p className="blueDivQuoteP"> ― Edsger W. Dijkstra</p>
+                            <img src={milk} className="lilleche"></img>
+                        </div>
+                        {/* <img src={milk} className="lilleche"></img> */}
                     </div>
                 </div>
             </div>

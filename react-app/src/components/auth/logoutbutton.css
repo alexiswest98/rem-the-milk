@@ -4,7 +4,7 @@
     color: #fff;
     border-radius: 5px;
     padding: 10px 25px;
-    font-family: 'Lato', sans-serif;
+    /* font-family: 'Lato', sans-serif; */
     font-weight: 400;
     background: transparent;
     cursor: pointer;
@@ -100,6 +100,6 @@
     width: 100%;
   }
 
-#logged-out-nav {
+/* #logged-out-nav {
     border-bottom: 0.01px solid rgb(138, 162, 247)
-}
+} */

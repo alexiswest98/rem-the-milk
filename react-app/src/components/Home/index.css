@@ -3,48 +3,75 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: 90vh;
+    overflow-y: hidden;
+    /* position: absolute; */
 }
 
 .signInButton {
-    width: 200px;
-    height: 55px;
+    width: 12vw;
+    height: 5vh;
     border-radius: 5px;
-    background-color:rgb(210,75,3);
-    font-size: 22px;
-    color: white;
-    margin: 20px;
+    background: rgb(255,27,0);
+    background: linear-gradient(0deg, rgba(255,27,0,1) 0%, rgba(251,75,2,1) 100%);
+    font-size: 1em;
+    color: rgb(255, 255, 255);
+    /* margin: 20px; */
     padding: 11px 32px 12px;
     border: none;
-    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
+    margin-bottom: 3vh;
+    margin-top: 2vh;
+}
+
+.signInButton:hover {
+    background: transparent;
+    border: 1px solid white;
+}
+
+.details-footer {
+    color:rgb(219, 66, 1);
+}
+
+.homeTitle {
+    color: rgb(255, 255, 255);
+    margin-top: 5vh;
 }
 
 .mainDiv {
-    background-color: rgb(0,96,191)
+    background-color: rgb(2, 53, 105);
+    height: 90vh;
+    width: 100%;
+    position: absolute;
+    z-index: 10;
+}
+
+.milk-img {
+    z-index: -1;
+    position: relative;
+    /* border: 1px solid red; */
+    height: 22vh;
+    width: 100%;
+    margin-top: -12vh;
+}
+
+.milk-splash {
+    height: 100%;
+    width: 100%;
+    background-repeat: repeat-x;
 }
 
 .footer {
     display: flex;
-    position: sticky;
-    bottom: 0;
+    position: absolute;
     align-items: center;
     flex-direction: row;
     justify-content: space-around;
-    border-top: 1px solid grey;
-    background-color: white;
-    max-height: 42px;
-    min-height: 40px;
-}
-
-#root {
-    height: 100vH;
-}
-html { height: 100%; }
-
-body {
-margin: 0px;
-position: relative;
+    /* background-color: white; */
+    background: linear-gradient(to bottom, #eeeded 10%, #f8f6f6 5%, #f7f5f5 25%, #ffffff 60%);
+    height: 6vh;
+    width: 100%;
+    margin-top: 85vh;
 }
 
 .linkedin {
@@ -54,8 +81,8 @@ position: relative;
     color: black;
 }
 
-.linkedin:hover {
-    color:rgb(138, 145, 199)
+.linkedin:hover{
+    color:rgb(105, 128, 243);
 }
 
 
