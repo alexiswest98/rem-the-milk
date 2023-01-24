@@ -10,6 +10,7 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  // const [hasSubmitted, setHasSubmitted] = useState(false);
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
@@ -28,7 +29,9 @@ const SignUpForm = () => {
 
 
   const onSignUp = async (e) => {
+    // setHasSubmitted(true)
     e.preventDefault();
+
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password));
       if (data) {
@@ -60,9 +63,9 @@ const SignUpForm = () => {
   return (
     <form onSubmit={onSignUp} className='signupForm'>
       <h3>Sign Up</h3>
-      <div>
+      <div className='valid-errors-bottom'>
         {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
+          <div key={ind} className='errors'>{error}</div>
         ))}
       </div>
       <div>

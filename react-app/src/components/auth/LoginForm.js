@@ -34,13 +34,12 @@ const LoginForm = () => {
   return (
     <form onSubmit={onLogin} className='loginForm'>
         <h3>Been here before? Welcome back!</h3>
-      <div>
+      <div className='valid-errors-bottom'>
         {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
+          <div key={ind} className='errors'>{error}</div>
         ))}
       </div>
       <div>
-
         <input
           className='loginInput'
           name='email'

@@ -12,12 +12,21 @@
     color: rgb(255, 255, 255);
     width: 358px;
     height: 40px;
+    border: none;
+    border-radius: 0.5em;
+}
+
+.signupForm>button:hover{
+    background: rgb(0,3,255);
+    background: linear-gradient(0deg, rgba(0,3,255,1) 0%, rgba(2,126,251,1) 100%);
 }
 
 .signupInput {
     width: 350px;
     height: 40px;
     margin-bottom: 2%;
+    padding-left: 1.5%;
+    /* border-radius: 0.5em; */
 }
 .signupForm > h3{
     margin-bottom: 2%;

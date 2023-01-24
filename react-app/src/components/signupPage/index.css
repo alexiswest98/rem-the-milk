@@ -1,8 +1,8 @@
 .signupPageMainDiv{
     width: 100%;
-    height: 90%;
+    height: 90vh;
     display: flex;
-    border-top: 1px solid white;
+    /* border-top: 1px solid white; */
 }
 
 .signupLogoTmDiv{
@@ -13,7 +13,7 @@
 
 .signupBlueDiv {
     width: 50%;
-    background-color: rgb(3, 96, 191);
+    background-color: rgb(2, 53, 105);
 }
 
 .signupwhiteDiv {
@@ -56,7 +56,6 @@
 .signupblueDivQuoteP {
     color: #e6eff9;
     font-size: 25px;
-    margin-bottom: 25%;
 }
 
 .signupinnerWhiteDiv{
