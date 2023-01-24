@@ -56,12 +56,12 @@ export default function SliderComp() {
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
-          delay: 7500,
+          delay: 7000,
           disableOnInteraction: false,
         }}
-        pagination={{
-          clickable: true,
-        }}
+        // pagination={{
+        //   clickable: true,
+        // }}
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >

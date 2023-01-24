@@ -53,8 +53,8 @@
 }
 
 .swiper {
-  width: 40%;
-  height: 64%;
+  width: 38%;
+  height: 56%;
   /* border: solid 1px white; */
   box-shadow: 0 0 20px 5px rgba(148, 147, 147, 0.2);
   border-radius: 1em;
@@ -63,7 +63,7 @@
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: rgb(2, 53, 105);
+  background: transparent;
 
   /* Center slide text vertically */
   display: -webkit-box;

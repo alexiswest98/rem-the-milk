@@ -20,8 +20,8 @@
     padding: 11px 32px 12px;
     border: none;
     font-weight: bold;
-    margin-bottom: 3vh;
-    margin-top: 2vh;
+    margin-bottom: 1.5vh;
+    margin-top: 1vh;
 }
 
 .signInButton:hover {
@@ -35,7 +35,7 @@
 
 .homeTitle {
     color: rgb(255, 255, 255);
-    margin-top: 5vh;
+    margin-top: 1vh;
 }
 
 .mainDiv {
@@ -52,7 +52,7 @@
     /* border: 1px solid red; */
     height: 22vh;
     width: 100%;
-    margin-top: -12vh;
+    margin-top: -2vh;
 }
 
 .milk-splash {
@@ -68,7 +68,7 @@
     flex-direction: row;
     justify-content: space-around;
     /* background-color: white; */
-    background: linear-gradient(to bottom, #eeeded 10%, #f8f6f6 5%, #f7f5f5 25%, #ffffff 60%);
+    background: linear-gradient(to bottom, #eeeded 15%, #f7f5f5 25%, #ffffff 60%);
     height: 6vh;
     width: 100%;
     margin-top: 85vh;
