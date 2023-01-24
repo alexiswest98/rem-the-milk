@@ -19,7 +19,7 @@ def delete_group(id):
 
     if not group:
       return {'errors': ["There is no group"]}, 401
-    #may want to change if group members can delete group as well
+    #may want to change if group  can delete group as well
     if group.owner_id != current_user.id:
       return {'errors': ["You can't delete a group you did not originally create"]}, 401
     else:

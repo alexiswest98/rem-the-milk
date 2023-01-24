@@ -67,9 +67,11 @@ const onsubmit = async (e) => {
 
   // console.log("payload", payload)
   const editTask = await dispatch(editTaskThunk(payload))
-  setShowModal(false)
-  history.push(`/lists/${listId}`)
-
+  // if (editTask.errors){
+  //   // setValidationErrors()
+  // }
+    setShowModal(false)
+    history.push(`/lists/${listId}`)
 }
 
 return (
