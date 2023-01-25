@@ -18,8 +18,8 @@ export const getFollowingThunk = () => async (dispatch) => {
         let newState = {}
         switch (action.type) {
           case GETFOLLOWING:
-            newState = { followers: {}, ...initialState }
-            action.currentUser.forEach(follow => newState.followers[follow.id] = follow)
+            newState = { ...initialState }
+            action.currentUser.forEach(follow => newState[follow.id] = follow)
             return newState
           default:
             return initialState

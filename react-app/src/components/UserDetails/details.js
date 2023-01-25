@@ -14,7 +14,7 @@ function UserDetails({ setShowModal, user }) {
     // const [boolean, setBoolean] = useState(true)
     const currUser = (useSelector(state => state.session.user))
     const followers = Object.values(useSelector(state => state.follows));
-    const following = Object.values(useSelector(state => state.following.followers));
+    const following = Object.values(useSelector(state => state.following));
     const usersArr = Object.values(useSelector(state => state.users))
     const users = usersArr.filter(user => user.id !== currUser.id)
     //this is the user that is changing in modal

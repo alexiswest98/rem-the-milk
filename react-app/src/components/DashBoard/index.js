@@ -10,6 +10,8 @@ import { getAllTasksThunk } from "../../store/tasks";
 import { getFollowingThunk } from '../../store/following';
 import { getFollowsThunk } from "../../store/follows";
 // import specTasksReducer from "../../store/specTasks";
+import ShowfollowersModal from "../followersModal/FollowersModal";
+import ShowfollowsModal from "../followingModal/FollowingModal";
 
 
 export default function Dashboard() {
@@ -20,8 +22,8 @@ export default function Dashboard() {
   const currentUser = useSelector(state => state.session)
   const groups = useSelector(state => state.groups)
   const followers = Object.values(useSelector(state => state.follows))
-  const following =  Object.values(useSelector(state => state.follows))
-  const followingLength = following.length -1
+  const following = Object.values(useSelector(state => state.following));
+
 
   useEffect(() => {
     dispatch(getAllTasksByDayThunk())
@@ -40,6 +42,15 @@ export default function Dashboard() {
 
     return `${day} ${d2}`
   }
+  if(!following){
+    return(
+      <h2>
+        LOADING ...
+      </h2>
+    )
+  }else{
+
+
 
   return (
     <div className="totalDash">
@@ -69,10 +80,10 @@ export default function Dashboard() {
           </div>
           <div className="activity">
             <div className="info-boxes" id="first-box-info">
-              <h4>{followers.length} Followers</h4>
+              <h4>{followers.length} <ShowfollowersModal /></h4>
             </div>
             <div className="info-boxes" id="sec-box-info">
-            <h4>{followingLength} Following</h4>
+            <div>{following.length} <ShowfollowsModal /></div>
             </div>
             <div className="info-boxes" id="third-box-info">
             <h4>{lists.length} Lists</h4>
@@ -85,4 +96,5 @@ export default function Dashboard() {
       </div>
     </div>
   )
+}
 }
