@@ -4,7 +4,7 @@ import { useHistory} from 'react-router-dom';
 import { Modal } from '../../context/Modal';
 import UserDetails from './details';
 import { getFollowsThunk } from '../../store/follows';
-import { getFollowingThunk } from '../../store/follows';
+import { getFollowingThunk } from '../../store/following';
 
 function GetUserDetailsModal(user) {
   const dispatch = useDispatch();

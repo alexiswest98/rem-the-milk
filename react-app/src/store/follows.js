@@ -1,7 +1,7 @@
 const FOLLOWUSER = 'follows/addFollow'
 const UNFOLLOWUSER = 'follows/unfollow'
 const GETFOLLOWERS = 'follows/getFollows'
-const GETFOLLOWING = 'follows/getFollowing'
+
 
 
 export const followAction = (user) => {
@@ -25,12 +25,7 @@ export const getFollowersAction = (followers) => {
   };
 };
 
-export const getFollowingAction = (currentUser) => {
-  return {
-    type: GETFOLLOWING,
-    currentUser,
-  };
-};
+
 
 
 export const followThunk = (userId) => async (dispatch) => {
@@ -67,13 +62,6 @@ export const getFollowsThunk = () => async (dispatch) => {
   }
 };
 
-export const getFollowingThunk = () => async (dispatch) => {
-  const response = await fetch(`/api/follows/following`);
-  if (response.ok) {
-    const data = await response.json();
-    dispatch(getFollowingAction(data));
-  }
-};
 
 export default function followsReducer(initialState = {}, action) {
   let newState = {}
@@ -94,10 +82,7 @@ export default function followsReducer(initialState = {}, action) {
       action.followers.forEach(follower => newState[follower.id] = follower)
       return newState
 
-    case GETFOLLOWING:
-      newState = { followers: {}, ...initialState }
-      action.currentUser.forEach(follow => newState.followers[follow.id] = follow)
-      return newState
+
 
     default:
       return initialState

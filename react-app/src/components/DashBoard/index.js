@@ -7,7 +7,7 @@ import { getAllTasksByDayThunk } from "../../store/specTasks";
 import { GetAllListsThunk } from "../../store/lists";
 import { getAllTasksThunk } from "../../store/tasks";
 // import background from '../../Images/background.png';
-import { getFollowingThunk } from "../../store/follows";
+import { getFollowingThunk } from '../../store/following';
 import { getFollowsThunk } from "../../store/follows";
 // import specTasksReducer from "../../store/specTasks";
 
@@ -21,7 +21,7 @@ export default function Dashboard() {
   const groups = useSelector(state => state.groups)
   const followers = Object.values(useSelector(state => state.follows))
   const following =  Object.values(useSelector(state => state.follows))
-  const followingLength = following.length -1 
+  const followingLength = following.length -1
 
   useEffect(() => {
     dispatch(getAllTasksByDayThunk())

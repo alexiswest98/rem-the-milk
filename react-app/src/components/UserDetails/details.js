@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect, useState } from "react";
 import { useHistory } from 'react-router-dom';
 import { getAllUsersThunk } from '../../store/users';
-import { getFollowingThunk } from '../../store/follows';
+import { getFollowingThunk } from '../../store/following';
 import { getFollowsThunk } from '../../store/follows';
 import { followThunk } from '../../store/follows';
 import { unfollowThunk } from '../../store/follows';
@@ -14,12 +14,17 @@ function UserDetails({ setShowModal, user }) {
     // const [boolean, setBoolean] = useState(true)
     const currUser = (useSelector(state => state.session.user))
     const followers = Object.values(useSelector(state => state.follows));
-    const following = followers[followers.length - 1];
+    const following = Object.values(useSelector(state => state.following.followers));
     const usersArr = Object.values(useSelector(state => state.users))
     const users = usersArr.filter(user => user.id !== currUser.id)
     //this is the user that is changing in modal
     const indivUser = user.user
-
+    console.log(indivUser)
+    console.log('following = ',following)
+    const followEmail = following.map(el => {
+        return el.email
+    })
+    console.log(followEmail)
     function refreshPage() {
         window.location.reload(false);
     }
@@ -30,7 +35,7 @@ function UserDetails({ setShowModal, user }) {
     const followerIds = followers.map(ele => ele.id);
     // People who you follow
     const arr = Object.values(following)
-    const followingIds = arr.map(ele => ele.id)
+    // const followingIds = arr.map(ele => ele.id)
 
 
     const followButtonAction = async (id) => {
@@ -66,7 +71,7 @@ function UserDetails({ setShowModal, user }) {
                     <button className='activity-butt btn-7 ' onClick={() => unfollowButtonAction(indivUser.id)}>Unfollow</button>
                 </div>
             }
-            {followingIds.includes(user.id) &&
+            {followEmail.includes(indivUser.email) &&
                 <div className='follow-modal-dets'>
                     <h4>follower</h4>
                 </div>

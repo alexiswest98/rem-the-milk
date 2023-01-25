@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { getFollowingThunk, getFollowsThunk, followThunk, unfollowThunk } from '../../store/follows';
+import { getFollowsThunk, followThunk } from '../../store/follows';
 import { getAllUsersThunk } from '../../store/users';
 import GetUserDetailsModal from '../UserDetails';
+import { getFollowingThunk } from '../../store/following';
 import './usersList.css'
 
 function UsersList() {
