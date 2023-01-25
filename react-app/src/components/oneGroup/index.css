@@ -4,27 +4,57 @@
   flex-direction: row;
 }
 
+.add-members-to-group {
+  width: 15%;
+  height: 10%;
+  margin-bottom: 1%;
+}
 
 .membersTotal {
   /* display: flex;
   flex: wrap;
   flex-direction: row; */
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  gap: 5%;
-}
-.membersTotal2{
   display: flex;
-  flex: wrap;
+  flex-direction: column;
+  align-items: center;
+  width: 65%;
+  height: 90%;
+  margin-left: 17%;
+  margin-top: 2%;
+  /* border: 1px solid rgb(2, 53, 105); */
+  box-shadow: 2px 2px 15px rgb(171, 189, 207);
+  /* background-color: rgb(224, 224, 253); */
+  border-radius: 1em;
+}
+
+.membersTotal2 {
+  display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
+  gap: 5%;
+  overflow-y: scroll;
+  height: 65%;
+  width: 100%;
+  justify-content: center;
+  /* background-color: rgb(2, 53, 105); */
+}
+
+.membersTotal2::-webkit-scrollbar {
+  display: none;
 }
 
 .eachGroupMap {
   display: flex;
   flex-direction: column;
-  height: 50%;
-  margin-top: 1%;
+  height: 100%;
+  width: 70%;
+  /* background-color: rgb(6, 2, 67); */
+}
+
+.title-one-group {
+  font-size: 3.5em;
+  margin-top: 3vh;
+  color: rgb(1, 32, 63);
 }
 
 .oneGroup {
@@ -37,10 +67,11 @@
 }
 
 .oneGroupImg {
-  width: 15%;
-  height: 15%;
-  box-shadow: 2px 2px 15px rgb(27, 96, 191);
-  margin-bottom: 1%;
+  width: 75%;
+  height: 75%;
+  box-shadow: 2px 2px 15px rgb(171, 189, 207);
+  margin-top: 1%;
+  border-radius: 1em;
 }
 
 .listMappedBigDiv {
@@ -48,54 +79,95 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20%;
+  /* align-items: center; */
+  /* gap: 15%; */
   overflow-y: scroll;
-  max-height: 300px;
-  margin-bottom: 3%;
+  height: 69%;
+  width: 100%;
+  /* margin-bottom: 1%; */
+  margin-top: 2.5%;
+  /* border: 1px solid rgb(2, 53, 105); */
+  /* background-color: rgb(2, 53, 105); */
+}
+
+.border-needed {
+  margin-top: 2%;
+  width: 80%;
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid rgb(2, 53, 105); */
+  box-shadow: 2px 2px 15px rgb(171, 189, 207);
+  /* background-color: rgb(224, 224, 253); */
+  border-radius: 1em;
+}
+
+.listMappedBigDiv::-webkit-scrollbar {
+  display: none;
 }
 
 .notesMapped {
-  margin-top: 1%;
+  /* margin-top: 1%; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  width: 25%;
-  margin-bottom: 2%;
-  /* margin: 0% 1% 1% 0%; */
+  width: 37%;
+  height: 30%;
+  /* margin-bottom: 1%; */
+  margin: 2% 5% 2% 5%;
   box-shadow: 2px 2px 15px rgb(27, 96, 191);
+  border-radius: 0.3em;
+  /* background-color: white; */
 }
 
 .onegroupListHeader {
-  display: flex;
-  justify-content: center;
   margin-bottom: 1%;
-  margin-top: 1%;
-  width: 15%;
-  height: 40px;
-  color: rgb(27, 96, 191);
-  margin: 1% auto;
-  border-bottom: 2px solid rgb(27, 96, 191);
+  margin-top: 2%;
+  font-size: 1.5em;
+  color: rgb(2, 53, 105);
+  text-decoration: underline;
 }
 
 #listDueName {
   margin: .05% auto;
+  color: black;
 }
 
 .deleteListInGroup {
   width: 30%;
   align-self: center;
   margin-bottom: 1%;
-  background-color: red;
-  border: none;
+  margin-top: 2%;
+  background-color: rgb(229, 1, 1);
+  border: 0.5px solid rgb(229, 1, 1);
   color: white;
   border-radius: 1em;
+}
+
+.deleteListInGroup:hover, .deleteMembInGroup:hover {
+  color: rgb(229, 1, 1);
+  background-color: rgb(255, 255, 255);
+  border: 0.5px solid rgb(229, 1, 1);
 }
 
 .member-list {
   display: flex;
   flex-direction: column;
-  width: 150px;
+  width: 95%;
+}
+
+.member-username {
+  font-size: 1.1em;
+  font-weight: 800;
+}
+
+.member-email {
+  font-size: 0.9em;
+  font-weight: 500;
+  margin-bottom: 1%;
 }
 
 .oneGroupTopHalf {
@@ -104,28 +176,29 @@
 
 .createListDeleteGroup {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  justify-content: space-evenly;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 17%;
+  /* background-color: red; */
 }
 
 /*``````````````````````````````` */
 .deleteGroupBtn{
-  background-color: rgb(252, 0, 0); /* Green */
+  background-color: rgb(252, 0, 0);
   border-radius: 5px;
   color: white;
   display: inline-block;
-  height: 2em;
+  height: 3em;
   font-size: 16px;
   border: none;
-  padding: 1%;
-  width: 8em;
+  padding: 1.5%;
+  width: 10em;
+  margin-right: 1vw;
   background: linear-gradient(0deg, rgb(100, 2, 2) 0%, rgb(250, 22, 22) 100%);
 }
-.deleteGroupBtn:hover,
-.deleteGroupBtn:focus {
-  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+
+.deleteGroupBtn:hover {
+  box-shadow: 0 0.5em 0.5em -0.4em black;
   background:linear-gradient(0deg, rgb(250, 22, 22) 0%, rgb(250, 22, 22) 100%);
 
 }
@@ -134,24 +207,25 @@
   display: flex;
   justify-content: center;
   color: rgb(27, 96, 191);
+  margin-top: 2.5%;
+  font-size: 1.5em;
+  text-decoration: underline;
   margin-bottom: 1%;
 }
 
-.membersTotal2{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5%;
-}
 
 .outerMembers-list {
-  width: 20%;
+  width: 25%;
+  height: 33%;
   text-align: center;
   display: flex;
   justify-content: center;
-  margin-bottom: 1%;
-  box-shadow: 2px 2px 15px rgb(27, 96, 191);
+  align-items: center;
+  margin: 1%;
+  box-shadow: 2px 2px 15px rgb(251, 170, 161);
+  border-radius: 0.3em;
 }
-/*   =====================================   */
+
 .RemoveFromGroupBtn{
   margin-bottom: 1%;
 }
@@ -159,10 +233,46 @@
 .deleteMembInGroup {
   width: 50%;
   align-self: center;
-  margin-bottom: 1%;
-  background-color: red;
-  border: none;
+  margin-top: 1%;
+  background-color: rgb(229, 1, 1);
+  border: 0.5px solid rgb(229, 1, 1);
   color: white;
   padding: 1%;
   border-radius: 0.6em;
+}
+
+/*   ==========Starting Over Kinda (alexis) ========   */
+.top-half-group {
+  width: 100%;
+  height: 57vh;
+  display: flex;
+  /* background-color: yellow; */
+}
+
+.bottom-half-group {
+  width: 100%;
+  height: 50vh;
+  padding-bottom: 3vh;
+  /* background-color: rgb(2, 53, 105); */
+  display: flex;
+}
+
+.left-half-top-group {
+  width: 50%;
+  height: 100%;
+  /* border: 2px solid red; */
+  /* background-color: rgb(2, 53, 105); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-half-one-group {
+  width: 50%;
+  height: 100%;
+  /* background-color: rgb(2, 53, 105); */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

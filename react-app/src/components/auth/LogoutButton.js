@@ -9,13 +9,14 @@ import './logoutbutton.css'
 const LogoutButton = () => {
   const history = useHistory()
   const dispatch = useDispatch()
+
   const onLogout = async (e) => {
-    history.push('/');
     await dispatch(logout());
+    history.push('/');
     // return history.push('/');
   };
 
-  return <button className='logout-butt btn-6' onClick={onLogout}>Logout</button>;
+  return <button className="home-page-navig" id='logout-butt' onClick={onLogout}>Logout</button>;
 };
 
 export default LogoutButton;
