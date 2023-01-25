@@ -80,10 +80,10 @@ export default function Dashboard() {
           </div>
           <div className="activity">
             <div className="info-boxes" id="first-box-info">
-              <h4>{followers.length} <ShowfollowersModal /></h4>
+              <h4>{followers.length} <ShowfollowsModal /></h4>
             </div>
             <div className="info-boxes" id="sec-box-info">
-            <div>{following.length} <ShowfollowsModal /></div>
+            <div>{following.length} <ShowfollowersModal /></div>
             </div>
             <div className="info-boxes" id="third-box-info">
             <h4>{lists.length} Lists</h4>

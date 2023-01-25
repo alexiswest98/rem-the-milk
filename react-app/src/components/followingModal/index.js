@@ -11,23 +11,26 @@ function ShowFollows({ setShowModal }) {
   const dispatch = useDispatch()
   const history = useHistory()
   const follows = Object.values(useSelector(state => state.follows))
-console.log('following = ',follows)
+console.log('following = ',Object.values(follows))
 
-const unfollow = async (follow) => {
-  let follow = await dispatch(unfollowThunk(follow.id))
+const unfollow = async (follower) => {
+  let follow = await dispatch(unfollowThunk(follower.id))
   await dispatch(getFollowsThunk())
 }
   return (
+    <form className='createListForm'>
     <div className='FollowersModal'>
-        {Object.values(follows).map(follower => {
+      <h2> FOLLOWS CONTENT </h2>
+        {Object.values(follows).map(el => (
           <div className="allFollowers">
-          <img src={follower.image_url}></img>
-          <h2>{follower.username}</h2>
-          <h6>{follower.email}</h6>
-          <span onClick={() => unfollow(follower)}> unfollow </span>
+          <img className="user-modal-img" src={el.image_url}></img>
+          <h2>{el.username}</h2>
+          <h6>{el.email}</h6>
+          <span onClick={() => unfollow(el)}> unfollow </span>
           </div>
-        })}
+        ))}
     </div>
+    </form>
   )
 }
 
