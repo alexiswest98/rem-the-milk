@@ -79,14 +79,13 @@ export default function Dashboard() {
             <h1>Todays Activity:</h1>
           </div>
           <div className="activity">
-            <div className="info-boxes" id="first-box-info">
-              <h4>{followers.length} <ShowfollowsModal /></h4>
-            </div>
-            <div className="info-boxes" id="sec-box-info">
-            <div>{following.length} <ShowfollowersModal /></div>
-            </div>
+            <ShowfollowsModal followers={followers.length}>
+              {/* <h4>{followers.length} Following</h4> */}
+            </ShowfollowsModal>
+            <ShowfollowersModal following={following.length}>
+            </ShowfollowersModal>
             <div className="info-boxes" id="third-box-info">
-            <h4>{lists.length} Lists</h4>
+            <h4 className="lists-text">{lists.length} Lists</h4>
             </div>
           </div>
         </div>

@@ -3,13 +3,16 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 40em;
-    height: 25em;
+    width: 40vw;
+    height: 55vh;
+    padding-top: 3%;
+    padding-bottom: 2%;
 }
 
-.user-modal-img {
-    height: 30%;
-    width: 20%;
+.user-modal-detail-img {
+    height: 39%;
+    width: 29%;
+    border-radius: 50%;
     margin: 4%;
 }
 
@@ -18,6 +21,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.follows-you {
+  color: rgb(94, 94, 98);
 }
 
 .activity-butt {
@@ -37,6 +44,10 @@
         7px 7px 20px 0px rgba(0, 0, 0, .1),
         4px 4px 5px 0px rgba(0, 0, 0, .1);
     outline: none;
+}
+
+.color-orange-here {
+  color:rgb(255, 34, 0)
 }
 
 /* 7 */

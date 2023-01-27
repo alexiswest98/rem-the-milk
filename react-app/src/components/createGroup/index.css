@@ -63,7 +63,6 @@
     position: relative;
     color: #00aced;
     border: none;
-    z-index: 2;
   }
   .btn-14:before,
   .btn-14:after {

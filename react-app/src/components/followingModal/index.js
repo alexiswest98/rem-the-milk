@@ -18,19 +18,20 @@ const unfollow = async (follower) => {
   await dispatch(getFollowsThunk())
 }
   return (
-    <form className='createListForm'>
-    <div className='FollowersModal'>
-      <h2> FOLLOWS CONTENT </h2>
+    <div className="whole-outer-followers-modal">
+      <h2 className="following-title"> FOLLOWING</h2>
+      <div className="inner-content-followers">
         {Object.values(follows).map(el => (
           <div className="allFollowers">
           <img className="user-modal-img" src={el.image_url}></img>
-          <h2>{el.username}</h2>
-          <h6>{el.email}</h6>
-          <span onClick={() => unfollow(el)}> unfollow </span>
+          <div>
+            <h2>{el.username}</h2>
+            <h6>{el.email}</h6>
+          </div>
           </div>
         ))}
     </div>
-    </form>
+    </div>
   )
 }
 

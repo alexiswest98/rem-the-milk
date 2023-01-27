@@ -3,8 +3,9 @@ import { useDispatch } from 'react-redux';
 import { useHistory} from 'react-router-dom';
 import { Modal } from '../../context/Modal';
 import ShowFollows from '.';
+import "./index.css"
 
-function ShowfollowsModal() {
+function ShowfollowsModal({followers}) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [showModal, setShowModal] = useState(false);
@@ -15,16 +16,16 @@ function ShowfollowsModal() {
   }
 
   return (
-    <>
+    <div className='FollowModal'>
       <button
-      className='FollowModal'
-      onClick={() => setShowModal(true)}>Following</button>
+      className='following-butt'
+      onClick={() => setShowModal(true)}>{followers} Following</button>
       {showModal && (
         <Modal onClose={() => onCloseAction()}>
           <ShowFollows setShowModal={setShowModal} />
         </Modal>
       )}
-    </>
+    </div>
   );
 }
 

@@ -1,0 +1,52 @@
+.whole-outer-followers-modal {
+    width: 45vw;
+    height: 78vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(1, 32, 63);
+}
+
+.following-title {
+    height: 7%;
+    /* background-color: rgb(139, 138, 138); */
+    font-size: 2em;
+    text-align: center;
+    margin-top: 3%;
+    color: white;
+}
+
+.inner-content-followers {
+    width: 65%;
+    height: 90%;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+    /* justify-content: center; */
+    align-items: center;
+    /* background-color: pink; */
+    padding: 1%;
+}
+
+.inner-content-followers::-webkit-scrollbar {
+    display: none;
+}
+
+.allFollowers {
+    border: 2px solid rgba(131, 131, 247);
+    background-color: white;
+    width: 99%;
+    height: 10vh;
+    display: flex;
+    margin-bottom: 2%;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.user-modal-img {
+    height: 80%;
+    width: 16%;
+    border-radius: 50%;
+}

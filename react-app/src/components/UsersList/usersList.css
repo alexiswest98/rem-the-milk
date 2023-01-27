@@ -8,11 +8,18 @@
 }
 
 .title-div-for-find {
-    height: 10%;
+    height: 13%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: white;
+    /* background-color: red; */
+    background: linear-gradient(to bottom,
+        rgb(2, 53, 105),
+        rgb(3, 73, 143),
+        rgb(3, 92, 182),
+        rgb(3, 118, 233));
 }
 
 .users-list-whole {
@@ -26,7 +33,7 @@
 
 .users-list-whole::-webkit-scrollbar {
     display: none;
-  }
+}
 
 .indiv-user-box {
     border: 1px blue solid;
@@ -43,8 +50,8 @@
 .email {
     color: rgb(2, 71, 140);
     margin-bottom: 2%;
-  }
-  
+}
+
 .userdetail-width {
     width: 40%;
 }

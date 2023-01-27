@@ -40,7 +40,7 @@ function UsersList() {
   const followButton = (userId) => {
     setBoolean(!boolean)
     dispatch(followThunk(userId))
-    history.push("/users")
+    // history.push("/users")
   }
 
   return (

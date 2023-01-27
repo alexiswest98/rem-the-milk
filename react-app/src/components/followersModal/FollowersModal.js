@@ -4,7 +4,7 @@ import { useHistory} from 'react-router-dom';
 import { Modal } from '../../context/Modal';
 import ShowFollowers from '.';
 
-function ShowfollowersModal() {
+function ShowfollowersModal({following}) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [showModal, setShowModal] = useState(false);
@@ -15,16 +15,17 @@ function ShowfollowersModal() {
   }
 
   return (
-    <>
+    <div className='FollowModal'>
       <button
-      className='FollowModal'
-      onClick={() => setShowModal(true)}>Followers</button>
+      className='following-butt'
+      id='sec-box-info'
+      onClick={() => setShowModal(true)}>{following} Followers</button>
       {showModal && (
         <Modal onClose={() => onCloseAction()}>
           <ShowFollowers setShowModal={setShowModal} />
         </Modal>
       )}
-    </>
+    </div>
   );
 }
 

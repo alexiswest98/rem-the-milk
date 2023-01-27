@@ -19,12 +19,12 @@ function UserDetails({ setShowModal, user }) {
     const users = usersArr.filter(user => user.id !== currUser.id)
     //this is the user that is changing in modal
     const indivUser = user.user
-    console.log(indivUser)
-    console.log('following = ',following)
+    // console.log(indivUser)
+    // console.log('following = ',following)
     const followEmail = following.map(el => {
         return el.email
     })
-    console.log(followEmail)
+    // console.log(followEmail)
     function refreshPage() {
         window.location.reload(false);
     }
@@ -40,26 +40,26 @@ function UserDetails({ setShowModal, user }) {
 
     const followButtonAction = async (id) => {
         let follow = await dispatch(followThunk(id))
+        setShowModal(false)
         await dispatch(getFollowsThunk())
         await dispatch(getFollowingThunk())
-        setShowModal(false)
-        history.push("/users")
+        // history.push("/users")
     }
 
     const unfollowButtonAction = async (id) => {
-        let follow = await dispatch(unfollowThunk(id))
-        await dispatch(getFollowsThunk())
-        await dispatch(getFollowingThunk())
+        dispatch(unfollowThunk(id))
         setShowModal(false)
+        // await dispatch(getFollowsThunk())
+        // await dispatch(getFollowingThunk())
         refreshPage()
-        history.push("/users")
+        // history.push("/users")
     }
 
     return (
         <div className='user-div-in-modal'>
             <h1>{indivUser.username}</h1>
             <h2>Email: {indivUser.email}</h2>
-            <img src={indivUser.image_url} className='user-modal-img'></img>
+            <img src={indivUser.image_url} className='user-modal-detail-img'></img>
             {!followerIds.includes(indivUser.id) &&
                 <div className='follow-modal-dets'>
                     <button className='activity-butt btn-7 ' onClick={() => followButtonAction(indivUser.id)}>follow</button>
@@ -67,13 +67,13 @@ function UserDetails({ setShowModal, user }) {
             }
             {followerIds.includes(indivUser.id) &&
                 <div className='follow-modal-dets'>
-                    <h4>Im following</h4>
+                    <h3 className='color-orange-here'>I'm following</h3>
                     <button className='activity-butt btn-7 ' onClick={() => unfollowButtonAction(indivUser.id)}>Unfollow</button>
                 </div>
             }
             {followEmail.includes(indivUser.email) &&
                 <div className='follow-modal-dets'>
-                    <h4>follower</h4>
+                    <h4 className='follows-you'>({indivUser.username} follows you)</h4>
                 </div>
             }
         </div>

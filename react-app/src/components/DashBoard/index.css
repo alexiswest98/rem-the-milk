@@ -172,6 +172,7 @@
     margin: 20px;
     height: 40%;
     width: 80%;
+    /* background-color: yellow; */
 }
 
 .info-boxes {
@@ -184,8 +185,9 @@
     color: white;
 }
 
-#first-box-info {
-    background-color: #ee5c8a;
+.lists-text {
+    font-size: 1em;
+    font-weight: 500;
 }
 
 #sec-box-info {
