@@ -10,7 +10,6 @@ import EditListModal from "../EditList";
 import CreateTaskModal from "../simpTasks";
 import CurrentTime from "../AlarmClock/AlarmClock";
 
-
 export default function NewHomePage() {
     const dispatch = useDispatch()
     const history = useHistory()
@@ -47,28 +46,6 @@ export default function NewHomePage() {
                         <img src={user.image_url} alt="profile pic" className="home-prof-pic" />
                         <h3 className="home-user-name">{user.username}</h3>
                         <h4 className="home-user-email">{user.email}</h4>
-                    </div>
-                    <div className="home-profile-info">
-                        <div className="bubble-info-box">
-                            <div className="bubble-info-indiv">
-                                <div className="bubb-inside-contain" id="right-border-bubb">
-                                <h4>{completedTasks}</h4>
-                                <span className="need-contain">done</span>
-                                </div>
-                            </div>
-                            <div className="bubble-info-indiv">
-                                <div className="bubb-inside-contain" id="right-border-bubb">
-                                <h4>{uncompletedTasks}</h4>
-                                <span>to do</span>
-                                </div>
-                            </div>
-                            <div className="bubble-info-indiv">
-                                <div className="bubb-inside-contain">
-                                <h4>{allTasks}</h4>
-                                <span>all</span>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <div className="home-profile-nav">
                         <h2 className="inbox-title">Inbox</h2>
@@ -124,7 +101,29 @@ export default function NewHomePage() {
                     </div>
                 </div>
                 <div className="clock-side">
-                    <CurrentTime/>
+                <CurrentTime/>
+                <div className="home-profile-info">
+                        <div className="bubble-info-box">
+                            <div className="bubble-info-indiv">
+                                <div className="bubb-inside-contain" id="right-border-bubb">
+                                <h4>{completedTasks}</h4>
+                                <span className="need-contain">done</span>
+                                </div>
+                            </div>
+                            <div className="bubble-info-indiv">
+                                <div className="bubb-inside-contain" id="right-border-bubb">
+                                <h4>{uncompletedTasks}</h4>
+                                <span>to do</span>
+                                </div>
+                            </div>
+                            <div className="bubble-info-indiv">
+                                <div className="bubb-inside-contain">
+                                <h4>{allTasks}</h4>
+                                <span>all</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

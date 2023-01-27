@@ -206,7 +206,7 @@
 .MemberTitle{
   display: flex;
   justify-content: center;
-  color: rgb(27, 96, 191);
+  color: rgb(2, 53, 105);
   margin-top: 2.5%;
   font-size: 1.5em;
   text-decoration: underline;
@@ -231,14 +231,15 @@
 }
 
 .deleteMembInGroup {
-  width: 50%;
+  width: 40%;
   align-self: center;
-  margin-top: 1%;
+  margin-bottom: 1%;
+  margin-top: 2%;
   background-color: rgb(229, 1, 1);
   border: 0.5px solid rgb(229, 1, 1);
   color: white;
   padding: 1%;
-  border-radius: 0.6em;
+  border-radius: 1em;
 }
 
 /*   ==========Starting Over Kinda (alexis) ========   */

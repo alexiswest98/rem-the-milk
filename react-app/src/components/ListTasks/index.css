@@ -47,21 +47,23 @@
 }
 
 .whole-incomplete-task {
-    background-color: rgb(255, 255, 255, 0.4);
+    background-color: rgb(255, 255, 255, 0.3);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     height: 100%;
     width: 100%;
+    border-radius: 1em;
 }
 
 #incomp-title {
     color: rgb(39, 0, 103);
+    margin-top: 2%;
 }
 
 #overflow-here{
-    margin-bottom: 2%;
+    margin-bottom: 1%;
     overflow-y: scroll;
     margin: 2%;
     width: 100%;
@@ -75,7 +77,7 @@
 }
 
 .completedTaskDiv {
-    margin: 2%;
+    margin: 0 2% 1% 2%;
     padding: 1%;
     width: 90%;
     display: flex;
