@@ -18,7 +18,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
 
 .activity-butt {
@@ -59,13 +58,13 @@
       content: "";
       right: 0;
       bottom: 0;
-      background: rgba(251,75,2,1);
-      box-shadow:
+      /* background: rgba(251,75,2,1); */
+      /* box-shadow:
        -7px -7px 20px 0px rgba(255,255,255,.9),
        -4px -4px 5px 0px rgba(255,255,255,.9),
        7px 7px 20px 0px rgba(0,0,0,.2),
-       4px 4px 5px 0px rgba(0,0,0,.3);
-      transition: all 0.3s ease;
+       4px 4px 5px 0px rgba(0,0,0,.3); */
+      /* transition: all 0.3s ease; */
     }
     .btn-7:before{
        height: 0%;

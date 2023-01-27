@@ -3,6 +3,7 @@
     display: flex;
     flex-direction:row;
     height: 90vh;
+    /* background-color: rgb(2, 53, 105) ; */
 
 }
 
@@ -12,7 +13,7 @@
     align-items: center;
     justify-content: space-evenly;
     width: 50%;
-    background-image: url("https://64.media.tumblr.com/597b4753fca02dd83eb935a599afad2a/tumblr_pd6kmx615e1xchla7o1_250.gifv");
+    background-image: url("https://forum.bubble.io/uploads/default/original/3X/e/0/e03d1a68f2f6db9e8b244987f166469316af8fea.gif");
     background-size: cover;
     height: 100%;
 }
@@ -116,10 +117,10 @@
 .today-date {
     font-weight: bold;
     color: rgb(255, 255, 255);
-    text-shadow: -1.7px 1.7px 0 rgb(3, 62, 121),
-    1.7px 1.7px 0 rgb(3, 62, 121),
-    1.7px -1.7px 0 rgb(3, 62, 121),
-    -1.7px -1.7px 0 rgb(3, 62, 121);
+    text-shadow: -1.7px 1.7px 0 rgb(2, 45, 87),
+    1.7px 1.7px 0 rgb(2, 45, 87),
+    1.7px -1.7px 0 rgb(2, 45, 87),
+    -1.7px -1.7px 0 rgb(2, 45, 87);
     width: 95%;
 }
 
@@ -130,9 +131,7 @@
     justify-content:flex-start;
     width: 50%;
     height: 100%;
-    /* background-color: rgb(0,96,191, .75);
-    position: relative;
-    z-index: -1; */
+    /* background-color: rgb(2, 53, 105); */
 }
 
 .statz {

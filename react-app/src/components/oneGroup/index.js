@@ -12,6 +12,7 @@ import { RemoveMemberThunk } from "../../store/members";
 import AddMemberModal from "../members";
 import CreateGroupListModal from "../Groups";
 // import Members from "../members/members";
+
 export default function GetOneGroup() {
   // const history = useHistory()
   const dispatch = useDispatch();
@@ -25,12 +26,10 @@ export default function GetOneGroup() {
     return list.group_id == groupId
   })
 
-
   const remove = async (id) => {
     dispatch(RemoveMemberThunk(groupId, id))
   }
   //   const owner = group.owner_id === currUser.id
-
 
   useEffect(() => {
     dispatch(getAllGroupsThunk());
@@ -41,60 +40,62 @@ export default function GetOneGroup() {
   const deleteList = (list_id) => {
     dispatch(DeleteListThunk(list_id))
   }
-  if (!group) return null
+
+  if (!group) return null;
 
   return (
     <div className="groupsDiv">
-      <div className="oneGroupTopHalf">
-        <div className="eachGroupMap">
-          <img className='oneGroupImg' src={`${group.image_url}`} alt='group Pic'></img>
-          <div className="oneGroup">
-            <h2>{group.name}</h2>
-            <AddMemberModal />
+      <div className="top-half-group">
+        <div className="left-half-top-group">
+          <div className="eachGroupMap">
+            <h1 className="title-one-group">{group.name}</h1>
+            <img className='oneGroupImg' src={`${group.image_url}`} alt='group Pic'></img>
           </div>
         </div>
-        <h4 className="onegroupListHeader">Lists for the group</h4>
-        <div className="listMappedBigDiv">
-          {Object.values(groupLists).map(list => (
-            <div className="notesMapped">
-              <Link className="groupListLink" key={`a{${list.id}`} to={`/lists/${list.id}`}>
-
-                <p id="listDueName">{list.name}       </p>
-                <p id="listDueName">Due: {list.due.slice(0, 17)}</p>
-
-              </Link>
-              <p id="listDueName">{list.notes}</p>
-              <button onClick={() => deleteList(list.id)} className='deleteListInGroup'>delete</button>
-
+        <div className="right-half-one-group">
+          <div className="border-needed">
+            <h4 className="onegroupListHeader">Team Lists</h4>
+            <div>
+              <CreateGroupListModal groupId={groupId} />
             </div>
-          ))}
-        </div>
-        <div className="createListDeleteGroup">
-          <div>
-          <CreateGroupListModal groupId={groupId} />
+            <div className="listMappedBigDiv">
+              {Object.values(groupLists).map(list => (
+                <div className="notesMapped">
+                  <Link className="groupListLink" key={`a{${list.id}`} to={`/lists/${list.id}`}>
+                    <p id="listDueName">{list.name}</p>
+                    <p id="listDueName">Due: {list.due.slice(0, 17)}</p>
+                  </Link>
+                  <p id="listDueName">{list.notes}</p>
+                  <button onClick={() => deleteList(list.id)} className='deleteListInGroup'>delete</button>
+                </div>
+              ))}
+            </div>
           </div>
-          <Link to='/dashboard'>
-            <button onClick={() => { dispatch(deleteGroupThunk(groupId)) }} className='deleteGroupBtn'>Delete group</button>
-          </Link>
         </div>
       </div>
-      <div className="membersTotal">
-        <h1 className="MemberTitle">Group Members</h1>
-        <div className="membersTotal2">
-          {members.map(member => (
-            <div className="outerMembers-list">
-              <div className="member-list">
-                <div className="memberDivs">
-                  {member.username}
+      <div className="bottom-half-group">
+        <div className="membersTotal">
+          <h1 className="MemberTitle">Group Members</h1>
+          <div className="add-members-to-group">
+            <AddMemberModal />
+          </div>
+          <div className="membersTotal2">
+            {members.map(member => (
+              <div className="outerMembers-list">
+                <div className="member-list">
+                  <span className="member-username"> {member.username} </span>
+                  <span className="member-email"> {member.email} </span>
+                  <button onClick={() => remove(member.id)} className='deleteMembInGroup'>remove</button>
                 </div>
-                <div className="memberDivs">
-                  {member.email}
-                </div>
-                <button onClick={() => remove(member.id)} className='deleteMembInGroup'>remove</button>
-              </div>
 
-            </div>
-          ))}
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="createListDeleteGroup">
+          <Link to='/dashboard'>
+            <button onClick={() => { dispatch(deleteGroupThunk(groupId)) }} className='deleteGroupBtn'>Delete Group</button>
+          </Link>
         </div>
       </div>
     </div>
