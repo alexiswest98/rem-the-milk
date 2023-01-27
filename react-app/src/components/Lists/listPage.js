@@ -79,40 +79,40 @@ const ListPage = () => {
   return (
     <div className="whole-incomplete-task" id="whole-div-row-list">
       <div className="need-for-llists" id="border-bott-list-task">
-      <h1 id="incomp-title">Tasks In Progress</h1>
-      <div id="overflow-here">
-        {incomplete.map(task => (
-          <div key={task.id} className="completedTaskDiv">
-            <h4>{task.name}</h4>
-            <p>Notes: {task.notes}</p>
-            <p>Due: {task.due.slice(0, 17)}</p>
-            <div className="outer-box-actions-incom">
-              <div className="complete-div-incom">
-                <span>Complete:   </span>
-                <button id="complete-button" onClick={() => complete(task)}>X</button>
-              </div>
-              <div className="edit-del-div-incom">
-                <EditTaskModal taskId={task.id} />
-                <button id="delete-butt-emoji" onClick={() => deleteTask(task.id)}>🗑</button>
+        <h1 id="incomp-title">Tasks In Progress</h1>
+        <div id="overflow-here">
+          {incomplete.map(task => (
+            <div key={task.id} className="completedTaskDiv">
+              <h4>{task.name}</h4>
+              <p>Notes: {task.notes}</p>
+              <p>Due: {task.due.slice(0, 17)}</p>
+              <div className="outer-box-actions-incom">
+                <div className="complete-div-incom">
+                  <span>Complete:   </span>
+                  <button id="complete-button" onClick={() => complete(task)}>X</button>
+                </div>
+                <div className="edit-del-div-incom">
+                  <EditTaskModal taskId={task.id} />
+                  <button id="delete-butt-emoji" onClick={() => deleteTask(task.id)}>🗑</button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
-      <CreateATaskModal />
+          ))}
+        </div>
+        <CreateATaskModal />
       </div>
       <div className="need-for-llists">
-      <h1 id="incomp-title">Tasks Completed</h1>
-      <div id="overflow-here">
-        {completed.map(task => (
-          <div key={task.id} className="completedTaskDiv">
-            <p>{task.name}</p>
-          </div>
-        ))}
-      </div>
-      <div className="make-list-del-div">
-        <button class="activity-butt btn-7" onClick={() => deleteList(listId)}>🗑 List </button>
-      </div>
+        <h1 id="incomp-title">Tasks Completed</h1>
+        <div id="overflow-here">
+          {completed.map(task => (
+            <div key={task.id} className="completedTaskDiv">
+              <p>{task.name}</p>
+            </div>
+          ))}
+        </div>
+        <div className="make-list-del-div">
+          <button class="activity-butt btn-7" onClick={() => deleteList(listId)}>🗑 List </button>
+        </div>
       </div>
     </div>
   )

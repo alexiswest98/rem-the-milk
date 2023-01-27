@@ -5,7 +5,6 @@ import { Modal } from '../../context/Modal';
 // import UserDetails from './details';
 import CreateList from './CreateLists';
 
-
 function CreateListModal(user) {
   const dispatch = useDispatch();
   const history = useHistory();

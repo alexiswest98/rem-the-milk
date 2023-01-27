@@ -116,7 +116,7 @@ function EditList({ setShowModal }) {
             value={notes}
           />
         </label>
-        <button className="submit" type="submit" onClick={() => onSubmit()}>Update List</button>
+        <button className="submit" id="createListSubmitBtn" type="submit" onClick={() => onSubmit()}>Update List</button>
       </form>
 
     </div>

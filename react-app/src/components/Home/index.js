@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from 'react-router-dom'
 // import { Carousel } from 'react-responsive-carousel';
+import { useDispatch } from "react-redux";
 import './index.css'
 import Slider from "react-slick";
 import SliderComp from "../Slider";
 import { useSelector } from "react-redux";
 import milk from "../../Images/milk.png"
 import MonthTask from "../MonthTasks";
+import { logout } from "../../store/session";
 
 export default function Home() {
-    const user = useSelector(state => state.session.user)
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.session.user);
+
+    useEffect(async() => {
+        await dispatch(logout());
+    }, [dispatch])
 
     return (
         <>
