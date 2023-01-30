@@ -11,7 +11,7 @@ function ShowFollows({ setShowModal }) {
   const dispatch = useDispatch()
   const history = useHistory()
   const follows = Object.values(useSelector(state => state.follows))
-console.log('following = ',Object.values(follows))
+// console.log('following = ',Object.values(follows))
 
 const unfollow = async (follower) => {
   let follow = await dispatch(unfollowThunk(follower.id))

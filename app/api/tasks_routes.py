@@ -84,7 +84,7 @@ def create_task():
   form = CreateTaskForm()
   form['csrf_token'].data = request.cookies['csrf_token']
   data = form.data
-  print('**********************', data, '**********************')
+  # print('**********************', data, '**********************')
   if form.validate_on_submit():
     new_task = Task(
       name = data['name'],

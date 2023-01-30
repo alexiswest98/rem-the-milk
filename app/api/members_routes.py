@@ -59,7 +59,7 @@ def add_memb(groupId, userId):
 @member_routes.route('/delete/<int:userId>/group/<int:groupId>', methods=["DELETE"])
 @login_required
 def delete_memb(groupId, userId):
-  print('****************************************** Hit The Removal *******************************')
+  # print('****************************************** Hit The Removal *******************************')
   membsInGroup = db.session.query(members).filter(members.c.group_id==groupId).all()
   delUser = User.query.get(userId)
   # print("##############", membsInGroup)

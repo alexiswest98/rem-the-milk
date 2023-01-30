@@ -62,7 +62,7 @@ def update_list(list_id):
   list = List.query.get(list_id)
   form['csrf_token'].data = request.cookies['csrf_token']
   data = form.data
-  print('****************',data,'*********************')
+  # print('****************',data,'*********************')
   if list and form.validate_on_submit():
     list.name = data['name']
     list.user_id = data['user_id']

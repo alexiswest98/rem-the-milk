@@ -9,10 +9,10 @@ export const GetMembersAction = (members) => {
 
 export const GetUsersGroupsThunk = () => async (dispatch) => {
   const res = await fetch(`/api/members/all`)
-  console.log('made it to mem thunk, res = ', res)
+  // console.log('made it to mem thunk, res = ', res)
   if(res.ok){
     const data = await res.json();
-    console.log('data = ', data)
+    // console.log('data = ', data)
     dispatch(GetMembersAction(data))
     return data
   }

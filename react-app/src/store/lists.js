@@ -89,7 +89,7 @@ export const EditListThunk = (list) => async (dispatch) => {
       completed
     })
   });
-  console.log('edit hit, res = ', res)
+  // console.log('edit hit, res = ', res)
   if (res.ok) {
     const data = await res.json()
     dispatch(UpdateListAction(data))
@@ -112,7 +112,7 @@ export const EditGroupListThunk = (list) => async (dispatch) => {
       completed
     })
   });
-  console.log('group edit hit, res = ', res)
+  // console.log('group edit hit, res = ', res)
   if (res.ok) {
     const data = await res.json()
     dispatch(UpdateListAction(data))
