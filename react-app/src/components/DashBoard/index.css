@@ -13,7 +13,7 @@
     align-items: center;
     justify-content: space-evenly;
     width: 50%;
-    background-image: url("https://forum.bubble.io/uploads/default/original/3X/e/0/e03d1a68f2f6db9e8b244987f166469316af8fea.gif");
+    background-image: url("https://64.media.tumblr.com/a2f6b0a54e45c0280c5f1f2a2311b46d/564c2311c24eaca6-8d/s540x810/504d5245be7f5c9d4e473026ea4ed3396e2970ab.gif");
     background-size: cover;
     height: 100%;
 }
@@ -60,7 +60,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(255, 255, 255, 0.4);
+    background-color: rgb(255, 255, 255, 0.5);
     height: 80%;
     width: 60%;
     border-radius: 1em;
@@ -100,10 +100,10 @@
     padding: 0.5em;
     height: 100%;
     color: white;
-    text-shadow: -1.5px 1.5px 0 rgb(0, 62, 19),
-    1.5px 1.5px 0 rgb(0, 62, 19),
-    1.5px -1.5px 0 rgb(0, 62, 19),
-    -1.5px -1.5px 0 rgb(0, 62, 19);
+    text-shadow: -1.7px 1.7px 0 rgb(1, 61, 30),
+    1.7px 1.7px 0 rgb(1, 61, 30),
+    1.7px -1.7px 0 rgb(1, 61, 30),
+    -1.7px -1.7px 0 rgb(1, 61, 30);
 }
 
 .align-left-tasks {
@@ -116,11 +116,11 @@
 
 .today-date {
     font-weight: bold;
-    color: rgb(255, 255, 255);
-    text-shadow: -1.7px 1.7px 0 rgb(2, 45, 87),
-    1.7px 1.7px 0 rgb(2, 45, 87),
-    1.7px -1.7px 0 rgb(2, 45, 87),
-    -1.7px -1.7px 0 rgb(2, 45, 87);
+    color: rgb(249, 191, 0);
+    text-shadow: -1.7px 1.7px 0 rgb(1, 61, 30),
+    1.7px 1.7px 0 rgb(1, 61, 30),
+    1.7px -1.7px 0 rgb(1, 61, 30),
+    -1.7px -1.7px 0 rgb(1, 61, 30);
     width: 95%;
 }
 
@@ -131,7 +131,7 @@
     justify-content:flex-start;
     width: 50%;
     height: 100%;
-    /* background-color: rgb(2, 53, 105); */
+    /* background-color: rgb(205, 228, 250); */
 }
 
 .statz {
@@ -140,6 +140,7 @@
     align-items: center;
     height: 40%;
     width: 100%;
+    /* background-color: pink; */
 }
 
 .activeTitle {
@@ -157,7 +158,7 @@
 }
 
 .title-div {
-    height: 70%;
+    height: 30%;
     width: 80%;
     display: flex;
     justify-content: flex-start;

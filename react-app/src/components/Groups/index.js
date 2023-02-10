@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useHistory} from 'react-router-dom';
 import { Modal } from '../../context/Modal';
 import CreateGroupList from './CreateGroupLists';
+
 function CreateGroupListModal(groupId) {
   const history = useHistory();
   const [showModal, setShowModal] = useState(false);

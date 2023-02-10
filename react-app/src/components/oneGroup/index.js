@@ -6,6 +6,7 @@ import { Link, useParams } from 'react-router-dom'
 import { getAllGroupsThunk } from "../../store/groups";
 import { deleteGroupThunk } from "../../store/groups";
 import { GetAllListsThunk } from "../../store/lists";
+import { groupListThunk } from "../../store/lists";
 import { DeleteListThunk } from "../../store/lists";
 import { GetMembersThunk } from "../../store/members";
 import { RemoveMemberThunk } from "../../store/members";
@@ -20,11 +21,11 @@ export default function GetOneGroup() {
   // Listen for change of state and grab groups from the slice
   const group = useSelector(state => state.groups[groupId]);
   // const currUser = useSelector(state => state.session)
-  const lists = useSelector(state => state.lists)
+  const lists = Object.values(useSelector(state => state.lists))
   const members = Object.values(useSelector(state => state.members))
-  const groupLists = Object.values(lists).filter(list => {
-    return list.group_id == groupId
-  })
+  const groupLists = lists.filter(list => list.group_id == +groupId)
+  console.log(groupLists)
+
 
   const remove = async (id) => {
     dispatch(RemoveMemberThunk(groupId, id))
@@ -33,7 +34,7 @@ export default function GetOneGroup() {
 
   useEffect(() => {
     dispatch(getAllGroupsThunk());
-    dispatch(GetAllListsThunk(groupId));
+    dispatch(groupListThunk(+groupId));
     dispatch(GetMembersThunk(groupId))
   }, [groupId, dispatch]);
 
@@ -59,7 +60,7 @@ export default function GetOneGroup() {
               <CreateGroupListModal groupId={groupId} />
             </div>
             <div className="listMappedBigDiv">
-              {Object.values(groupLists).map(list => (
+              {groupLists.map(list => (
                 <div className="notesMapped">
                   <Link className="groupListLink" key={`a{${list.id}`} to={`/lists/${list.id}`}>
                     <p id="listDueName">{list.name}</p>

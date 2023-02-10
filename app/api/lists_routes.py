@@ -1,7 +1,8 @@
 from flask import Blueprint, render_template, jsonify, request
 from flask_login import login_required, current_user
-from app.models import List, db, Task
+from app.models import List, Group, db, Task
 from app.forms.list_form import ListForm
+from app.models.members import members
 
 lists_routes = Blueprint('lists', __name__, url_prefix="/api/lists")
 
@@ -12,13 +13,29 @@ def lists_by_user():
   # print(current_user.id)
   lists = List.query.filter(List.user_id == current_user.id).all()
   list_obj = [list.to_dict() for list in lists]
+
+  ##need to get the group lists the person is in too but didn't make the group
+  membs = db.session.query(members).filter(members.c.user_id == current_user.id).all()
+  for group in membs:
+    extraGroup = Group.query.get(group[1])
+    extraLists = List.query.filter(List.group_id == extraGroup.id).all()
+    for list in extraLists:
+      list_obj.append(list.to_dict())
+  
+  ##need group lists for the groups the person made 
+  ownerGroups = Group.query.filter(Group.owner_id == current_user.id).all()
+  for ownGroup in ownerGroups:
+    lastList = List.query.filter(List.group_id == ownGroup.id).all()
+    for singlist in lastList:
+      list_obj.append(singlist.to_dict())
+
   return jsonify(list_obj)
 
 #get all lists of a group by group id
 @lists_routes.route('/groups/<int:group_id>')
 @login_required
 def lists_by_group(group_id):
-  lists = List.query.filter(List.group_id == group_id and List.user_id == current_user.id).all()
+  lists = List.query.filter(List.group_id == group_id).all()
   list_obj = [list.to_dict() for list in lists]
   return jsonify(list_obj)
 

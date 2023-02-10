@@ -41,10 +41,10 @@ export const DeleteListAction = (id) => {
   };
 };
 
-export const GetListsByGroupAction = (group) => {
+export const GetListsByGroupAction = (lists) => {
   return {
     type: GETLISTSBYGROUP,
-    group
+    lists
   };
 };
 /* ------------THUNK----------- */
@@ -167,8 +167,11 @@ export const CreateGroupListThunk = (list) => async (dispatch) => {
 // Get lists by group
 export const groupListThunk = (groupId) => async (dispatch) => {
   const response = await fetch(`/api/lists/groups/${groupId}`);
-  const group = await response.json();
-  dispatch(GetListsByGroupAction(group))
+
+  if(response.ok){
+    const lists = await response.json();
+    dispatch(GetListsByGroupAction(lists))
+  }
 }
 
 
@@ -179,6 +182,7 @@ export default function listsReducer(state = {}, action) {
   switch (action.type) {
 
     case GetAllLists:
+      newState = { ...state }
       action.lists.forEach(list => newState[list.id] = list)
       return newState
 
@@ -202,6 +206,7 @@ export default function listsReducer(state = {}, action) {
       return newState
 
     case GETLISTSBYGROUP:
+      newState = { ...state }
       action.lists.forEach(list => newState[list.id] = list)
       return newState
 

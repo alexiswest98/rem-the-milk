@@ -6,6 +6,7 @@
     align-items: center;
     justify-content: center;
     background-color: rgb(1, 32, 63);
+    padding: 1vh 0;
 }
 
 .following-title {
@@ -36,6 +37,7 @@
 
 .allFollowers {
     border: 2px solid rgba(131, 131, 247);
+    border-radius: 1em;
     background-color: white;
     width: 99%;
     height: 10vh;
@@ -49,4 +51,5 @@
     height: 80%;
     width: 16%;
     border-radius: 50%;
+    margin: 0 0.5vw;
 }

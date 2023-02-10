@@ -14,9 +14,9 @@ export default function GetGroups() {
     const groups = Object.values(useSelector(state => state.groups));
     const otherGroups = Object.values(useSelector(state => state.userGroups))
     const user = useSelector(state => state.session.user)
-    if(user){
-        // console.log('current user =====================', user.id)
-    }
+    // if(user){
+    //     console.log('current user =====================', user.id)
+    // }
 
     // console.log('groups ----', groups.push(... otherGroups))
     useEffect(() => {

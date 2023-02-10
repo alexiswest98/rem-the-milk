@@ -2,6 +2,8 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import User, Group, db
 from ..forms.group_form import GroupForm
+from app.models.members import members
+
 groups_routes = Blueprint('groups', __name__, url_prefix="/api/groups")
 
 #get all groups of current user
@@ -9,7 +11,15 @@ groups_routes = Blueprint('groups', __name__, url_prefix="/api/groups")
 @login_required
 def get_groups():
   groups = Group.query.filter(Group.owner_id == current_user.id).all()
-  return jsonify([group.to_dict() for group in groups])
+  allCurrGroups = [group.to_dict() for group in groups]
+  ##need to get other group lists that you are in not owner
+  membs = db.session.query(members).filter(members.c.user_id == current_user.id).all()
+  for group in membs:
+    extraGroup = Group.query.get(group[1])
+    allCurrGroups.append(extraGroup.to_dict())
+
+  return jsonify(allCurrGroups)
+
 
 @groups_routes.route('/act/all')
 @login_required

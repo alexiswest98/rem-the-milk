@@ -12,6 +12,7 @@ import { getFollowsThunk } from "../../store/follows";
 // import specTasksReducer from "../../store/specTasks";
 import ShowfollowersModal from "../followersModal/FollowersModal";
 import ShowfollowsModal from "../followingModal/FollowingModal";
+import NeedHelpModal from "../needHelp/NeedHelpModal";
 
 
 export default function Dashboard() {
@@ -75,6 +76,7 @@ export default function Dashboard() {
       </div>
       <div className="rightDash">
         <div className="statz">
+          <NeedHelpModal/>
           <div className="title-div">
             <h1>Todays Activity:</h1>
           </div>
